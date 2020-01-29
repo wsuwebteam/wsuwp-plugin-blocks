@@ -1,0 +1,20 @@
+<?php
+/**
+ * Plugin Name: WSUWP Plugin Blocks
+ * Plugin URI: https://web.wsu.edu/
+ * Description: A WordPress implementation of WSU Design System components as Gutenberg blocks.
+ * Version: 0.0.1
+ * Requires PHP: 7.0
+ * Author: Washington State University, Nic Ford
+ * Author URI: https://web.wsu.edu/
+ * Text Domain: wsuwp-plugin-blocks
+ */
+
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+// Initiate plugin
+require_once __DIR__ . '/includes/wsuwp-plugin-blocks.php';

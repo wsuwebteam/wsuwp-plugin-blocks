@@ -1,0 +1,23 @@
+{
+    "name": "wsuwp-plugin-blocks",
+    "version": "0.0.1",
+    "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
+    "main": "build/index.js",
+    "scripts": {
+        "start": "wp-scripts start",
+        "build": "wp-scripts build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wsuwebteam/wsuwp-plugin-blocks.git"
+    },
+    "author": "Washington State University, Nic Ford",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/wsuwebteam/wsuwp-plugin-blocks/issues"
+    },
+    "homepage": "https://github.com/wsuwebteam/wsuwp-plugin-blocks#readme",
+    "devDependencies": {
+        "@wordpress/scripts": "^6.2.0"
+    }
+}
