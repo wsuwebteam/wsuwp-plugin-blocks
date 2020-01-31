@@ -1,8 +1,14 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { RichText } from '@wordpress/block-editor';
+/**
+ * Block: Button
+ *
+ * Creates a WSU Design System button.
+ */
+
+const { registerBlockType } = window.wp.blocks;
+const { RichText } = wp.editor;
 
 registerBlockType('wsuwp-plugin-blocks/button', {
-	title: 'Nics Test Block',
+	title: 'Nics Test Block 2',
 	icon: 'universal-access-alt',
 	category: 'layout',
 	attributes: {

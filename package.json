@@ -4,8 +4,9 @@
     "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
     "main": "build/index.js",
     "scripts": {
-        "start": "wp-scripts start",
-        "build": "wp-scripts build"
+        "start": "parcel watch --no-hmr src/blocks.js -d dist",
+        "build": "parcel build src/blocks.js -d dist",
+        "lint": "eslint src/blocks.js"
     },
     "repository": {
         "type": "git",
@@ -17,7 +18,20 @@
         "url": "https://github.com/wsuwebteam/wsuwp-plugin-blocks/issues"
     },
     "homepage": "https://github.com/wsuwebteam/wsuwp-plugin-blocks#readme",
+    "dependencies": {
+        "@wordpress/block-editor": "^3.5.0",
+        "@wordpress/blocks": "^6.10.0",
+        "lodash.assign": "^4.2.0"
+    },
     "devDependencies": {
-        "@wordpress/scripts": "^6.2.0"
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^10.0.1",
+        "babel-plugin-transform-react-jsx": "^6.24.1",
+        "eslint": "^5.16.0",
+        "eslint-config-wordpress": "^2.0.0",
+        "eslint-plugin-jest": "^22.5.1",
+        "eslint-plugin-jsx-a11y": "^6.2.1",
+        "eslint-plugin-react": "^7.13.0",
+        "parcel-bundler": "^1.12.3"
     }
 }

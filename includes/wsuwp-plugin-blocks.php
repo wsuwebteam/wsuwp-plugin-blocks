@@ -33,19 +33,50 @@ class WSUWP_Plugin_Blocks {
 			return $file;
 		}
 
-
-
 	}
 
-	public static function get_plugin_version() {
-		return self::$version;
+	public static function get_plugin_version($isDev) {
+		if ($isDev) {
+			return date("m.d.y.g:i:s");
+		} else {
+			return self::$version;
+		}
 	}
 
 
 	public function init() {
 
-		require_once __DIR__ . '/blocks.php';
+		// Actions
+		add_action( 'enqueue_block_assets', __NAMESPACE__ . '\WSUWP_Plugin_Blocks::wsu_enqueue_block_assets' );
+		add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\WSUWP_Plugin_Blocks::wsu_enqueue_block_editor_assets' );
 
+	}
+
+	public static function wsu_enqueue_block_assets() {
+
+		wp_enqueue_style(
+			'wsuwp-plugin-blocks',
+			WSUWP_Plugin_Blocks::get_plugin_url() . 'src/button/style.css',
+			array(),
+			WSUWP_Plugin_Blocks::get_plugin_version(true)
+		);
+
+	}
+
+	public static function wsu_enqueue_block_editor_assets() {
+		wp_enqueue_script(
+			'wsuwp-plugin-blocks-scripts',
+			WSUWP_Plugin_Blocks::get_plugin_url() . 'dist/blocks.js',
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
+			WSUWP_Plugin_Blocks::get_plugin_version(true)
+		);
+
+		wp_enqueue_style(
+			'wsuwp-plugin-blocks-editor-styles',
+			WSUWP_Plugin_Blocks::get_plugin_url() . 'src/button/editor.css',
+			array( 'wp-edit-blocks' ),
+			WSUWP_Plugin_Blocks::get_plugin_version(true)
+		);
 	}
 
 }
