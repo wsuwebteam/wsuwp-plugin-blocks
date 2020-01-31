@@ -74,8 +74,6 @@ const addColumnPresets = (settings, name) => {
 		},
 	);
 
-	console.log(settings.patterns);
-
 	return settings;
 }
 
