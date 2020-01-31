@@ -36,13 +36,14 @@ class WSUWP_Plugin_Blocks {
 	}
 
 	public static function get_plugin_version($isDev) {
+
 		if ($isDev) {
 			return date("m.d.y.g:i:s");
 		} else {
 			return self::$version;
 		}
-	}
 
+	}
 
 	public function init() {
 
@@ -66,6 +67,7 @@ class WSUWP_Plugin_Blocks {
 	}
 
 	public static function enqueue_block_editor_assets() {
+
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-scripts',
 			WSUWP_Plugin_Blocks::get_plugin_url() . 'dist/blocks.js',
@@ -79,6 +81,7 @@ class WSUWP_Plugin_Blocks {
 			array( 'wp-edit-blocks' ),
 			WSUWP_Plugin_Blocks::get_plugin_version(true)
 		);
+
 	}
 
 	function allowed_block_types( $allowed_blocks ) {
