@@ -47,12 +47,14 @@ class WSUWP_Plugin_Blocks {
 	public function init() {
 
 		// Actions
-		add_action( 'enqueue_block_assets', __NAMESPACE__ . '\WSUWP_Plugin_Blocks::wsu_enqueue_block_assets' );
-		add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\WSUWP_Plugin_Blocks::wsu_enqueue_block_editor_assets' );
+		add_action( 'enqueue_block_assets', __NAMESPACE__ . '\WSUWP_Plugin_Blocks::enqueue_block_assets' );
+		add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\WSUWP_Plugin_Blocks::enqueue_block_editor_assets' );
 
+		// Filters
+		add_filter( 'allowed_block_types', __NAMESPACE__ . '\WSUWP_Plugin_Blocks::allowed_block_types' );
 	}
 
-	public static function wsu_enqueue_block_assets() {
+	public static function enqueue_block_assets() {
 
 		wp_enqueue_style(
 			'wsuwp-plugin-blocks',
@@ -63,7 +65,7 @@ class WSUWP_Plugin_Blocks {
 
 	}
 
-	public static function wsu_enqueue_block_editor_assets() {
+	public static function enqueue_block_editor_assets() {
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-scripts',
 			WSUWP_Plugin_Blocks::get_plugin_url() . 'dist/blocks.js',
@@ -77,6 +79,20 @@ class WSUWP_Plugin_Blocks {
 			array( 'wp-edit-blocks' ),
 			WSUWP_Plugin_Blocks::get_plugin_version(true)
 		);
+	}
+
+	function allowed_block_types( $allowed_blocks ) {
+
+		return array(
+			'core/image',
+			'core/paragraph',
+			'core/heading',
+			'core/columns',
+			'core/column',
+			'core/buttons',
+			'core/button',
+		);
+
 	}
 
 }
