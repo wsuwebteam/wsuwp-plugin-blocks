@@ -70,7 +70,7 @@ class WSUWP_Plugin_Blocks {
 
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-scripts',
-			WSUWP_Plugin_Blocks::get_plugin_url() . 'dist/blocks.js',
+			WSUWP_Plugin_Blocks::get_plugin_url() . 'dist/index.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
 			WSUWP_Plugin_Blocks::get_plugin_version(true)
 		);
