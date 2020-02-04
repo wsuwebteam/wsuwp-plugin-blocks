@@ -8,6 +8,6 @@
 // import './columns/index.js';
 
 // Blocks
-// import './buttons/index.js'; TODO: create button
+import './button/index.js'
 import './paragraph/index.js'
 import './test-block/index.js';

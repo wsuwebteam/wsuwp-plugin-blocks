@@ -93,6 +93,7 @@ class WSUWP_Plugin_Blocks {
 			'core/column',
 			'core/buttons',
 			'core/button',
+			'wsuwp-plugin-blocks/button',
 			'wsuwp-plugin-blocks/paragraph',
 			'wsuwp-plugin-blocks/test-block'
 		);
