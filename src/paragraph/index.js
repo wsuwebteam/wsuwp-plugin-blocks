@@ -1,11 +1,24 @@
-import { __ } from '@wordpress/i18n';
+
+/**
+ *
+ * Define constants
+ *
+ */
+const { __ } = wp.i18n;
 const {
 	AlignmentToolbar,
 	BlockControls,
 	RichText,
 } = wp.blockEditor;
 const { registerBlockType } = window.wp.blocks;
+const { addFilter } = wp.hooks;
 
+/**
+ *
+ * Register Block
+ * Register wsuwp-plugin-blocks/paragraph to block types.
+ *
+ */
 registerBlockType('wsuwp-plugin-blocks/paragraph', {
 	title: __('Paragraph'),
 	description: __('Start with the building block of all narrative.'),
@@ -16,10 +29,9 @@ registerBlockType('wsuwp-plugin-blocks/paragraph', {
 			source: 'html',
 			selector: 'p'
 		},
-		alignment: {
-			type: 'string' // TODO alignment attribute is not being passed into save (see https://modularwp.com/gutenberg-block-toolbar-control/)
-		}
-
+	},
+	supports: {
+		className: false
 	},
 	example: {
 		attributes: {
@@ -30,25 +42,14 @@ registerBlockType('wsuwp-plugin-blocks/paragraph', {
 	},
 	edit: ({ attributes, className, setAttributes }) => {
 
-		const { alignment } = attributes;
 		const { content } = attributes;
 
 		const onChangeContent = (newContent) => {
 			setAttributes({ content: newContent });
 		};
 
-		const onChangeAlignment = (newAlignment) => {
-			setAttributes({ alignment: newAlignment });
-		};
-
 		return (
 			<>
-				{/* <BlockControls>
-					<AlignmentToolbar
-						value={alignment}
-						onChange={onChangeAlignment}
-					/>
-				</BlockControls> */}
 				<RichText
 					tagName="p"
 					className={className}
@@ -64,3 +65,31 @@ registerBlockType('wsuwp-plugin-blocks/paragraph', {
 		);
 	},
 });
+
+
+/**
+ *
+ * Filter Class Name
+ * className: undefined
+ */
+
+const setExtraPropsToBlockType = (props, blockType) => {
+	const notDefined = (typeof props.className === 'undefined' || !props.className) ? true : false
+
+	if (blockType.name === 'wsuwp-plugin-blocks/paragraph') {
+
+		if (!notDefined) {
+
+			return Object.assign(props, {
+				className: notDefined ? '' : `${props.className}`,
+			});
+
+		}
+
+	}
+
+	return props;
+};
+
+addFilter('blocks.getSaveContent.extraProps', 'wsuwp-plugin-blocks/paragraph-filters', setExtraPropsToBlockType);
+
