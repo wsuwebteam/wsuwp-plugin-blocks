@@ -1,31 +1,15 @@
 
 /**
  *
- * Define constants
+ * WordPress Dependencies
  *
  */
 const { __ } = wp.i18n;
-const {
-	AlignmentToolbar,
-	BlockControls,
-	RichText,
-} = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
-const { addFilter } = wp.hooks;
-const {
-	Path,
-	SVG,
-	PanelBody,
-	TextControl,
-	ToggleControl,
-} = wp.components;
+const { URLInputButton } = wp.editor;
+const { RichText } = wp.blockEditor;
+const { Path, SVG } = wp.components;
 
-/**
- *
- * Register Block
- * Register wsuwp-plugin-blocks/paragraph to block types.
- *
- */
 const buttonIcon = (
 	<SVG viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 		<Path d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z" />
@@ -38,9 +22,15 @@ registerBlockType('wsuwp-plugin-blocks/button', {
 	icon: buttonIcon,
 	category: 'common',
 	attributes: {
-		content: {
-			source: 'html',
-			selector: 'p'
+		buttonContent: {
+			type: 'string',
+			source: 'text'
+		},
+		buttonUrl: {
+			type: 'string',
+			source: 'attribute',
+			selector: '.wsu-c-button',
+			attribute: 'href'
 		},
 	},
 	supports: {
@@ -48,61 +38,53 @@ registerBlockType('wsuwp-plugin-blocks/button', {
 	},
 	example: {
 		attributes: {
-			content: __(
-				'In a village of La Mancha, the name of which I have no desire to call to mind, there lived not long since one of those gentlemen that keep a lance in the lance-rack, an old buckler, a lean hack, and a greyhound for coursing.'
+			buttonContent: __(
+				'Learn More'
 			),
 		}
 	},
-	edit: ({ attributes, className, setAttributes }) => {
+	edit: (props) => {
 
-		const { content } = attributes;
+		const {
+			attributes: { buttonContent },
+			attributes: { buttonUrl },
+			className,
+			setAttributes
+		} = props;
 
-		const onChangeContent = (newContent) => {
-			setAttributes({ content: newContent });
+		const onChangeButtonContent = (newButtonContent) => {
+			setAttributes({ buttonContent: newButtonContent });
 		};
+
+		const onChangeButtonUrl = (newButtonUrl) => {
+			setAttributes({ buttonUrl: newButtonUrl });
+		}
 
 		return (
 			<>
-				<RichText
-					tagName="p"
-					className={className}
-					onChange={onChangeContent}
-					value={content}
+				<a href={buttonUrl} className="wsu-c-button">
+					<RichText
+						placeholder={__('Add Button Label Text...', 'wsuwp-plugin-blocks')}
+						value={buttonContent}
+						onChange={onChangeButtonContent}
+						allowedFormats={[]}
+						multiline={'false'}
+					/>
+				</a>
+				<URLInputButton
+					className="testing-input"
+					label={__('Button URL Input', 'wsuwp-plugin-blocks')}
+					onChange={onChangeButtonUrl}
+					url={buttonUrl}
 				/>
 			</>
 		);
 	},
-	save: ({ attributes }) => {
+	save: (props) => {
 		return (
-			<RichText.Content tagName="p" value={attributes.content} />
+			<a href={props.attributes.buttonUrl} className="wsu-c-button">
+				<RichText.Content value={props.attributes.buttonContent} />
+			</a>
 		);
 	},
 });
-
-
-/**
- *
- * Filter Class Name
- * className: undefined
- */
-
-const setExtraPropsToBlockType = (props, blockType) => {
-	const notDefined = (typeof props.className === 'undefined' || !props.className) ? true : false
-
-	if (blockType.name === 'wsuwp-plugin-blocks/paragraph') {
-
-		if (!notDefined) {
-
-			return Object.assign(props, {
-				className: notDefined ? '' : `${props.className}`,
-			});
-
-		}
-
-	}
-
-	return props;
-};
-
-// addFilter('blocks.getSaveContent.extraProps', 'wsuwp-plugin-blocks/paragraph-filters', setExtraPropsToBlockType);
-
