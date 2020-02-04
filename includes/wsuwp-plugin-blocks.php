@@ -38,7 +38,7 @@ class WSUWP_Plugin_Blocks {
 	public static function get_plugin_version($isDev) {
 
 		if ($isDev) {
-			return date("m.d.y.g:i:s");
+			return date("m.d.y.g:i:s") . '--is-in-dev-mode' ;
 		} else {
 			return self::$version;
 		}
