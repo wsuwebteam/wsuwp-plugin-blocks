@@ -1,26 +1,21 @@
-/**
- * Block: Button
- *
- * Creates a WSU Design System button.
- */
+import { RichText } from '@wordpress/block-editor';
 
 const { registerBlockType } = window.wp.blocks;
-const { RichText } = wp.editor;
 
-registerBlockType('wsuwp-plugin-blocks/button', {
-	title: 'Nics Test Block 2',
+registerBlockType('wsuwp-plugin-blocks/test-block', {
+	title: 'WSU Test Block',
 	icon: 'universal-access-alt',
 	category: 'layout',
 	attributes: {
 		content: {
 			type: 'array',
 			source: 'children',
-			selector: 'a',
+			selector: 'p',
 		},
 	},
 	example: {
 		attributes: {
-			content: 'Hello World my name is Erik',
+			content: 'Hello World',
 		},
 	},
 	edit: (props) => {

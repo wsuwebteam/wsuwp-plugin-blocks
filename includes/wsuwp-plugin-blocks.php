@@ -88,12 +88,13 @@ class WSUWP_Plugin_Blocks {
 
 		return array(
 			'core/image',
-			'core/paragraph',
 			'core/heading',
 			'core/columns',
 			'core/column',
 			'core/buttons',
 			'core/button',
+			'wsuwp-plugin-blocks/paragraph',
+			'wsuwp-plugin-blocks/test-block'
 		);
 
 	}
