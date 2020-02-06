@@ -64,6 +64,13 @@ class WSUWP_Plugin_Blocks {
 			WSUWP_Plugin_Blocks::get_plugin_version(true)
 		);
 
+		wp_enqueue_style(
+			'wsu-design-system-bundle',
+			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/1.x/build/dist/wsu-design-system.bundle.dist.css',
+			array(),
+			'1.x' . date("m.d.y.g:i:s")
+		);
+
 	}
 
 	public static function enqueue_block_editor_assets() {
@@ -76,9 +83,9 @@ class WSUWP_Plugin_Blocks {
 		);
 
 		wp_enqueue_style(
-			'wsuwp-plugin-blocks-editor-styles',
-			WSUWP_Plugin_Blocks::get_plugin_url() . 'src/button/editor.css',
-			array( 'wp-edit-blocks' ),
+			'wsu-design-system-bundle',
+			WSUWP_Plugin_Blocks::get_plugin_url() . 'dist/index.css',
+			array(),
 			WSUWP_Plugin_Blocks::get_plugin_version(true)
 		);
 
