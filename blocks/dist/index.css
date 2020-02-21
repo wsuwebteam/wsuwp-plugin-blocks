@@ -1,0 +1,33 @@
+.wp-block {
+  max-width: 1100px;
+}
+.wsu-c-column__wrapper > .editor-inner-blocks > .block-editor-block-list__layout {
+  display: flex;
+}
+
+.wsu-c-columns--single > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: 100%;
+}
+.wsu-c-columns--halves > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: 50%;
+}
+.wsu-c-columns--thirds > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: 33.33%;
+}
+.wsu-c-columns--quarters > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: 33.33%;
+}
+.wsu-c-columns--sidebar_right > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block:first-child {
+  width: 66.66%;
+}
+.wsu-c-columns--sidebar_right > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block:last-child {
+  width: 33.33%;
+}
+.wsu-c-columns--sidebar_left > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block:first-child {
+  width: 33.33%;
+}
+.wsu-c-columns--sidebar_left > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block:last-child {
+  width: 66.66%;
+}
+
+/*# sourceMappingURL=/index.css.map */
