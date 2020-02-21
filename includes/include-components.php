@@ -35,11 +35,11 @@ class Components {
 
 		$component_class = 'Component_' . implode( '_', $slug_base );
 
-		$template = Plugin::get_plugin_dir() . '/components/' . $slug . '/component-' . $slug . '.php' );
+		$component_path = Plugin::get_plugin_dir() . 'components/' . $slug . '/component-' . $slug . '.php';
 
 		if ( file_exists( $component_path ) ) {
 
-			require_once $template;
+			require_once $component_path;
 
 			if ( class_exists( __NAMESPACE__ . '\\' . $component_class ) ) {
 

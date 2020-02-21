@@ -5,7 +5,7 @@
  * Description: A WordPress implementation of WSU Design System components as Gutenberg blocks.
  * Version: 0.0.1
  * Requires PHP: 7.0
- * Author: Washington State University, Nic Ford
+ * Author: Washington State University, Nic Ford, Danial Bleile
  * Author URI: https://web.wsu.edu/
  * Text Domain: wsuwp-plugin-blocks
  */
@@ -17,4 +17,4 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Initiate plugin
-require_once __DIR__ . '/includes/wsuwp-plugin-blocks.php';
+require_once __DIR__ . '/includes/include-plugin.php';

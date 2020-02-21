@@ -1,7 +1,7 @@
 <?php namespace WSUWP\Plugin\Blocks;
 
 /**
- * WSUWP_Plugin_Blocks initiates the plugin to be loaded into WP dashboard.
+ * Plugin initiates the plugin to be loaded into WP dashboard.
  *
  * @since 0.0.1
  *
@@ -11,7 +11,8 @@ class Blocks {
 
 	public function __construct() {
 
-		Plugin::require_class( 'block-columns.php' );
+		Plugin::require_class( 'block-columns' );
+		Plugin::require_class( 'block-column' );
 
 	}
 
@@ -33,7 +34,10 @@ class Blocks {
 	public static function register_block_types() {
 
 		$columns_block = new Block_Columns();
-		$columns_block->register()
+		$columns_block->register();
+
+		$column_block = new Block_Column();
+		$column_block->register();
 
 	}
 
@@ -42,9 +46,9 @@ class Blocks {
 
 		wp_enqueue_style(
 			'wsuwp-plugin-blocks',
-			WSUWP_Plugin_Blocks::get_plugin_url() . 'src/button/style.css',
+			Plugin::get_plugin_url() . 'blocks/src/button/style.css',
 			array(),
-			WSUWP_Plugin_Blocks::get_plugin_version(true)
+			Plugin::get_plugin_version(true)
 		);
 
 		wp_enqueue_style(
@@ -60,16 +64,16 @@ class Blocks {
 
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-scripts',
-			WSUWP_Plugin_Blocks::get_plugin_url() . 'dist/index.js',
+			Plugin::get_plugin_url() . 'blocks/dist/index.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
-			WSUWP_Plugin_Blocks::get_plugin_version( true )
+			Plugin::get_plugin_version( true )
 		);
 
 		wp_enqueue_style(
 			'wsu-design-system-bundle',
-			WSUWP_Plugin_Blocks::get_plugin_url() . 'dist/index.css',
+			Plugin::get_plugin_url() . 'blocks/dist/index.css',
 			array(),
-			WSUWP_Plugin_Blocks::get_plugin_version( true )
+			Plugin::get_plugin_version( true )
 		);
 
 	}
@@ -86,6 +90,14 @@ class Blocks {
 			//'wsuwp-plugin-blocks/button',
 			//'wsuwp-plugin-blocks/paragraph',
 			//'wsuwp-plugin-blocks/test-block',
+			'core/freeform',
+			'wsuwp/columns-single',
+			'wsuwp/columns-halves',
+			'wsuwp/columns-thirds',
+			'wsuwp/columns-quarters',
+			'wsuwp/columns-sidebar-left',
+			'wsuwp/columns-sidebar-right',
+			//'wsuwp/column',
 		);
 
 	}

@@ -52,7 +52,7 @@ class Plugin {
 
 	public static function require_class( $class_slug ) {
 
-		require_once self::get_plugin_dir() . '/classes/class-' . $class_slug . '.php';
+		require_once self::get_plugin_dir() . 'classes/class-' . $class_slug . '.php';
 
 	}
 
@@ -95,4 +95,4 @@ class Plugin {
 
 }
 
-(new WSUWP_Plugin_Blocks)->init();
+(new Plugin)->init();

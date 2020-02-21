@@ -1,5 +1,5 @@
 <!-- COMPONENT:START -->
-<div class="wsu-c-column__wrapper <?php echo esc_attr( $format_class ); ?>">
+<div class="wsu-c-column">
 	<?php echo $content; ?>
 </div>
 <!-- COMPONENT:END -->

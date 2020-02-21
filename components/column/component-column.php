@@ -1,6 +1,6 @@
 <?php namespace WSUWP\Plugin\Blocks;
 
-class Component_Columns {
+class Component_Column {
 
 	protected $args = array();
 	protected $content = '';
@@ -31,12 +31,9 @@ class Component_Columns {
 
 	public function render() {
 
-		$format = ( ! empty( $this->args['format'] ) ) ? $this->args['format'] : 'single';
-		$format_class = ( 'single' !== $format ) ? 'wsu-c-columns--' . $format : '';
 		$content = $this->content;
 
 		include __DIR__ . '/template.php';
-
 	}
 
 }

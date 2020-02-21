@@ -4,8 +4,8 @@
     "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
     "main": "build/index.js",
     "scripts": {
-        "start": "parcel watch --no-hmr blocks/src/index.js -d dist",
-        "build": "parcel build blocks/src/index.js -d dist",
+        "start": "parcel watch --no-hmr blocks/src/index.js -d blocks/dist",
+        "build": "parcel build blocks/src/index.js -d blocks/dist",
         "lint": "eslint blocks/src/index.js"
     },
     "repository": {

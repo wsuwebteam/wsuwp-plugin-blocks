@@ -1,147 +1,33 @@
-/**
-                        // //
-                       // //
-                      // //   -   _-^^
-                    (cCCCCCCCCCCC) _-^^
-             (CC)  (CCCCCCCCCCCCCC)_-^^
-          (CCCC)  (CCC^^    ^CCCC)
-         (CCCCCC CC CCCC^^^  \C|
-       (Cc c^CCC CCCCCC)      \/
-      (CCC^  CCC CCCCC)
-     (CCCCCc CCCC CCCCC)
-       ccCCCCCCCC CCCCC)
-    (CCc  CCCCCCC CCCC)\\       /|
-   (CCCx (CCCCCCCC CCCC)\\     /C|
-  (CCCCCc_CCCCCCCC CCCC) \CCccc/CC|
- (CCCCCCCCCC/\CCCC CCCCc) CCCCCCC|
-(cCC^^^CCCCC  CCCC CCCCC)  CCCCCC
-    (CCCCC C^ CCC  CCCCCC) ^^^^^^
-    cCCC  CCC____CCCCCCCC
-   (CC  CCCCCCCCCCCCCCCC /\
-      ^^^^^^^^^CCCCCCC^ /C|
-
-    WSU Build Tools
-*/
-/* Units
-======================= */
-/* Modularscale
-======================= */
-/* Breakpoints
-======================= */
-/* Color Variables for Mixin
-======================= */
-/* Typography
-======================= */
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,800,800i&display=swap");
-/* Sizing Units
-======================= */
-/* Transition Variables
-======================= */
-/* Elevation Variables
-======================= */
-/* Is pixel value check
-======================= */
-/* Is rem value check
-======================= */
-/* Get font size of value
-======================= */
-/* Border Bottom Hover
-======================= */
-/* Show Adjacent Sibling on Hover
-======================= */
-/* Show Adjacent Sibling on Hover
-======================= */
-/* Animate Element
-======================= */
-/* Fade in down
-======================= */
-/* Fade in right
-======================= */
-/* Font size 
- * Example usage: @include font-size(ms(6), 700, 1.8);
- * @params $size, $font-weight, $line-height
-======================= */
-/* Is Icon
-======================= */
-/* Is Icon Centered in Container
-======================= */
-/* Is a psuedo element
-======================= */
-/* Is visually hidden
-======================= */
-/* Is vertically centered
-======================= */
-/* Is horizontally centered
-======================= */
-/**
-* function for setting transition-duration and transition-timing-function
-*
-* Example:
-* transition: background-color timing(cougar, standard);
-*/
-/* Document Styles
-======================= */
-html {
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+.wp-block {
+  max-width: 1100px;
+}
+.wsu-c-column__wrapper > .editor-inner-blocks > .block-editor-block-list__layout {
+  display: flex;
 }
 
-/* Link Styles
-======================= */
-a {
-  color: #A60F2D;
+.wsu-c-columns--single > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: 100%;
 }
-a:active {
-  color: #CA1237;
+.wsu-c-columns--halves > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: 50%;
 }
-a:hover {
-  color: #CA1237;
+.wsu-c-columns--thirds > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: 33.33%;
 }
-a:visited {
-  color: #A60F2D;
+.wsu-c-columns--quarters > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+  width: 33.33%;
 }
-
-/* Heading Styles
-======================= */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  transition: font-size 300ms cubic-bezier(0, 0, 0.03, 1);
+.wsu-c-columns--sidebar_right > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block:first-child {
+  width: 66.66%;
 }
-
-.wsu-u-visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  clip-path: inset(50%);
+.wsu-c-columns--sidebar_right > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block:last-child {
+  width: 33.33%;
 }
-
-.wsu-c-button .block-editor-rich-text__editable, .wsu-c-button .block-editor-rich-text__editable:visited .block-editor-rich-text__editable {
-  display: inline-table;
-  margin: 0;
-  padding: 15px 30px;
-  transition: background-color 300ms cubic-bezier(0, 0, 0.03, 1);
-  text-decoration: none;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  background-color: #CA1237;
-  font-size: 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1.5;
+.wsu-c-columns--sidebar_left > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block:first-child {
+  width: 33.33%;
 }
-.wsu-c-button .block-editor-rich-text__editable:hover, .wsu-c-button .block-editor-rich-text__editable:active {
-  cursor: pointer;
-  color: #fff;
-  background-color: #A60F2D;
+.wsu-c-columns--sidebar_left > .editor-inner-blocks > .block-editor-block-list__layout > .wp-block:last-child {
+  width: 66.66%;
 }
 
 /*# sourceMappingURL=/index.css.map */
