@@ -28,6 +28,23 @@ class Blocks {
 
 		add_action( 'init', __CLASS__ . '::register_block_types' );
 
+		add_filter( 'block_categories', __CLASS__ . '::add_block_categories', 10, 2 );
+
+	}
+
+
+	public static function add_block_categories( $categories, $post ) {
+
+		return array_merge(
+			array(
+				array(
+					'slug' => 'content',
+					'title' => 'Content',
+				),
+			),
+			$categories
+		);
+
 	}
 
 
@@ -81,15 +98,10 @@ class Blocks {
 	public static function allowed_block_types( $allowed_blocks ) {
 
 		return array(
-			//'core/image',
-			//'core/heading',
-			//'core/columns',
-			//'core/column',
-			//'core/buttons',
-			//'core/button',
-			//'wsuwp-plugin-blocks/button',
-			//'wsuwp-plugin-blocks/paragraph',
-			//'wsuwp-plugin-blocks/test-block',
+			'wsuwp/heading',
+			'wsuwp/button',
+			'wsuwp/banner',
+			'wsuwp/post-title',
 			'core/freeform',
 			'wsuwp/columns-single',
 			'wsuwp/columns-halves',
@@ -97,7 +109,6 @@ class Blocks {
 			'wsuwp/columns-quarters',
 			'wsuwp/columns-sidebar-left',
 			'wsuwp/columns-sidebar-right',
-			//'wsuwp/column',
 		);
 
 	}

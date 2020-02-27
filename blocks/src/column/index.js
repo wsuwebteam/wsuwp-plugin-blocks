@@ -10,6 +10,8 @@ const { InnerBlocks } = wp.editor;
 import edit from "./edit";
 import save from './save';
 
+import './editor.scss';
+
 const TEMPLATE = [
 	['core/heading', { width: 33.33 }, []],
 ]
