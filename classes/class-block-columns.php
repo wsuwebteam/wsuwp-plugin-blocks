@@ -21,7 +21,7 @@ class Block_Columns {
 			register_block_type(
 				$this->slug . '-' . $format,
 				array(
-					'render_callback' => __CLASS__ . '::render',
+					'render_callback' => array( $this, 'render' ),
 					'attributes' => array(
 						'format' => array(
 							'type' => 'string',
@@ -35,7 +35,7 @@ class Block_Columns {
 
 	}
 
-	public static function render( $atts, $content = '' ) {
+	public function render( $atts, $content = '' ) {
 
 		ob_start();
 

@@ -1,22 +1,13 @@
 <?php namespace WSUWP\Plugin\Blocks;
 
-class Block_Column {
+class Block_Column extends Block_Base {
 
 	protected $slug = 'wsuwp/column';
 
 
-	public function register() {
+	public function render( $atts, $content = '' ) {
 
-		register_block_type(
-			$this->slug,
-			array(
-				'render_callback' => __CLASS__ . '::render',
-			)
-		);
-
-	}
-
-	public static function render( $atts, $content = '' ) {
+		//var_dump( $content );
 
 		ob_start();
 

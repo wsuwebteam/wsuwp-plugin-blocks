@@ -21,7 +21,7 @@ registerBlockType(
 		category: "content",
 
 		attributes: {
-			imgSrc: {
+			img_src: {
 				type: 'string',
 				default: '',
 			},
@@ -29,7 +29,7 @@ registerBlockType(
 				type: 'string',
 				default: 'Odio et purus metus placerat neque.',
 			},
-			subTitle: {
+			subtitle: {
 				type: 'string',
 				default: 'Consectetur adipiscing elit donec fringilla',
 			},
@@ -37,9 +37,13 @@ registerBlockType(
 				type: 'string',
 				default: '',
 			},
-			buttonText: {
+			button_text: {
 				type: 'string',
 				default: 'Lorem Ipsum',
+			},
+			caption_text: {
+				type: 'string',
+				default: 'By consectetur adipiscing elit donec fringilla',
 			}
 		},
 

@@ -4,6 +4,13 @@
 class Components {
 
 
+	public function __construct() {
+
+		Plugin::require_class( 'component-base' );
+		
+	}
+
+
 	public function init() {
 	}
 

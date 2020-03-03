@@ -11,11 +11,11 @@ const edit = ( { className, attributes, setAttributes } ) => {
 	return (
 		<div className="wsu-c-block__banner__wrapper">
 			<div className="wsu-c-hero__wrapper">
-				<div className="wsu-c-hero__container" style={{backgroundImage:"url(" + attributes.imgSrc + ")"}}>
+				<div className="wsu-c-hero__container" style={{backgroundImage:"url(" + attributes.img_src + ")"}}>
 					<div className="wsu-c-hero__content">
 						<div className="wsu-c-hero__title">{ attributes.title }</div>
-						<div className="wsu-c-hero__subtitle">{ attributes.subTitle }</div>
-						<a href="#" className="wsu-c-hero__button">{ attributes.buttonText }</a>
+						<div className="wsu-c-hero__subtitle">{ attributes.subtitle }</div>
+						<a href="#" className="wsu-c-hero__button">{ attributes.button_text }</a>
 					</div>
 					<p className="wsu-c-hero__image-caption">By consectetur adipiscing elit donec fringilla</p>
 				</div>
@@ -25,7 +25,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					<MediaPlaceholder
 						onSelect = {
 							( el ) => {
-								setAttributes( { imgSrc: el.url } );
+								setAttributes( { img_src: el.url } );
 							}
 						}
 						allowedTypes = { [ 'image' ] }
@@ -46,16 +46,16 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					<RichText
 						tagName="div"
 						className={ 'wsu-c-block__banner__editor__content__subtitle' }
-						value={ attributes.subTitle }
-						onChange={ ( subTitle ) => setAttributes( { subTitle } ) }
+						value={ attributes.subtitle }
+						onChange={ ( subtitle ) => setAttributes( { subtitle } ) }
 						allowedFormats={[]}
 						placeholder={'Banner Subtitle Text'}
 					/>
 					<RichText
 						tagName="div"
 						className={ 'wsu-c-block__banner__editor__content__button-text' }
-						value={ attributes.buttonText }
-						onChange={ ( buttonText ) => setAttributes( { buttonText } ) }
+						value={ attributes.button_text }
+						onChange={ ( button_text ) => setAttributes( { button_text } ) }
 						allowedFormats={[]}
 						placeholder={'Button Text'}
 						multiline={'false'}

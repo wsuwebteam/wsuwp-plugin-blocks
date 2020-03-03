@@ -11,8 +11,12 @@ class Blocks {
 
 	public function __construct() {
 
+		Plugin::require_class( 'block-base' );
 		Plugin::require_class( 'block-columns' );
 		Plugin::require_class( 'block-column' );
+		Plugin::require_class( 'block-button' );
+		Plugin::require_class( 'block-banner' );
+		Plugin::require_class( 'block-heading' );
 
 	}
 
@@ -54,6 +58,15 @@ class Blocks {
 		$columns_block->register();
 
 		$column_block = new Block_Column();
+		$column_block->register();
+
+		$columns_block = new Block_Button();
+		$columns_block->register();
+
+		$column_block = new Block_Banner();
+		$column_block->register();
+
+		$column_block = new Block_Heading();
 		$column_block->register();
 
 	}
