@@ -60,14 +60,14 @@ class Blocks {
 		$column_block = new Block_Column();
 		$column_block->register();
 
-		$columns_block = new Block_Button();
-		$columns_block->register();
+		$button_block = new Block_Button();
+		$button_block->register();
 
-		$column_block = new Block_Banner();
-		$column_block->register();
+		$banner_block = new Block_Banner();
+		$banner_block->register();
 
-		$column_block = new Block_Heading();
-		$column_block->register();
+		$heading_block = new Block_Heading();
+		$heading_block->register();
 
 	}
 
@@ -110,12 +110,18 @@ class Blocks {
 
 	public static function allowed_block_types( $allowed_blocks ) {
 
-		return array(
+		$core_blocks = array(
+			'core/paragraph',
+			'core/freeform',
+			'core/list',
+			'core/image',
+		);
+
+		$wsu_blocks = array(
 			'wsuwp/heading',
 			'wsuwp/button',
 			'wsuwp/banner',
 			'wsuwp/post-title',
-			'core/freeform',
 			'wsuwp/columns-single',
 			'wsuwp/columns-halves',
 			'wsuwp/columns-thirds',
@@ -123,6 +129,8 @@ class Blocks {
 			'wsuwp/columns-sidebar-left',
 			'wsuwp/columns-sidebar-right',
 		);
+
+		return array_merge( $core_blocks, $wsu_blocks );
 
 	}
 }

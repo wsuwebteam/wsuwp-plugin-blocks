@@ -5,33 +5,33 @@ const BASETEXT = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pelle
 
 const formats = {
 	default: [
-		['wsuwp/column', {}, [ [ 'core/freeform', {},[] ]]],
+		['wsuwp/column', {}, [ [ 'core/paragraph', {},[] ]]],
 	],
 	single: [
-		['wsuwp/column', {}, [[ 'core/freeform', { content: BASETEXT },[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {  },[] ]]],
 	],
 	halves: [
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
 	],
 	thirds: [
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
 	],
 	quarters: [
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
 	],
 	sidebar_right: [
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
 	],
 	sidebar_left: [
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
-		['wsuwp/column', {}, [[ 'core/freeform', {content: BASETEXT},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
+		['wsuwp/column', {}, [[ 'core/paragraph', {},[] ]]],
 	],
 };
 
