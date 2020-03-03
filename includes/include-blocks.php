@@ -115,6 +115,7 @@ class Blocks {
 			'core/freeform',
 			'core/list',
 			'core/image',
+			'core/shortcode',
 		);
 
 		$wsu_blocks = array(
