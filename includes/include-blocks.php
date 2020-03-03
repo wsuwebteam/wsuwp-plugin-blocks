@@ -111,11 +111,14 @@ class Blocks {
 	public static function allowed_block_types( $allowed_blocks ) {
 
 		return array(
+			'core/column',
+			'core/columns',
 			'wsuwp/heading',
 			'wsuwp/button',
 			'wsuwp/banner',
 			'wsuwp/post-title',
 			'core/freeform',
+			'core/paragraph',
 			'wsuwp/columns-single',
 			'wsuwp/columns-halves',
 			'wsuwp/columns-thirds',

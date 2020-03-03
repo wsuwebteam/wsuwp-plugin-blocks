@@ -12,10 +12,11 @@ import './button/index.js';
 import './banner/index.js';
 import './post-title/index.js';
 import './heading/index.js';
-//import './paragraph/index.js';
+import './paragraph/index.js';
 //import './test-block/index.js';
 import './editor.scss';
 import './columns/editor.scss';
+import './columns/index.js';
 
 import './columns-single/index.js';
 import './columns-halves/index.js';

@@ -1,18 +1,45 @@
-const { __ } = wp.i18n;
-const { InnerBlocks } = wp.editor;
+const { createHigherOrderComponent } = wp.compose;
+const { AlignmentToolbar, BlockControls, InspectorControls, InnerBlocks } = wp.editor;
+const { Fragment } = wp.element;
+//import edit from './edit';
 
-const editColumn = ( props ) => {
+ 
+const columnEditor =  createHigherOrderComponent( ( BlockEdit ) => {
 
-	console.info(props);
+    return ( props ) => {
 
-	return (
-		<div className="wsu-c-column wsu-u-no-js">
-			<InnerBlocks
-				templateLock={ false }
-			/>
-		</div>
-	)
+		const {
+            attributes: {
+                content,
+            },
+			className,
+			name,
+        } = props;
+ 
+        const onChangeContent = ( newContent ) => {
+            props.setAttributes( { content: newContent } );
+        };
+ 
+        const onChangeAlignment = ( newAlignment ) => {
+            props.setAttributes( { alignment: newAlignment === undefined ? 'none' : newAlignment } );
+        };
 
-}
+		if( typeof name != 'undefined' && name === 'core/column' ) { 
 
-export default editColumn;
+			return (
+				<>
+					<InnerBlocks
+						templateLock={ false }
+					/>
+				</>
+			);
+
+		} else {
+
+			return <BlockEdit { ...props } />;
+
+		}
+    };
+}, "columnsEditor" );
+
+export default columnEditor;
