@@ -2,7 +2,7 @@
 
 class Block_Heading extends Block_Base {
 
-	protected $slug = 'core/heading';
+	protected $slug = 'wsuwp/heading';
 
 
 	public function render( $atts, $content = '' ) {

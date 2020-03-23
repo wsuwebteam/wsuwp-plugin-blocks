@@ -8,7 +8,7 @@ const { registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.editor;
 const { URLInputButton } = wp.editor;
 
-import edit from "./editor";
+import edit from "./edit";
 //import save from "./save";
 
 import './editor.scss';

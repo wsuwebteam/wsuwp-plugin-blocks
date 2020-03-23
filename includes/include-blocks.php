@@ -9,6 +9,9 @@
 class Blocks {
 
 
+	protected static $blocks = array();
+
+
 	public function __construct() {
 
 		Plugin::require_class( 'block-base' );
@@ -17,6 +20,7 @@ class Blocks {
 		Plugin::require_class( 'block-button' );
 		Plugin::require_class( 'block-banner' );
 		Plugin::require_class( 'block-heading' );
+		Plugin::require_class( 'block-post-title' );
 
 	}
 
@@ -54,20 +58,28 @@ class Blocks {
 
 	public static function register_block_types() {
 
-		$columns_block = new Block_Columns();
-		$columns_block->register();
+		$dynamic_blocks = array(
+			'Columns',
+			'Column',
+			'Button',
+			'Banner',
+			'Heading',
+			'Post_Title',
+		);
 
-		$column_block = new Block_Column();
-		$column_block->register();
+		foreach ( $dynamic_blocks as $dynamic_block ) {
 
-		$button_block = new Block_Button();
-		$button_block->register();
+			$block_class = __NAMESPACE__ . '\Block_' . $dynamic_block;
 
-		$banner_block = new Block_Banner();
-		$banner_block->register();
+			if ( class_exists( $block_class ) ) {
 
-		$heading_block = new Block_Heading();
-		$heading_block->register();
+				$block = new $block_class();
+				$block->register();
+				self::$blocks[] = $block;
+
+			}
+
+		} // End foreach
 
 	}
 
