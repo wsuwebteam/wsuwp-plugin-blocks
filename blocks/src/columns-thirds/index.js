@@ -25,7 +25,6 @@ registerBlockType(
 
 		edit,
 		save,
-
 	}
 );
 

@@ -2,7 +2,7 @@
 
 class Dynamic_Block_Heading extends Dynamic_Block {
 
-	protected $slug = 'core/heading';
+	protected $slug = 'wsuwp/heading';
 
 
 	public function render( $atts, $content = '' ) {
