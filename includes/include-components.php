@@ -7,6 +7,8 @@ class Components {
 	public function __construct() {
 
 		Plugin::require_class( 'component-base' );
+
+		require_once Plugin::get_plugin_dir() . 'components/component.php';
 		
 	}
 

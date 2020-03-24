@@ -37,7 +37,7 @@
         "eslint-plugin-react": "^7.13.0",
         "parcel-bundler": "^1.12.3",
         "sass": "^1.25.0",
-		"wsu-web-design-system": "git+https://github.com/washingtonstateuniversity/wsu-web-design-system.git",
-		"modularscale-sass": "^3.0.8"
+        "wsu-web-design-system": "git+https://github.com/washingtonstateuniversity/wsu-web-design-system.git",
+        "modularscale-sass": "^3.0.8"
     }
 }

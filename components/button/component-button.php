@@ -7,7 +7,7 @@ class Component_Button extends Component_Base  {
 	protected $default_args = array();
 
 
-	public function render() {
+	public function render( $args = array() ) {
 
 		include __DIR__ . '/template.php';
 	}

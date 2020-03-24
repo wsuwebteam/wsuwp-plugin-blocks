@@ -9,14 +9,19 @@
 class Blocks {
 
 
+	protected static $dynamic_blocks = array();
+
+
 	public function __construct() {
 
-		Plugin::require_class( 'block-base' );
-		Plugin::require_class( 'block-columns' );
-		Plugin::require_class( 'block-column' );
-		Plugin::require_class( 'block-button' );
-		Plugin::require_class( 'block-banner' );
-		Plugin::require_class( 'block-heading' );
+		//Plugin::require_class( 'block-base' );
+		//Plugin::require_class( 'block-columns' );
+		//Plugin::require_class( 'block-column' );
+		//Plugin::require_class( 'block-button' );
+		//Plugin::require_class( 'block-banner' );
+		//Plugin::require_class( 'block-heading' );
+
+		require_once Plugin::get_plugin_dir() . 'dynamic-blocks/dynamic-block.php';
 
 	}
 
@@ -45,6 +50,10 @@ class Blocks {
 					'slug' => 'content',
 					'title' => 'Content',
 				),
+				array(
+					'slug' => 'embeds',
+					'title' => 'Embeds',
+				),
 			),
 			$categories
 		);
@@ -54,20 +63,46 @@ class Blocks {
 
 	public static function register_block_types() {
 
-		$columns_block = new Block_Columns();
-		$columns_block->register();
+		$dynamic_blocks = array(
+			'Columns',
+			'Column',
+			'Button',
+			'Banner',
+			'Heading',
+			'Search_Bar',
+		);
 
-		$column_block = new Block_Column();
-		$column_block->register();
+		foreach ( $dynamic_blocks as $class_slug ) {
 
-		$button_block = new Block_Button();
-		$button_block->register();
+			// No ... in paths please :)
+			$class_slug = str_replace( '.', '', $class_slug );
 
-		$banner_block = new Block_Banner();
-		$banner_block->register();
+			$file_base = strtolower( $class_slug );
 
-		$heading_block = new Block_Heading();
-		$heading_block->register();
+			$file_base = str_replace( '_', '-', $file_base );
+
+			$block_class = 'Dynamic_Block_' . $class_slug;
+
+			$block_path = Plugin::get_plugin_dir() . 'dynamic-blocks/dynamic-block-' . $file_base . '.php';
+
+			if ( file_exists( $block_path ) ) {
+
+				require_once $block_path;
+
+				if ( class_exists( __NAMESPACE__ . '\\' . $block_class ) ) {
+
+					$block_class = __NAMESPACE__ . '\\' . $block_class;
+
+					$block = new $block_class();
+
+					$block->register();
+
+					self::$dynamic_blocks[ $file_base ] = $block;
+
+				} // End if
+			} // End if
+
+		}
 
 	}
 
@@ -129,6 +164,7 @@ class Blocks {
 			'wsuwp/columns-quarters',
 			'wsuwp/columns-sidebar-left',
 			'wsuwp/columns-sidebar-right',
+			'wsuwp/search-bar',
 		);
 
 		return array_merge( $core_blocks, $wsu_blocks );

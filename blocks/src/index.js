@@ -23,6 +23,7 @@ import './columns-thirds/index.js';
 import './columns-quarters/index.js';
 import './columns-sidebar-left/index.js';
 import './columns-sidebar-right/index.js';
-import './column/index.js'; 
+import './column/index.js';
+import './search-bar/index.js'; 
 
 import './freeform/index.js'; 
