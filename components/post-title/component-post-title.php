@@ -13,6 +13,12 @@ class Component_Post_Title extends Component_Base  {
 
 		$args = $this->args;
 
+		if ( empty( $args['title'] ) && is_singular() ) {
+
+			$args['title'] = get_the_title( get_the_ID() );
+
+		}
+
 		include __DIR__ . '/template.php';
 	}
 

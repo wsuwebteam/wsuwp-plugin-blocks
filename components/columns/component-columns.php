@@ -1,16 +1,31 @@
 <?php namespace WSUWP\Plugin\Blocks;
 
-class Component_Columns extends Component_Base  {
+class Component_Columns extends Component {
 
 	protected $args = array();
 	protected $content = '';
-	protected $default_args = array();
+	protected $default_args = array(
+		'format'        => 'single',
+		'wrapper_class' => '',
+	);
 
 	
-	public function render() {
+	public function render( $args = array() ) {
 
-		$format = ( ! empty( $this->args['format'] ) ) ? $this->args['format'] : 'single';
-		$format_class = ( 'single' !== $format ) ? 'wsu-c-columns--' . $format : '';
+		$args = array_merge( $this->args, $args );
+
+		if ( ( 'single' !== $args['format'] ) ) {
+
+			$args['wrapper_class'] .= 'wsu-c-columns--' . $args['format'];
+
+		}
+
+		if ( ! empty( $args['className'] ) ) {
+
+			$args['wrapper_class'] .= ' ' . $args['className'];
+
+		}
+
 		$content = $this->content;
 
 		include __DIR__ . '/template.php';
