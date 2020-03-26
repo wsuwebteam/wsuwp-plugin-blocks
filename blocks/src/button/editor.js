@@ -14,8 +14,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 			<RichText
 				tagName="div"
 				className={ 'wsu-c-button' }
-				value={ attributes.content }
-				onChange={ ( content ) => setAttributes( { content } ) }
+				value={ attributes.text }
+				onChange={ ( text ) => setAttributes( { text } ) }
 				multiline={'false'}
 				allowedFormats={[]}
 			/>

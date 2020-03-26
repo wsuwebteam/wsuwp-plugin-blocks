@@ -14,13 +14,6 @@ class Blocks {
 
 	public function __construct() {
 
-		//Plugin::require_class( 'block-base' );
-		//Plugin::require_class( 'block-columns' );
-		//Plugin::require_class( 'block-column' );
-		//Plugin::require_class( 'block-button' );
-		//Plugin::require_class( 'block-banner' );
-		//Plugin::require_class( 'block-heading' );
-
 		require_once Plugin::get_plugin_dir() . 'dynamic-blocks/dynamic-block.php';
 
 	}
@@ -70,6 +63,7 @@ class Blocks {
 			'Banner',
 			'Heading',
 			'Search_Bar',
+			'Post_Title',
 		);
 
 		foreach ( $dynamic_blocks as $class_slug ) {

@@ -24,7 +24,7 @@ registerBlockType(
 			url: {
 				type: 'string',
 			},
-			content: {
+			text: {
 				type: 'string',
 				default: 'Button Text',
 			},
