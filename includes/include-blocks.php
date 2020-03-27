@@ -103,12 +103,7 @@ class Blocks {
 
 	public static function enqueue_block_assets() {
 
-		wp_enqueue_style(
-			'wsuwp-plugin-blocks',
-			Plugin::get_plugin_url() . 'blocks/src/button/style.css',
-			array(),
-			Plugin::get_plugin_version(true)
-		);
+		/*
 
 		wp_enqueue_style(
 			'wsu-design-system-bundle',
@@ -116,6 +111,8 @@ class Blocks {
 			array(),
 			'1.x' . date("m.d.y.g:i:s")
 		);
+
+		*/
 
 	}
 
