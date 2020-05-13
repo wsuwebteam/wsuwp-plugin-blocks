@@ -1,87 +1,149 @@
 const { __ } = wp.i18n;
-const { MediaPlaceholder } = wp.editor;
-const { PlainText } = wp.editor;
-const { URLInput } = wp.editor;
-const { InspectorControls } = wp.editor;
 
-const editor = wp.editor;
+const {
+	RichText,
+	MediaUpload,
+	MediaUploadCheck,
+	URLInput,
+	InspectorControls,
+} = wp.blockEditor;
 
-console.log(editor);
+const {
+	PanelBody,
+	TextControl,
+	SelectControl,
+	Button,
+	FocalPointPicker,
+	BaseControl
+} = wp.components;
 
 const edit = ({ className, attributes, setAttributes }) => {
-
-	console.info(attributes);
-
 	return (
-		<div>
-			<div className="wsu-c-block__banner__wrapper">
-				<div className="wsu-c-hero__wrapper">
-					<div className="wsu-c-hero__container" style={{ backgroundImage: "url(" + attributes.img_src + ")" }}>
-						<div className="wsu-c-hero__content">
-							<div className="wsu-c-hero__title">{attributes.title}</div>
-							<div className="wsu-c-hero__subtitle">{attributes.subtitle}</div>
-							<div class="wsu-c-button wsu-button-sm">
-								<a href="#" class="wsu-c-button_link">{attributes.button_text}</a>
-							</div>
-						</div>
-						<p className="wsu-c-hero__image-caption">By consectetur adipiscing elit donec fringilla</p>
-					</div>
-				</div>
-				<div className="wsu-c-block__banner__editor__wrapper">
-					<div className="wsu-c-block__banner__editor__media">
-						<MediaPlaceholder
-							onSelect={
-								(el) => {
-									setAttributes({ img_src: el.url });
-								}
-							}
-							allowedTypes={['image']}
-							multiple={false}
-							labels={{ title: 'Banner Image' }}
-						>
-						</MediaPlaceholder>
-					</div>
-					<div className="components-base-control__field">
-						<label htmlFor="bannerTitleText">Title Text</label>
-						<PlainText
-							id="bannerTitleText"
-							className={'components-text-control__input'}
+		<>
+			{
+				<InspectorControls>
+					<PanelBody title="General">
+						<TextControl
+							label="Title"
 							value={attributes.title}
 							onChange={(title) => setAttributes({ title })}
-							placeholder={'Title Text'}
+							placeholder={'Enter title text here.'}
 						/>
-						<label htmlFor="bannerSubtitleText">Subtitle Text</label>
-						<PlainText
-							id="bannerSubtitleText"
-							className={'components-text-control__input'}
+
+						<TextControl
+							label="Subtitle"
 							value={attributes.subtitle}
 							onChange={(subtitle) => setAttributes({ subtitle })}
-							placeholder={'Subtitle Text'}
+							placeholder={'Enter subtitle text here.'}
 						/>
-						<div className="wsu-c-form__field-container--textarea"></div>
-						<label htmlFor="bannerButtonText">Button Text</label>
-						<PlainText
-							id="bannerButtonText"
-							className={'components-text-control__input'}
+
+						<TextControl
+							label="Image Caption"
+							value={attributes.img_caption}
+							onChange={(img_caption) => setAttributes({ img_caption })}
+							placeholder={'Enter image caption text here.'}
+						/>
+
+						<TextControl
+							label="Button Text"
 							value={attributes.button_text}
 							onChange={(button_text) => setAttributes({ button_text })}
-							placeholder={'Button Text'}
-							multiline={'false'}
+							placeholder={'Enter button text here.'}
 						/>
 
+						<BaseControl label="Button Link Destination">
+							<URLInput
+								id="bannerButtonLink"
+								className={'wsu-c-block__banner__editor__content__link'}
+								value={attributes.url}
+								onChange={(url, post) => setAttributes({ url })}
+								placeholder={'Button Link'}
+								isFullWidth
+							/>
+						</BaseControl>
 
-						<label htmlFor="bannerButtonLink">Button Link</label>
-						<URLInput
-							id="bannerButtonLink"
-							className={'wsu-c-block__banner__editor__content__link'}
-							value={attributes.url}
-							onChange={(url, post) => setAttributes({ url })}
-							placeholder={'Button Link'}
+						<SelectControl
+							label="Display Style"
+							value=''
+							options={[
+								{ label: 'Default', value: 'default' },
+								{ label: 'San Juan', value: 'san-juan' },
+								{ label: 'Olympic', value: 'olympic' }
+							]}
 						/>
+					</PanelBody>
+
+					<PanelBody title="Background" initialOpen={false}>
+						<BaseControl
+							label="Focal Point Picker"
+							help="Select where you would like the background to resize around."
+						>
+							<FocalPointPicker
+								url={attributes.img_src}
+								dimensions={attributes.img_dimensions}
+								value={attributes.img_focal_point}
+								onChange={(focalPoint) => setAttributes({ img_focal_point: focalPoint })}
+							/>
+						</BaseControl>
+
+						<MediaUploadCheck>
+							<MediaUpload
+								onSelect={(media) => setAttributes({ img_src: media.url })}
+								// allowedTypes={ALLOWED_MEDIA_TYPES}
+								// value={mediaId}
+								render={({ open }) => (
+									<BaseControl label="Replace Background Image">
+										<Button isLink onClick={open}>Open Media Library</Button>
+									</BaseControl>
+								)}
+							/>
+						</MediaUploadCheck>
+					</PanelBody>
+				</InspectorControls>
+			}
+			<div className="wsu-c-block__banner__wrapper">
+				<div className="wsu-c-hero__wrapper">
+					<div className="wsu-c-hero__container" style={{ backgroundImage: "url(" + attributes.img_src + ")", backgroundPositionX: (attributes.img_focal_point.x * 100) + '%', backgroundPositionY: (attributes.img_focal_point.y * 100) + '%' }}>
+						<div className="wsu-c-hero__content">
+							<div className="wsu-c-hero__title">
+								<RichText
+									tagName="div"
+									value={attributes.title}
+									onChange={(title) => setAttributes({ title })}
+									allowedFormats={[]}
+								/>
+							</div>
+							<div className="wsu-c-hero__subtitle">
+								<RichText
+									tagName="div"
+									value={attributes.subtitle}
+									onChange={(subtitle) => setAttributes({ subtitle })}
+									allowedFormats={[]}
+								/>
+							</div>
+							<div className="wsu-c-button wsu-button-sm">
+								<a href="#" className="wsu-c-button_link">
+									<RichText
+										tagName="div"
+										value={attributes.button_text}
+										onChange={(button_text) => setAttributes({ button_text })}
+										allowedFormats={[]}
+									/>
+								</a>
+							</div>
+						</div>
+						<p className="wsu-c-hero__image-caption">
+							<RichText
+								tagName="div"
+								value={attributes.img_caption}
+								onChange={(img_caption) => setAttributes({ img_caption })}
+								allowedFormats={[]}
+							/>
+						</p>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	)
 
 }
