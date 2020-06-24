@@ -41,9 +41,18 @@ class Content_Hero extends Block_Base {
 
 	protected function render( $atts, $content ) {
 
+		$atts['wrapper_classes'] = array_merge(
+			array( 'wsu-c-hero__wrapper', 'wsu-u-no-js', 'wsu-c-full-width' )
+		);
+
+		$atts['container_classes'] = array_merge(
+			array( 'wsu-c-hero__container' ),
+			Utilities::get_vertical_spacing_classes( $atts )
+		);
+
 		ob_start();
 
-		echo 'Hello World';
+		include __DIR__ . '/templates/default.php';
 
 		return ob_get_clean();
 

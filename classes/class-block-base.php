@@ -57,9 +57,11 @@ class Block_Base {
 
 			$parts = preg_split( '/(?=[A-Z])/', $key, -1, PREG_SPLIT_NO_EMPTY );
 
-			$key = strtolower( implode( '_', $parts ) );
+			unset( $atts[ $key ] );
 
-			$atts[ $key ] = $value;
+			$snake_key = strtolower( implode( '_', $parts ) );
+
+			$atts[ $snake_key ] = $value;
 
 		}
 
@@ -67,8 +69,6 @@ class Block_Base {
 
 
 	protected function parse_atts( &$atts, $to_snake_case = true ) {
-
-		$temp_atts = array();
 
 		if ( $to_snake_case ) {
 
@@ -79,7 +79,7 @@ class Block_Base {
 		// Check that each default is set
 		foreach ( $this->default_atts as $key => $value ) {
 
-			if ( ! in_array( $key, $atts, true ) ) {
+			if ( ! array_key_exists( $key, $atts ) ) {
 
 				$atts[ $key ] = $value;
 

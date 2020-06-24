@@ -17,7 +17,9 @@ const {
 	BaseControl
 } = wp.components;
 
-import ContentHero from '@wsuwebteam/web-design-system/packages/components/content-hero/index.js';
+import './editor.scss';
+
+
 
 const edit = ({ className, attributes, setAttributes }) => {
 
@@ -118,6 +120,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 									value={attributes.title}
 									onChange={(title) => setAttributes({ title })}
 									allowedFormats={[]}
+									placeholder="Enter title text here"
 								/>
 							</div>
 							<div className="wsu-c-hero__subtitle">
@@ -126,6 +129,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 									value={attributes.subtitle}
 									onChange={(subtitle) => setAttributes({ subtitle })}
 									allowedFormats={[]}
+									placeholder="Enter subtitle text here"
 								/>
 							</div>
 							<div className="wsu-c-hero__caption">
@@ -154,6 +158,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 								value={attributes.imgCaption}
 								onChange={(imgCaption) => setAttributes({ imgCaption })}
 								allowedFormats={[]}
+								placeholder="Enter caption text here"
 							/>
 						</div>
 					</div>

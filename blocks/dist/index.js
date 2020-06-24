@@ -1232,6 +1232,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+require("./editor.scss");
+
 var __ = wp.i18n.__;
 var _wp$blockEditor = wp.blockEditor,
     RichText = _wp$blockEditor.RichText,
@@ -1379,7 +1382,8 @@ var edit = function edit(_ref) {
         title: title
       });
     },
-    allowedFormats: []
+    allowedFormats: [],
+    placeholder: "Enter title text here"
   })), React.createElement("div", {
     className: "wsu-c-hero__subtitle"
   }, React.createElement(RichText, {
@@ -1390,7 +1394,8 @@ var edit = function edit(_ref) {
         subtitle: subtitle
       });
     },
-    allowedFormats: []
+    allowedFormats: [],
+    placeholder: "Enter subtitle text here"
   })), React.createElement("div", {
     className: "wsu-c-hero__caption"
   }, React.createElement(RichText, {
@@ -1427,13 +1432,14 @@ var edit = function edit(_ref) {
         imgCaption: imgCaption
       });
     },
-    allowedFormats: []
+    allowedFormats: [],
+    placeholder: "Enter caption text here"
   }))))));
 };
 
 var _default = edit;
 exports.default = _default;
-},{}],"../content-hero/editor/block.js":[function(require,module,exports) {
+},{"./editor.scss":"button/editor.scss"}],"../content-hero/editor/block.js":[function(require,module,exports) {
 "use strict";
 
 var _edit = _interopRequireDefault(require("./edit"));
