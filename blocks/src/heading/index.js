@@ -30,6 +30,10 @@ registerBlockType(
 			level: {
 				type: 'string',
 				default: '2',
+			},
+			style: {
+				type: 'string',
+				default: 'default',
 			}
 		},
 

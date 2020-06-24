@@ -8,8 +8,9 @@
 // import './columns/index.js';
 
 // Blocks
+
 import './button/index.js';
-import './banner/index.js';
+//import './banner/index.js';
 import './post-title/index.js';
 import './heading/index.js';
 import './paragraph/index.js';
@@ -26,4 +27,6 @@ import './columns-sidebar-right/index.js';
 import './column/index.js';
 import './search-bar/index.js'; 
 
-import './freeform/index.js'; 
+import './freeform/index.js';
+
+import '../content-hero/editor/block.js';

@@ -10,6 +10,7 @@ class Blocks {
 
 
 	protected static $dynamic_blocks = array();
+	protected static $blocks = array();
 
 
 	public function __construct() {
@@ -55,6 +56,42 @@ class Blocks {
 
 
 	public static function register_block_types() {
+
+		Plugin::require_class( 'block-base' );
+
+		$block_dir = Plugin::get_plugin_dir() . 'blocks/';
+
+		require_once $block_dir . 'content-hero/content-hero.php';
+
+		$block_array = array(
+			'Content_Hero' => 'content-hero/content-hero.php',
+		);
+
+		foreach ( $block_array as $class_name => $dir ) {
+
+			$block_dir_path = $block_dir . $dir;
+
+			if ( file_exists( $block_dir_path ) ) {
+
+				require_once $block_dir_path;
+
+				if ( class_exists( __NAMESPACE__ . '\\' . $class_name ) ) {
+
+					$block_class = __NAMESPACE__ . '\\' . $class_name;
+
+					$block = new $block_class();
+
+					$block->register_block();
+					$block->register_shortcode();
+
+					self::$blocks[ $block->get('slug') ] = $block;
+
+				} // End if
+			} // End if
+
+		}
+
+		// Code below here is legecy and should be transitioned to the above structure as blocks are updated.
 
 		$dynamic_blocks = array(
 			'Columns',
@@ -136,7 +173,7 @@ class Blocks {
 
 	public static function allowed_block_types( $allowed_blocks ) {
 
-		$core_blocks = array(
+		/*$core_blocks = array(
 			'core/paragraph',
 			'core/freeform',
 			'core/list',
@@ -147,7 +184,7 @@ class Blocks {
 		$wsu_blocks = array(
 			'wsuwp/heading',
 			'wsuwp/button',
-			'wsuwp/banner',
+			//'wsuwp/banner',
 			'wsuwp/post-title',
 			'wsuwp/columns-single',
 			'wsuwp/columns-halves',
@@ -156,9 +193,12 @@ class Blocks {
 			'wsuwp/columns-sidebar-left',
 			'wsuwp/columns-sidebar-right',
 			'wsuwp/search-bar',
+			'wsuwp/content-hero',
 		);
 
-		return array_merge( $core_blocks, $wsu_blocks );
+		return array_merge( $core_blocks, $wsu_blocks );*/
+
+		return $allowed_blocks;
 
 	}
 }

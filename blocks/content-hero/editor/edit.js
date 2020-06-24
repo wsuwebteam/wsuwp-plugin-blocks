@@ -17,7 +17,10 @@ const {
 	BaseControl
 } = wp.components;
 
+import ContentHero from '@wsuwebteam/web-design-system/packages/components/content-hero/index.js';
+
 const edit = ({ className, attributes, setAttributes }) => {
+
 	return (
 		<>
 			{
@@ -42,18 +45,16 @@ const edit = ({ className, attributes, setAttributes }) => {
 							onChange={(caption) => setAttributes({ caption })}
 							placeholder={'Enter caption text here.'}
 						/>
-
 						<TextControl
 							label="Image Caption"
-							value={attributes.img_caption}
-							onChange={(img_caption) => setAttributes({ img_caption })}
+							value={attributes.imgCaption}
+							onChange={(imgCaption) => setAttributes({ imgCaption })}
 							placeholder={'Enter image caption text here.'}
 						/>
-
 						<TextControl
 							label="Button Text"
-							value={attributes.button_text}
-							onChange={(button_text) => setAttributes({ button_text })}
+							value={attributes.buttonText}
+							onChange={(buttonText) => setAttributes({ buttonText })}
 							placeholder={'Enter button text here.'}
 						/>
 
@@ -61,8 +62,8 @@ const edit = ({ className, attributes, setAttributes }) => {
 							<URLInput
 								id="bannerButtonLink"
 								className={'wsu-c-block__banner__editor__content__link'}
-								value={attributes.url}
-								onChange={(url, post) => setAttributes({ url })}
+								value={attributes.buttonUrl}
+								onChange={(buttonUrl, post) => setAttributes({ buttonUrl })}
 								placeholder={'Button Link'}
 								isFullWidth
 							/>
@@ -85,16 +86,16 @@ const edit = ({ className, attributes, setAttributes }) => {
 							help="Select where you would like the background to resize around."
 						>
 							<FocalPointPicker
-								url={attributes.img_src}
-								dimensions={attributes.img_dimensions}
-								value={attributes.img_focal_point}
-								onChange={(focalPoint) => setAttributes({ img_focal_point: focalPoint })}
+								url={attributes.imgSrc}
+								dimensions={attributes.imgDimensions}
+								value={attributes.imgFocalPoint}
+								onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
 							/>
 						</BaseControl>
 
 						<MediaUploadCheck>
 							<MediaUpload
-								onSelect={(media) => setAttributes({ img_src: media.url })}
+								onSelect={(media) => setAttributes({ imgSrc: media.url })}
 								// allowedTypes={ALLOWED_MEDIA_TYPES}
 								// value={mediaId}
 								render={({ open }) => (
@@ -109,7 +110,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 			}
 			<div className="wsu-c-block__banner__wrapper">
 				<div className="wsu-c-hero__wrapper">
-					<div className="wsu-c-hero__container" style={{ backgroundImage: "url(" + attributes.img_src + ")", backgroundPositionX: (attributes.img_focal_point.x * 100) + '%', backgroundPositionY: (attributes.img_focal_point.y * 100) + '%' }}>
+					<div className="wsu-c-hero__container" style={{ backgroundImage: "url(" + attributes.imgSrc + ")", backgroundPositionX: (attributes.imgFocalPoint.x * 100) + '%', backgroundPositionY: (attributes.imgFocalPoint.y * 100) + '%' }}>
 						<div className="wsu-c-hero__content">
 							<div className="wsu-c-hero__title">
 								<RichText
@@ -140,21 +141,21 @@ const edit = ({ className, attributes, setAttributes }) => {
 								<a href="#" className="wsu-c-button_link">
 									<RichText
 										tagName="div"
-										value={attributes.button_text}
-										onChange={(button_text) => setAttributes({ button_text })}
+										value={attributes.buttonText}
+										onChange={(buttonText) => setAttributes({ buttonText })}
 										allowedFormats={[]}
 									/>
 								</a>
 							</div>
 						</div>
-						<p className="wsu-c-hero__image-caption">
+						<div className="wsu-c-hero__image-caption">
 							<RichText
-								tagName="div"
-								value={attributes.img_caption}
-								onChange={(img_caption) => setAttributes({ img_caption })}
+								tagName="span"
+								value={attributes.imgCaption}
+								onChange={(imgCaption) => setAttributes({ imgCaption })}
 								allowedFormats={[]}
 							/>
-						</p>
+						</div>
 					</div>
 				</div>
 			</div>

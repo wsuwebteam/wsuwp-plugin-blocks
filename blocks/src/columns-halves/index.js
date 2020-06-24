@@ -24,6 +24,30 @@ registerBlockType(
 				type: 'string',
 				default: 'halves',
 			},
+			backgroundColor: {
+				type: 'string',
+				default: 'default',
+			},
+			backgroundColor: {
+				type: 'string',
+				default: 'default',
+			},
+			paddingBefore: {
+				type: 'string',
+				default: 'default',
+			},
+			paddingAfter: {
+				type: 'string',
+				default: 'default',
+			},
+			marginBefore: {
+				type: 'string',
+				default: 'default',
+			},
+			marginAfter: {
+				type: 'string',
+				default: 'default',
+			}
 		},
 		
 

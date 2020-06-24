@@ -1,28 +1,19 @@
-/**
- *
- * WordPress Dependencies
- *
- */
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
-const { InnerBlocks } = wp.editor;
-const { URLInputButton } = wp.editor;
-
+import { registerBlockType } from '@wordpress/blocks';
+import { InnerBlocks } from '@wordpress/block-editor';
 const {
 	Icon
 } = wp.components;
 
-import edit from "./editor";
-//import save from "./save";
+import edit from './edit.js';
 
-import './editor.scss';
+alert('registered'); 
 
-
-registerBlockType(
-	"wsuwp/banner",
+registerBlockType( 
+	'wsuwp/content-hero', 
 	{
-		title: "Banner",
-		icon: <Icon icon={
+		title: 'Hero Banner',
+		
+    	icon: <Icon icon={
 			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M2 6V18H22V6H2ZM1 4C0.447715 4 0 4.44772 0 5V19C0 19.5523 0.447716 20 1 20H23C23.5523 20 24 19.5523 24 19V5C24 4.44772 23.5523 4 23 4H1Z" fill="#555D66" />
 				<line x1="3" y1="8.5" x2="9" y2="8.5" stroke="#555D66" />
@@ -39,58 +30,12 @@ registerBlockType(
 				</defs>
 			</svg>
 		} />,
-		category: "content",
+
+		category: "layout",
 
 		attributes: {
-			img_src: {
-				type: 'string',
-				default: '',
-			},
-			img_focal_point: {
-				type: 'object',
-				default: {
-					x: 0.2,
-					y: 0.5
-				}
-			},
-			img_dimensions: {
-				type: 'object',
-				default: {
-					width: 1070,
-					height: 500
-				}
-			},
-			img_caption: {
-				type: 'string',
-				default: 'By consectetur adipiscing elit donec fringilla'
-			},
-			title: {
-				type: 'string',
-				default: 'Odio et purus metus placerat neque.',
-			},
-			subtitle: {
-				type: 'string',
-				default: 'Consectetur adipiscing elit donec fringilla',
-			},
-			caption: {
-				type: 'string',
-				default: '',
-			},
-			url: {
-				type: 'string',
-				default: '',
-			},
-			button_text: {
-				type: 'string',
-				default: 'Lorem Ipsum',
-			},
-			caption_text: {
-				type: 'string',
-				default: 'By consectetur adipiscing elit donec fringilla',
-			}
+			
 		},
-
 		edit
-
-	}
+	} 
 );
