@@ -1,3 +1,3 @@
-<div class="wsu-c-column__wrapper <?php echo esc_attr( $args['wrapper_class'] ); ?>">
+<div class="<?php echo esc_attr( implode( ' ', $args['classes'] ) ); ?>">
 	<?php echo $content; ?>
 </div>

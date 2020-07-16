@@ -72,6 +72,10 @@ registerBlockType(
 				type: 'string',
 				default: 'Consectetur adipiscing elit donec fringilla',
 			},
+			caption: {
+				type: 'string',
+				default: '',
+			},
 			url: {
 				type: 'string',
 				default: '',

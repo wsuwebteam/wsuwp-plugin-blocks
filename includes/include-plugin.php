@@ -17,6 +17,8 @@ class Plugin {
 
 		self::require_class( 'options' );
 
+		self::require_class( 'utilities' );
+
 	}
 
 

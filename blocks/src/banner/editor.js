@@ -36,6 +36,12 @@ const edit = ({ className, attributes, setAttributes }) => {
 							onChange={(subtitle) => setAttributes({ subtitle })}
 							placeholder={'Enter subtitle text here.'}
 						/>
+						<TextControl
+							label="Caption"
+							value={attributes.caption}
+							onChange={(caption) => setAttributes({ caption })}
+							placeholder={'Enter caption text here.'}
+						/>
 
 						<TextControl
 							label="Image Caption"
@@ -119,6 +125,15 @@ const edit = ({ className, attributes, setAttributes }) => {
 									value={attributes.subtitle}
 									onChange={(subtitle) => setAttributes({ subtitle })}
 									allowedFormats={[]}
+								/>
+							</div>
+							<div className="wsu-c-hero__caption">
+								<RichText
+									tagName="div"
+									value={attributes.caption}
+									onChange={(caption) => setAttributes({ caption })}
+									allowedFormats={[]}
+									placeholder={'Enter caption text here.'}
 								/>
 							</div>
 							<div className="wsu-c-button wsu-button-sm">

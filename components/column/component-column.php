@@ -5,7 +5,7 @@ class Component_Column extends Component {
 	protected $args = array();
 	protected $content = '';
 	protected $default_args = array(
-		'wrapper_class' => '',
+		'classes' => array( 'wsu-c-column' ),
 	);
 
 
@@ -13,15 +13,56 @@ class Component_Column extends Component {
 
 		$args = array_merge( $this->args, $args );
 
-		if ( ! empty( $args['className'] ) ) {
-
-			$args['wrapper_class'] .= ' ' . $args['className'];
-
-		}
+		$args['classes'] = array_merge( $this->args['classes'], $this->get_classes() );
 
 		$content = $this->content;
 
 		include __DIR__ . '/template.php';
+	}
+
+
+	protected function get_classes() {
+
+		$classes = array();
+
+		if ( ! empty( $this->args['className'] ) ) {
+
+			$classes[] = $this->args['className'];
+
+		}
+
+		if ( ! empty( $this->args['backgroundColor'] ) && 'default' !== $this->args['backgroundColor'] ) {
+
+			$classes[] = 'wsu-u-background--' . $this->args['backgroundColor'];
+
+		}
+
+		if ( ! empty( $this->args['paddingBefore'] ) ) {
+
+			$classes[] = 'wsu-u-padding-before--' . $this->args['paddingBefore'];
+
+		}
+
+		if ( ! empty( $this->args['paddingAfter'] ) ) {
+
+			$classes[] = 'wsu-u-padding-after--' . $this->args['paddingAfter'];
+
+		}
+
+		if ( ! empty( $this->args['marginAfter'] ) ) {
+
+			$classes[] = 'wsu-u-margin-after--' . $this->args['marginAfter'];
+
+		}
+
+		if ( ! empty( $this->args['marginBefore'] ) ) {
+
+			$classes[] = 'wsu-u-margin-before--' . $this->args['marginBefore'];
+
+		}
+
+		return $classes;
+
 	}
 
 }

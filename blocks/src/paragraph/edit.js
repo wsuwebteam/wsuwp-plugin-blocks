@@ -16,10 +16,7 @@ const paragraphEditor =  createHigherOrderComponent( ( BlockEdit ) => {
 			className,
 			name,
         } = props;
- 
-        const onChangeContent = ( newContent ) => {
-            props.setAttributes( { content: newContent } );
-        };
+
  
         const onChangeAlignment = ( newAlignment ) => {
             props.setAttributes( { alignment: newAlignment === undefined ? 'none' : newAlignment } );
@@ -41,9 +38,13 @@ const paragraphEditor =  createHigherOrderComponent( ( BlockEdit ) => {
 					className={ className }
 					style={ { textAlign: alignment } }
 					tagName="p"
-					onChange={ onChangeContent }
+					onChange={ ( newContent )  => props.setAttributes( { content: newContent } ) }
 					value={ content }
 					placeholder='Start Writing ....'
+					onMerge={ mergeBlocks }
+					onReplace={ onReplace }
+					onRemove={ onRemove }
+					identifier="content"
 				/>
 				</>
 			);
