@@ -42,7 +42,8 @@ class Content_Hero extends Block_Base {
 	protected function render( $atts, $content ) {
 
 		$atts['wrapper_classes'] = array_merge(
-			array( 'wsu-c-hero__wrapper', 'wsu-u-no-js', 'wsu-c-full-width' )
+			array( 'wsu-c-hero__wrapper', 'wsu-u-no-js', 'wsu-c-full-width' ),
+			Utilities::get_margin_spacing_classes( $atts )
 		);
 
 		$atts['container_classes'] = array_merge(

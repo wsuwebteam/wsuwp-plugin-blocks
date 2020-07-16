@@ -95,6 +95,14 @@ registerBlockType(
 			verticalSpacing: {
 				type: 'string',
 				default: 'default',
+			},
+			marginBefore: {
+				type: 'string',
+				default: 'default',
+			},
+			marginAfter: {
+				type: 'string',
+				default: 'default',
 			}
 		},
 

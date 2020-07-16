@@ -64,7 +64,13 @@ class Blocks {
 		require_once $block_dir . 'content-hero/content-hero.php';
 
 		$block_array = array(
-			'Content_Hero' => 'content-hero/content-hero.php',
+			'Content_Hero'    => 'content-hero/content-hero.php',
+			'Content_Columns' => 'content-columns/content-columns.php',
+			'Content_Column' => 'content-column/content-column.php',
+			'Core_Paragraph'  => 'core-paragraph/core-paragraph.php',
+			'Content_Heading' => 'content-heading/content-heading.php',
+			'Content_Button'  => 'content-button/content-button.php',
+			'Legacy_Columns'  => 'legacy-columns/legacy-columns.php',
 		);
 
 		foreach ( $block_array as $class_name => $dir ) {
@@ -94,11 +100,7 @@ class Blocks {
 		// Code below here is legecy and should be transitioned to the above structure as blocks are updated.
 
 		$dynamic_blocks = array(
-			'Columns',
-			'Column',
 			'Button',
-			'Banner',
-			'Heading',
 			'Search_Bar',
 			'Post_Title',
 		);
@@ -173,12 +175,13 @@ class Blocks {
 
 	public static function allowed_block_types( $allowed_blocks ) {
 
-		/*$core_blocks = array(
+		$core_blocks = array(
 			'core/paragraph',
 			'core/freeform',
 			'core/list',
 			'core/image',
 			'core/shortcode',
+			'core/heading',
 		);
 
 		$wsu_blocks = array(
@@ -186,19 +189,19 @@ class Blocks {
 			'wsuwp/button',
 			//'wsuwp/banner',
 			'wsuwp/post-title',
-			'wsuwp/columns-single',
-			'wsuwp/columns-halves',
-			'wsuwp/columns-thirds',
-			'wsuwp/columns-quarters',
-			'wsuwp/columns-sidebar-left',
-			'wsuwp/columns-sidebar-right',
+			//'wsuwp/columns-single',
+			//'wsuwp/columns-halves',
+			//'wsuwp/columns-thirds',
+			//'wsuwp/columns-quarters',
+			//'wsuwp/columns-sidebar-left',
+			//'wsuwp/columns-sidebar-right',
 			'wsuwp/search-bar',
 			'wsuwp/content-hero',
+			'wsuwp/columns',
 		);
 
-		return array_merge( $core_blocks, $wsu_blocks );*/
+		return array_merge( $core_blocks, $wsu_blocks );
 
-		return $allowed_blocks;
 
 	}
 }

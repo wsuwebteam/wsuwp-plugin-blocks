@@ -7,6 +7,7 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.editor;
 const { URLInputButton } = wp.editor;
+import { heading as icon } from '@wordpress/icons';
 
 import edit from "./edit";
 //import save from "./save";
@@ -18,22 +19,21 @@ registerBlockType(
 	{
 		title: "Heading",
 		category: "content",
-
+		icon,
 		attributes: {
-			url: {
-				type: 'string',
+			"align": {
+				"type": "string"
 			},
-			content: {
-				type: 'string',
-				default: '',
+			"content": {
+				"type": "string",
+				"default": ""
 			},
-			level: {
-				type: 'string',
-				default: '2',
+			"level": {
+				"type": "number",
+				"default": 2
 			},
-			style: {
-				type: 'string',
-				default: 'default',
+			"placeholder": {
+				"type": "string"
 			}
 		},
 

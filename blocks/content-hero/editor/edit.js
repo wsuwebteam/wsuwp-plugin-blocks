@@ -17,7 +17,10 @@ const {
 	BaseControl
 } = wp.components;
 
-import './editor.scss';
+import './style.scss';
+
+import '@wsuwebteam/build-tools/js/helpers/ranges';
+import { wsuRange } from '@wsuwebteam/build-tools/js/helpers/ranges';
 
 
 
@@ -70,30 +73,38 @@ const edit = ({ className, attributes, setAttributes }) => {
 								isFullWidth
 							/>
 						</BaseControl>
-
+					</PanelBody>
+					<PanelBody title="Style" initialOpen={false}>
 						<SelectControl
 							label="Display Style"
 							value=''
 							options={[
 								{ label: 'Default', value: 'default' },
-								{ label: 'San Juan', value: 'san-juan' },
-								{ label: 'Olympic', value: 'olympic' }
+							]}
+						/>
+						<SelectControl
+							label="Button Style"
+							value=''
+							options={[
+								{ label: 'Default', value: 'default' },
 							]}
 						/>
 					</PanelBody>
-
 					<PanelBody title="Background" initialOpen={false}>
-						<BaseControl
-							label="Focal Point Picker"
-							help="Select where you would like the background to resize around."
-						>
-							<FocalPointPicker
-								url={attributes.imgSrc}
-								dimensions={attributes.imgDimensions}
-								value={attributes.imgFocalPoint}
-								onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
-							/>
-						</BaseControl>
+
+						{ attributes.imgSrc &&
+							<BaseControl
+								label="Focal Point Picker"
+								help="Select where you would like the background to resize around."
+							>
+								<FocalPointPicker
+									url={attributes.imgSrc}
+									dimensions={attributes.imgDimensions}
+									value={attributes.imgFocalPoint}
+									onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
+								/>
+							</BaseControl>
+						}
 
 						<MediaUploadCheck>
 							<MediaUpload
@@ -107,6 +118,51 @@ const edit = ({ className, attributes, setAttributes }) => {
 								)}
 							/>
 						</MediaUploadCheck>
+					</PanelBody>
+					<PanelBody title="Layout" initialOpen={false}>
+						<SelectControl
+							label="Banner Height"
+							value={attributes.verticalSpacing}
+							options={[
+								{ label: 'Default', value: 'default' },
+								{ label: 'Extra Small', value: 'xsmall' },
+								{ label: 'Small', value: 'small' },
+								{ label: 'Medium', value: 'medium' },
+								{ label: 'Large', value: 'large' },
+								{ label: 'Full', value: 'full' },
+							]}
+							onChange={(verticalSpacing) => setAttributes({ verticalSpacing })}
+						/>
+						<SelectControl
+							label="Margin Before"
+							value={attributes.marginBefore}
+							options={[
+								{ label: 'Default', value: 'default' },
+								{ label: 'None', value: 'none' },
+								{ label: 'Extra Small', value: 'xsmall' },
+								{ label: 'Small', value: 'small' },
+								{ label: 'Medium', value: 'medium' },
+								{ label: 'Medium Large', value: 'medium-large' },
+								{ label: 'Large', value: 'large' },
+								{ label: 'Extra Large', value: 'xlarge' }
+							]}
+							onChange={(marginBefore) => setAttributes({ marginBefore })}
+						/>
+						<SelectControl
+							label="Margin After"
+							value={attributes.marginAfter}
+							options={[
+								{ label: 'Default', value: 'default' },
+								{ label: 'None', value: 'none' },
+								{ label: 'Extra Small', value: 'xsmall' },
+								{ label: 'Small', value: 'small' },
+								{ label: 'Medium', value: 'medium' },
+								{ label: 'Medium Large', value: 'medium-large' },
+								{ label: 'Large', value: 'large' },
+								{ label: 'Extra Large', value: 'xlarge' }
+							]}
+							onChange={(marginAfter) => setAttributes({ marginAfter })}
+						/>
 					</PanelBody>
 				</InspectorControls>
 			}

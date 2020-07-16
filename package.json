@@ -20,15 +20,16 @@
   "homepage": "https://github.com/wsuwebteam/wsuwp-plugin-blocks#readme",
   "dependencies": {
     "@wordpress/block-editor": "^3.11.0",
-    "@wordpress/blocks": "^6.18.0",
-    "@wsuwebteam/build-tools": "git+https://github.com/washingtonstateuniversity/wsu-build-tools.git",
+    "@wordpress/blocks": "^6.19.0",
     "lodash.assign": "^4.2.0",
     "wordpress": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
+    "@wsuwebteam/build-tools": "^1.4.4",
     "@wsuwebteam/web-design-system": "git://github.com/washingtonstateuniversity/wsu-web-design-system.git#1.x",
+    "@wsuwebteam/wsu-icons": "^2.0.3",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",

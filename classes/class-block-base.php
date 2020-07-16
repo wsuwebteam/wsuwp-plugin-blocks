@@ -5,7 +5,7 @@ class Block_Base {
 	protected $prefix = 'wsuwp';
 	protected $slug = '';
 	protected $default_atts = array();
-	protected $as_block = true;
+	protected $register_block = true;
 	protected $as_shortcode = false;
 
 
@@ -24,7 +24,7 @@ class Block_Base {
 
 	public function register_block() {
 
-		if ( $this->as_block ) {
+		if ( $this->register_block ) {
 
 			register_block_type(
 				$this->prefix . '/' . $this->slug,
@@ -91,13 +91,18 @@ class Block_Base {
 
 	public function render_block( $atts, $content = '' ) {
 
-		return '';
+		// parse_atts converts to snake case and fills in defaults
+		$this->parse_atts( $atts );
+
+		return $this->render( $atts, $content );
 
 	}
 
 	public function render_shortcode( $atts, $content = '', $tag ) {
 
-		return '';
+		$atts = shortcode_atts( $this->default_atts, $atts, $tag );
+
+		return $this->render( $atts, $content );
 
 	}
 
@@ -105,6 +110,45 @@ class Block_Base {
 
 		return '';
 
+	}
+
+
+	protected function get_classes( $class_array, $atts, $add_classes = array() ) {
+
+		$classes = $this->get_classes_array( $class_array, $atts );
+
+		return implode( ' ', $classes );
+
+	}
+
+
+	protected function get_classes_array( $class_array, $atts, $add_classes = array() ) {
+
+		$classes = array();
+
+		foreach ( $class_array as $key => $class_prefix ) {
+
+			if ( ! empty( $atts[ $key ] ) && 'default' !== $atts[ $key ] ) {
+
+				$classes[] = $class_prefix . $atts[ $key ];
+
+			}
+		}
+
+		if ( ! empty( $add_classes ) ) {
+
+			if ( is_array( $add_classes ) ) {
+
+				$classes = array_merge( $classes, $add_classes );
+
+			} else {
+
+				$classes[] = $add_classes;
+
+			}
+		}
+
+		return $classes;
 	}
 
 }
