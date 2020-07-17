@@ -11,7 +11,7 @@
 				<div class="wsu-c-hero__caption"><?php echo esc_html( $atts['caption'] ); ?></div>
 			<?php endif; ?>
 			<?php if ( ! empty( $atts['button_text'] ) ) : ?>
-				<a href="<?php echo esc_html( $atts['button_url'] ); ?>" class="wsu-c-hero__button"><?php echo esc_html( $atts['button_text'] ); ?></a>
+				<a href="<?php echo esc_html( $atts['button_url'] ); ?>" class="wsu-c-button"><?php echo esc_html( $atts['button_text'] ); ?></a>
 			<?php endif; ?>
 		</div>
 		<?php if ( ! empty( $atts['button_text'] ) ) : ?>
