@@ -33,6 +33,6 @@ import '../content-hero/editor/block.js';
 import '../content-columns/editor/block.js';
 import '../content-column/editor/block.js';
 
-import '../core-paragraph/editor/save';
+import '../core-paragraph/editor/block';
 import '../content-heading/editor/block';
 import '../content-button/editor/block';

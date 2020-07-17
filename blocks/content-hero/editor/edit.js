@@ -197,15 +197,13 @@ const edit = ({ className, attributes, setAttributes }) => {
 									placeholder={'Enter caption text here.'}
 								/>
 							</div>
-							<div className="wsu-c-button wsu-button-sm">
-								<a href="#" className="wsu-c-button_link">
-									<RichText
-										tagName="div"
-										value={attributes.buttonText}
-										onChange={(buttonText) => setAttributes({ buttonText })}
-										allowedFormats={[]}
-									/>
-								</a>
+							<div href="#" className="wsu-c-button">
+								<RichText
+									tagName="div"
+									value={attributes.buttonText}
+									onChange={(buttonText) => setAttributes({ buttonText })}
+									allowedFormats={[]}
+								/>
 							</div>
 						</div>
 						<div className="wsu-c-hero__image-caption">

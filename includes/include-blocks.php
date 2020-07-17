@@ -67,7 +67,6 @@ class Blocks {
 			'Content_Hero'    => 'content-hero/content-hero.php',
 			'Content_Columns' => 'content-columns/content-columns.php',
 			'Content_Column' => 'content-column/content-column.php',
-			'Core_Paragraph'  => 'core-paragraph/core-paragraph.php',
 			'Content_Heading' => 'content-heading/content-heading.php',
 			'Content_Button'  => 'content-button/content-button.php',
 			'Legacy_Columns'  => 'legacy-columns/legacy-columns.php',
@@ -181,7 +180,7 @@ class Blocks {
 			'core/list',
 			'core/image',
 			'core/shortcode',
-			'core/heading',
+			//'core/heading',
 		);
 
 		$wsu_blocks = array(
