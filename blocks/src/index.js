@@ -36,3 +36,5 @@ import '../content-column/editor/block.js';
 import '../core-paragraph/editor/block';
 import '../content-heading/editor/block';
 import '../content-button/editor/block';
+import '../content-cards/editor/block';
+import '../content-card/editor/block';

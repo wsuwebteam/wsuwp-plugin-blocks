@@ -70,6 +70,8 @@ class Blocks {
 			'Content_Heading' => 'content-heading/content-heading.php',
 			'Content_Button'  => 'content-button/content-button.php',
 			'Legacy_Columns'  => 'legacy-columns/legacy-columns.php',
+			'Content_Cards'  => 'content-cards/content-cards.php',
+			'Content_Card'   => 'content-card/content-card.php',
 		);
 
 		foreach ( $block_array as $class_name => $dir ) {
@@ -197,6 +199,7 @@ class Blocks {
 			'wsuwp/search-bar',
 			'wsuwp/content-hero',
 			'wsuwp/columns',
+			'wsuwp/cards',
 		);
 
 		return array_merge( $core_blocks, $wsu_blocks );
