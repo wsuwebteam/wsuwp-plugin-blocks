@@ -27,6 +27,26 @@ registerBlockType(
 				type: 'string',
 				default: '',
 			},
+			backgroundColor: {
+				type: 'string',
+				default: 'default',
+			},
+			paddingBefore: {
+				type: 'string',
+				default: 'default',
+			},
+			paddingAfter: {
+				type: 'string',
+				default: 'default',
+			},
+			marginBefore: {
+				type: 'string',
+				default: 'default',
+			},
+			marginAfter: {
+				type: 'string',
+				default: 'default',
+			}
 		},
 
 		edit,

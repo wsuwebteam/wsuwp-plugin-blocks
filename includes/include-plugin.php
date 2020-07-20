@@ -8,7 +8,7 @@
  */
 class Plugin {
 
-	protected static $version = '0.3.0';
+	protected static $version = '0.4.0';
 
 	protected static $options;
 
@@ -16,6 +16,8 @@ class Plugin {
 	public function __construct() {
 
 		self::require_class( 'options' );
+
+		self::require_class( 'utilities' );
 
 	}
 
