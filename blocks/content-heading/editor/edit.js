@@ -16,6 +16,7 @@ const {
 	URLInput,
 	InspectorControls,
 	BlockControls,
+	AlignmentToolbar,
 } = wp.blockEditor;
 
 import {
@@ -38,7 +39,18 @@ const edit = ( { className, attributes, setAttributes } ) => {
         const selected = event.target.querySelector( 'option:checked' );
         setAttributes( { level: selected.value } );
         event.preventDefault();
-    }
+	}
+	
+	let spacing = [
+		{ label: 'Default', value: 'default' },
+		{ label: 'None', value: 'none' },
+		{ label: 'Xsmall', value: 'xsmall' },
+		{ label: 'Small', value: 'small' },
+		{ label: 'Medium', value: 'medium' },
+		{ label: 'Medium-large', value: 'medium-large' },
+		{ label: 'Large', value: 'large' },
+		{ label: 'Xlarge', value: 'xlarge' },
+	];
 
 	return (
 		<>
@@ -53,6 +65,38 @@ const edit = ( { className, attributes, setAttributes } ) => {
 								{ label: 'Default', value: 'default' },
 								{ label: 'Callout', value: 'callout' },
 							]}
+						/>
+						<AlignmentToolbar
+							value={ attributes.textAlign }
+							onChange={ ( textAlign ) =>
+								setAttributes( { textAlign: textAlign } )
+							}
+						/>
+					</PanelBody>
+					<PanelBody title="Layout" initialOpen={false}>
+						<SelectControl
+							label="Padding Before"
+							value={attributes.paddingBefore}
+							onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
+							options={spacing}
+						/>
+						<SelectControl
+							label="Padding After"
+							value={attributes.paddingAfter}
+							onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
+							options={spacing}
+						/>
+						<SelectControl
+							label="Margin Before"
+							value={attributes.marginBefore}
+							onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
+							options={spacing}
+						/>
+						<SelectControl
+							label="Margin After"
+							value={attributes.marginAfter}
+							onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
+							options={spacing}
 						/>
 					</PanelBody>
 				</InspectorControls>
@@ -86,6 +130,12 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				] }
 			/>
 			</Toolbar>
+			<AlignmentToolbar
+							value={ attributes.textAlign }
+							onChange={ ( textAlign ) =>
+								setAttributes( { textAlign: textAlign } )
+							}
+						/>
 			</BlockControls>
 			<div className="wsu-b-heading__wrapper">
 				<RichText

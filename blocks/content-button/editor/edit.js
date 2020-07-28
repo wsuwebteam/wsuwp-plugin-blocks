@@ -5,6 +5,8 @@ const {
 	PlainText,
 	RichText,
 	InspectorControls,
+	AlignmentToolbar,
+	BlockControls,
 } = wp.editor;
 
 const {
@@ -32,6 +34,14 @@ const edit = ( { className, attributes, setAttributes } ) => {
 
 	return (
 		<>
+			<BlockControls>
+				<AlignmentToolbar
+					value={ attributes.buttonAlign }
+					onChange={ ( buttonAlign ) =>
+						setAttributes( { buttonAlign: buttonAlign } )
+					}
+				/>
+			</BlockControls>
 			<InspectorControls>
 				<PanelBody title="General">
 					<TextControl
@@ -40,7 +50,6 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(buttonText) => setAttributes({ buttonText })}
 						placeholder={'Enter button text here.'}
 					/>
-
 					<BaseControl label="Button Link Destination">
 						<URLInput
 							id="bannerButtonLink"
@@ -84,8 +93,14 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							{ label: 'Large', value: 'large' },
 						]}
 					/>
+					<AlignmentToolbar
+						value={ attributes.buttonAlign }
+						onChange={ ( buttonAlign ) =>
+							setAttributes( { buttonAlign: buttonAlign } )
+						}
+					/>
 				</PanelBody>
-				<PanelBody title="Spacing" initialOpen={false}>
+				<PanelBody title="Layout" initialOpen={false}>
 					<SelectControl
 						label="Padding Before"
 						value={attributes.paddingBefore}

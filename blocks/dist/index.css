@@ -337,7 +337,7 @@ code {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
-  padding: 75px 2.25rem;
+  padding: 75px 75px;
   min-height: 650px;
   box-sizing: border-box;
   display: flex;
@@ -1221,7 +1221,7 @@ code {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
-  padding: 75px 2.25rem;
+  padding: 75px 75px;
   min-height: 650px;
   box-sizing: border-box;
   display: flex;

@@ -56,6 +56,10 @@ registerBlockType(
 			marginAfter: {
 				type: 'string',
 				default: 'default',
+			},
+			buttonAlign: {
+				type: 'string',
+				default: 'default',
 			}
 		},
 

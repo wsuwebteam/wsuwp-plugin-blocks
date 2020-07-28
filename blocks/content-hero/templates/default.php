@@ -5,7 +5,7 @@
 				<<?php echo esc_html( $atts['title_tag'] ); ?> class="wsu-c-hero__title"><?php echo esc_html( $atts['title'] ); ?></<?php echo esc_html( $atts['title_tag'] ); ?>>
 			<?php endif; ?>
 			<?php if ( ! empty( $atts['subtitle'] ) ) : ?>
-				<div class="wsu-c-hero__subtitle"><?php echo esc_html( $atts['title'] ); ?></div>
+				<div class="wsu-c-hero__subtitle"><?php echo esc_html( $atts['subtitle'] ); ?></div>
 			<?php endif; ?>
 			<?php if ( ! empty( $atts['caption'] ) ) : ?>
 				<div class="wsu-c-hero__caption"><?php echo esc_html( $atts['caption'] ); ?></div>

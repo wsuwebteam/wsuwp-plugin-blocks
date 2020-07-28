@@ -27,7 +27,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
-    "@wsuwebteam/build-tools": "^1.4.4",
+    "@wsuwebteam/build-tools": "^1.4.6",
     "@wsuwebteam/web-design-system": "git://github.com/washingtonstateuniversity/wsu-web-design-system.git#1.x",
     "@wsuwebteam/wsu-icons": "^2.0.3",
     "babel-core": "^6.26.3",

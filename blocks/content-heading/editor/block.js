@@ -21,20 +21,40 @@ registerBlockType(
 		category: "content",
 		icon,
 		attributes: {
-			"align": {
+			align: {
 				"type": "string"
 			},
-			"content": {
+			content: {
 				"type": "string",
 				"default": ""
 			},
-			"level": {
+			level: {
 				"type": "number",
 				"default": 2
 			},
-			"style": {
+			style: {
 				"type": "string",
 				"default":'default'
+			},
+			textAlign: {
+				type: 'string',
+				default: 'default',
+			},
+			paddingBefore: {
+				type: 'string',
+				default: 'default',
+			},
+			paddingAfter: {
+				type: 'string',
+				default: 'default',
+			},
+			marginBefore: {
+				type: 'string',
+				default: 'default',
+			},
+			marginAfter: {
+				type: 'string',
+				default: 'default',
 			},
 		},
 
