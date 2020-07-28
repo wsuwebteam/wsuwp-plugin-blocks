@@ -10,6 +10,7 @@ class Content_Button extends Block_Base {
 		'shape'          => 'default',
 		'color'          => 'default',
 		'size'           => 'default',
+		'button_align'   => 'default',
 		'margin_before'  => 'default',
 		'margin_after'   => 'default',
 		'padding_before' => 'default',
@@ -29,6 +30,7 @@ class Content_Button extends Block_Base {
 				'margin_after'     => 'wsu-u-margin-after--',
 				'padding_before'   => 'wsu-u-padding-before--',
 				'padding_after'    => 'wsu-u-padding-after--',
+				'button_align'     => 'wsu-u-textalign--',
 			),
 			$atts
 		);

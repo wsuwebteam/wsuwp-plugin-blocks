@@ -6,7 +6,7 @@ class Block_Base {
 	protected $slug = '';
 	protected $default_atts = array();
 	protected $register_block = true;
-	protected $as_shortcode = false;
+	protected $as_shortcode = true;
 
 
 	public function get( $property ) {

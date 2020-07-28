@@ -8,6 +8,7 @@ class Content_Heading extends Block_Base {
 		'content'         => '',
 		'level'           => 2,
 		'style'           => 'default',
+		'text_align'      => 'default',
 		'wrapper_class' => '',
 	);
 
@@ -18,6 +19,7 @@ class Content_Heading extends Block_Base {
 			array(
 				'class_name' => '',
 				'style'      => 'wsu-c-heading--',
+				'text_align' => 'wsu-u-textalign--',
 			),
 			$atts
 		);
