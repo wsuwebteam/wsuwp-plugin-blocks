@@ -1,9 +1,18 @@
 const { __ } = wp.i18n;
 const { URLInputButton } = wp.editor;
-const { URLInput } = wp.editor;
 const { PlainText } = wp.editor;
-const { RichText } = wp.editor;
-import { SelectControl } from '@wordpress/components';
+
+const {
+	PanelBody,
+	TextControl,
+	SelectControl,
+} = wp.components;
+
+const {
+	RichText,
+	URLInput,
+	InspectorControls,
+} = wp.blockEditor;
 
 
 const edit = ( { className, attributes, setAttributes } ) => {
@@ -17,25 +26,42 @@ const edit = ( { className, attributes, setAttributes } ) => {
     }
 
 	return (
-		<div className="wsu-b-heading__wrapper">
-			<form onSubmit={ setLevel } className={ 'wsu-b-heading__level' }>
-                <select value={ level } onChange={ setLevel }>
-                    <option value="2">H2</option>
-                    <option value="3">H3</option>
-                    <option value="4">H4</option>
-                    <option value="5">H5</option>
-                </select>
-            </form>
-			<RichText
-				tagName={"h" + attributes.level }
-				className={ 'wsu-b-heading__text' }
-				value={ attributes.content }
-				onChange={ ( content ) => setAttributes( { content } ) }
-				multiline={'false'}
-				allowedFormats={[]}
-				placeholder={'Heading Here ...'}
-			/>
-		</div>
+		<>
+			{
+				<InspectorControls>
+					<PanelBody title="General">
+						<SelectControl
+							label="Display Style"
+							value={attributes.style}
+							onChange={ (style) => setAttributes( { style } ) }
+							options={[
+								{ label: 'Default', value: 'default' },
+								{ label: 'Callout', value: 'callout' },
+							]}
+						/>
+					</PanelBody>
+				</InspectorControls>
+			}
+			<div className="wsu-b-heading__wrapper">
+				<form onSubmit={ setLevel } className={ 'wsu-b-heading__level' }>
+					<select value={ level } onChange={ setLevel }>
+						<option value="h2">H2</option>
+						<option value="h3">H3</option>
+						<option value="h4">H4</option>
+						<option value="h5">H5</option>
+					</select>
+				</form>
+				<RichText
+					tagName={"h" + attributes.level }
+					className={ 'wsu-b-heading__text' }
+					value={ attributes.content }
+					onChange={ ( content ) => setAttributes( { content } ) }
+					multiline={'false'}
+					allowedFormats={[]}
+					placeholder={'Heading Here ...'}
+				/>
+			</div>
+		</>
 	)
 
 }

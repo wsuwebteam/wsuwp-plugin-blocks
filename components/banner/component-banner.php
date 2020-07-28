@@ -11,6 +11,7 @@ class Component_Banner extends Component_Base {
 		'button_text'  => '',
 		'button_link'  => '',
 		'caption_text' => '',
+		'caption'      => '',
 	);
 
 

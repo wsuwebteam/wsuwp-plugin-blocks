@@ -10,16 +10,10 @@ class Blocks {
 
 
 	protected static $dynamic_blocks = array();
+	protected static $blocks = array();
 
 
 	public function __construct() {
-
-		//Plugin::require_class( 'block-base' );
-		//Plugin::require_class( 'block-columns' );
-		//Plugin::require_class( 'block-column' );
-		//Plugin::require_class( 'block-button' );
-		//Plugin::require_class( 'block-banner' );
-		//Plugin::require_class( 'block-heading' );
 
 		require_once Plugin::get_plugin_dir() . 'dynamic-blocks/dynamic-block.php';
 
@@ -63,13 +57,53 @@ class Blocks {
 
 	public static function register_block_types() {
 
+		Plugin::require_class( 'block-base' );
+
+		$block_dir = Plugin::get_plugin_dir() . 'blocks/';
+
+		require_once $block_dir . 'content-hero/content-hero.php';
+
+		$block_array = array(
+			'Content_Hero'    => 'content-hero/content-hero.php',
+			'Content_Columns' => 'content-columns/content-columns.php',
+			'Content_Column' => 'content-column/content-column.php',
+			'Content_Heading' => 'content-heading/content-heading.php',
+			'Content_Button'  => 'content-button/content-button.php',
+			'Legacy_Columns'  => 'legacy-columns/legacy-columns.php',
+			'Content_Cards'  => 'content-cards/content-cards.php',
+			'Content_Card'   => 'content-card/content-card.php',
+		);
+
+		foreach ( $block_array as $class_name => $dir ) {
+
+			$block_dir_path = $block_dir . $dir;
+
+			if ( file_exists( $block_dir_path ) ) {
+
+				require_once $block_dir_path;
+
+				if ( class_exists( __NAMESPACE__ . '\\' . $class_name ) ) {
+
+					$block_class = __NAMESPACE__ . '\\' . $class_name;
+
+					$block = new $block_class();
+
+					$block->register_block();
+					$block->register_shortcode();
+
+					self::$blocks[ $block->get('slug') ] = $block;
+
+				} // End if
+			} // End if
+
+		}
+
+		// Code below here is legecy and should be transitioned to the above structure as blocks are updated.
+
 		$dynamic_blocks = array(
-			'Columns',
-			'Column',
 			'Button',
-			'Banner',
-			'Heading',
 			'Search_Bar',
+			'Post_Title',
 		);
 
 		foreach ( $dynamic_blocks as $class_slug ) {
@@ -109,12 +143,7 @@ class Blocks {
 
 	public static function enqueue_block_assets() {
 
-		wp_enqueue_style(
-			'wsuwp-plugin-blocks',
-			Plugin::get_plugin_url() . 'blocks/src/button/style.css',
-			array(),
-			Plugin::get_plugin_version(true)
-		);
+		/*
 
 		wp_enqueue_style(
 			'wsu-design-system-bundle',
@@ -122,6 +151,8 @@ class Blocks {
 			array(),
 			'1.x' . date("m.d.y.g:i:s")
 		);
+
+		*/
 
 	}
 
@@ -151,23 +182,28 @@ class Blocks {
 			'core/list',
 			'core/image',
 			'core/shortcode',
+			//'core/heading',
 		);
 
 		$wsu_blocks = array(
 			'wsuwp/heading',
 			'wsuwp/button',
-			'wsuwp/banner',
+			//'wsuwp/banner',
 			'wsuwp/post-title',
-			'wsuwp/columns-single',
-			'wsuwp/columns-halves',
-			'wsuwp/columns-thirds',
-			'wsuwp/columns-quarters',
-			'wsuwp/columns-sidebar-left',
-			'wsuwp/columns-sidebar-right',
+			//'wsuwp/columns-single',
+			//'wsuwp/columns-halves',
+			//'wsuwp/columns-thirds',
+			//'wsuwp/columns-quarters',
+			//'wsuwp/columns-sidebar-left',
+			//'wsuwp/columns-sidebar-right',
 			'wsuwp/search-bar',
+			'wsuwp/content-hero',
+			'wsuwp/columns',
+			'wsuwp/cards',
 		);
 
 		return array_merge( $core_blocks, $wsu_blocks );
+
 
 	}
 }
