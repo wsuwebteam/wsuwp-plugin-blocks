@@ -121,6 +121,12 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(buttonUrl) => setAttributes({ buttonUrl })}
 						placeholder={'Enter button url here.'}
 					/>
+					<TextControl
+						label="Video Embed URL"
+						value={attributes.videoSrc}
+						onChange={(videoSrc) => setAttributes({ videoSrc })}
+						placeholder={'Enter Video EMBED url here.'}
+					/>
 				</PanelBody>
 				<PanelBody title="Display" initialOpen={false}>
 					<SelectControl
@@ -175,7 +181,15 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				imageSrc={attributes.imageSrc}
 				shape={attributes.shape}
 				link={attributes.link}
-				title={attributes.title}
+				title={<RichText
+					tagName="span"
+					className='wsu-c-callout__title-control'
+					value={attributes.title }
+					onChange={ ( title ) => setAttributes( { title } ) }
+					multiline={'false'}
+					allowedFormats={[]}
+					placeholder='Title Text Here ...'
+				/>}
 				tag={attributes.tag}
 				description={attributes.description}
 				layout={attributes.layout}
@@ -183,6 +197,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				isNotched={attributes.isNotched}
 				buttonText={attributes.buttonText}
 				buttonUrl={attributes.buttonUrl}
+				videoSrc={attributes.videoSrc}
 				>
 				<InnerBlocks
 						templateLock={ false }

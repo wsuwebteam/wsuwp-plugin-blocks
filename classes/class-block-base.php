@@ -139,7 +139,7 @@ class Block_Base {
 
 			if ( is_array( $add_classes ) ) {
 
-				$classes = array_merge( $classes, $add_classes );
+				$classes = array_merge( $add_classes, $classes  );
 
 			} else {
 
