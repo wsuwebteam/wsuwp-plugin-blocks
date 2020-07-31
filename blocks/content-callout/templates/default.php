@@ -18,14 +18,9 @@
 			>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a
 		  >
 		</h3>
-		<p class="wsu-c-callout__description">
-		  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-		  eget massa ut erat ultrices consectetur vitae a enim. Pellentesque
-		  risus diam, posuere ac nulla mattis, pulvinar efficitur massa. Nullam
-		  a nisl pretium leo pretium tincidunt quis at velit. Pellentesque
-		  posuere tincidunt fringilla. Curabitur ullamcorper pharetra ligula
-		  eget imperdiet.
-		</p>
+		<div class="wsu-c-callout__description">
+			<?php echo $content; ?>
+		</div>
 		<div class="wsu-c-button__wrapper">
 		  <a
 			class="wsu-c-button--white wsu-c-button--small wsu-c-button--round wsu-c-button"

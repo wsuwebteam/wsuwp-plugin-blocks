@@ -115,7 +115,7 @@ class Block_Base {
 
 	protected function get_classes( $class_array, $atts, $add_classes = array() ) {
 
-		$classes = $this->get_classes_array( $class_array, $atts );
+		$classes = $this->get_classes_array( $class_array, $atts, $add_classes );
 
 		return implode( ' ', $classes );
 
