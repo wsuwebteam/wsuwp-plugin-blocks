@@ -36,6 +36,7 @@ class Content_Callout extends Block_Base {
 				'padding_after'    => 'wsu-u-padding-after--',
 				'shape'            => 'wsu-c-callout__image--',
 				'image_size'       => 'wsu-c-callout__image--',
+				'layout'       => 'wsu-c-callout__layout--',
 			),
 			$atts,
 			array( 'wsu-c-callout__wrapper' )

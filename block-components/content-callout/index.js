@@ -30,25 +30,57 @@ const ContentCalloutLink = ( props ) => {
 // Component Starts
 const ContentCalloutImg = ( props ) => {
 
-		if (empty(props.imageSrc)) {
-			return null;
-		}
+	if ( empty( props.imageSrc ) || ! empty( props.videoSrc ) ) {
+		return null;
+	} 
 
-		return (
-			<div className="wsu-c-callout__image-frame">
-				<div className="wsu-c-callout__image-wrapper">
-					<ContentCalloutLink link={props.link} className="wsu-c-callout__image-link" >
-					<img className="wsu-c-callout__image" src={props.imageSrc} alt={props.imageAlt} />
-					</ContentCalloutLink>
-				</div>
+	return (
+		<div className="wsu-c-callout__image-frame">
+			<div className="wsu-c-callout__image-wrapper">
+				<ContentCalloutLink link={props.link} className="wsu-c-callout__image-link" >
+				<img className="wsu-c-callout__image" src={props.imageSrc} alt={props.imageAlt} />
+				</ContentCalloutLink>
 			</div>
-		);
+		</div>
+	);
+
+
 }
 
 ContentCalloutImg.defaultProps = {
 	imageSrc:'',
 	imageAlt:'',
 	link:'',
+	videoSrc:'',
+}
+
+// Component Starts
+const ContentCalloutVideo= ( props ) => {
+
+	if ( empty( props.videoSrc  ) ) {
+		return null;
+	} 
+
+	let videoSrc = props.videoSrc + '?&byline=0&title=0&portrait=0';
+
+	return (
+		<div className="wsu-c-callout__image-frame">
+			<div className="wsu-c-callout__image-wrapper">
+				<iframe
+					className="wsu-c-callout__video"
+					src={videoSrc}
+					frameborder="0" 
+					allow="autoplay; fullscreen" 
+					allowfullscreen>
+				</iframe>
+			</div>
+		</div>
+	);
+
+}
+
+ContentCalloutVideo.defaultProps = {
+	videoSrc:'',
 }
 
 const ContentCalloutTitle = ( props ) => {
@@ -99,6 +131,10 @@ const ContentCallout = ( props ) => {
 					imageSrc={props.imageSrc}
 					imageAlt={props.imageAlt}
 					link={props.link}
+					videoSrc={props.videoSrc}
+					/>
+				<ContentCalloutVideo
+					videoSrc={props.videoSrc}
 					/>
 				<div className="wsu-c-callout__content">
 				<ContentCalloutTitle
@@ -138,6 +174,7 @@ ContentCallout.defaultProps = {
 	isNotched:false,
 	buttonText: '',
 	buttonUrl: '',
+	videoSrc: '',
 }
 
 export default ContentCallout;

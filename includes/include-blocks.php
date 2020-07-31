@@ -102,7 +102,6 @@ class Blocks {
 		// Code below here is legecy and should be transitioned to the above structure as blocks are updated.
 
 		$dynamic_blocks = array(
-			'Button',
 			'Search_Bar',
 			'Post_Title',
 		);
