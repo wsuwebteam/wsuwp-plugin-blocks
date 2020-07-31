@@ -13,7 +13,6 @@ class Content_Callout extends Block_Base {
 		'link'   => '',
 		'title'   => '',
 		'tag'   => 'h3',
-		'description'   => '',
 		'layout'   => 'default',
 		'vertical_align'   => 'default', 
 		'is_notched'   => false,
@@ -36,9 +35,10 @@ class Content_Callout extends Block_Base {
 				'padding_before'   => 'wsu-u-padding-before--',
 				'padding_after'    => 'wsu-u-padding-after--',
 				'shape'            => 'wsu-c-callout__image--',
+				'image_size'       => 'wsu-c-callout__image--',
 			),
 			$atts,
-			'wsu-c-callout__wrapper'
+			array( 'wsu-c-callout__wrapper' )
 		);
 
 
