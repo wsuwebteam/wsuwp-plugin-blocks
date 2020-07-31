@@ -18,8 +18,13 @@ const {
 	BaseControl
 } = wp.components;
 
+import {
+	empty,
+	ContentButton
+} from '../../../block-components/index'
 
-const edit = ( { className, attributes, setAttributes } ) => {
+
+const edit = ( { className, attributes, setAttributes } ) => { 
 
 	let spacing = [
 		{ label: 'Default', value: 'default' },
@@ -38,7 +43,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				<AlignmentToolbar
 					value={ attributes.buttonAlign }
 					onChange={ ( buttonAlign ) =>
-						setAttributes( { buttonAlign: buttonAlign } )
+						setAttributes( { buttonAlign: buttonAlign } ) 
 					}
 				/>
 			</BlockControls>
@@ -127,22 +132,15 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className="wsu-c-button__wrapper">
-				<RichText
-					tagName="div"
-					className={ 'wsu-c-button' }
-					value={ attributes.buttonText }
-					onChange={ ( buttonText ) => setAttributes( { buttonText } ) }
-					multiline={'false'}
-					allowedFormats={[]}
-					placeholder='Button Text Here ...'
+			<ContentButton 
+				buttonText={attributes.buttonText}
+				buttonUrl={attributes.buttonUrl}
+				shape={attributes.shape}
+				size={attributes.size}
+				color={attributes.color}
+				setAttributes={setAttributes} 
+				className={className} 
 				/>
-				<URLInput
-					className={ className }
-					value={ attributes.buttonUrl }
-					onChange={ ( buttonUrl, post ) => setAttributes( { buttonUrl } ) }
-				/>
-			</div>
 		</>
 	)
 

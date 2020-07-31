@@ -66,12 +66,13 @@ class Blocks {
 		$block_array = array(
 			'Content_Hero'    => 'content-hero/content-hero.php',
 			'Content_Columns' => 'content-columns/content-columns.php',
-			'Content_Column' => 'content-column/content-column.php',
+			'Content_Column'  => 'content-column/content-column.php',
 			'Content_Heading' => 'content-heading/content-heading.php',
 			'Content_Button'  => 'content-button/content-button.php',
 			'Legacy_Columns'  => 'legacy-columns/legacy-columns.php',
-			'Content_Cards'  => 'content-cards/content-cards.php',
-			'Content_Card'   => 'content-card/content-card.php',
+			'Content_Cards'   => 'content-cards/content-cards.php',
+			'Content_Card'    => 'content-card/content-card.php',
+			'Content_Callout' => 'content-callout/content-callout.php',
 		);
 
 		foreach ( $block_array as $class_name => $dir ) {
@@ -200,6 +201,7 @@ class Blocks {
 			'wsuwp/content-hero',
 			'wsuwp/columns',
 			'wsuwp/cards',
+			'wsuwp/callout',
 		);
 
 		return array_merge( $core_blocks, $wsu_blocks );
