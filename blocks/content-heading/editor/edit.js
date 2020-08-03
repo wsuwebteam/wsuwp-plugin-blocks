@@ -9,6 +9,7 @@ const {
 	ToolbarGroup,
 	DropdownMenu,
 	Toolbar,
+	BaseControl
 } = wp.components;
 
 const {
@@ -57,6 +58,22 @@ const edit = ( { className, attributes, setAttributes } ) => {
 			{
 				<InspectorControls>
 					<PanelBody title="General">
+						<TextControl
+							label="Title"
+							value={attributes.content}
+							onChange={(content) => setAttributes({ content })}
+							placeholder={'Enter tile here.'}
+							/>
+						<BaseControl label="Header Link">
+							<URLInput
+								id="header-link"
+								className={'wsu-c-block-content-header__link'}
+								value={attributes.link}
+								onChange={(link, post) => setAttributes({ link })}
+								placeholder={'Enter URL here.'}
+								isFullWidth
+							/>
+						</BaseControl>
 						<SelectControl
 							label="Display Style"
 							value={attributes.style}
