@@ -28,6 +28,10 @@ registerBlockType(
 				"type": "string",
 				"default": ""
 			},
+			link: {
+				"type": "string",
+				"default": ""
+			},
 			level: {
 				"type": "number",
 				"default": 2
