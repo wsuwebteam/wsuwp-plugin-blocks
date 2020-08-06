@@ -8,7 +8,7 @@
  */
 class Plugin {
 
-	protected static $version = '0.5.3';
+	protected static $version = '0.6.0';
 
 	protected static $options;
 
@@ -35,7 +35,6 @@ class Plugin {
 		}
 
 		require_once __DIR__ . '/include-blocks.php';
-		require_once __DIR__ . '/include-components.php';
 
 	}
 

@@ -1,0 +1,21 @@
+.wsu-b-editor__search-bar {
+	display: flex;
+
+	input[type="submit"] {
+
+		display: inline-table;
+		margin: 0;
+		padding: 15px 30px;
+		-webkit-transition: background-color .3s cubic-bezier(0,0,.03,1);
+		-o-transition: background-color .3s cubic-bezier(0,0,.03,1);
+		transition: background-color .3s cubic-bezier(0,0,.03,1);
+		text-decoration: none;
+		color: #fff;
+		border: none;
+		border-radius: 5px;
+		background-color: #ca1237;
+		font-size: 12px;
+		font-weight: 600;
+		line-height: 1.5;
+	}
+}
