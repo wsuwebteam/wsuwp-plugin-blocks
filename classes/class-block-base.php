@@ -2,19 +2,19 @@
 
 class Block_Base {
 
-	protected $prefix = 'wsuwp';
-	protected $slug = '';
-	protected $default_atts = array();
-	protected $register_block = true;
-	protected $as_shortcode = true;
+	protected static $prefix = 'wsuwp';
+	protected static $slug = '';
+	protected static $default_atts = array();
+	protected static $register_block = true;
+	protected static $as_shortcode = true;
 
 
-	public function get( $property ) {
+	public static function get( $property ) {
 
 		switch ( $property ) {
 
 			case 'slug':
-				return $this->slug;
+				return static::$slug;
 			default:
 				return '';
 		}
@@ -22,35 +22,36 @@ class Block_Base {
 	}
 
 
-	public function register_block() {
+	public static function register_block() {
 
-		if ( $this->register_block ) {
+		if ( static::$register_block ) {
 
 			register_block_type(
-				$this->prefix . '/' . $this->slug,
+				static::$prefix . '/' . static::$slug,
 				array(
-					'render_callback' => array( $this, 'render_block' ),
+					'render_callback' => array( get_called_class(), 'render_block' ),
 				)
 			);
 
 		}
+
 	}
 
 
-	public function register_shortcode() {
+	public static function register_shortcode() {
 
-		if ( $this->as_shortcode ) {
+		if ( static::$as_shortcode ) {
 
-			$slug = str_replace( '-', '_', $this->slug );
+			$slug = str_replace( '-', '_', static::$slug );
 
-			add_shortcode( $slug, array( $this, 'render_shortcode' ) );
+			add_shortcode( $slug, array( get_called_class(), 'render_shortcode' ) );
 
 		}
 
 	}
 
 
-	protected function to_snake_case( &$atts ) {
+	protected static function to_snake_case( &$atts ) {
 
 		// Turn camelCase into snake_case
 		foreach ( $atts as $key => $value ) {
@@ -68,16 +69,16 @@ class Block_Base {
 	}
 
 
-	protected function parse_atts( &$atts, $to_snake_case = true ) {
+	protected static function parse_atts( &$atts, $to_snake_case = true ) {
 
 		if ( $to_snake_case ) {
 
-			$this->to_snake_case( $atts );
+			static::to_snake_case( $atts );
 
 		}
 
 		// Check that each default is set
-		foreach ( $this->default_atts as $key => $value ) {
+		foreach ( static::$default_atts as $key => $value ) {
 
 			if ( ! array_key_exists( $key, $atts ) ) {
 
@@ -89,40 +90,40 @@ class Block_Base {
 	}
 
 
-	public function render_block( $atts, $content = '' ) {
+	public static function render_block( $atts, $content = '' ) {
 
 		// parse_atts converts to snake case and fills in defaults
-		$this->parse_atts( $atts );
+		static::parse_atts( $atts );
 
-		return $this->render( $atts, $content );
-
-	}
-
-	public function render_shortcode( $atts, $content = '', $tag ) {
-
-		$atts = shortcode_atts( $this->default_atts, $atts, $tag );
-
-		return $this->render( $atts, $content );
+		return static::render( $atts, $content );
 
 	}
 
-	protected function render( $atts, $content ) {
+	public static function render_shortcode( $atts, $content = '', $tag ) {
+
+		$atts = shortcode_atts( static::default_atts, $atts, $tag );
+
+		return static::render( $atts, $content );
+
+	}
+
+	protected static function render( $atts, $content ) {
 
 		return '';
 
 	}
 
 
-	protected function get_classes( $class_array, $atts, $add_classes = array() ) {
+	protected static function get_classes( $class_array, $atts, $add_classes = array() ) {
 
-		$classes = $this->get_classes_array( $class_array, $atts, $add_classes );
+		$classes = static::get_classes_array( $class_array, $atts, $add_classes );
 
 		return implode( ' ', $classes );
 
 	}
 
 
-	protected function get_classes_array( $class_array, $atts, $add_classes = array() ) {
+	protected static function get_classes_array( $class_array, $atts, $add_classes = array() ) {
 
 		$classes = array();
 
