@@ -4,8 +4,8 @@
   "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
   "main": "build/index.js",
   "scripts": {
-    "start": "parcel watch --no-hmr assets/src/index.js -d assets/dist",
-    "build": "parcel build assets/src/index.js -d assets/dist",
+    "start": "wp-scripts start assets/src/index.js --output-path=assets/dist",
+    "build": "wp-scripts build assets/src/index.js --output-path=assets/dist",
     "lint": "eslint assets/src/index.js"
   },
   "repository": {
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
+    "@wordpress/scripts": "12.1.1",
     "@wsuwebteam/build-tools": "^1.4.6",
     "@wsuwebteam/web-design-system": "git://github.com/washingtonstateuniversity/wsu-web-design-system.git#1.x",
     "@wsuwebteam/wsu-icons": "^2.0.3",
