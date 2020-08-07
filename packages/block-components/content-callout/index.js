@@ -121,7 +121,7 @@ const ContentCallout = ( props ) => {
 			{ key:'isNotched', prefix:'wsu-c-callout__image--', isBool:true, value:'notched' },
 		],
 		props,
-		['wsu-c-callout__wrapper']
+		['wsu-c-callout']
 	)
 
 	return (

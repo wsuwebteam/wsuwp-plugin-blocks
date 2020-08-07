@@ -39,7 +39,7 @@ class Content_Callout extends Block_Base {
 				'layout'       => 'wsu-c-callout__layout--',
 			),
 			$atts,
-			array( 'wsu-c-callout__wrapper' )
+			array( 'wsu-c-callout' )
 		);
 
 
