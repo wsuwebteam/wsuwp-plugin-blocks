@@ -1,6 +1,6 @@
 
 
-import '@wsuwebteam/web-design-system/packages/components/content-callout/content-callout.scss';
+import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';
 
 import {
 	ContentCallout,
