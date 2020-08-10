@@ -4,7 +4,7 @@
   "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
   "main": "build/index.js",
   "scripts": {
-    "start": "webpack --env.NODE_ENV=development --watch --config webpack.config.js",
+    "start": "webpack --env.NODE_ENV=development --silent --watch --config webpack.config.js",
     "lint": "eslint assets/src/index.js"
   },
   "repository": {
