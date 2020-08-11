@@ -8,6 +8,7 @@ const {
 } = wp.blockEditor;
 
 const {
+	Panel,
 	PanelBody,
 	ToggleControl,
 	TextControl,
@@ -20,22 +21,29 @@ const {
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
-	console.log(attributes);
-
 	return (
 		<>
 			<pre>EM Separator</pre>
 
 			<InspectorControls>
-				<PanelBody title="General"></PanelBody>
-				<BaseControl label="Button Link Destination">	
-					<ToggleControl
-						label="Use Hatched Background"
-						help={ attributes.isHatched ? 'Has hatched background.' : 'No hatched background.' }
-						checked={ attributes.isHatched !== 'default' ? true : false}
-						onChange={ () => setAttributes( {isHatched: true})}
-					/>
-				</BaseControl>
+					<PanelBody title="General">
+						<BaseControl>	
+							<ToggleControl
+								label="Use Hatched Background"
+								help={ attributes.isHatched ? 'Has hatched background.' : 'No hatched background.' }
+								checked={ attributes.isHatched !== 'default' ? true : false}
+								onChange={ (current) => current !== true ? setAttributes( {isHatched: 'default'}) : setAttributes( {isHatched: true}) }
+							/>
+						</BaseControl>
+						<BaseControl>	
+							<ToggleControl
+								label="Show More Indicator"
+								help={ attributes.showMoreIndicator ? 'Displays a "show more" indicator.' : 'No indicator visible.' }
+								checked={ attributes.showMoreIndicator !== 'default' ? true : false}
+								onChange={ (current) => current !== true ? setAttributes( {showMoreIndicator: 'default'}) : setAttributes( {showMoreIndicator: true}) }
+							/>
+						</BaseControl>
+					</PanelBody>
 			</InspectorControls>
 		</>
 	)
