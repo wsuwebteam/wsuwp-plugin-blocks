@@ -28,7 +28,7 @@ class Block_Part {
 
 		foreach ( static::$default_atts as $key => $value ) {
 
-			if ( ! array_key_exists( $atts ) ) {
+			if ( ! array_key_exists( $key, $atts ) ) {
 
 				$atts[ $key ] = $value;
 			}
@@ -72,6 +72,7 @@ class Block_Part {
 		}
 
 		if ( $as_string ) {
+
 			return implode( ' ', $classes );
 
 		} else {

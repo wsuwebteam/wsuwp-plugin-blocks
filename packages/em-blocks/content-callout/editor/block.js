@@ -12,10 +12,10 @@ import edit from "./edit";
 
 
 registerBlockType(
-	"wsuwp/em-callout",
+	"wsuwp/em-callout", 
 	{
 		title: "EM Callout",
-		category: "content",
+		category: "content", 
 
 		attributes: {
 			imageSrc:{
@@ -35,6 +35,10 @@ registerBlockType(
 				default: 'default',
 			},
 			link:{
+				type: 'string',
+				default: '',
+			},
+			eyebrowHeader:{
 				type: 'string',
 				default: '',
 			},

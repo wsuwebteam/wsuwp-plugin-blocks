@@ -33,6 +33,7 @@ class Blocks {
 		require_once $em_block_dir . 'content-image/content-image.php';
 		require_once $em_block_dir . 'content-stat/content-stat.php';
 		require_once $em_block_dir . 'content-callout/content-callout.php';
+		require_once $em_block_dir . 'content-heading/content-heading.php';
 
 
 		require_once $block_part_dir . 'image-frame/image-frame.php';
@@ -93,6 +94,7 @@ class Blocks {
 		EM_Content_Stat::register_block();
 		EM_Content_Image::register_block();
 		EM_Content_Callout::register_block();
+		EM_Content_Heading::register_block();
 
 	}
 
@@ -138,6 +140,7 @@ class Blocks {
 			'wsuwp/em-image',
 			'wsuwp/em-stat',
 			'wsuwp/em-callout',
+			'wsuwp/em-heading',
 		);
 
 		return array_merge( $core_blocks, $wsu_blocks );
