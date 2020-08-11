@@ -11,6 +11,7 @@ class Image_Frame extends Block_Part {
 		'link'        => '',
 		'prefix'      => '',
 		'wrapper_classes' => '',
+		'patterns'    => '',     
 	);
 
 

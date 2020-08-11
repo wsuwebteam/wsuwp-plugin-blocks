@@ -25,9 +25,10 @@ class EM_Content_Callout extends Block_Base {
 		'margin_after'   => 'default',
 		'padding_before' => 'default',
 		'padding_after'  => 'default',
-		'borderColor'  => 'default',
-		'bleedImage' => false,
-		'titleSize'  => 'default',
+		'border_color'  => 'default',
+		'bleed_image' => false,
+		'title_size'  => 'default',
+		'patterns'       => '', 
 	);
 
 

@@ -9879,6 +9879,10 @@ registerBlockType("wsuwp/em-callout", {
     bleedImage: {
       type: 'boolean',
       default: false
+    },
+    patterns: {
+      type: 'string',
+      default: ''
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -10173,6 +10177,15 @@ var edit = function edit(_ref) {
         bleedImage: value
       });
     }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Pattern Classes",
+    value: attributes.patterns,
+    onChange: function onChange(patterns) {
+      return setAttributes({
+        patterns: patterns
+      });
+    },
+    placeholder: 'Enter pattern classes here.'
   }))));
 };
 

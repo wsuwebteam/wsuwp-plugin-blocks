@@ -1,1 +1,1 @@
-<div class="<?php echo esc_attr( $class ); ?>"></div>
+<div class="<?php echo esc_attr( $pattern); ?>"></div>

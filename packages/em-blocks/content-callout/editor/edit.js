@@ -191,6 +191,12 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						checked={ attributes.bleedImage }
 						onChange={ (value) => setAttributes( {bleedImage: value})}
 					/>
+					<TextControl
+						label="Pattern Classes"
+						value={attributes.patterns}
+						onChange={(patterns) => setAttributes({ patterns})}
+						placeholder={'Enter pattern classes here.'}
+					/>
 				</PanelBody>
 			</InspectorControls>
 		</>
