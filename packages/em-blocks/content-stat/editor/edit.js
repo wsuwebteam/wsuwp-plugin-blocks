@@ -30,74 +30,75 @@ const edit = ( { className, attributes, setAttributes } ) => {
 			<pre>EM Stat</pre>
 
 			<InspectorControls>
-				<PanelBody title="General">
+				<PanelBody title='General'>
 					<BaseControl>
 						<TextControl
-							label="Value / Number"
+							label='Value / Number'
 							value={ attributes.value }
 							onChange={ (value) => setAttributes({ value: Number(value) }) }
 							placeholder= { 100 }
-							type="number"
+							type='number'
 						/>
 						<TextControl
-							label="Label"
+							label='Label'
 							value={ attributes.label }
 							onChange={ (label) => setAttributes({ label }) }
 							placeholder= { 'Enter stat label here.' }
 						/>
 						<TextControl
-							label="Description"
+							label='Description'
 							value={ attributes.description }
 							onChange={ (description) => setAttributes({ description }) }
 							placeholder= { 'Enter stat description here.' }
 						/>
-						<TextControl
-							label="Prefix"
+						{/* <TextControl
+							label='Prefix'
 							value={ attributes.prefix }
 							onChange={ (prefix) => setAttributes({ prefix }) }
 							placeholder= { 'Enter stat prefix here.' }
 						/>
 						<TextControl
-							label="Suffix"
+							label='Suffix'
 							value={ attributes.suffix }
 							onChange={ (suffix) => setAttributes({ suffix }) }
 							placeholder={ 'Enter stat suffix here.' }
 						/>
 						<TextControl
-							label="Separator"
+							label='Separator'
 							value={ attributes.separator }
 							onChange={ ( separator ) => setAttributes({ separator }) }
 							placeholder={'Enter stat separator here.' }
 						/>
 						<RangeControl
-							label="Animation Duration"
+							label='Animation Duration'
 							value={ attributes.duration }
 							onChange={ ( duration ) => setAttributes({ duration }) }
 							min={ 0 }
 							max={ 10 }
 							step={ 0.5 }
-							help="In seconds"
-						/>
+							help='In seconds'
+						/> */}
 						<SelectControl
-							label="Alignment"
-							value=''
+							label='Alignment'
+							value={attributes.alignment}
 							options={[
 								{
 									label: 'Center',
-									value: ''
+									value: 'default'
 								},
 								{
 									label: 'Left',
-									value: 'alignLeft'
+									value: 'align-left'
 								},
 								{
 									label: 'Right',
-									value: 'alignRight'
+									value: 'align-right'
 								}
 							]}
+							onChange={ (change) => setAttributes({ alignment: change }) }
 						/>
 						<ToggleControl
-							label="Enable Dark Mode"
+							label='Enable Dark Mode'
 							help={ attributes.isDark ? 'Dark mode is enabled.' : 'Using default.' }
 							checked={ attributes.isDark }
 							onChange={ (checked) => setAttributes({isDark: checked}) }

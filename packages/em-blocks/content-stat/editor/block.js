@@ -46,13 +46,9 @@ registerBlockType(
 				type: 'number',
 				default: 1.5,
 			},
-			alignLeft: {
-				type: 'boolean',
-				default: false,
-			},
-			alignRight: {
-				type: 'boolean',
-				default: false,
+			alignment: {
+				type: 'string',
+				default: 'default'
 			},
 			isDark: {
 				type: 'boolean',
