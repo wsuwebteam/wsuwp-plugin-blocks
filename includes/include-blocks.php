@@ -38,6 +38,7 @@ class Blocks {
 
 
 		require_once $block_part_dir . 'image-frame/image-frame.php';
+		require_once $block_part_dir . 'pattern/pattern.php';
 		require_once $block_part_dir . 'block-title/block-title.php';
 		require_once $block_part_dir . 'wrapper-link/wrapper-link.php';
 
