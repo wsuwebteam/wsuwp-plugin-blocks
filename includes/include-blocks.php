@@ -28,6 +28,7 @@ class Blocks {
 		require_once $block_dir . 'content-card/content-card.php';
 		require_once $block_dir . 'content-callout/content-callout.php';
 		require_once $block_dir . 'content-post-title/content-post-title.php';
+		require_once $block_dir . 'content-page-banner/content-page-banner.php';
 
 		require_once $em_block_dir . 'content-separator/content-separator.php';
 		require_once $em_block_dir . 'content-image/content-image.php';
@@ -89,6 +90,7 @@ class Blocks {
 		Content_Card::register_block();
 		Content_Callout::register_block();
 		Content_Post_Title::register_block();
+		Content_Page_Banner::register_block();
 
 		EM_Content_Separator::register_block();
 		EM_Content_Stat::register_block();
@@ -136,6 +138,7 @@ class Blocks {
 			'wsuwp/columns',
 			'wsuwp/cards',
 			'wsuwp/callout',
+			'wsuwp/page-banner',
 			'wsuwp/em-separator',
 			'wsuwp/em-image',
 			'wsuwp/em-stat',

@@ -122,11 +122,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _packages_blocks_content_callout_editor_block__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../packages/blocks/content-callout/editor/block */ "./packages/blocks/content-callout/editor/block.js");
 /* harmony import */ var _packages_blocks_content_post_title_editor_block__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../packages/blocks/content-post-title/editor/block */ "./packages/blocks/content-post-title/editor/block.js");
 /* harmony import */ var _packages_blocks_content_search_bar_editor_block__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../packages/blocks/content-search-bar/editor/block */ "./packages/blocks/content-search-bar/editor/block.js");
-/* harmony import */ var _packages_em_blocks_content_separator_editor_block__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../packages/em-blocks/content-separator/editor/block */ "./packages/em-blocks/content-separator/editor/block.js");
-/* harmony import */ var _packages_em_blocks_content_stat_editor_block__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../packages/em-blocks/content-stat/editor/block */ "./packages/em-blocks/content-stat/editor/block.js");
-/* harmony import */ var _packages_em_blocks_content_image_editor_block__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../packages/em-blocks/content-image/editor/block */ "./packages/em-blocks/content-image/editor/block.js");
-/* harmony import */ var _packages_em_blocks_content_callout_editor_block__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../packages/em-blocks/content-callout/editor/block */ "./packages/em-blocks/content-callout/editor/block.js");
-/* harmony import */ var _packages_em_blocks_content_heading_editor_block__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../packages/em-blocks/content-heading/editor/block */ "./packages/em-blocks/content-heading/editor/block.js");
+/* harmony import */ var _packages_blocks_content_page_banner_editor_block__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../packages/blocks/content-page-banner/editor/block */ "./packages/blocks/content-page-banner/editor/block.js");
+/* harmony import */ var _packages_em_blocks_content_separator_editor_block__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../packages/em-blocks/content-separator/editor/block */ "./packages/em-blocks/content-separator/editor/block.js");
+/* harmony import */ var _packages_em_blocks_content_stat_editor_block__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../packages/em-blocks/content-stat/editor/block */ "./packages/em-blocks/content-stat/editor/block.js");
+/* harmony import */ var _packages_em_blocks_content_image_editor_block__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../packages/em-blocks/content-image/editor/block */ "./packages/em-blocks/content-image/editor/block.js");
+/* harmony import */ var _packages_em_blocks_content_callout_editor_block__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../packages/em-blocks/content-callout/editor/block */ "./packages/em-blocks/content-callout/editor/block.js");
+/* harmony import */ var _packages_em_blocks_content_heading_editor_block__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../packages/em-blocks/content-heading/editor/block */ "./packages/em-blocks/content-heading/editor/block.js");
 /**
  *
  * Gutenberg Blocks
@@ -135,6 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 // Filters
 // import './columns/index.js';
 // Blocks
+
 
 
 
@@ -9333,6 +9335,248 @@ var edit = function edit(_ref) {
 /*!********************************************************!*\
   !*** ./packages/blocks/content-hero/editor/style.scss ***!
   \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./packages/blocks/content-page-banner/editor/block.js":
+/*!*************************************************************!*\
+  !*** ./packages/blocks/content-page-banner/editor/block.js ***!
+  \*************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./packages/blocks/content-page-banner/editor/edit.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./packages/blocks/content-page-banner/editor/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
+/**
+ *
+ * WordPress Dependencies
+ *
+ */
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var InnerBlocks = wp.editor.InnerBlocks;
+var URLInputButton = wp.editor.URLInputButton;
+
+
+registerBlockType("wsuwp/page-banner", {
+  title: "Page Banner",
+  category: "content",
+  attributes: {
+    imageSrc: {
+      type: 'string',
+      default: ''
+    },
+    imageAlt: {
+      type: 'string',
+      default: ''
+    },
+    imageCaption: {
+      type: 'string',
+      default: ''
+    },
+    backgroundColor: {
+      type: 'string',
+      default: 'default'
+    },
+    height: {
+      type: 'string',
+      default: 'default'
+    },
+    isFullBleed: {
+      type: 'boolean',
+      default: false
+    },
+    isNotched: {
+      type: 'boolean',
+      default: false
+    },
+    paddingBefore: {
+      type: 'string',
+      default: 'default'
+    },
+    paddingAfter: {
+      type: 'string',
+      default: 'default'
+    },
+    marginBefore: {
+      type: 'string',
+      default: 'default'
+    },
+    marginAfter: {
+      type: 'string',
+      default: 'default'
+    }
+  },
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
+
+/***/ }),
+
+/***/ "./packages/blocks/content-page-banner/editor/edit.js":
+/*!************************************************************!*\
+  !*** ./packages/blocks/content-page-banner/editor/edit.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.scss */ "./packages/blocks/content-page-banner/editor/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_3__);
+
+
+var __ = wp.i18n.__;
+var _wp$blockEditor = wp.blockEditor,
+    URLInputButton = _wp$blockEditor.URLInputButton,
+    URLInput = _wp$blockEditor.URLInput,
+    PlainText = _wp$blockEditor.PlainText,
+    RichText = _wp$blockEditor.RichText,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
+    MediaUpload = _wp$blockEditor.MediaUpload,
+    MediaUploadCheck = _wp$blockEditor.MediaUploadCheck,
+    InspectorControls = _wp$blockEditor.InspectorControls;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    ToggleControl = _wp$components.ToggleControl,
+    TextControl = _wp$components.TextControl,
+    SelectControl = _wp$components.SelectControl,
+    Button = _wp$components.Button,
+    FocalPointPicker = _wp$components.FocalPointPicker,
+    BaseControl = _wp$components.BaseControl;
+
+
+var edit = function edit(_ref) {
+  var className = _ref.className,
+      attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  var spacing = [{
+    label: 'Default',
+    value: 'default'
+  }, {
+    label: 'Xsmall',
+    value: 'xsmall'
+  }, {
+    label: 'Small',
+    value: 'small'
+  }, {
+    label: 'Medium',
+    value: 'medium'
+  }, {
+    label: 'Medium-large',
+    value: 'medium-large'
+  }, {
+    label: 'Large',
+    value: 'large'
+  }, {
+    label: 'Xlarge',
+    value: 'xlarge'
+  }];
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", null, "Page Banner"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: "General"
+  }, attributes.imageSrc && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
+    label: "Focal Point Picker",
+    help: "Select where you would like the image to resize around."
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(FocalPointPicker, {
+    url: attributes.imageSrc,
+    dimensions: attributes.imgDimensions,
+    value: attributes.imgFocalPoint,
+    onChange: function onChange(focalPoint) {
+      return setAttributes({
+        imgFocalPoint: focalPoint
+      });
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+    onSelect: function onSelect(media) {
+      return setAttributes({
+        imageSrc: media.url
+      });
+    } // allowedTypes={ALLOWED_MEDIA_TYPES}
+    // value={mediaId}
+    ,
+    render: function render(_ref2) {
+      var open = _ref2.open;
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
+        label: "Add/Replace Card Image"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+        isLink: true,
+        onClick: open
+      }, "Open Media Library"));
+    }
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: "Display",
+    initialOpen: false
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: "Height",
+    value: attributes.height,
+    onChange: function onChange(height) {
+      return setAttributes({
+        height: height
+      });
+    },
+    options: [{
+      label: 'Default',
+      value: 'default'
+    }, {
+      label: 'Xsmall',
+      value: 'xsmall'
+    }, {
+      label: 'Small',
+      value: 'small'
+    }, {
+      label: 'Medium',
+      value: 'medium'
+    }, {
+      label: 'Medium-large',
+      value: 'medium-large'
+    }, {
+      label: 'Large',
+      value: 'large'
+    }, {
+      label: 'Xlarge',
+      value: 'xlarge'
+    }, {
+      label: 'Full',
+      value: 'full'
+    }]
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: "Is Notched",
+    help: attributes.isNotched ? 'Has image notch.' : 'No image notch.',
+    checked: attributes.isNotched,
+    onChange: function onChange(value) {
+      return setAttributes({
+        isNotched: value
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: "Bleed Left & Right",
+    checked: attributes.isFullBleed,
+    onChange: function onChange(value) {
+      return setAttributes({
+        isFullBleed: value
+      });
+    }
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (edit);
+
+/***/ }),
+
+/***/ "./packages/blocks/content-page-banner/editor/style.scss":
+/*!***************************************************************!*\
+  !*** ./packages/blocks/content-page-banner/editor/style.scss ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
