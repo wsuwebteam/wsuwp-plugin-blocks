@@ -10466,12 +10466,12 @@ registerBlockType("wsuwp/em-separator", {
   category: "content",
   attributes: {
     isHatched: {
-      type: 'string',
-      default: 'default'
+      type: 'boolean',
+      default: false
     },
     showMoreIndicator: {
-      type: 'string',
-      default: 'default'
+      type: 'boolean',
+      default: false
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -10499,6 +10499,7 @@ var _wp$blockEditor = wp.blockEditor,
     RichText = _wp$blockEditor.RichText,
     InspectorControls = _wp$blockEditor.InspectorControls;
 var _wp$components = wp.components,
+    Panel = _wp$components.Panel,
     PanelBody = _wp$components.PanelBody,
     ToggleControl = _wp$components.ToggleControl,
     TextControl = _wp$components.TextControl,
@@ -10511,21 +10512,27 @@ var edit = function edit(_ref) {
   var className = _ref.className,
       attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
-  console.log(attributes);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", null, "EM Separator"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "General"
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
-    label: "Button Link Destination"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
     label: "Use Hatched Background",
     help: attributes.isHatched ? 'Has hatched background.' : 'No hatched background.',
-    checked: attributes.isHatched !== 'default' ? true : false,
-    onChange: function onChange() {
+    checked: attributes.isHatched,
+    onChange: function onChange(checked) {
       return setAttributes({
-        isHatched: true
+        isHatched: checked
       });
     }
-  }))));
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: "Show More Indicator",
+    help: attributes.showMoreIndicator ? 'Displays a "show more" indicator.' : 'No "show more" indicator is visible.',
+    checked: attributes.showMoreIndicator,
+    onChange: function onChange(checked) {
+      return setAttributes({
+        showMoreIndicator: checked
+      });
+    }
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (edit);
@@ -10571,7 +10578,44 @@ var URLInputButton = wp.editor.URLInputButton;
 registerBlockType("wsuwp/em-stat", {
   title: "EM Stat",
   category: "content",
-  attributes: {},
+  attributes: {
+    value: {
+      type: 'number',
+      default: 0
+    },
+    label: {
+      type: 'string',
+      default: ''
+    },
+    description: {
+      type: 'string',
+      default: ''
+    },
+    prefix: {
+      type: 'string',
+      default: ''
+    },
+    suffix: {
+      type: 'string',
+      default: ''
+    },
+    separator: {
+      type: 'string',
+      default: ','
+    },
+    duration: {
+      type: 'number',
+      default: 1.5
+    },
+    alignment: {
+      type: 'string',
+      default: 'default'
+    },
+    isDark: {
+      type: 'boolean',
+      default: false
+    }
+  },
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
@@ -10598,12 +10642,15 @@ var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
     ToggleControl = _wp$components.ToggleControl,
     TextControl = _wp$components.TextControl,
     SelectControl = _wp$components.SelectControl,
     Button = _wp$components.Button,
     FocalPointPicker = _wp$components.FocalPointPicker,
-    BaseControl = _wp$components.BaseControl;
+    BaseControl = _wp$components.BaseControl,
+    CheckboxControl = _wp$components.CheckboxControl,
+    RangeControl = _wp$components.RangeControl;
 
 var edit = function edit(_ref) {
   var className = _ref.className,
@@ -10612,9 +10659,62 @@ var edit = function edit(_ref) {
   console.log(attributes);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", null, "EM Stat"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "General"
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
-    label: "Label Goes here"
-  })));
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Value / Number",
+    value: attributes.value,
+    onChange: function onChange(value) {
+      return setAttributes({
+        value: Number(value)
+      });
+    },
+    placeholder: 100,
+    type: "number"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Label",
+    value: attributes.label,
+    onChange: function onChange(label) {
+      return setAttributes({
+        label: label
+      });
+    },
+    placeholder: 'Enter stat label here.'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Description",
+    value: attributes.description,
+    onChange: function onChange(description) {
+      return setAttributes({
+        description: description
+      });
+    },
+    placeholder: 'Enter stat description here.'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: "Alignment",
+    value: attributes.alignment,
+    options: [{
+      label: 'Center',
+      value: 'default'
+    }, {
+      label: 'Left',
+      value: 'align-left'
+    }, {
+      label: 'Right',
+      value: 'align-right'
+    }],
+    onChange: function onChange(change) {
+      return setAttributes({
+        alignment: change
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: "Enable Dark Mode",
+    help: attributes.isDark ? 'Dark mode is enabled.' : 'Using default.',
+    checked: attributes.isDark,
+    onChange: function onChange(checked) {
+      return setAttributes({
+        isDark: checked
+      });
+    }
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (edit);
