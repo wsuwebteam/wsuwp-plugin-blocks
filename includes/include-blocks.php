@@ -28,13 +28,16 @@ class Blocks {
 		require_once $block_dir . 'content-card/content-card.php';
 		require_once $block_dir . 'content-callout/content-callout.php';
 		require_once $block_dir . 'content-post-title/content-post-title.php';
+
 		require_once $em_block_dir . 'content-separator/content-separator.php';
 		require_once $em_block_dir . 'content-image/content-image.php';
 		require_once $em_block_dir . 'content-stat/content-stat.php';
+		require_once $em_block_dir . 'content-callout/content-callout.php';
 
 
 		require_once $block_part_dir . 'image-frame/image-frame.php';
 		require_once $block_part_dir . 'block-title/block-title.php';
+		require_once $block_part_dir . 'wrapper-link/wrapper-link.php';
 
 	}
 
@@ -85,9 +88,11 @@ class Blocks {
 		Content_Card::register_block();
 		Content_Callout::register_block();
 		Content_Post_Title::register_block();
+
 		EM_Content_Separator::register_block();
 		EM_Content_Stat::register_block();
 		EM_Content_Image::register_block();
+		EM_Content_Callout::register_block();
 
 	}
 
@@ -132,6 +137,7 @@ class Blocks {
 			'wsuwp/em-separator',
 			'wsuwp/em-image',
 			'wsuwp/em-stat',
+			'wsuwp/em-callout',
 		);
 
 		return array_merge( $core_blocks, $wsu_blocks );
