@@ -11,7 +11,7 @@ import {
 	ContentButton,
 } from '../index';
 
-import '@wsuwebteam/web-design-system/packages/components/content-callout/content-callout.scss';
+import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';
 
 const ContentCalloutLink = ( props ) => {
 

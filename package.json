@@ -4,9 +4,8 @@
   "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
   "main": "build/index.js",
   "scripts": {
-    "start": "parcel watch --no-hmr assets/src/index.js -d assets/dist",
-    "build": "parcel build assets/src/index.js -d assets/dist",
-    "lint": "eslint assets/src/index.js"
+    "start": "wp-scripts start assets/src/index.js --output-path=assets/dist/",
+    "build": "wp-scripts build assets/src/index.js --output-path=assets/dist/"
   },
   "repository": {
     "type": "git",
@@ -25,21 +24,34 @@
     "wordpress": "^1.4.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.3",
-    "@babel/preset-react": "^7.10.1",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
     "@wsuwebteam/build-tools": "^1.4.6",
     "@wsuwebteam/web-design-system": "git://github.com/washingtonstateuniversity/wsu-web-design-system.git#1.x",
     "@wsuwebteam/wsu-icons": "^2.0.3",
+    "@wordpress/block-editor": "^3.5.0",
+    "@wordpress/blocks": "^6.10.0",
+    "@wordpress/scripts": "^8.0.1",
+    "autoprefixer": "^9.8.6",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "css-loader": "^4.2.1",
     "eslint": "^5.16.0",
     "eslint-config-wordpress": "^2.0.0",
     "eslint-plugin-jest": "^22.5.1",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.0",
+    "mini-css-extract-plugin": "^0.10.0",
     "modularscale-sass": "^3.0.8",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "parcel-bundler": "^1.12.3",
-    "sass": "^1.26.9"
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.26.9",
+    "sass-loader": "^9.0.3",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
