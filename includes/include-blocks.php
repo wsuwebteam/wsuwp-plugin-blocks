@@ -12,8 +12,10 @@ class Blocks {
 	public function __construct() {
 
 		Plugin::require_class( 'block-base' );
+		Plugin::require_class( 'block-part' );
 
 		$block_dir = Plugin::get_plugin_dir() . 'packages/blocks/';
+		$block_part_dir = Plugin::get_plugin_dir() . 'packages/block-parts/';
 
 		require_once $block_dir . 'content-hero/content-hero.php';
 		require_once $block_dir . 'content-columns/content-columns.php';
@@ -26,6 +28,10 @@ class Blocks {
 		require_once $block_dir . 'content-callout/content-callout.php';
 		require_once $block_dir . 'content-post-title/content-post-title.php';
 		require_once $block_dir . 'content-separator/content-separator.php';
+
+
+		require_once $block_part_dir . 'image-frame/image-frame.php';
+		require_once $block_part_dir . 'block-title/block-title.php';
 
 	}
 
