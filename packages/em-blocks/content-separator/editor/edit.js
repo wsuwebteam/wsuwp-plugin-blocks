@@ -18,7 +18,6 @@ const {
 	BaseControl
 } = wp.components;
 
-
 const edit = ( { className, attributes, setAttributes } ) => {
 
 	return (
@@ -31,16 +30,16 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							<ToggleControl
 								label="Use Hatched Background"
 								help={ attributes.isHatched ? 'Has hatched background.' : 'No hatched background.' }
-								checked={ attributes.isHatched !== 'default' ? true : false}
-								onChange={ (current) => current !== true ? setAttributes( {isHatched: 'default'}) : setAttributes( {isHatched: true}) }
+								checked={ attributes.isHatched }
+								onChange={ (checked) => setAttributes({isHatched: checked}) }
 							/>
 						</BaseControl>
 						<BaseControl>	
 							<ToggleControl
 								label="Show More Indicator"
-								help={ attributes.showMoreIndicator ? 'Displays a "show more" indicator.' : 'No indicator visible.' }
-								checked={ attributes.showMoreIndicator !== 'default' ? true : false}
-								onChange={ (current) => current !== true ? setAttributes( {showMoreIndicator: 'default'}) : setAttributes( {showMoreIndicator: true}) }
+								help={ attributes.showMoreIndicator? 'Displays a "show more" indicator.' : 'No "show more" indicator is visible.' }
+								checked={ attributes.showMoreIndicator }
+								onChange={ (checked) => setAttributes({showMoreIndicator: checked}) }
 							/>
 						</BaseControl>
 					</PanelBody>
