@@ -35,7 +35,21 @@ class Block_Part {
 		}
 	}
 
-
+	/* 
+	 * Returns a string/array of class name values based on an input of arrays. 
+	 * 
+	 * @param array $utility_classes Array of arrays containing utility classes to be outputted. Each class should be represented as an array using the following params
+	 *       $params = [
+	 *          'key' => (string) required | Define the key of the value you wish to return.
+	 *          'prefix' => (string) optional (defaults to 'wsu-u-') | Define a custom prefix to override default `wsu-u-` prefix.
+	 *          'is_bool' => (boolean) optional | Check if input value is a boolean.
+	 *          'value' => (string) optional | Value to be used if type is boolean
+	 *       ]
+	 * @param string $classSlug Define a custom class slug to provide more specificity.
+	 * @param array $atts Current atts defined by the class.
+	 * @param array $add_classes Manually add class names.
+	 * @param bool $as_string Define whether function returns string or array of values.
+	 */
 	protected static function get_utility_classes( $utility_classes, $atts, $add_classes = array(), $as_string = true ) {
 
 		$classes = ( ! empty( $add_classes ) ) ? $add_classes : array();

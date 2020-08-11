@@ -19,12 +19,12 @@ registerBlockType(
 		category: "content",
 		attributes: {
 			isHatched: {
-				type: 'string',
-				default: 'default',
+				type: 'boolean',
+				default: false,
 			},
 			showMoreIndicator: {
-				type: 'string',
-				default: 'default',	
+				type: 'boolean',
+				default: false,
 			},
 		},
 

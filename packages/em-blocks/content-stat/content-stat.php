@@ -4,9 +4,28 @@ class EM_Content_Stat extends Block_Base {
 
 	protected static $slug = 'em-stat';
 	protected static $default_atts = array(
-    );
+		'wrapper_classes' => '',
+		'value'           => 0,
+		'label'           => '',
+		'description'     => '',
+		'prefix'          => '',
+		'suffix'          => '',
+		'separator'       => ',',
+		'duration'        => 1.5,
+		'alignment'       => 'default',
+		'is_dark'         => false,
+	);
 
 	protected static function render( $atts, $content ) {
+
+		$atts['wrapper_classes'] = static::get_utility_classes(
+			array(
+				array('key' => 'alignment', 'prefix' => 'wsu-c-', 'classSlug' => 'stat__wrapper'),
+				array('key' => 'is_dark', 'prefix' => 'wsu-c-', 'classSlug' => 'stat__wrapper', 'value' => 'is-dark', 'is_bool' => true),
+			),
+			$atts,
+			['wsu-c-stat__wrapper']
+		);
 
 		ob_start();
 
