@@ -9528,6 +9528,7 @@ wp.hooks.addFilter('blocks.registerBlockType', 'wsuwp/freeform', function (setti
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./packages/em-blocks/content-callout/editor/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./save */ "./packages/em-blocks/content-callout/editor/save.js");
 /**
  *
  * WordPress Dependencies
@@ -9537,6 +9538,7 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var InnerBlocks = wp.editor.InnerBlocks;
 var URLInputButton = wp.editor.URLInputButton;
+
 
 registerBlockType("wsuwp/em-callout", {
   title: "EM Callout",
@@ -9555,6 +9557,10 @@ registerBlockType("wsuwp/em-callout", {
       default: 'default'
     },
     shape: {
+      type: 'string',
+      default: 'default'
+    },
+    style: {
       type: 'string',
       default: 'default'
     },
@@ -9617,9 +9623,22 @@ registerBlockType("wsuwp/em-callout", {
     marginAfter: {
       type: 'string',
       default: 'default'
+    },
+    titleSize: {
+      type: 'string',
+      default: 'default'
+    },
+    borderColor: {
+      type: 'string',
+      default: 'default'
+    },
+    bleedImage: {
+      type: 'boolean',
+      default: false
     }
   },
-  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"]
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 
 /***/ }),
@@ -9637,6 +9656,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./packages/em-blocks/content-callout/editor/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
 
 
 var __ = wp.i18n.__;
@@ -9645,6 +9666,7 @@ var _wp$blockEditor = wp.blockEditor,
     URLInput = _wp$blockEditor.URLInput,
     PlainText = _wp$blockEditor.PlainText,
     RichText = _wp$blockEditor.RichText,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
     MediaUpload = _wp$blockEditor.MediaUpload,
     MediaUploadCheck = _wp$blockEditor.MediaUploadCheck,
     InspectorControls = _wp$blockEditor.InspectorControls;
@@ -9656,6 +9678,7 @@ var _wp$components = wp.components,
     Button = _wp$components.Button,
     FocalPointPicker = _wp$components.FocalPointPicker,
     BaseControl = _wp$components.BaseControl;
+
 
 var edit = function edit(_ref) {
   var className = _ref.className,
@@ -9730,8 +9753,18 @@ var edit = function edit(_ref) {
   }, {
     label: 'vertical',
     value: 'vertical'
+  }, {
+    label: 'image-left',
+    value: 'image-left'
+  }, {
+    label: 'image-right',
+    value: 'image-right'
   }];
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", null, "E Callout"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    class: "wsu-b-wrapper"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", null, "E Callout"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
+    templateLock: false
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "General"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Eyebrow Header",
@@ -9751,6 +9784,15 @@ var edit = function edit(_ref) {
       });
     },
     placeholder: 'Enter title text here.'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Caption",
+    value: attributes.description,
+    onChange: function onChange(description) {
+      return setAttributes({
+        description: description
+      });
+    },
+    placeholder: 'Enter caption here.'
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Link",
     value: attributes.link,
@@ -9811,6 +9853,21 @@ var edit = function edit(_ref) {
     title: "Display",
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: "Style",
+    value: attributes.style,
+    onChange: function onChange(style) {
+      return setAttributes({
+        style: style
+      });
+    },
+    options: [{
+      label: 'Default',
+      value: 'default'
+    }, {
+      label: 'Overlay',
+      value: 'overlay'
+    }]
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
     label: "Layout",
     value: attributes.layout,
     onChange: function onChange(layout) {
@@ -9837,10 +9894,80 @@ var edit = function edit(_ref) {
       });
     },
     options: shapeOptions
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: "Border Color",
+    value: attributes.borderColor,
+    onChange: function onChange(borderColor) {
+      return setAttributes({
+        borderColor: borderColor
+      });
+    },
+    options: [{
+      label: 'Default',
+      value: 'default'
+    }, {
+      label: 'Crimson',
+      value: 'crimson'
+    }, {
+      label: 'None',
+      value: 'none'
+    }]
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: "Is Notched",
+    help: attributes.isNotched ? 'Has image notch.' : 'No image notch.',
+    checked: attributes.isNotched,
+    onChange: function onChange(value) {
+      return setAttributes({
+        isNotched: value
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: "Bleed Image",
+    checked: attributes.bleedImage,
+    onChange: function onChange(value) {
+      return setAttributes({
+        bleedImage: value
+      });
+    }
   }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (edit);
+
+/***/ }),
+
+/***/ "./packages/em-blocks/content-callout/editor/save.js":
+/*!***********************************************************!*\
+  !*** ./packages/em-blocks/content-callout/editor/save.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+var __ = wp.i18n.__;
+var InnerBlocks = wp.editor.InnerBlocks;
+
+var save = function save(props) {
+  console.info(props);
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (save);
+
+/***/ }),
+
+/***/ "./packages/em-blocks/content-callout/editor/style.scss":
+/*!**************************************************************!*\
+  !*** ./packages/em-blocks/content-callout/editor/style.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 

@@ -9,6 +9,7 @@ const { InnerBlocks } = wp.editor;
 const { URLInputButton } = wp.editor;
 
 import edit from "./edit";
+import save from "./save";
 
 
 registerBlockType(
@@ -31,6 +32,10 @@ registerBlockType(
 				default: 'default',
 			},
 			shape:{
+				type: 'string',
+				default: 'default',
+			},
+			style:{
 				type: 'string',
 				default: 'default',
 			},
@@ -94,9 +99,22 @@ registerBlockType(
 				type: 'string',
 				default: 'default',
 			},
+			titleSize: {
+				type: 'string',
+				default: 'default',
+			},
+			borderColor: {
+				type: 'string',
+				default: 'default',
+			},
+			bleedImage:{
+				type: 'boolean',
+				default: false,
+			},
 		},
 
-		edit
+		edit,
+		save
 
 	}
 );
