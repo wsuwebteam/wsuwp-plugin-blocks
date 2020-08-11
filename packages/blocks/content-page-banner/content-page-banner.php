@@ -28,7 +28,7 @@ class Content_Page_Banner extends Block_Base {
 				array( 'key' => 'marginLeft', 'classSlug' => 'margin-left' ),
 				array( 'key' => 'marginRight', 'classSlug' => 'margin-right' ),
 				array( 'key' => 'height', 'prefix' => 'wsu-c-page-banner__image--' ),
-				array( 'key' => 'is_full_bleed', 'prefix' => 'wsu-c-page-banner--', 'isBool' => true, 'value' => 'full-bleed' ),
+				array( 'key' => 'is_full_bleed', 'prefix' => 'wsu-c-page-banner--', 'is_bool' => true, 'value' => 'full-bleed' ),
 			),
 			$atts,
 			array( 'wsu-c-page-banner' )

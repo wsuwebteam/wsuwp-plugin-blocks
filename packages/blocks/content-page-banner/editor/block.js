@@ -16,7 +16,7 @@ import './style.scss';
 registerBlockType(
 	"wsuwp/page-banner",
 	{
-		title: "Page Banner",
+		title: "Page Banner", 
 		category: "content",
 
 		attributes: {
