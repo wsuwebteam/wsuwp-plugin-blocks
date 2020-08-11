@@ -2,6 +2,7 @@ const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const glob = require('glob')
 const path = require('path');
 
@@ -90,6 +91,7 @@ module.exports = (env) => {
 			new MiniCssExtractPlugin({
 				filename: 'index.css'
 			}),
+			new ProgressBarPlugin()
 		]
 	}
 };
