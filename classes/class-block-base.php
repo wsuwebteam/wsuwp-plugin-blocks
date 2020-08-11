@@ -114,6 +114,51 @@ class Block_Base {
 	}
 
 
+	protected static function get_utility_classes( $utility_classes, $atts, $add_classes = array(), $as_string = true ) {
+
+		$classes = ( ! empty( $add_classes ) ) ? $add_classes : array();
+
+		foreach ( $utility_classes as $utility_class ) {
+
+			if ( ! empty( $utility_class['key'] ) ) {
+
+				// Set base class prefix, accepts an empty string for no value.
+				$prefix = ( ! empty( $utility_class['prefix'] ) ) ? $utility_class['prefix'] : 'wsu-u-';
+
+				// Set the class slug. Not set will result in an empty string
+				$prefix .= ( ! empty( $utility_class['classSlug'] ) ) ? $utility_class['classSlug'] . '--' : '';
+
+				$key = $utility_class['key'];
+
+				if ( ! empty( $atts[ $key ] ) ) {
+
+					if ( ! empty( $utility_class['is_bool'] ) && $utility_class['value'] && $atts[ $key ] ) {
+
+						$classes[] = $prefix . $utility_class['value'];
+
+					} elseif ( 'default' !== $atts[ $key ] ) {
+
+						$classes[] = $prefix . $atts[ $key ];
+
+					}
+				} elseif ( ! empty( $utility_class['default'] ) ) {
+
+					$classes[] = $prefix . $utility_class['default'];
+
+				}
+			}
+		}
+
+		if ( $as_string ) {
+			return implode( ' ', $classes );
+
+		} else {
+			return $classes;
+		}
+
+	}
+
+
 	protected static function get_classes( $class_array, $atts, $add_classes = array() ) {
 
 		$classes = static::get_classes_array( $class_array, $atts, $add_classes );
