@@ -6,6 +6,7 @@ const {
 	URLInput,
 	PlainText,
 	RichText,
+	InnerBlocks,
 	MediaUpload,
 	MediaUploadCheck,
 	InspectorControls
@@ -20,6 +21,8 @@ const {
 	FocalPointPicker,
 	BaseControl
 } = wp.components;
+
+import './style.scss';
 
 
 const edit = ( { className, attributes, setAttributes } ) => {
@@ -56,12 +59,19 @@ const edit = ( { className, attributes, setAttributes } ) => {
 		{ label: 'default', value: 'default' },
 		{ label: 'horizontal', value: 'horizontal' },
 		{ label: 'vertical', value: 'vertical' },
+		{ label: 'image-left', value: 'image-left' },
+		{ label: 'image-right', value: 'image-right' },
 	]
 
 
 	return (
 		<>
-			<pre>E Callout</pre>
+			<div class="wsu-b-wrapper">
+				<pre>E Callout</pre>
+				<InnerBlocks
+					templateLock={ false }
+				/>
+			</div>
 
 			<InspectorControls>
 				<PanelBody title="General">
@@ -76,6 +86,12 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						value={attributes.title}
 						onChange={(title) => setAttributes({ title })}
 						placeholder={'Enter title text here.'}
+					/>
+					<TextControl
+						label="Caption"
+						value={attributes.description}
+						onChange={(description) => setAttributes({ description})}
+						placeholder={'Enter caption here.'}
 					/>
 					<TextControl
 						label="Link"
@@ -124,6 +140,17 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				</PanelBody>
 				<PanelBody title="Display" initialOpen={false}>
 					<SelectControl
+						label="Style"
+						value={attributes.style}
+						onChange={ (style) => setAttributes( { style } ) }
+						options={
+							[
+								{label:'Default',value:'default'},
+								{label:'Overlay',value:'overlay'},
+							]
+						}
+					/>
+					<SelectControl
 						label="Layout"
 						value={attributes.layout}
 						onChange={ (layout) => setAttributes( { layout } ) }
@@ -140,6 +167,29 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						value={attributes.shape}
 						onChange={ (shape) => setAttributes( { shape } ) }
 						options={shapeOptions}
+					/>
+					<SelectControl
+						label="Border Color"
+						value={attributes.borderColor}
+						onChange={ (borderColor) => setAttributes( { borderColor } ) }
+						options={
+							[
+								{label:'Default',value:'default'},
+								{label:'Crimson',value:'crimson'},
+								{label:'None',value:'none'},
+							]
+						}
+					/>
+					<ToggleControl
+						label="Is Notched"
+						help={ attributes.isNotched ? 'Has image notch.' : 'No image notch.' }
+						checked={ attributes.isNotched }
+						onChange={ ( value ) => setAttributes( {isNotched: value})}
+					/>
+					<ToggleControl
+						label="Bleed Image"
+						checked={ attributes.bleedImage }
+						onChange={ (value) => setAttributes( {bleedImage: value})}
 					/>
 				</PanelBody>
 			</InspectorControls>
