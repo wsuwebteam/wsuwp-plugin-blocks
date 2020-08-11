@@ -4,9 +4,8 @@
   "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
   "main": "build/index.js",
   "scripts": {
-    "start": "webpack --env.NODE_ENV=development --silent --watch --config webpack.config.js",
-    "build": "webpack --env.NODE_ENV=production --config webpack.config.js",
-    "lint": "eslint assets/src/index.js"
+    "start": "wp-scripts start assets/src/index.js --output-path=assets/dist/",
+    "build": "wp-scripts build assets/src/index.js --output-path=assets/dist/"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,9 @@
     "@wsuwebteam/build-tools": "^1.4.6",
     "@wsuwebteam/web-design-system": "git://github.com/washingtonstateuniversity/wsu-web-design-system.git#1.x",
     "@wsuwebteam/wsu-icons": "^2.0.3",
+    "@wordpress/block-editor": "^3.5.0",
+    "@wordpress/blocks": "^6.10.0",
+    "@wordpress/scripts": "^8.0.1",
     "autoprefixer": "^9.8.6",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",

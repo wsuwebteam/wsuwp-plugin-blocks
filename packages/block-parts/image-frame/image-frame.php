@@ -31,7 +31,7 @@ class Image_Frame extends Block_Part {
 				),
 			),
 			$atts,
-			'wsu-c-image-frame'
+			array( 'wsu-c-image-frame' )
 		);
 
 		if ( ! empty( $atts['image_src'] ) ) {
