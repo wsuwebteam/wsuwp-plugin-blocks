@@ -18,7 +18,42 @@ registerBlockType(
 		title: "EM Stat",
 		category: "content",
 		attributes: {
-
+			value: {
+				type: 'number',
+				default: 0
+			},
+			label: {
+				type: 'string',
+				default: '',
+			},
+			description: {
+				type: 'string',
+				default: '',
+			},
+			prefix: {
+				type: 'string',
+				default: '',
+			},
+			suffix: {
+				type: 'string',
+				default: '',
+			},
+			separator: {
+				type: 'string',
+				default: ',',
+			},
+			duration: {
+				type: 'number',
+				default: 1.5,
+			},
+			alignment: {
+				type: 'string',
+				default: 'default'
+			},
+			isDark: {
+				type: 'boolean',
+				default: false,
+			}
 		},
 
 		edit
