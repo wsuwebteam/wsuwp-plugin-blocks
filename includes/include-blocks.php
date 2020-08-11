@@ -15,6 +15,7 @@ class Blocks {
 		Plugin::require_class( 'block-part' );
 
 		$block_dir = Plugin::get_plugin_dir() . 'packages/blocks/';
+		$em_block_dir = Plugin::get_plugin_dir() . 'packages/em-blocks/';
 		$block_part_dir = Plugin::get_plugin_dir() . 'packages/block-parts/';
 
 		require_once $block_dir . 'content-hero/content-hero.php';
@@ -27,11 +28,17 @@ class Blocks {
 		require_once $block_dir . 'content-card/content-card.php';
 		require_once $block_dir . 'content-callout/content-callout.php';
 		require_once $block_dir . 'content-post-title/content-post-title.php';
-		require_once $block_dir . 'content-separator/content-separator.php';
+
+		require_once $em_block_dir . 'content-separator/content-separator.php';
+		require_once $em_block_dir . 'content-image/content-image.php';
+		require_once $em_block_dir . 'content-stat/content-stat.php';
+		require_once $em_block_dir . 'content-callout/content-callout.php';
+		require_once $em_block_dir . 'content-heading/content-heading.php';
 
 
 		require_once $block_part_dir . 'image-frame/image-frame.php';
 		require_once $block_part_dir . 'block-title/block-title.php';
+		require_once $block_part_dir . 'wrapper-link/wrapper-link.php';
 
 	}
 
@@ -82,7 +89,12 @@ class Blocks {
 		Content_Card::register_block();
 		Content_Callout::register_block();
 		Content_Post_Title::register_block();
-		Content_Separator::register_block();
+
+		EM_Content_Separator::register_block();
+		EM_Content_Stat::register_block();
+		EM_Content_Image::register_block();
+		EM_Content_Callout::register_block();
+		EM_Content_Heading::register_block();
 
 	}
 
@@ -124,7 +136,11 @@ class Blocks {
 			'wsuwp/columns',
 			'wsuwp/cards',
 			'wsuwp/callout',
-			'wsuwp/separator',
+			'wsuwp/em-separator',
+			'wsuwp/em-image',
+			'wsuwp/em-stat',
+			'wsuwp/em-callout',
+			'wsuwp/em-heading',
 		);
 
 		return array_merge( $core_blocks, $wsu_blocks );

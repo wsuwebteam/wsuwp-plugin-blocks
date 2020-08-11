@@ -4,7 +4,7 @@
  *
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { registerBlockType, registerBlockCollection } = wp.blocks;
 const { InnerBlocks } = wp.editor;
 const { URLInputButton } = wp.editor;
 
@@ -12,13 +12,11 @@ import edit from "./edit";
 
 import './style.scss';
 
-
 registerBlockType(
-	"wsuwp/separator",
+	"wsuwp/em-separator",
 	{
-		title: "Separator",
+		title: "EM Separator",
 		category: "content",
-
 		attributes: {
 			isHatched: {
 				type: 'string',

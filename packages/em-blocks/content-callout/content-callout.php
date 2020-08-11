@@ -11,6 +11,7 @@ class EM_Content_Callout extends Block_Base {
 		'image_size'   => 'default',
 		'shape'   => 'default',
 		'link'   => '',
+		'eyebrow_header' => '',
 		'title'   => '',
 		'tag'   => 'h3',
 		'layout'   => 'default',

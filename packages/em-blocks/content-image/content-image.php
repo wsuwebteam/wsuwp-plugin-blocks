@@ -1,11 +1,10 @@
 <?php namespace WSUWP\Plugin\Blocks;
 
-class Content_Separator extends Block_Base {
+class EM_Content_Image extends Block_Base {
 
-	protected static $slug = 'separator';
+	protected static $slug = 'em-image';
 	protected static $default_atts = array(
-        'is_hatched' => 'default',
-        'show_more_indicator' => 'default'
+        
     );
 
 	protected static function render( $atts, $content ) {

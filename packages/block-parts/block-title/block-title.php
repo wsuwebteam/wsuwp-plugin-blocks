@@ -13,6 +13,8 @@ class Block_Title extends Block_Part {
 
 	protected static function render( $atts, $content ) {
 
+		$prefix = ( $atts['prefix'] ) ? $atts['prefix'] : 'wsu-c-title';
+
 		$atts['wrapper_classes'] = static::get_utility_classes(
 
 			array(
@@ -22,7 +24,7 @@ class Block_Title extends Block_Part {
 				),
 			),
 			$atts,
-			'wsu-c-title'
+			array( $prefix )
 		);
 
 		if ( ! empty( $atts['title'] ) ) {
