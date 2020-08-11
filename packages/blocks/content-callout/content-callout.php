@@ -29,14 +29,14 @@ class Content_Callout extends Block_Base {
 
 		$atts['wrapper_class'] = static::get_classes(
 			array(
-				'class_name' => '',
+				'class_name'       => '',
 				'margin_before'    => 'wsu-u-margin-before--',
 				'margin_after'     => 'wsu-u-margin-after--',
 				'padding_before'   => 'wsu-u-padding-before--',
 				'padding_after'    => 'wsu-u-padding-after--',
 				'shape'            => 'wsu-c-callout__image--',
 				'image_size'       => 'wsu-c-callout__image--',
-				'layout'       => 'wsu-c-callout__layout--',
+				'layout'           => 'wsu-c-callout__layout--',
 			),
 			$atts,
 			array( 'wsu-c-callout' )
