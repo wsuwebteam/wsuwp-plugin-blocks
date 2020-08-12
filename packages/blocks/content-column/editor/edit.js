@@ -13,18 +13,9 @@ const {
 	InspectorControls,
 } = wp.blockEditor;
 
-const editColumn = ( { className, attributes, setAttributes } ) => {
+import { spacing } from '../../../block-components';
 
-	let spacing = [
-		{ label: 'Default', value: 'default' },
-		{ label: 'None', value: 'none' },
-		{ label: 'Xsmall', value: 'xsmall' },
-		{ label: 'Small', value: 'small' },
-		{ label: 'Medium', value: 'medium' },
-		{ label: 'Medium-large', value: 'medium-large' },
-		{ label: 'Large', value: 'large' },
-		{ label: 'Xlarge', value: 'xlarge' },
-	];
+const editColumn = ( { className, attributes, setAttributes } ) => {
 
 	return (
 		<>

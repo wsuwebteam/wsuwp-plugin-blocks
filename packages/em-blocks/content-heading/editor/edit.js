@@ -30,7 +30,7 @@ import {
 } from '@wordpress/icons';
 
 import HeadingLevelIcon from './heading-level-icon';
-
+import { spacing } from '../../../block-components';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -41,17 +41,6 @@ const edit = ( { className, attributes, setAttributes } ) => {
         setAttributes( { level: selected.value } );
         event.preventDefault();
 	}
-	
-	let spacing = [
-		{ label: 'Default', value: 'default' },
-		{ label: 'None', value: 'none' },
-		{ label: 'Xsmall', value: 'xsmall' },
-		{ label: 'Small', value: 'small' },
-		{ label: 'Medium', value: 'medium' },
-		{ label: 'Medium-large', value: 'medium-large' },
-		{ label: 'Large', value: 'large' },
-		{ label: 'Xlarge', value: 'xlarge' },
-	];
 
 	return (
 		<>
