@@ -16,6 +16,7 @@ const {
 } = wp.components;
 
 import EditOptions from './edit-options';
+import { spacing } from '../../../block-components';
 
 const columnFormats = [
 
@@ -88,7 +89,6 @@ const LayoutOption = ( layout, attributes, setAttributes  ) => {
 			<span className="wsu-c-columns-editor__option__label">{layout.label}</span>
 		</li>
 	);
-
 }
 
 const getColumnsTemplate = ( attributes ) => {
@@ -105,21 +105,9 @@ const getColumnsTemplate = ( attributes ) => {
 	)
 
 	return template;
-
 }
 
 const ColumnsEdit = ( { className, attributes, setAttributes } ) => {
-
-	let spacing = [
-		{ label: 'Default', value: 'default' },
-		{ label: 'None', value: 'none' },
-		{ label: 'Xsmall', value: 'xsmall' },
-		{ label: 'Small', value: 'small' },
-		{ label: 'Medium', value: 'medium' },
-		{ label: 'Medium-large', value: 'medium-large' },
-		{ label: 'Large', value: 'large' },
-		{ label: 'Xlarge', value: 'xlarge' },
-	];
 
 	{ 
 		if ( ! attributes.layout ) {

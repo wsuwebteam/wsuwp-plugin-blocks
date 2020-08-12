@@ -21,37 +21,26 @@ const {
 } = wp.blockEditor;
 
 import {
-    more,
-    arrowLeft,
-    arrowRight,
-    arrowUp,
+	more,
+	arrowLeft,
+	arrowRight,
+	arrowUp,
 	arrowDown,
 	heading,
 } from '@wordpress/icons';
 
 import HeadingLevelIcon from './heading-level-icon';
-
+import { spacing } from '../../../block-components';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
 	const { level } = attributes;
 
 	function setLevel( event ) {
-        const selected = event.target.querySelector( 'option:checked' );
-        setAttributes( { level: selected.value } );
-        event.preventDefault();
+		const selected = event.target.querySelector( 'option:checked' );
+		setAttributes( { level: selected.value } );
+		event.preventDefault();
 	}
-	
-	let spacing = [
-		{ label: 'Default', value: 'default' },
-		{ label: 'None', value: 'none' },
-		{ label: 'Xsmall', value: 'xsmall' },
-		{ label: 'Small', value: 'small' },
-		{ label: 'Medium', value: 'medium' },
-		{ label: 'Medium-large', value: 'medium-large' },
-		{ label: 'Large', value: 'large' },
-		{ label: 'Xlarge', value: 'xlarge' },
-	];
 
 	return (
 		<>

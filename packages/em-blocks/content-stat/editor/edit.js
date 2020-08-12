@@ -20,6 +20,7 @@ const {
 	RangeControl
 } = wp.components;
 
+import { spacing } from '../../../block-components';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -105,6 +106,32 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						/>
 
 					</BaseControl>
+					<PanelBody title="Layout" initialOpen={false}>
+						<SelectControl
+							label="Padding Before"
+							value={attributes.paddingBefore}
+							onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
+							options={spacing}
+						/>
+						<SelectControl
+							label="Padding After"
+							value={attributes.paddingAfter}
+							onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
+							options={spacing}
+						/>
+						<SelectControl
+							label="Margin Before"
+							value={attributes.marginBefore}
+							onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
+							options={spacing}
+						/>
+						<SelectControl
+							label="Margin After"
+							value={attributes.marginAfter}
+							onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
+							options={spacing}
+						/>
+					</PanelBody>
 				</PanelBody>
 			</InspectorControls>
 		</>
