@@ -1,3 +1,5 @@
+import { spacing } from '../../../block-components';
+
 const formats = {
 	default: [
 		['wsuwp/column', {}, [ [ 'core/paragraph', {},[] ]]],
@@ -35,17 +37,6 @@ const ColumnsEdit = ( { className, attributes, setAttributes } ) => {
 	let columnsTemplate = GetTemplate( attributes );
 
 	let format = attributes.format;
-
-	let spacing = [
-		{ label: 'Default', value: 'default' },
-		{ label: 'None', value: 'none' },
-		{ label: 'Xsmall', value: 'xsmall' },
-		{ label: 'Small', value: 'small' },
-		{ label: 'Medium', value: 'medium' },
-		{ label: 'Medium-large', value: 'medium-large' },
-		{ label: 'Large', value: 'large' },
-		{ label: 'Xlarge', value: 'xlarge' },
-	];
 
 	return (
 		<>
