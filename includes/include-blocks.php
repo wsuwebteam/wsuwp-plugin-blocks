@@ -126,6 +126,7 @@ class Blocks {
 			'core/list',
 			'core/image',
 			'core/shortcode',
+			'core/table'
 		);
 
 		$wsu_blocks = array(
