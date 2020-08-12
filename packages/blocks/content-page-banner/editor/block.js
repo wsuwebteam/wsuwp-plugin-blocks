@@ -16,7 +16,7 @@ import './style.scss';
 registerBlockType(
 	"wsuwp/page-banner",
 	{
-		title: "Page Banner",
+		title: "Page Banner", 
 		category: "content",
 
 		attributes: {
@@ -63,6 +63,10 @@ registerBlockType(
 			marginAfter: {
 				type: 'string',
 				default: 'default',
+			},
+			patterns: {
+				type: 'string',
+				default: '',
 			},
 		},
 		edit

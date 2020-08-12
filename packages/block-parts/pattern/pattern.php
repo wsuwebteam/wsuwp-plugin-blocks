@@ -4,7 +4,7 @@ class Pattern extends Block_Part {
 
 	protected static $default_atts = array(
 		'wrapper_classes' => '',
-		'class_name'      => '',
+		'patterns'        => '',
 		'name'            => 'angled-lines',
 		'left'            => '0',
 		'top'             => '0',
@@ -14,18 +14,15 @@ class Pattern extends Block_Part {
 
 	protected static function render( $atts, $content ) {
 
-		$classes  = explode( ' ', $atts['class_name'] );
+		if ( ! empty( $atts['patterns'] ) ) {
 
-		$prefix = ( ! empty( $atts['prefix'] ) ) ? $atts['prefix'] : 'wsu-c-pattern';
+			$patterns  = explode( ' ', $atts['patterns'] );
 
-		foreach ( $classes as $class ) {
-
-			if ( false != strpos( $class, 'wsu-c-pattern--') ) {
+			foreach ( $patterns as $pattern ) {
 
 				include __DIR__ . '/template.php';
 
 			}
-
 		}
 
 	}

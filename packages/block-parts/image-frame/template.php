@@ -1,4 +1,6 @@
+<?php namespace WSUWP\Plugin\Blocks; ?>
 <div class="<?php echo esc_attr( $atts['wrapper_classes'] ); ?>">
+	<?php Pattern::render_block( $atts ); ?>
 	<div class="wsu-c-image-frame__image-wrapper">
 		<?php if ( ! empty( $atts['link'] ) ) : ?><a href="<?php echo esc_url( $atts['link'] ); ?>" class="wsu-c-image-frame__link"><?php endif; ?>
 			<img 

@@ -23,7 +23,7 @@ const {
 } = wp.components;
 
 import './style.scss';
-
+import { PatternControl } from '../../../block-components';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -102,6 +102,12 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						label="Bleed Left & Right"
 						checked={ attributes.isFullBleed }
 						onChange={ (value) => setAttributes( {isFullBleed: value})}
+					/>
+					<PatternControl
+						label="Pattern Classes"
+						value={attributes.patterns}
+						onChange={(patterns) => setAttributes({ patterns})}
+						placeholder={'Enter pattern classes here.'}
 					/>
 				</PanelBody>
 			</InspectorControls>

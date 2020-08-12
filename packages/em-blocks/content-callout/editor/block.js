@@ -111,6 +111,10 @@ registerBlockType(
 				type: 'boolean',
 				default: false,
 			},
+			patterns: {
+				type: 'string',
+				default: '',
+			},
 		},
 
 		edit,

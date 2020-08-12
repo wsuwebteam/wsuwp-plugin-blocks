@@ -8,7 +8,7 @@
  */
 class Plugin {
 
-	protected static $version = '0.8.0';
+	protected static $version = '0.9.0';
 
 	protected static $options;
 
