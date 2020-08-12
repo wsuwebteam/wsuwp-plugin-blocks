@@ -1,1 +1,1 @@
-<div class="<?php echo esc_attr( $pattern); ?>"></div>
+<div class="wsu-c-pattern <?php echo esc_attr( $pattern ); ?>"></div>

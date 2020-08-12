@@ -4,8 +4,8 @@ class EM_Content_Image extends Block_Base {
 
 	protected static $slug = 'em-image';
 	protected static $default_atts = array(
-        
-    );
+
+	);
 
 	protected static function render( $atts, $content ) {
 

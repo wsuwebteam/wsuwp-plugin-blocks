@@ -64,6 +64,10 @@ registerBlockType(
 				type: 'string',
 				default: 'default',
 			},
+			patterns: {
+				type: 'string',
+				default: '',
+			},
 		},
 		edit
 

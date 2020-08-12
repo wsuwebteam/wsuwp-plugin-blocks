@@ -18,8 +18,6 @@ class Pattern extends Block_Part {
 
 			$patterns  = explode( ' ', $atts['patterns'] );
 
-			$prefix = ( ! empty( $atts['prefix'] ) ) ? $atts['prefix'] : 'wsu-c-pattern';
-
 			foreach ( $patterns as $pattern ) {
 
 				include __DIR__ . '/template.php';
