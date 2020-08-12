@@ -31,7 +31,6 @@ class Blocks {
 		require_once $block_dir . 'content-page-banner/content-page-banner.php';
 
 		require_once $em_block_dir . 'content-separator/content-separator.php';
-		require_once $em_block_dir . 'content-image/content-image.php';
 		require_once $em_block_dir . 'content-stat/content-stat.php';
 		require_once $em_block_dir . 'content-callout/content-callout.php';
 		require_once $em_block_dir . 'content-heading/content-heading.php';
@@ -95,7 +94,6 @@ class Blocks {
 
 		EM_Content_Separator::register_block();
 		EM_Content_Stat::register_block();
-		EM_Content_Image::register_block();
 		EM_Content_Callout::register_block();
 		EM_Content_Heading::register_block();
 
@@ -141,7 +139,6 @@ class Blocks {
 			'wsuwp/callout',
 			'wsuwp/page-banner',
 			'wsuwp/em-separator',
-			'wsuwp/em-image',
 			'wsuwp/em-stat',
 			'wsuwp/em-callout',
 			'wsuwp/em-heading',
