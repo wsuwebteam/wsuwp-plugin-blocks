@@ -11,6 +11,7 @@ class Image_Frame extends Block_Part {
 		'link'        => '',
 		'prefix'      => '',
 		'wrapper_classes' => '',
+		'patterns'    => '',     
 	);
 
 
@@ -24,9 +25,9 @@ class Image_Frame extends Block_Part {
 					'prefix' => 'wsu-c-image-frame--',
 				),
 				array(
-					'key' => 'isNotched',
+					'key' => 'is_notched',
 					'prefix' => 'wsu-c-image-frame--',
-					'isBool' => true,
+					'is_bool' => true,
 					'value' => 'notched',
 				),
 			),
