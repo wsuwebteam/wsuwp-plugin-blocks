@@ -12,8 +12,7 @@ class Image_Frame extends Block_Part {
 		'prefix'          => '',
 		'wrapper_classes' => '',
 		'patterns'        => '',
-		'imgFocalPoint'   => null,
-		'imgDimensions'   => null,
+		'imgFocalPoint'   => ['x' => '0.5', 'y' => '0.5'],
 	);
 
 
