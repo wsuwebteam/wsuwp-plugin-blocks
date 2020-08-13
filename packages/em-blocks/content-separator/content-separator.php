@@ -18,6 +18,7 @@ class EM_Content_Separator extends Block_Base {
 
 		$atts['wrapper_class'] = static::get_utility_classes(
 			array(
+				array( 'key' => 'class_name', 'prefix' => ''),
 				array( 'key' => 'margin_before', 'prefix' => 'wsu-u-margin-before--'),
 				array( 'key' => 'margin_after', 'prefix' => 'wsu-u-margin-after--'),
 				array( 'key' => 'padding_before', 'prefix' => 'wsu-u-padding-before--'),
