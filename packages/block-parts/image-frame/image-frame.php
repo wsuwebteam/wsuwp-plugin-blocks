@@ -3,15 +3,17 @@
 class Image_Frame extends Block_Part {
 
 	protected static $default_atts = array(
-		'style'       => 'default',
-		'image_src'   => '',
-		'image_alt'   => '',
-		'image_size'  => 'default',
-		'image_shape' => 'default',
-		'link'        => '',
-		'prefix'      => '',
+		'style'           => 'default',
+		'image_src'       => '',
+		'image_alt'       => '',
+		'image_size'      => 'default',
+		'image_shape'     => 'default',
+		'link'            => '',
+		'prefix'          => '',
 		'wrapper_classes' => '',
-		'patterns'    => '',     
+		'patterns'        => '',
+		'imgFocalPoint'   => null,
+		'imgDimensions'   => null,
 	);
 
 
