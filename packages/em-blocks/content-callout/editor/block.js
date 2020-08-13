@@ -115,6 +115,20 @@ registerBlockType(
 				type: 'string',
 				default: '',
 			},
+			imgFocalPoint: {
+				type: 'object',
+				default: {
+					x: 0.2,
+					y: 0.5
+				}
+			},
+			imgDimensions: {
+				type: 'object',
+				default: {
+					width: 1070,
+					height: 500
+				}
+			},
 		},
 
 		edit,

@@ -1,4 +1,5 @@
 <?php namespace WSUWP\Plugin\Blocks; ?>
+
 <div class="<?php echo esc_attr( $atts['wrapper_classes'] ); ?>">
 	<?php Pattern::render_block( $atts ); ?>
 	<div class="wsu-c-image-frame__image-wrapper">
