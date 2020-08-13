@@ -7,7 +7,9 @@
 				class="wsu-c-image-frame__image" 
 				src="<?php echo esc_url( $atts['image_src'] ); ?>" 
 				alt=<?php echo esc_attr( $atts['image_alt'] ); ?> 
-				data-object-fit="" />
+				data-object-fit="" 
+				style="object-position: <?php echo $atts['img_focal_point']['x'] * 100; ?>% <?php echo $atts['img_focal_point']['y'] * 100; ?>%;"
+			/>
 		<?php if ( ! empty( $atts['link'] ) ) : ?></a><?php endif; ?>
 	</div>
 </div>

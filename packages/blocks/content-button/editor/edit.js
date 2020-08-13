@@ -131,7 +131,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				color={attributes.color}
 				setAttributes={setAttributes} 
 				className={className} 
-				/>
+			/>
 		</>
 	)
 

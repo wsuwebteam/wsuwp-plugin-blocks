@@ -1,6 +1,6 @@
 {
   "name": "wsuwp-plugin-blocks",
-  "version": "0.10.2.1",
+  "version": "0.10.3",
   "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
   "main": "build/index.js",
   "scripts": {

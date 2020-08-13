@@ -6,12 +6,14 @@ class Content_Page_Banner extends Block_Base {
 	protected static $default_atts = array(
 		'class_name'     => '',
 		'wrapper_class'  => '',
-		'image_src'   => '',
-		'image_alt'   => '',
-		'image_size'   => 'default',
-		'image_caption' => '', 
-		'is_notched'   => false,
-		'is_full_bleed' => false,
+		'image_src'      => '',
+		'image_alt'      => '',
+		'image_size'     => 'default',
+		'image_caption'  => '',
+		'imgFocalPoint'  => null,
+		'imgDimensions'  => null,
+		'is_notched'     => false,
+		'is_full_bleed'  => false,
 		'margin_before'  => 'default',
 		'margin_after'   => 'default',
 		'padding_before' => 'default',
@@ -33,7 +35,6 @@ class Content_Page_Banner extends Block_Base {
 			$atts,
 			array( 'wsu-c-page-banner' )
 		);
-
 
 		ob_start();
 
