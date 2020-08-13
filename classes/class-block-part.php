@@ -59,7 +59,7 @@ class Block_Part {
 			if ( ! empty( $utility_class['key'] ) ) {
 
 				// Set base class prefix, accepts an empty string for no value.
-				$prefix = ( ! empty( $utility_class['prefix'] ) ) ? $utility_class['prefix'] : 'wsu-u-';
+				$prefix = ( isset( $utility_class['prefix'] ) ) ? $utility_class['prefix'] : 'wsu-u-';
 
 				// Set the class slug. Not set will result in an empty string
 				$prefix .= ( ! empty( $utility_class['classSlug'] ) ) ? $utility_class['classSlug'] . '--' : '';
