@@ -6,8 +6,8 @@ class EM_Content_Separator extends Block_Base {
 	protected static $default_atts = array(
 		'class_name'          => '',
 		'wrapper_class'       => '',
-		'is_hatched'          => 'default',
-		'show_more_indicator' => 'default',
+		'is_hatched'          => false,
+		'show_more_indicator' => false,
 		'margin_before'       => 'default',
 		'margin_after'        => 'default',
 		'padding_before'      => 'default',
