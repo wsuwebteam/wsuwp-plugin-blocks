@@ -19,8 +19,8 @@ registerBlockType(
 		category: "content",
 		attributes: {
 			value: {
-				type: 'number',
-				default: 0
+				type: 'string',
+				default: ''
 			},
 			label: {
 				type: 'string',
