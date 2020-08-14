@@ -36,9 +36,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						<TextControl
 							label='Value / Number'
 							value={ attributes.value }
-							onChange={ (value) => setAttributes({ value: Number(value) }) }
+							onChange={ (value) => setAttributes({ value }) }
 							placeholder= { 100 }
-							type='number'
 						/>
 						<TextControl
 							label='Label'
