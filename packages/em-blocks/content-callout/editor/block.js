@@ -129,6 +129,10 @@ registerBlockType(
 					height: 500
 				}
 			},
+			id: {
+				type: 'string',
+				default: ''
+			},
 		},
 
 		edit,

@@ -18,6 +18,7 @@ class Content_Page_Banner extends Block_Base {
 		'margin_after'   => 'default',
 		'padding_before' => 'default',
 		'padding_after'  => 'default',
+		'id'             => '',
 	);
 
 

@@ -5,13 +5,12 @@
  */
 
 // Filters
-// import './columns/index.js';
+import '../../packages/block-components/advanced-controls';
 
-// Blocks
-
-
+// Editor Styles
 import './editor.scss';
 
+// WDS Blocks
 import '../../packages/blocks/core-freeform/editor/block';
 
 import '../../packages/blocks/content-hero/editor/block';
@@ -28,6 +27,7 @@ import '../../packages/blocks/content-post-title/editor/block';
 import '../../packages/blocks/content-search-bar/editor/block';
 import '../../packages/blocks/content-page-banner/editor/block';
 
+// EM Blocks
 import '../../packages/em-blocks/content-separator/editor/block'; 
 import '../../packages/em-blocks/content-stat/editor/block'; 
 import '../../packages/em-blocks/content-callout/editor/block';
