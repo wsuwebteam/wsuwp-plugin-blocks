@@ -21,10 +21,10 @@ const {
 } = wp.blockEditor;
 
 import {
-    more,
-    arrowLeft,
-    arrowRight,
-    arrowUp,
+	more,
+	arrowLeft,
+	arrowRight,
+	arrowUp,
 	arrowDown,
 	heading,
 } from '@wordpress/icons';
@@ -37,9 +37,9 @@ const edit = ( { className, attributes, setAttributes } ) => {
 	const { level } = attributes;
 
 	function setLevel( event ) {
-        const selected = event.target.querySelector( 'option:checked' );
-        setAttributes( { level: selected.value } );
-        event.preventDefault();
+		const selected = event.target.querySelector( 'option:checked' );
+		setAttributes( { level: selected.value } );
+		event.preventDefault();
 	}
 
 	return (
