@@ -64,19 +64,19 @@ const edit = ( { className, attributes, setAttributes } ) => {
 
 			<InspectorControls>
 				<PanelBody title="General">
-				<TextControl
+					<TextControl
 						label="Eyebrow Header"
 						value={attributes.eyebrowHeader}
 						onChange={(eyebrowHeader) => setAttributes({ eyebrowHeader })}
 						placeholder={'Enter title text here.'}
 					/>
-				<TextControl
+					<TextControl
 						label="Title"
 						value={attributes.title}
 						onChange={(title) => setAttributes({ title })}
 						placeholder={'Enter title text here.'}
 					/>
-					<TextControl
+						<TextControl
 						label="Caption"
 						value={attributes.description}
 						onChange={(description) => setAttributes({ description})}
@@ -114,6 +114,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							)}
 						/>
 					</MediaUploadCheck>
+
 					<TextControl
 						label="Button Text"
 						value={attributes.buttonText}

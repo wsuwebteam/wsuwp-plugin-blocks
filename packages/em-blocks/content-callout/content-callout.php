@@ -4,6 +4,7 @@ class EM_Content_Callout extends Block_Base {
 
 	protected static $slug = 'em-callout';
 	protected static $default_atts = array(
+		'id'              => '',
 		'class_name'      => '',
 		'wrapper_classes' => '',
 		'image_src'       => '',
