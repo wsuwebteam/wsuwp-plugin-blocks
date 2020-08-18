@@ -20,8 +20,12 @@ class EM_Content_Stat extends Block_Base {
 
 		$atts['wrapper_classes'] = static::get_utility_classes(
 			array(
-				array('key' => 'alignment', 'prefix' => 'wsu-c-', 'classSlug' => 'stat__wrapper'),
-				array('key' => 'is_dark', 'prefix' => 'wsu-c-', 'classSlug' => 'stat__wrapper', 'value' => 'is-dark', 'is_bool' => true),
+				array( 'key' => 'alignment', 'prefix' => 'wsu-c-', 'classSlug' => 'stat__wrapper' ),
+				array( 'key' => 'is_dark', 'prefix' => 'wsu-c-', 'classSlug' => 'stat__wrapper', 'value' => 'is-dark', 'is_bool' => true ),
+				array( 'key' => 'margin_before', 'prefix' => 'wsu-u-margin-before--' ),
+				array( 'key' => 'margin_after', 'prefix' => 'wsu-u-margin-after--' ),
+				array( 'key' => 'padding_before', 'prefix' => 'wsu-u-padding-before--' ),
+				array( 'key' => 'padding_after', 'prefix' => 'wsu-u-padding-after--' ),
 			),
 			$atts,
 			['wsu-c-stat__wrapper']
