@@ -103,35 +103,36 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							checked={ attributes.isDark }
 							onChange={ (checked) => setAttributes({isDark: checked}) }
 						/>
-
 					</BaseControl>
-					<PanelBody title="Layout" initialOpen={false}>
-						<SelectControl
-							label="Padding Before"
-							value={attributes.paddingBefore}
-							onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Padding After"
-							value={attributes.paddingAfter}
-							onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Margin Before"
-							value={attributes.marginBefore}
-							onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Margin After"
-							value={attributes.marginAfter}
-							onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
-							options={spacing}
-						/>
-					</PanelBody>
 				</PanelBody>
+
+				<PanelBody title="Layout" initialOpen={false}>
+					<SelectControl
+						label="Padding Before"
+						value={attributes.paddingBefore}
+						onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
+						options={spacing}
+					/>
+					<SelectControl
+						label="Padding After"
+						value={attributes.paddingAfter}
+						onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
+						options={spacing}
+					/>
+					<SelectControl
+						label="Margin Before"
+						value={attributes.marginBefore}
+						onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
+						options={spacing}
+					/>
+					<SelectControl
+						label="Margin After"
+						value={attributes.marginAfter}
+						onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
+						options={spacing}
+					/>
+				</PanelBody>
+				
 			</InspectorControls>
 		</>
 	)
