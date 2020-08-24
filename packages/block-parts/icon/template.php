@@ -1,0 +1,1 @@
+<i class="wsu-icon wsu-i-<?php echo esc_attr( $atts['name'] ); ?>"></i>
