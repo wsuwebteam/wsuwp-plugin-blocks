@@ -101,7 +101,7 @@ const SelectIcon = ( props ) => {
 		'zoom-out'
 	];
 
-	let iconSelect = [];
+	let iconSelect = []; 
 
 	icons.forEach(
 		( value, index ) => { 

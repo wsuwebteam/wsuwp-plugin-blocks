@@ -29,7 +29,7 @@ class Content_Page_Banner extends Block_Base {
 
 	protected static function render( $atts, $content ) {
 
-		$atts['overlay'] = ( empty( $atts['title'] ) && 'default' == $atts['overlay'] ) ? 'gray' : 'default';
+		$atts['overlay'] = ( ! empty( $atts['title'] ) && 'default' == $atts['overlay'] ) ? 'gray' : 'default';
 
 		$atts['wrapper_classes'] = static::get_utility_classes(
 			array(
