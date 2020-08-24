@@ -59,6 +59,14 @@ registerBlockType(
 			buttonAlign: {
 				type: 'string',
 				default: 'default',
+			},
+			iconBefore: {
+				type: 'string',
+				default: '',
+			},
+			iconAfter: {
+				type: 'string',
+				default: '',
 			}
 		},
 

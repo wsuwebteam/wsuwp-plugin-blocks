@@ -17,6 +17,8 @@ class Content_Button extends Block_Base {
 		'padding_after'  => 'default',
 		'wrapper_class'  => '',
 		'button_class'   => '',
+		'icon_before'    => '',
+		'icon_after'     => '',
 	);
 
 

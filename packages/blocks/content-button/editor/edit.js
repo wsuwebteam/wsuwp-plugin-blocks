@@ -23,6 +23,10 @@ import {
 	ContentButton
 } from '../../../block-components/index';
 
+import {
+	SelectIcon
+} from '../../../block-controls/index';
+
 import { spacing } from '../../../block-components';
 
 
@@ -56,6 +60,16 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							isFullWidth
 						/>
 					</BaseControl>
+					<SelectIcon 
+						label='Icon Before'
+						icon={attributes.iconBefore}
+						onchange={ ( value ) => { setAttributes( { iconBefore: value } ) } }
+						 />
+					<SelectIcon 
+						label='Icon After'
+						icon={attributes.iconAfter}
+						onchange={ ( value ) => { setAttributes( { iconAfter: value } ) } }
+						 />
 				</PanelBody>
 				<PanelBody title="Display" initialOpen={false}>
 					<SelectControl
