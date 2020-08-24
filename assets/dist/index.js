@@ -6490,6 +6490,73 @@ var spacing = [{
 
 /***/ }),
 
+/***/ "./packages/block-controls/index.js":
+/*!******************************************!*\
+  !*** ./packages/block-controls/index.js ***!
+  \******************************************/
+/*! exports provided: SelectIcon */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _select_icon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./select-icon */ "./packages/block-controls/select-icon/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SelectIcon", function() { return _select_icon__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+
+
+/***/ }),
+
+/***/ "./packages/block-controls/select-icon/index.js":
+/*!******************************************************!*\
+  !*** ./packages/block-controls/select-icon/index.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl,
+    SelectControl = _wp$components.SelectControl,
+    Button = _wp$components.Button,
+    FocalPointPicker = _wp$components.FocalPointPicker,
+    BaseControl = _wp$components.BaseControl;
+
+var SelectIcon = function SelectIcon(props) {
+  var icons = ['', 'alarm', 'alert-notification', 'arrow-down-carrot', 'arrow-down', 'arrow-left-carrot', 'arrow-left', 'arrow-right-carrot', 'arrow-right', 'arrow-up-carrot', 'arrow-up', 'attachment', 'basket', 'bookmark', 'calendar', 'cart', 'check', 'collapse', 'comment', 'contrast', 'credit-card', 'cut', 'discussion', 'document', 'download', 'edit', 'email', 'expand', 'favorite', 'feedback', 'filter', 'flag', 'gallery', 'graph', 'home', 'info', 'key', 'light-bulb', 'link', 'location', 'map-location', 'map', 'menu', 'minus-circle', 'minus', 'mobile', 'monitor', 'more-vertical', 'more', 'next', 'pause', 'phone', 'photos', 'play-circle', 'play', 'plus', 'pluse-circle', 'previous', 'print', 'profile-circle', 'profile', 'rate', 'refresh', 'save', 'search', 'secure', 'send', 'settings', 'share', 'social-facebook', 'social-instagram', 'social-linkedin', 'social-twitter', 'social-youtube', 'stop-circle', 'stop', 'tag', 'tent', 'time', 'trash', 'upload', 'video-slideshow', 'warning-caution', 'warning-stop', 'x-close', 'zoom-in', 'zoom-out'];
+  var iconSelect = [];
+  icons.forEach(function (value, index) {
+    var icon = {
+      label: value,
+      value: value
+    };
+    iconSelect.push(icon);
+  });
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: props.label,
+    value: props.icon,
+    onChange: function onChange(icon) {
+      props.onchange(icon);
+    },
+    options: iconSelect
+  });
+};
+
+SelectIcon.defaultProps = {
+  label: 'Icon',
+  className: 'wsu-b-select-icon'
+};
+/* harmony default export */ __webpack_exports__["default"] = (SelectIcon);
+
+/***/ }),
+
 /***/ "./packages/blocks/content-button/editor/block.js":
 /*!********************************************************!*\
   !*** ./packages/blocks/content-button/editor/block.js ***!
@@ -6556,6 +6623,14 @@ registerBlockType("wsuwp/button", {
     buttonAlign: {
       type: 'string',
       default: 'default'
+    },
+    iconBefore: {
+      type: 'string',
+      default: ''
+    },
+    iconAfter: {
+      type: 'string',
+      default: ''
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -6575,6 +6650,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _block_components_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../block-components/index */ "./packages/block-components/index.js");
+/* harmony import */ var _block_controls_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../block-controls/index */ "./packages/block-controls/index.js");
 
 var __ = wp.i18n.__;
 var _wp$editor = wp.editor,
@@ -6592,6 +6668,7 @@ var _wp$components = wp.components,
     Button = _wp$components.Button,
     FocalPointPicker = _wp$components.FocalPointPicker,
     BaseControl = _wp$components.BaseControl;
+
 
 
 
@@ -6630,7 +6707,23 @@ var edit = function edit(_ref) {
     },
     placeholder: 'Button Link',
     isFullWidth: true
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls_index__WEBPACK_IMPORTED_MODULE_2__["SelectIcon"], {
+    label: "Icon Before",
+    icon: attributes.iconBefore,
+    onchange: function onchange(value) {
+      setAttributes({
+        iconBefore: value
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls_index__WEBPACK_IMPORTED_MODULE_2__["SelectIcon"], {
+    label: "Icon After",
+    icon: attributes.iconAfter,
+    onchange: function onchange(value) {
+      setAttributes({
+        iconAfter: value
+      });
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "Display",
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
@@ -9421,6 +9514,26 @@ registerBlockType("wsuwp/page-banner", {
     id: {
       type: 'string',
       default: ''
+    },
+    title: {
+      type: 'string',
+      default: ''
+    },
+    eyebrowHeader: {
+      type: 'string',
+      default: ''
+    },
+    overlay: {
+      type: 'string',
+      default: 'default'
+    },
+    textAlign: {
+      type: 'string',
+      default: 'default'
+    },
+    titleTag: {
+      type: 'string',
+      default: 'h2'
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -9455,7 +9568,8 @@ var _wp$blockEditor = wp.blockEditor,
     InnerBlocks = _wp$blockEditor.InnerBlocks,
     MediaUpload = _wp$blockEditor.MediaUpload,
     MediaUploadCheck = _wp$blockEditor.MediaUploadCheck,
-    InspectorControls = _wp$blockEditor.InspectorControls;
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    AlignmentToolbar = _wp$blockEditor.AlignmentToolbar;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     ToggleControl = _wp$components.ToggleControl,
@@ -9473,7 +9587,25 @@ var edit = function edit(_ref) {
       setAttributes = _ref.setAttributes;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", null, "Page Banner"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "General"
-  }, attributes.imageSrc && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Title",
+    value: attributes.title,
+    onChange: function onChange(title) {
+      return setAttributes({
+        title: title
+      });
+    },
+    placeholder: 'Enter title text here.'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Eyebrow Header",
+    value: attributes.eyebrowHeader,
+    onChange: function onChange(eyebrowHeader) {
+      return setAttributes({
+        eyebrowHeader: eyebrowHeader
+      });
+    },
+    placeholder: 'Enter eybrow header here.'
+  }), attributes.imageSrc && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
     label: "Focal Point Picker",
     help: "Select where you would like the image to resize around."
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(FocalPointPicker, {
@@ -9496,7 +9628,7 @@ var edit = function edit(_ref) {
     render: function render(_ref2) {
       var open = _ref2.open;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
-        label: "Add/Replace Card Image"
+        label: "Add/Replace Image"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
         isLink: true,
         onClick: open
@@ -9538,6 +9670,58 @@ var edit = function edit(_ref) {
       label: 'Full',
       value: 'full'
     }]
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: "Overlay",
+    value: attributes.overlay,
+    onChange: function onChange(overlay) {
+      return setAttributes({
+        overlay: overlay
+      });
+    },
+    options: [{
+      label: 'Default',
+      value: 'default'
+    }, {
+      label: 'Gray',
+      value: 'gray'
+    }, {
+      label: 'Black',
+      value: 'black'
+    }]
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: "Title Tag",
+    value: attributes.titleTag,
+    onChange: function onChange(titleTag) {
+      return setAttributes({
+        titleTag: titleTag
+      });
+    },
+    options: [{
+      label: 'H1',
+      value: 'h1'
+    }, {
+      label: 'H2',
+      value: 'h2'
+    }, {
+      label: 'H3',
+      value: 'h3'
+    }, {
+      label: 'H4',
+      value: 'h4'
+    }, {
+      label: 'H5',
+      value: 'h5'
+    }, {
+      label: 'H6',
+      value: 'h6'
+    }]
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
+    value: attributes.textAlign,
+    onChange: function onChange(textAlign) {
+      return setAttributes({
+        textAlign: textAlign
+      });
+    }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
     label: "Is Notched",
     help: attributes.isNotched ? 'Has image notch.' : 'No image notch.',

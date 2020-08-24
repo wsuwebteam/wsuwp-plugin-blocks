@@ -86,6 +86,26 @@ registerBlockType(
 				type: 'string',
 				default: ''
 			},
+			title: {
+				type: 'string',
+				default: ''
+			},
+			eyebrowHeader: {
+				type: 'string',
+				default: ''
+			},
+			overlay: {
+				type: 'string',
+				default: 'default'
+			},
+			textAlign: {
+				type: 'string',
+				default: 'default'
+			},
+			titleTag: {
+				type: 'string',
+				default: 'h2'
+			},
 		},
 		edit
 
