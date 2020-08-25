@@ -9,6 +9,7 @@ const {
 } = wp.blockEditor;
 
 const {
+	Panel,
 	PanelBody,
 	TextControl,
 	SelectControl,
@@ -21,8 +22,6 @@ import './style.scss';
 
 import '@wsuwebteam/build-tools/js/helpers/ranges';
 import { wsuRange } from '@wsuwebteam/build-tools/js/helpers/ranges';
-
-
 
 const edit = ({ className, attributes, setAttributes }) => {
 
@@ -56,24 +55,69 @@ const edit = ({ className, attributes, setAttributes }) => {
 							onChange={(imgCaption) => setAttributes({ imgCaption })}
 							placeholder={'Enter image caption text here.'}
 						/>
-						<TextControl
-							label="Button Text"
-							value={attributes.buttonText}
-							onChange={(buttonText) => setAttributes({ buttonText })}
-							placeholder={'Enter button text here.'}
-						/>
+						
 
-						<BaseControl label="Button Link Destination">
-							<URLInput
-								id="bannerButtonLink"
-								className={'wsu-c-block__banner__editor__content__link'}
-								value={attributes.buttonUrl}
-								onChange={(buttonUrl, post) => setAttributes({ buttonUrl })}
-								placeholder={'Button Link'}
-								isFullWidth
-							/>
-						</BaseControl>
+						<Panel>
+							<PanelBody title="Background" initialOpen={false}>
+
+								{ attributes.imgSrc &&
+									<BaseControl
+										label="Focal Point Picker"
+										help="Select where you would like the background to resize around."
+									>
+										<FocalPointPicker
+											url={attributes.imgSrc}
+											dimensions={attributes.imgDimensions}
+											value={attributes.imgFocalPoint}
+											onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
+										/>
+									</BaseControl>
+								}
+
+								<MediaUploadCheck>
+									<MediaUpload
+										onSelect={(media) => setAttributes({ imgSrc: media.url })}
+										// allowedTypes={ALLOWED_MEDIA_TYPES}
+										// value={mediaId}
+										render={({ open }) => (
+											<BaseControl label="Replace Background Image">
+												<Button isLink onClick={open}>Open Media Library</Button>
+											</BaseControl>
+										)}
+									/>
+								</MediaUploadCheck>
+							</PanelBody>
+							<PanelBody title="Button" initialOpen={false}>
+								<TextControl
+									label="Button Text"
+									value={attributes.buttonText}
+									onChange={(buttonText) => setAttributes({ buttonText })}
+									placeholder={'Enter button text here.'}
+								/>
+
+								<BaseControl label="Button Link Destination">
+									<URLInput
+										id="bannerButtonLink"
+										className={'wsu-c-block__banner__editor__content__link'}
+										value={attributes.buttonUrl}
+										onChange={(buttonUrl, post) => setAttributes({ buttonUrl })}
+										placeholder={'Button Link'}
+										isFullWidth
+									/>
+								</BaseControl>
+
+								<SelectControl
+									label="Button Style"
+									value=''
+									options={[
+										{ label: 'Default', value: 'default' },
+									]}
+								/>
+								
+							</PanelBody>
+						</Panel>
 					</PanelBody>
+					
 					<PanelBody title="Style" initialOpen={false}>
 						<SelectControl
 							label="Display Style"
@@ -82,44 +126,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 								{ label: 'Default', value: 'default' },
 							]}
 						/>
-						<SelectControl
-							label="Button Style"
-							value=''
-							options={[
-								{ label: 'Default', value: 'default' },
-							]}
-						/>
-					</PanelBody>
-					<PanelBody title="Background" initialOpen={false}>
 
-						{ attributes.imgSrc &&
-							<BaseControl
-								label="Focal Point Picker"
-								help="Select where you would like the background to resize around."
-							>
-								<FocalPointPicker
-									url={attributes.imgSrc}
-									dimensions={attributes.imgDimensions}
-									value={attributes.imgFocalPoint}
-									onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
-								/>
-							</BaseControl>
-						}
-
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={(media) => setAttributes({ imgSrc: media.url })}
-								// allowedTypes={ALLOWED_MEDIA_TYPES}
-								// value={mediaId}
-								render={({ open }) => (
-									<BaseControl label="Replace Background Image">
-										<Button isLink onClick={open}>Open Media Library</Button>
-									</BaseControl>
-								)}
-							/>
-						</MediaUploadCheck>
-					</PanelBody>
-					<PanelBody title="Layout" initialOpen={false}>
 						<SelectControl
 							label="Banner Height"
 							value={attributes.verticalSpacing}
@@ -133,36 +140,41 @@ const edit = ({ className, attributes, setAttributes }) => {
 							]}
 							onChange={(verticalSpacing) => setAttributes({ verticalSpacing })}
 						/>
-						<SelectControl
-							label="Margin Before"
-							value={attributes.marginBefore}
-							options={[
-								{ label: 'Default', value: 'default' },
-								{ label: 'None', value: 'none' },
-								{ label: 'Extra Small', value: 'xsmall' },
-								{ label: 'Small', value: 'small' },
-								{ label: 'Medium', value: 'medium' },
-								{ label: 'Medium Large', value: 'medium-large' },
-								{ label: 'Large', value: 'large' },
-								{ label: 'Extra Large', value: 'xlarge' }
-							]}
-							onChange={(marginBefore) => setAttributes({ marginBefore })}
-						/>
-						<SelectControl
-							label="Margin After"
-							value={attributes.marginAfter}
-							options={[
-								{ label: 'Default', value: 'default' },
-								{ label: 'None', value: 'none' },
-								{ label: 'Extra Small', value: 'xsmall' },
-								{ label: 'Small', value: 'small' },
-								{ label: 'Medium', value: 'medium' },
-								{ label: 'Medium Large', value: 'medium-large' },
-								{ label: 'Large', value: 'large' },
-								{ label: 'Extra Large', value: 'xlarge' }
-							]}
-							onChange={(marginAfter) => setAttributes({ marginAfter })}
-						/>
+
+						<Panel>
+							<PanelBody title="Spacing" initialOpen={false}>
+								<SelectControl
+									label="Margin Before"
+									value={attributes.marginBefore}
+									options={[
+										{ label: 'Default', value: 'default' },
+										{ label: 'None', value: 'none' },
+										{ label: 'Extra Small', value: 'xsmall' },
+										{ label: 'Small', value: 'small' },
+										{ label: 'Medium', value: 'medium' },
+										{ label: 'Medium Large', value: 'medium-large' },
+										{ label: 'Large', value: 'large' },
+										{ label: 'Extra Large', value: 'xlarge' }
+									]}
+									onChange={(marginBefore) => setAttributes({ marginBefore })}
+								/>
+								<SelectControl
+									label="Margin After"
+									value={attributes.marginAfter}
+									options={[
+										{ label: 'Default', value: 'default' },
+										{ label: 'None', value: 'none' },
+										{ label: 'Extra Small', value: 'xsmall' },
+										{ label: 'Small', value: 'small' },
+										{ label: 'Medium', value: 'medium' },
+										{ label: 'Medium Large', value: 'medium-large' },
+										{ label: 'Large', value: 'large' },
+										{ label: 'Extra Large', value: 'xlarge' }
+									]}
+									onChange={(marginAfter) => setAttributes({ marginAfter })}
+								/>
+							</PanelBody>
+						</Panel>
 					</PanelBody>
 				</InspectorControls>
 			}

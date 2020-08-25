@@ -108,7 +108,14 @@ class Blocks {
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-scripts',
 			Plugin::get_plugin_url() . 'assets/dist/index.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ),
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wsuwp-plugin-blocks-wds-components'),
+			Plugin::get_plugin_version( true )
+		);
+
+		wp_enqueue_script(
+			'wsuwp-plugin-blocks-wds-components',
+			Plugin::get_plugin_url() . 'node_modules/@wsuwebteam/web-design-system/bundles/dist/wsu-design-system.components.bundle.dist.js',
+			array(),
 			Plugin::get_plugin_version( true )
 		);
 
@@ -142,13 +149,16 @@ class Blocks {
 			'wsuwp/cards',
 			'wsuwp/callout',
 			'wsuwp/page-banner',
-			'wsuwp/em-separator',
-			'wsuwp/em-stat',
-			'wsuwp/em-callout',
-			'wsuwp/em-heading',
 		);
 
-		return array_merge( $core_blocks, $wsu_blocks );
+		$em_blocks = array(
+			'wsuwp-em/separator',
+			'wsuwp-em/stat',
+			'wsuwp-em/callout',
+			'wsuwp-em/heading',
+		);
+
+		return array_merge( $core_blocks, $wsu_blocks, $em_blocks );
 
 
 	}
