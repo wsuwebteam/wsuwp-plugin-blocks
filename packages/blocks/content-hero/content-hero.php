@@ -4,6 +4,8 @@ class Content_Hero extends Block_Base {
 
 	protected static $slug = 'content-hero';
 	protected static $default_atts = array(
+		'wrapper_class'     => '',
+		'class_name'        => '',
 		'title'             => '',
 		'title_tag'         => 'div',
 		'subtitle'          => '',
@@ -21,17 +23,18 @@ class Content_Hero extends Block_Base {
 		'vertical_spacing'  => 'default',
 	);
 
-
 	protected static function render( $atts, $content ) {
 
-		$atts['wrapper_classes'] = array_merge(
-			array( 'wsu-c-hero__wrapper', 'wsu-u-no-js', 'wsu-c-full-width' ),
-			Utilities::get_margin_spacing_classes( $atts )
-		);
-
-		$atts['container_classes'] = array_merge(
-			array( 'wsu-c-hero__container' ),
-			Utilities::get_vertical_spacing_classes( $atts )
+		$atts['wrapper_class'] = static::get_utility_classes(
+			array(
+				array( 'key' => 'class_name', 'prefix' => ''),
+				array( 'key' => 'margin_before', 'prefix' => 'wsu-u-margin-before--'),
+				array( 'key' => 'margin_after', 'prefix' => 'wsu-u-margin-after--'),
+				array( 'key' => 'padding_before', 'prefix' => 'wsu-u-padding-before--'),
+				array( 'key' => 'padding_after', 'prefix' => 'wsu-u-padding-after--'),
+			),
+			$atts,
+			array( 'wsu-c-hero__wrapper', 'wsu-u-no-js', 'wsu-c-full-width' )
 		);
 
 		ob_start();

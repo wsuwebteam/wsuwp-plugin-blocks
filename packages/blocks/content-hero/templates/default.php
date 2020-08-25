@@ -1,5 +1,5 @@
-<div class="<?php echo esc_attr( implode( ' ', $atts['wrapper_classes'] ) ); ?>">
-	<div class="<?php echo esc_attr( implode( ' ', $atts['container_classes'] ) ); ?>" style="background-image: url(<?php echo esc_attr( $atts['img_src'] ); ?>)">
+<div class="<?php echo esc_attr( $atts['wrapper_class'] ); ?>">
+	<div class="wsu-c-hero__container" style="background-image: url(<?php echo esc_attr( $atts['img_src'] ); ?>)">
 		<div class="wsu-c-hero__content">
 			<?php if ( ! empty( $atts['title'] ) ) : ?>
 				<<?php echo esc_html( $atts['title_tag'] ); ?> class="wsu-c-hero__title"><?php echo esc_html( $atts['title'] ); ?></<?php echo esc_html( $atts['title_tag'] ); ?>>

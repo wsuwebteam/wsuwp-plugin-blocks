@@ -795,6 +795,10 @@ pre:hover {
   line-height: 1.5;
   padding: 1em 3em;
   transition: box-shadow 300ms cubic-bezier(0, 0, 0.03, 1);
+<<<<<<< Updated upstream
+=======
+  text-decoration: none;
+>>>>>>> Stashed changes
   cursor: pointer;
 }
 .wsu-c-button a:hover,
@@ -811,6 +815,21 @@ pre:hover {
 .wsu-c-button:visited {
   color: #fff;
 }
+<<<<<<< Updated upstream
+=======
+.wsu-c-button a .wsu-icon:first-child,
+.wsu-c-content button .wsu-icon:first-child,
+.wsu-c-content .wsu-c-button .wsu-icon:first-child,
+.wsu-c-button .wsu-icon:first-child {
+  margin-right: 0.75em;
+}
+.wsu-c-button a .wsu-icon:last-child,
+.wsu-c-content button .wsu-icon:last-child,
+.wsu-c-content .wsu-c-button .wsu-icon:last-child,
+.wsu-c-button .wsu-icon:last-child {
+  margin-left: 0.75em;
+}
+>>>>>>> Stashed changes
 
 .wsu-c-button a {
   display: block;
@@ -2038,6 +2057,10 @@ pre:hover {
   line-height: 1.5;
   padding: 1em 3em;
   transition: box-shadow 300ms cubic-bezier(0, 0, 0.03, 1);
+<<<<<<< Updated upstream
+=======
+  text-decoration: none;
+>>>>>>> Stashed changes
   cursor: pointer;
 }
 .wsu-c-button a:hover,
@@ -2054,6 +2077,21 @@ pre:hover {
 .wsu-c-button:visited {
   color: #fff;
 }
+<<<<<<< Updated upstream
+=======
+.wsu-c-button a .wsu-icon:first-child,
+.wsu-c-content button .wsu-icon:first-child,
+.wsu-c-content .wsu-c-button .wsu-icon:first-child,
+.wsu-c-button .wsu-icon:first-child {
+  margin-right: 0.75em;
+}
+.wsu-c-button a .wsu-icon:last-child,
+.wsu-c-content button .wsu-icon:last-child,
+.wsu-c-content .wsu-c-button .wsu-icon:last-child,
+.wsu-c-button .wsu-icon:last-child {
+  margin-left: 0.75em;
+}
+>>>>>>> Stashed changes
 
 .wsu-c-button a {
   display: block;
