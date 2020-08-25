@@ -21,7 +21,8 @@
     "@wordpress/block-editor": "^3.11.0",
     "@wordpress/blocks": "^6.19.0",
     "lodash.assign": "^4.2.0",
-    "wordpress": "^1.4.1"
+    "wordpress": "^1.4.1",
+    "@wsuwebteam/web-design-system": "git://github.com/washingtonstateuniversity/wsu-web-design-system.git#1.x"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
@@ -30,14 +31,14 @@
     "@wordpress/block-editor": "^3.5.0",
     "@wordpress/blocks": "^6.10.0",
     "@wordpress/scripts": "^8.0.1",
-    "@wsuwebteam/build-tools": "^1.5.5",
-    "@wsuwebteam/web-design-system": "git://github.com/washingtonstateuniversity/wsu-web-design-system.git#1.x",
+    "@wsuwebteam/build-tools": "^1.4.6",
     "@wsuwebteam/wsu-icons": "^2.0.3",
     "autoprefixer": "^9.8.6",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^4.2.1",
     "eslint": "^5.16.0",
     "eslint-config-wordpress": "^2.0.0",

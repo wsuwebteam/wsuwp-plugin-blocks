@@ -3,17 +3,17 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
 module.exports = {
 	...defaultConfig,
-    module: {
-        ...defaultConfig.module,
-        rules: [
-            ...defaultConfig.module.rules,
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    { loader: MiniCssExtractPlugin.loader },
-                    { loader: 'css-loader' },
-                    { loader: 'sass-loader' },
-                ],
+	module: {
+		...defaultConfig.module,
+		rules: [
+			...defaultConfig.module.rules,
+			{
+				test: /\.s[ac]ss$/i,
+				use: [
+					{ loader: MiniCssExtractPlugin.loader },
+					{ loader: 'css-loader' },
+					{ loader: 'sass-loader' },
+				],
 			},
 			{
 				test: /\.js$/,
@@ -25,12 +25,12 @@ module.exports = {
 					}
 				}
 			}
-        ],
-    },
-    plugins: [
-        ...defaultConfig.plugins,
-        new MiniCssExtractPlugin( {
-            filename: './[name].css',
-        } ),
-    ],
+		],
+	},
+	plugins: [
+		...defaultConfig.plugins,
+		new MiniCssExtractPlugin( {
+			filename: './[name].css',
+		} ),
+	],
 };

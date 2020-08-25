@@ -13,10 +13,14 @@ const {
 	PanelBody,
 	TextControl,
 	SelectControl,
-	Button,
 	FocalPointPicker,
 	BaseControl
 } = wp.components;
+
+const {
+	Button
+} = wsu_wds.components;
+
 
 import {
 	empty,
@@ -28,6 +32,7 @@ import {
 } from '../../../block-controls/index';
 
 import { spacing } from '../../../block-components';
+
 
 
 const edit = ( { className, attributes, setAttributes } ) => { 
@@ -137,7 +142,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<ContentButton 
+			
+			<Button 
 				buttonText={attributes.buttonText}
 				buttonUrl={attributes.buttonUrl}
 				shape={attributes.shape}

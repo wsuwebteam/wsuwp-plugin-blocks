@@ -32,3 +32,6 @@ import '../../packages/em-blocks/content-separator/editor/block';
 import '../../packages/em-blocks/content-stat/editor/block'; 
 import '../../packages/em-blocks/content-callout/editor/block';
 import '../../packages/em-blocks/content-heading/editor/block'; 
+
+// Block Collections
+import '../../packages/block-collections';
