@@ -17,11 +17,6 @@ const {
 	BaseControl
 } = wp.components;
 
-const {
-	Button
-} = wsu_wds.components;
-
-
 import {
 	empty,
 	ContentButton
@@ -142,8 +137,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			
-			<Button 
+			<ContentButton 
 				buttonText={attributes.buttonText}
 				buttonUrl={attributes.buttonUrl}
 				shape={attributes.shape}
