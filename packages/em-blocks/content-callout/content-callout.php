@@ -2,7 +2,8 @@
 
 class EM_Content_Callout extends Block_Base {
 
-	protected static $slug = 'em-callout';
+	protected static $prefix = 'wsuwp-em';
+	protected static $slug = 'callout';
 	protected static $default_atts = array(
 		'id'              => '',
 		'class_name'      => '',
