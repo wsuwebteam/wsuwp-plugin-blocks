@@ -24,8 +24,6 @@ import { spacing } from '../../../block-components';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
-	console.log(attributes);
-
 	return (
 		<>
 			<pre>EM Stat</pre>

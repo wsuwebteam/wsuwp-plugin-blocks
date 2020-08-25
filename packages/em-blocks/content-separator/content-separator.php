@@ -2,7 +2,8 @@
 
 class EM_Content_Separator extends Block_Base {
 
-	protected static $slug = 'em-separator';
+	protected static $prefix = 'wsuwp-em';
+	protected static $slug = 'separator';
 	protected static $default_atts = array(
 		'class_name'          => '',
 		'wrapper_class'       => '',

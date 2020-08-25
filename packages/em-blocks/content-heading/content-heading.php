@@ -2,7 +2,8 @@
 
 class EM_Content_Heading extends Block_Base {
 
-	protected static $slug = 'em-heading';
+	protected static $prefix = 'wsuwp-em';
+	protected static $slug = 'heading';
 	protected static $default_atts = array(
 		'class_name'      => '',
 		'content'         => '',

@@ -2,7 +2,8 @@
 
 class EM_Content_Stat extends Block_Base {
 
-	protected static $slug = 'em-stat';
+	protected static $prefix = 'wsuwp-em';
+	protected static $slug = 'stat';
 	protected static $default_atts = array(
 		'wrapper_classes' => '',
 		'value'           => 0,
