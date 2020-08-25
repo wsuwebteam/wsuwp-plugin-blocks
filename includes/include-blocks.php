@@ -114,7 +114,7 @@ class Blocks {
 
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-wds-components',
-			Plugin::get_plugin_url() . 'node_modules/@wsuwebteam/web-design-system/bundles/dist/wsu-design-system.components.bundle.dist.js',
+			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/1.x/build/dist/wsu-design-system.components.bundle.dist.js',
 			array(),
 			Plugin::get_plugin_version( true )
 		);
