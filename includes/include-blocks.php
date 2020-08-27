@@ -128,6 +128,13 @@ class Blocks {
 			Plugin::get_plugin_version( true )
 		);
 
+		wp_enqueue_style(
+			'wsu-design-system-bundle-editor-styles',
+			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . $wds_version . '/build/dist/platforms/wsu-design-system.wordpress.gutenberg.bundle.dist.css',
+			array(),
+			Plugin::get_plugin_version()
+		);
+
 	}
 
 	public static function allowed_block_types( $allowed_blocks ) {
