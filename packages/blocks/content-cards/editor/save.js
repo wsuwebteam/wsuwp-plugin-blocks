@@ -1,5 +1,5 @@
 const { __ } = wp.i18n;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 const cardsSave = ( props ) => {
 
