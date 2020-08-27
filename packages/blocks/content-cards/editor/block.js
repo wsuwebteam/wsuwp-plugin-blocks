@@ -97,6 +97,10 @@ registerBlockType(
 				type: 'number',
 				default: 3,
 			},
+			id: {
+				type: 'string',
+				default: ''
+			},
 		},
 		edit,
 		save

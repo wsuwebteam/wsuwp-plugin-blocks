@@ -4,7 +4,10 @@ class Content_Post_Title extends Block_Base {
 
 	protected static $slug = 'post-title';
 	protected static $default_atts = array(
-		'title' => '',
+		'wrapper_class' => '',
+		'class_name'    => '',
+		'id'            => '',
+		'title'         => '',
 	);
 
 
@@ -15,6 +18,13 @@ class Content_Post_Title extends Block_Base {
 			$atts['title'] = get_the_title( get_the_ID() );
 
 		}
+
+		$atts['wrapper_class'] = static::get_classes(
+			array(
+				'class_name' => '',
+			),
+			$atts
+		);
 
 		ob_start();
 

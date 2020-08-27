@@ -4,7 +4,9 @@ class Content_Button extends Block_Base {
 
 	protected static $slug = 'button';
 	protected static $default_atts = array(
+		'wrapper_class'  => '',
 		'class_name'     => '',
+		'id'             => '',
 		'button_text'    => '',
 		'button_url'     => '',
 		'shape'          => 'default',
@@ -15,7 +17,6 @@ class Content_Button extends Block_Base {
 		'margin_after'   => 'default',
 		'padding_before' => 'default',
 		'padding_after'  => 'default',
-		'wrapper_class'  => '',
 		'button_class'   => '',
 		'icon_before'    => '',
 		'icon_after'     => '',
@@ -26,7 +27,7 @@ class Content_Button extends Block_Base {
 
 		$atts['wrapper_class'] = static::get_classes(
 			array(
-				'class_name' => '',
+				'class_name'       => '',
 				'background_color' => 'wsu-u-background--',
 				'margin_before'    => 'wsu-u-margin-before--',
 				'margin_after'     => 'wsu-u-margin-after--',
@@ -34,7 +35,8 @@ class Content_Button extends Block_Base {
 				'padding_after'    => 'wsu-u-padding-after--',
 				'button_align'     => 'wsu-u-textalign--',
 			),
-			$atts
+			$atts,
+			array('wsu-c-button__wrapper')
 		);
 
 		$atts['button_class'] = static::get_classes(
@@ -45,7 +47,7 @@ class Content_Button extends Block_Base {
 				'size'       => 'wsu-c-button--',
 			),
 			$atts,
-			$atts['class_name']
+			array('wsu-c-button')
 		);
 
 		$content = ( ! empty( $content ) ) ? $content : $atts['button_text'];

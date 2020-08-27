@@ -4,26 +4,26 @@ class Content_Page_Banner extends Block_Base {
 
 	protected static $slug = 'page-banner';
 	protected static $default_atts = array(
-		'class_name'     => '',
-		'wrapper_class'  => '',
-		'image_src'      => '',
-		'image_alt'      => '',
-		'image_size'     => 'default',
-		'image_caption'  => '',
-		'img_focal_point'  => null,
+		'wrapper_class'   => '',
+		'class_name'      => '',
+		'id'              => '',
+		'image_src'       => '',
+		'image_alt'       => '',
+		'image_size'      => 'default',
+		'image_caption'   => '',
+		'img_focal_point' => null,
 		'img_dimensions'  => null,
-		'is_notched'     => false,
-		'is_full_bleed'  => false,
-		'margin_before'  => 'default',
-		'margin_after'   => 'default',
-		'padding_before' => 'default',
-		'padding_after'  => 'default',
-		'id'             => '',
-		'title'          => '',
-		'eyebrow_header' => '',
-		'overlay'        => 'default',
-		'text_align'     => 'default',
-		'title_tag'      => 'h2',
+		'is_notched'      => false,
+		'is_full_bleed'   => false,
+		'margin_before'   => 'default',
+		'margin_after'    => 'default',
+		'padding_before'  => 'default',
+		'padding_after'   => 'default',
+		'title'           => '',
+		'eyebrow_header'  => '',
+		'overlay'         => 'default',
+		'text_align'      => 'default',
+		'title_tag'       => 'h2',
 	);
 
 
@@ -31,8 +31,9 @@ class Content_Page_Banner extends Block_Base {
 
 		$atts['overlay'] = ( ! empty( $atts['title'] ) && 'default' == $atts['overlay'] ) ? 'gray' : 'default';
 
-		$atts['wrapper_classes'] = static::get_utility_classes(
+		$atts['wrapper_class'] = static::get_utility_classes(
 			array(
+				array( 'key' => 'class_name', 'prefix' => '' ),
 				array( 'key' => 'marginBefore', 'classSlug' => 'margin-before' ),
 				array( 'key' => 'marginAfter', 'classSlug' => 'margin-after' ),
 				array( 'key' => 'marginLeft', 'classSlug' => 'margin-left' ),

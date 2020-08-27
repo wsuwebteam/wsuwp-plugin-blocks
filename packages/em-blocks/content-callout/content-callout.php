@@ -5,9 +5,9 @@ class EM_Content_Callout extends Block_Base {
 	protected static $prefix = 'wsuwp-em';
 	protected static $slug = 'callout';
 	protected static $default_atts = array(
-		'id'              => '',
-		'class_name'      => '',
 		'wrapper_classes' => '',
+		'class_name'      => '',
+		'id'              => '',
 		'image_src'       => '',
 		'image_alt'       => '',
 		'image_size'      => 'default',

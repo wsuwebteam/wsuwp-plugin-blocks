@@ -10,7 +10,7 @@ class EM_Content_Heading extends Block_Base {
 		'level'           => 2,
 		'style'           => 'default',
 		'text_align'      => 'default',
-		'wrapper_classes' => '',
+		'wrapper_class'   => '',
 		'id'              => '',
 	);
 

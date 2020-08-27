@@ -22,6 +22,11 @@ registerBlockType(
 		attributes: {
 			placeholder: {
 				type: 'string',
+				default: ''
+			},
+			id: {
+				type: 'string',
+				default: ''
 			},
 		},
 

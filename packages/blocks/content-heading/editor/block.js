@@ -60,6 +60,10 @@ registerBlockType(
 				type: 'string',
 				default: 'default',
 			},
+			id: {
+				type: 'string',
+				default: ''
+			},
 		},
 
 		edit

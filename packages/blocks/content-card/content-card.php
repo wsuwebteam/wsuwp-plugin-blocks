@@ -17,7 +17,7 @@ class Content_Card extends Block_Base {
   		'caption'           => '',
 		'button_text'       => '',
 		'button_url'        => '',
-		'img_caption'     => '',
+		'img_caption'       => '',
 		'img_src'           => '',
 		'img_focal_point'   => '',
 		'img_focal_point_x' => '', // for shortcode only

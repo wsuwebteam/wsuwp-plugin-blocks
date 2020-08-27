@@ -7,8 +7,6 @@ const { RichText } = wp.blockEditor;
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
-	//console.info(props);
-
 	return (
 		<div className="wsu-b-editor__search-bar__edit-wrapper">
 			<div class="wsu-b-editor__search-bar">
