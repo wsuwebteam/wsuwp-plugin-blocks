@@ -9,13 +9,39 @@
 class Plugin {
 
 	protected static $version = '0.11.5';
-
 	protected static $options;
+	protected static $authorized_admins = array(
+		'danial.bleile@wsu.edu',
+		'nicolas.ford@wsu.edu',
+		'erik.solveson@wsu.edu',
+	);
+
+
+	public static function get( $property ) {
+
+		switch ( $property ) {
+
+			case 'authorized_admins':
+				return self::$authorized_admins;
+
+			case 'version':
+				return self::$version;
+
+			case 'plugin_dir':
+				return plugin_dir_path( dirname( __FILE__ ) );
+
+			case 'plugin_url':
+				return plugin_dir_url( dirname( __FILE__ ) );
+
+			default:
+				return '';
+
+		}
+
+	}
 
 
 	public function __construct() {
-
-		self::require_class( 'options' );
 
 		self::require_class( 'utilities' );
 
@@ -24,17 +50,9 @@ class Plugin {
 
 	public function init() {
 
-		self::$options = new Options();
-
-		add_action( 'init', array( self::$options, 'set_options' ) );
-
-		if ( is_customize_preview() ) {
-
-			add_action( 'wp_head', array( self::$options, 'set_options' ), 1 );
-
-		}
-
+		require_once __DIR__ . '/include-options.php';
 		require_once __DIR__ . '/include-blocks.php';
+		require_once __DIR__ . '/include-customizer.php';
 
 	}
 
@@ -80,17 +98,6 @@ class Plugin {
 		} else {
 			return self::$version;
 		}
-
-	}
-
-
-	public static function get_component_option( $component, $property, $default = '' ) {
-
-		return self::$options->get_option( 'components', $component, $property, $default );
-
-	}
-
-	public static function get_site_option( $group, $object, $property ) {
 
 	}
 
