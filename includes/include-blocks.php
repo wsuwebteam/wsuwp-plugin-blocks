@@ -167,8 +167,10 @@ class Blocks {
 			'wsuwp-em/heading',
 		);
 
-		return array_merge( $core_blocks, $wsu_blocks, $em_blocks );
+		// Check for allow EM Blocks
+		$allowed_blocks = ( Options::get_option( 'block_settings_enable_em_blocks', false ) ) ? array_merge( $core_blocks, $wsu_blocks, $em_blocks ) : array_merge( $core_blocks, $wsu_blocks );
 
+		return $allowed_blocks;
 
 	}
 }
