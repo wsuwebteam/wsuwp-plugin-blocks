@@ -5,7 +5,9 @@ class Core_Paragraph extends Block_Base {
 	protected static $slug = 'paragraph';
 	protected static $prefix = 'core';
 	protected static $default_atts = array(
-		'class_name'        => '',
+		'wrapper_class'  => '',
+		'class_name'     => '',
+		'id'             => '',
 	);
 
 

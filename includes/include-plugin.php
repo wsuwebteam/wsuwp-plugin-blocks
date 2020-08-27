@@ -8,7 +8,7 @@
  */
 class Plugin {
 
-	protected static $version = '0.11.5';
+	protected static $version = '0.11.6';
 
 	protected static $options;
 
@@ -73,7 +73,7 @@ class Plugin {
 
 	}
 
-	public static function get_plugin_version( $isDev ) {
+	public static function get_plugin_version( $isDev = false ) {
 
 		if ( $isDev ) {
 			return date( "m.d.y.g:i:s" ) . '--is-in-dev-mode';

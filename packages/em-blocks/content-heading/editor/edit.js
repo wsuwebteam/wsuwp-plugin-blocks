@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
-const { URLInputButton } = wp.editor;
-const { PlainText } = wp.editor;
+const { URLInputButton } = wp.blockEditor;
+const { PlainText } = wp.blockEditor;
 
 const {
 	PanelBody,

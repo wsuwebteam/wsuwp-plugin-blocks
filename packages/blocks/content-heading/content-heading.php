@@ -4,12 +4,13 @@ class Content_Heading extends Block_Base {
 
 	protected static $slug = 'heading';
 	protected static $default_atts = array(
+		'wrapper_class'   => '',
 		'class_name'      => '',
+		'id'              => '',
 		'content'         => '',
 		'level'           => 2,
 		'style'           => 'default',
 		'text_align'      => 'default',
-		'wrapper_class' => '',
 	);
 
 

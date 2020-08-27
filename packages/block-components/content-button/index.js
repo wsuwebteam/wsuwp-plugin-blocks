@@ -2,7 +2,7 @@ const { __ } = wp.i18n;
 const { 
 	URLInput,
 	RichText,
-} = wp.editor;
+} = wp.blockEditor;
 
 
 import {

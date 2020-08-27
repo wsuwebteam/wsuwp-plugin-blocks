@@ -4,8 +4,9 @@ class Legacy_Columns extends Block_Base {
 
 	protected static $slug = 'columns';
 	protected static $default_atts = array(
-		'class_name'     => '',
 		'wrapper_class'  => '',
+		'class_name'     => '',
+		'id'             => '',
 		'format'         => '',
 		'background_color' => 'default',
 		'margin_before'  => 'default',

@@ -5,6 +5,7 @@ class Content_Callout extends Block_Base {
 	protected static $slug = 'callout';
 	protected static $default_atts = array(
 		'class_name'     => '',
+		'id'             => '',
 		'wrapper_class'  => '',
 		'image_src'      => '',
 		'image_alt'      => '',
@@ -42,7 +43,6 @@ class Content_Callout extends Block_Base {
 			$atts,
 			array( 'wsu-c-callout' )
 		);
-
 
 		ob_start();
 

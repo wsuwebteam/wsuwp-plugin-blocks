@@ -1,3 +1,4 @@
+<?php namespace WSUWP\Plugin\Blocks; ?>
 
  <div class="wsu-c-card__wrapper  <?php echo esc_attr( $atts['wrapper_class'] ); ?>">
 	<div class="wsu-c-card__container">

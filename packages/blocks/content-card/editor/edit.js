@@ -8,7 +8,7 @@ const {
 	InnerBlocks,
 	MediaUpload,
 	MediaUploadCheck,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	PanelBody,

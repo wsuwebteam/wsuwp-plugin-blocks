@@ -1,9 +1,7 @@
 const { __ } = wp.i18n;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 const saveColumn = ( props ) => {
-
-	console.info(props);
 
 	return (
 			<InnerBlocks.Content /> 

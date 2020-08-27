@@ -5,7 +5,7 @@
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 import edit from "./edit";
 import save from './save';
@@ -46,7 +46,11 @@ registerBlockType(
 			marginAfter: {
 				type: 'string',
 				default: 'default',
-			}
+			},
+			id: {
+				type: 'string',
+				default: ''
+			},
 		},
 
 		edit,

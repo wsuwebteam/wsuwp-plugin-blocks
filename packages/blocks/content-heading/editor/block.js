@@ -5,8 +5,8 @@
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { InnerBlocks } = wp.editor;
-const { URLInputButton } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
+const { URLInputButton } = wp.blockEditor;
 import { heading as icon } from '@wordpress/icons';
 
 import edit from "./edit";
@@ -59,6 +59,10 @@ registerBlockType(
 			marginAfter: {
 				type: 'string',
 				default: 'default',
+			},
+			id: {
+				type: 'string',
+				default: ''
 			},
 		},
 

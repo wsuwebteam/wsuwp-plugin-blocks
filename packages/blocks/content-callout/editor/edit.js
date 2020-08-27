@@ -1,12 +1,5 @@
 
 
-import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';
-
-import {
-	ContentCallout,
-	ge
-} from '../../../block-components/index'
-
 const { __ } = wp.i18n;
 const { 
 	URLInputButton,
@@ -19,7 +12,7 @@ const {
 	MediaUpload,
 	MediaUploadCheck,
 	InnerBlocks
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	PanelBody,
@@ -30,7 +23,8 @@ const {
 	BaseControl
 } = wp.components;
 
-import { spacing } from '../../../block-components';
+import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';
+import { spacing, ContentCallout } from '../../../block-components';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 

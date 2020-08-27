@@ -1,4 +1,6 @@
-<div class="<?php echo esc_attr( $atts['wrapper_class'] ); ?>">
+<?php namespace WSUWP\Plugin\Blocks; ?>
+
+<div<?php if (!empty($atts['wrapper_class'])) : ?> class="<?php echo esc_attr( $atts['wrapper_class']); ?>"<?php endif; ?><?php if (!empty($atts['id'])) : ?> id="<?php echo esc_attr( $atts['id'] ); ?>"<?php endif; ?>>
 	<div class="wsu-c-callout__container">
 		<?php if ( ! empty( $atts['image_src'] ) || ! empty( $atts['video_src'] ) ) : ?>
 			<div class="wsu-c-callout__image-frame">
@@ -22,7 +24,7 @@
 				</div>
 			</div>
 		<?php endif; ?>
-	  	<div class="wsu-c-callout__content">
+		<div class="wsu-c-callout__content">
 			<h3 class="wsu-c-callout__title">
 				<?php if ( ! empty( $atts['link'] ) ) : ?><a href="<?php echo esc_url( $atts['link'] ); ?>" class="wsu-c-callout__title-link"><?php endif; ?>
 				<?php echo esc_html( $atts['title'] ); ?>
@@ -38,6 +40,6 @@
 					</a >
 				</div>
 			<?php endif; ?>
-	  	</div>
+		</div>
 	</div>
 </div>
