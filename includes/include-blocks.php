@@ -105,6 +105,8 @@ class Blocks {
 
 	public static function enqueue_block_editor_assets() {
 
+		$wds_version = ( ! empty( get_theme_mod( 'wsu_wds_settings_version' ) ) ) ? get_theme_mod( 'wsu_wds_settings_version' ) : '1.x';
+
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-scripts',
 			Plugin::get_plugin_url() . 'assets/dist/index.js',
@@ -114,9 +116,9 @@ class Blocks {
 
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-wds-components',
-			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/1.x/build/dist/wsu-design-system.components.bundle.dist.js',
+			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . $wds_version . '/build/dist/wsu-design-system.components.bundle.dist.js',
 			array(),
-			Plugin::get_plugin_version( true )
+			Plugin::get_plugin_version()
 		);
 
 		wp_enqueue_style(
