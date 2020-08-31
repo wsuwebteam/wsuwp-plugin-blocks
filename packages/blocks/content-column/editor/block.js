@@ -9,6 +9,7 @@ const { InnerBlocks } = wp.blockEditor;
 
 import edit from "./edit";
 import save from './save';
+import globalBlockAtts from '../../../block-controls/global-block-atts';
 
 import './style.scss';
 
@@ -23,6 +24,7 @@ registerBlockType(
 		parent: [ 'core/columns-single' ],
 		category: "common",
 		attributes: {
+			...globalBlockAtts,
 			format: {
 				type: 'string',
 				default: '',
@@ -31,30 +33,8 @@ registerBlockType(
 				type: 'string',
 				default: 'default',
 			},
-			paddingBefore: {
-				type: 'string',
-				default: 'default',
-			},
-			paddingAfter: {
-				type: 'string',
-				default: 'default',
-			},
-			marginBefore: {
-				type: 'string',
-				default: 'default',
-			},
-			marginAfter: {
-				type: 'string',
-				default: 'default',
-			},
-			id: {
-				type: 'string',
-				default: ''
-			},
 		},
-
 		edit,
 		save,
-
 	}
 );
