@@ -11,6 +11,7 @@ import { heading as icon } from '@wordpress/icons';
 
 import edit from "./edit";
 //import save from "./save";
+import globalBlockAtts from '../../../block-controls/global-block-atts';
 
 import './style.scss';
 
@@ -21,6 +22,7 @@ registerBlockType(
 		category: "content",
 		icon,
 		attributes: {
+			...globalBlockAtts,
 			align: {
 				"type": "string"
 			},
@@ -44,30 +46,8 @@ registerBlockType(
 				type: 'string',
 				default: 'default',
 			},
-			paddingBefore: {
-				type: 'string',
-				default: 'default',
-			},
-			paddingAfter: {
-				type: 'string',
-				default: 'default',
-			},
-			marginBefore: {
-				type: 'string',
-				default: 'default',
-			},
-			marginAfter: {
-				type: 'string',
-				default: 'default',
-			},
-			id: {
-				type: 'string',
-				default: ''
-			},
 		},
-
 		edit
-
 	}
 );
 

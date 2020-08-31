@@ -26,6 +26,7 @@ import '../../packages/blocks/content-callout/editor/block';
 import '../../packages/blocks/content-post-title/editor/block';
 import '../../packages/blocks/content-search-bar/editor/block';
 import '../../packages/blocks/content-page-banner/editor/block';
+import '../../packages/blocks/content-accordion/editor/block';
 
 // EM Blocks
 import '../../packages/em-blocks/content-separator/editor/block'; 

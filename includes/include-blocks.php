@@ -30,6 +30,7 @@ class Blocks {
 		require_once $block_dir . 'content-callout/content-callout.php';
 		require_once $block_dir . 'content-post-title/content-post-title.php';
 		require_once $block_dir . 'content-page-banner/content-page-banner.php';
+		require_once $block_dir . 'content-accordion/content-accordion.php';
 
 		// EM Blocks
 		require_once $em_block_dir . 'content-separator/content-separator.php';
@@ -94,6 +95,7 @@ class Blocks {
 		Content_Callout::register_block();
 		Content_Post_Title::register_block();
 		Content_Page_Banner::register_block();
+		Content_Accordion::register_block();
 
 		EM_Content_Separator::register_block();
 		EM_Content_Stat::register_block();
@@ -158,6 +160,7 @@ class Blocks {
 			'wsuwp/cards',
 			'wsuwp/callout',
 			'wsuwp/page-banner',
+			'wsuwp/accordion',
 		);
 
 		$em_blocks = array(
@@ -167,8 +170,10 @@ class Blocks {
 			'wsuwp-em/heading',
 		);
 
-		return array_merge( $core_blocks, $wsu_blocks, $em_blocks );
+		// Check for allow EM Blocks
+		$allowed_blocks = ( Options::get_option( 'block_settings_enable_em_blocks', false ) ) ? array_merge( $core_blocks, $wsu_blocks, $em_blocks ) : array_merge( $core_blocks, $wsu_blocks );
 
+		return $allowed_blocks;
 
 	}
 }
