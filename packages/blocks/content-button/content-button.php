@@ -41,10 +41,10 @@ class Content_Button extends Block_Base {
 
 		$atts['button_class'] = static::get_classes(
 			array(
-				'style'      => 'wsu-c-heading--',
-				'shape'      => 'wsu-c-button--',
-				'color'      => 'wsu-c-button--',
-				'size'       => 'wsu-c-button--',
+				'style' => 'wsu-c-heading--',
+				'shape' => 'wsu-c-button--',
+				'color' => 'wsu-c-button--',
+				'size'  => 'wsu-c-button--',
 			),
 			$atts,
 			array('wsu-c-button')

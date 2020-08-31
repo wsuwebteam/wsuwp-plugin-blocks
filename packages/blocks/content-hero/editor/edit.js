@@ -168,7 +168,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 									value={attributes.caption}
 									onChange={(caption) => setAttributes({ caption })}
 									allowedFormats={[]}
-									placeholder={'Enter caption text here.'}
+									placeholder={'Enter caption text here'}
 								/>
 							</div>
 							<div href="#" className="wsu-c-button">
@@ -177,6 +177,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 									value={attributes.buttonText}
 									onChange={(buttonText) => setAttributes({ buttonText })}
 									allowedFormats={[]}
+									placeholder={'Button Text Here'}
 								/>
 							</div>
 						</div>

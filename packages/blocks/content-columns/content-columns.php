@@ -14,6 +14,10 @@ class Content_Columns extends Block_Base {
 		'vertical_spacing'  => 'default',
 		'class_name'        => '',
 		'background_color'  => '',
+		'padding_before'    => 'default',
+		'padding_after'     => 'default',
+		'margin_before'     => 'default',
+		'margin_after'      => 'default',
 	);
 
 
@@ -22,6 +26,10 @@ class Content_Columns extends Block_Base {
 		$atts['wrapper_classes'] = array_merge(
 			array( 
 				'wsu-c-column__wrapper', 
+				'margin_before' => 'wsu-u-margin-before--',
+				'margin_after' => 'wsu-u-margin-after--',
+				'padding_before' => 'wsu-u-padding-before--',
+				'padding_after' => 'wsu-u-padding-after--',
 				$atts['class_name'],
 				'wsu-c-columns--' . $atts['layout'],
 			),
