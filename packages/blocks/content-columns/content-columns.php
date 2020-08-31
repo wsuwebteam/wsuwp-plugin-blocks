@@ -4,6 +4,9 @@ class Content_Columns extends Block_Base {
 
 	protected static $slug = 'columns';
 	protected static $default_atts = array(
+		'class_name'        => '',
+		'id'                => '',
+		'wrapper_class'     => '',
 		'layout'            => 'single',
 		'image_caption'     => '',
 		'img_src'           => '',
@@ -23,19 +26,16 @@ class Content_Columns extends Block_Base {
 
 	protected static function render( $atts, $content ) {
 
-		$atts['wrapper_classes'] = array_merge(
+		$atts['wrapper_class'] = static::get_classes(
 			array( 
-				'wsu-c-column__wrapper', 
-				'margin_before' => 'wsu-u-margin-before--',
-				'margin_after' => 'wsu-u-margin-after--',
+				'class_name'     => '',
+				'margin_before'  => 'wsu-u-margin-before--',
+				'margin_after'   => 'wsu-u-margin-after--',
 				'padding_before' => 'wsu-u-padding-before--',
-				'padding_after' => 'wsu-u-padding-after--',
-				$atts['class_name'],
-				'wsu-c-columns--' . $atts['layout'],
+				'padding_after'  => 'wsu-u-padding-after--',
 			),
-			Utilities::get_margin_spacing_classes( $atts ),
-			Utilities::get_padding_spacing_classes( $atts ),
-			Utilities::get_background_color_classes( $atts )
+			$atts,
+			array( 'wsu-c-column__wrapper', 'wsu-c-columns--' . $atts['layout'] )
 		);
 
 		ob_start();
