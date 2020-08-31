@@ -17,12 +17,12 @@ class Customizer {
 
 	public static function add_customizer_options( $wp_customize ) {
 
-		$section_id        = 'wsu_blocks';
+		$section_id        = 'block_settings';
 		$authorized_admins = Plugin::get( 'authorized_admins' );
 		$current_user      = wp_get_current_user();
 
 		$wp_customize->add_section(
-			$section_id ,
+			$section_id,
 			array(
 				'title'      => 'WSU Block Settings',
 				'priority'   => 30,

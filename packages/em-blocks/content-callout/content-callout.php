@@ -31,7 +31,7 @@ class EM_Content_Callout extends Block_Base {
 		'bleed_image'     => false,
 		'title_size'      => 'default',
 		'patterns'        => '', 
-		'imgFocalPoint'   => ['x' => '0.5', 'y' => '0.5'],
+		'img_focal_point' => ['x' => '0.5', 'y' => '0.5'],
 	);
 
 
