@@ -4,9 +4,9 @@ class Content_Callout extends Block_Base {
 
 	protected static $slug = 'callout';
 	protected static $default_atts = array(
+		'wrapper_class'  => '',
 		'class_name'     => '',
 		'id'             => '',
-		'wrapper_class'  => '',
 		'image_src'      => '',
 		'image_alt'      => '',
 		'image_size'     => 'default',
