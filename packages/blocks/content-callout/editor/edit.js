@@ -15,6 +15,7 @@ const {
 } = wp.blockEditor;
 
 const {
+	Panel,
 	PanelBody,
 	TextControl,
 	SelectControl,
@@ -24,12 +25,13 @@ const {
 } = wp.components;
 
 import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';
-import { spacing, ContentCallout } from '../../../block-components';
+import { ContentCallout } from '../../../block-components';
+import { SpacingSelector } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
 	let shapeOptions = [
-		{ label: 'default', value: 'default' },
+		{ label: 'Default', value: 'default' },
 		{ label: 'square', value: 'square' },
 		{ label: 'portrait', value: 'portrait' },
 		{ label: 'landscape', value: 'landscape' },
@@ -38,7 +40,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 	]
 
 	let imageSizeOptions = [
-		{ label: 'default', value: 'default' },
+		{ label: 'Default', value: 'default' },
 		{ label: 'xsmall', value: 'xsmall' },
 		{ label: 'small', value: 'small' },
 		{ label: 'medium', value: 'medium' },
@@ -46,7 +48,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 	]
 
 	let layoutOptions = [
-		{ label: 'default', value: 'default' },
+		{ label: 'Default', value: 'default' },
 		{ label: 'horizontal', value: 'horizontal' },
 		{ label: 'vertical', value: 'vertical' },
 	]
@@ -67,32 +69,6 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(link) => setAttributes({ link })}
 						placeholder={'Enter URL here.'}
 					/>
-					{ attributes.imageSrc &&
-						<BaseControl
-							label="Focal Point Picker"
-							help="Select where you would like the image to resize around."
-						>
-							<FocalPointPicker
-								url={attributes.imageSrc}
-								dimensions={attributes.imgDimensions}
-								value={attributes.imgFocalPoint}
-								onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
-							/>
-						</BaseControl>
-					}
-
-					<MediaUploadCheck>
-						<MediaUpload
-							onSelect={(media) => setAttributes({ imageSrc: media.url })}
-							// allowedTypes={ALLOWED_MEDIA_TYPES}
-							// value={mediaId}
-							render={({ open }) => (
-								<BaseControl label="Add/Replace Card Image">
-									<Button isLink onClick={open}>Open Media Library</Button>
-								</BaseControl>
-							)}
-						/>
-					</MediaUploadCheck>
 					<TextControl
 						label="Button Text"
 						value={attributes.buttonText}
@@ -111,8 +87,37 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(videoSrc) => setAttributes({ videoSrc })}
 						placeholder={'Enter Video EMBED url here.'}
 					/>
+					<Panel>
+						<PanelBody title="Image" initialOpen={false}>
+							{ attributes.imageSrc &&
+								<BaseControl
+									label="Focal Point Picker"
+									help="Select where you would like the image to resize around."
+								>
+									<FocalPointPicker
+										url={attributes.imageSrc}
+										dimensions={attributes.imgDimensions}
+										value={attributes.imgFocalPoint}
+										onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
+									/>
+								</BaseControl>
+							}
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={(media) => setAttributes({ imageSrc: media.url })}
+									// allowedTypes={ALLOWED_MEDIA_TYPES}
+									// value={mediaId}
+									render={({ open }) => (
+										<BaseControl label="Add/Replace Card Image">
+											<Button isLink onClick={open}>Open Media Library</Button>
+										</BaseControl>
+									)}
+								/>
+							</MediaUploadCheck>
+						</PanelBody>
+					</Panel>
 				</PanelBody>
-				<PanelBody title="Display" initialOpen={false}>
+				<PanelBody title="Style" initialOpen={false}>
 					<SelectControl
 						label="Layout"
 						value={attributes.layout}
@@ -131,32 +136,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={ (shape) => setAttributes( { shape } ) }
 						options={shapeOptions}
 					/>
-				</PanelBody>	
-				<PanelBody title="layout" initialOpen={false}>
-					<SelectControl
-						label="Padding Before"
-						value={attributes.paddingBefore}
-						onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Padding After"
-						value={attributes.paddingAfter}
-						onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin Before"
-						value={attributes.marginBefore}
-						onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin After"
-						value={attributes.marginAfter}
-						onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
-						options={spacing}
-					/>
+					<SpacingSelector />
 				</PanelBody>
 			</InspectorControls>
 			<ContentCallout

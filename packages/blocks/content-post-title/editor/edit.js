@@ -1,20 +1,23 @@
-const { __ } = wp.i18n;
-const { URLInputButton } = wp.blockEditor;
-const { URLInput } = wp.blockEditor;
-const { PlainText } = wp.blockEditor;
-const { RichText } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
+const { PanelBody } = wp.components;
+const { PostTitle } = wp.editor;
 
+import { SpacingSelector } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
 	return (
-		<h1 className="wsu-c-post-title">
-			[Post Title Placeholder]
-		</h1>
+		<>
+			{
+				<InspectorControls>
+					<PanelBody title="Style" initialOpen={false}>
+						<SpacingSelector />
+					</PanelBody>
+				</InspectorControls>
+			}
+			<PostTitle />
+		</>
 	)
-
 }
-
-
 
 export default edit;

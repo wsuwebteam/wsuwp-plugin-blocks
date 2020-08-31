@@ -21,6 +21,7 @@ const {
 
 import './style.scss';
 import { spacing } from '../../../block-components';
+import { SpacingSelector } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -73,88 +74,66 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(caption) => setAttributes({ caption })}
 						placeholder={'Enter caption text here.'}
 					/>
-				</PanelBody>		
-				<PanelBody title="layout" initialOpen={false}>
-					<SelectControl
-						label="Padding Before"
-						value={attributes.paddingBefore}
-						onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Padding After"
-						value={attributes.paddingAfter}
-						onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin Before"
-						value={attributes.marginBefore}
-						onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin After"
-						value={attributes.marginAfter}
-						onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
-						options={spacing}
-					/>
+				</PanelBody>
+				<PanelBody title="Style" initialOpen={false}>
+					<SpacingSelector />
 				</PanelBody>
 			</InspectorControls>
+			
 			<div className="wsu-c-card__wrapper">
 				<div className="wsu-c-card__container">
 					<div className="wsu-c-card__content">
 						<div className="wsu-c-card__photo-frame">
 							<div className="wsu-c-card__photo-wrapper">
 								<img
-								className="wsu-c-card__photo"
-								src={attributes.imgSrc}
-								alt={attributes.imgCaption}
-								data-object-fit=""
+									className="wsu-c-card__photo"
+									src={attributes.imgSrc}
+									alt={attributes.imgCaption}
+									data-object-fit=""
 								/>
 							</div>
 						</div>
 						<h3 className="wsu-c-card__heading">
 							<RichText
-									tagName="div"
-									value={attributes.title}
-									onChange={(title) => setAttributes({ title })}
-									allowedFormats={[]}
-									placeholder="Enter title text here"
-								/></h3>
+								tagName="div"
+								value={attributes.title}
+								onChange={(title) => setAttributes({ title })}
+								allowedFormats={[]}
+								placeholder="Enter title text here"
+							/>
+						</h3>
 						<div className="wsu-c-card__subtitle">
 							<RichText
-									tagName="div"
-									value={attributes.subtitle}
-									onChange={(subtitle) => setAttributes({ subtitle })}
-									allowedFormats={[]}
-									placeholder="Enter subtitle text here"
-								/></div>
-						<div className="wsu-c-card__position-title"><RichText
-									tagName="div"
-									value={attributes.positionTitle}
-									onChange={(positionTitle) => setAttributes({ positionTitle })}
-									allowedFormats={[]}
-									placeholder="Enter position text here"
-								/></div>
+								tagName="div"
+								value={attributes.subtitle}
+								onChange={(subtitle) => setAttributes({ subtitle })}
+								allowedFormats={[]}
+								placeholder="Enter subtitle text here"
+							/>
+						</div>
+						<div className="wsu-c-card__position-title">
+							<RichText
+								tagName="div"
+								value={attributes.positionTitle}
+								onChange={(positionTitle) => setAttributes({ positionTitle })}
+								allowedFormats={[]}
+								placeholder="Enter position text here"
+							/>
+						</div>
 						<p className="wsu-c-card__description">
 							<RichText
-									tagName="div"
-									value={attributes.caption}
-									onChange={(caption) => setAttributes({ caption })}
-									allowedFormats={[]}
-									placeholder={'Enter caption text here.'}
-								/>
+								tagName="div"
+								value={attributes.caption}
+								onChange={(caption) => setAttributes({ caption })}
+								allowedFormats={[]}
+								placeholder={'Enter caption text here.'}
+							/>
 						</p>
 					</div>
 				</div>
 			</div>
-
 		</>
 	)
-
 }
-
-
 
 export default edit;

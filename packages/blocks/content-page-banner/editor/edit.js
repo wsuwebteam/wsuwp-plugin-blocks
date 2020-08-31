@@ -14,6 +14,7 @@ const {
 } = wp.blockEditor;
 
 const {
+	Panel,
 	PanelBody,
 	ToggleControl,
 	TextControl,
@@ -24,7 +25,8 @@ const {
 } = wp.components;
 
 import './style.scss';
-import { PatternControl, spacing } from '../../../block-components';
+import { PatternControl } from '../../../block-components'; // TODO: Move PatternControl from block-components to block-controls
+import { SpacingSelector } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -45,34 +47,38 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(eyebrowHeader) => setAttributes({ eyebrowHeader })}
 						placeholder={'Enter eybrow header here.'}
 					/>
-					{ attributes.imageSrc &&
-						<BaseControl
-							label="Focal Point Picker"
-							help="Select where you would like the image to resize around."
-						>
-							<FocalPointPicker
-								url={attributes.imageSrc}
-								dimensions={attributes.imgDimensions}
-								value={attributes.imgFocalPoint}
-								onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
-							/>
-						</BaseControl>
-					}
-
-					<MediaUploadCheck>
-						<MediaUpload
-							onSelect={(media) => setAttributes({ imageSrc: media.url })}
-							// allowedTypes={ALLOWED_MEDIA_TYPES}
-							// value={mediaId}
-							render={({ open }) => (
-								<BaseControl label="Add/Replace Image">
-									<Button isLink onClick={open}>Open Media Library</Button>
+					<Panel>
+						<PanelBody title="Background" initialOpen={false}>
+							{ attributes.imageSrc &&
+								<BaseControl
+									label="Focal Point Picker"
+									help="Select where you would like the image to resize around."
+								>
+									<FocalPointPicker
+										url={attributes.imageSrc}
+										dimensions={attributes.imgDimensions}
+										value={attributes.imgFocalPoint}
+										onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
+									/>
 								</BaseControl>
-							)}
-						/>
-					</MediaUploadCheck>
+							}
+
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={(media) => setAttributes({ imageSrc: media.url })}
+									// allowedTypes={ALLOWED_MEDIA_TYPES}
+									// value={mediaId}
+									render={({ open }) => (
+										<BaseControl label="Add/Replace Image">
+											<Button isLink onClick={open}>Open Media Library</Button>
+										</BaseControl>
+									)}
+								/>
+							</MediaUploadCheck>
+						</PanelBody>
+					</Panel>
 				</PanelBody>
-				<PanelBody title="Display" initialOpen={false}>
+				<PanelBody title="Style" initialOpen={false}>
 					<SelectControl
 						label="Height"
 						value={attributes.height}
@@ -138,32 +144,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(patterns) => setAttributes({ patterns})}
 						placeholder={'Enter pattern classes here.'}
 					/>
-				</PanelBody>
-				<PanelBody title="Layout" initialOpen={false}>
-					<SelectControl
-						label="Padding Before"
-						value={attributes.paddingBefore}
-						onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Padding After"
-						value={attributes.paddingAfter}
-						onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin Before"
-						value={attributes.marginBefore}
-						onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin After"
-						value={attributes.marginAfter}
-						onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
-						options={spacing}
-					/>
+					<SpacingSelector />
 				</PanelBody>
 			</InspectorControls>
 		</>

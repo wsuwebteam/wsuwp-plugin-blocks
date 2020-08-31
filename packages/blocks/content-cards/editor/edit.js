@@ -19,6 +19,7 @@ const {
 
 import BlockOptionsSelect from '../../../block-components/block-options-select';
 import { spacing } from '../../../block-components';
+import { SpacingSelector } from '../../../block-controls';
 
 const getCardTemplate = ( cardsPerRow ) => {
 
@@ -90,37 +91,15 @@ const edit = ( { className, attributes, setAttributes } ) => {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title="General">
+				{/* <PanelBody title="General">
 					
-				</PanelBody>
-				
-				<PanelBody title="Spacing" initialOpen={false}>
-					<SelectControl
-						label="Padding Before"
-						value={attributes.paddingBefore}
-						onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Padding After"
-						value={attributes.paddingAfter}
-						onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin Before"
-						value={attributes.marginBefore}
-						onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin After"
-						value={attributes.marginAfter}
-						onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
-						options={spacing}
-					/>
+				</PanelBody> */}
+
+				<PanelBody title="Style" initialOpen={false}>
+					<SpacingSelector />
 				</PanelBody>
 			</InspectorControls>
+
 			<div className="wsu-c-cards__wrapper">
 				<InnerBlocks
 					allowedBlocks={ ['wsuwp/card'] }

@@ -30,7 +30,7 @@ import {
 } from '@wordpress/icons';
 
 import HeadingLevelIcon from './heading-level-icon';
-import { spacing } from '../../../block-components';
+import { SpacingSelector } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -63,6 +63,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 								isFullWidth
 							/>
 						</BaseControl>
+					</PanelBody>
+					<PanelBody title="Style" initialOpen={false}>
 						<SelectControl
 							label="Display Style"
 							value={attributes.style}
@@ -72,77 +74,55 @@ const edit = ( { className, attributes, setAttributes } ) => {
 								{ label: 'Callout', value: 'callout' },
 							]}
 						/>
-						<AlignmentToolbar
-							value={ attributes.textAlign }
-							onChange={ ( textAlign ) =>
-								setAttributes( { textAlign: textAlign } )
-							}
-						/>
-					</PanelBody>
-					<PanelBody title="Layout" initialOpen={false}>
-						<SelectControl
-							label="Padding Before"
-							value={attributes.paddingBefore}
-							onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Padding After"
-							value={attributes.paddingAfter}
-							onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Margin Before"
-							value={attributes.marginBefore}
-							onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Margin After"
-							value={attributes.marginAfter}
-							onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
-							options={spacing}
-						/>
+						<BaseControl label="Alignment">
+							<AlignmentToolbar
+								value={ attributes.textAlign }
+								onChange={ ( textAlign ) =>
+									setAttributes( { textAlign: textAlign } )
+								}
+							/>
+						</BaseControl>
+						<SpacingSelector />
 					</PanelBody>
 				</InspectorControls>
 			}
 			<BlockControls>
-			<Toolbar>
-			<DropdownMenu
-				icon={<HeadingLevelIcon level={attributes.level} />}
-				label={<HeadingLevelIcon level="1" />}
-				controls={ [
-					{
-						title: 'Level 2',
-						icon: <HeadingLevelIcon level="2" />,
-						onClick: () => setAttributes( { level:2 } ),
-					},
-					{
-						title: 'Level 3',
-						icon: <HeadingLevelIcon level="3" />,
-						onClick: () => setAttributes( { level:3 } ),
-					},
-					{
-						title: 'Level 4',
-						icon: <HeadingLevelIcon level="4" />,
-						onClick: () => setAttributes( { level:4 } ),
-					},
-					{
-						title: 'Level 5',
-						icon: <HeadingLevelIcon level="5" />,
-						onClick: () => setAttributes( { level:5 } ),
-					},
-				] }
-			/>
-			</Toolbar>
-			<AlignmentToolbar
-							value={ attributes.textAlign }
-							onChange={ ( textAlign ) =>
-								setAttributes( { textAlign: textAlign } )
-							}
-						/>
+				<Toolbar>
+					<DropdownMenu
+						icon={<HeadingLevelIcon level={attributes.level} />}
+						label={<HeadingLevelIcon level="1" />}
+						controls={ [
+							{
+								title: 'Level 2',
+								icon: <HeadingLevelIcon level="2" />,
+								onClick: () => setAttributes( { level:2 } ),
+							},
+							{
+								title: 'Level 3',
+								icon: <HeadingLevelIcon level="3" />,
+								onClick: () => setAttributes( { level:3 } ),
+							},
+							{
+								title: 'Level 4',
+								icon: <HeadingLevelIcon level="4" />,
+								onClick: () => setAttributes( { level:4 } ),
+							},
+							{
+								title: 'Level 5',
+								icon: <HeadingLevelIcon level="5" />,
+								onClick: () => setAttributes( { level:5 } ),
+							},
+						] }
+					/>
+				</Toolbar>
+				<AlignmentToolbar
+					value={ attributes.textAlign }
+					onChange={ ( textAlign ) =>
+						setAttributes( { textAlign: textAlign } )
+					}
+				/>
 			</BlockControls>
+
 			<div className="wsu-b-heading__wrapper">
 				<RichText
 					tagName={"h" + attributes.level }
@@ -156,7 +136,6 @@ const edit = ( { className, attributes, setAttributes } ) => {
 			</div>
 		</>
 	)
-
 }
 
 

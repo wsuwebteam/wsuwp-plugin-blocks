@@ -1,23 +1,27 @@
-const { __ } = wp.i18n;
-const { URLInputButton } = wp.blockEditor;
-const { URLInput } = wp.blockEditor;
-const { PlainText } = wp.blockEditor;
-const { RichText } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
+const { PanelBody } = wp.components;
 
+import { SpacingSelector } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
 	return (
-		<div className="wsu-b-editor__search-bar__edit-wrapper">
-			<div class="wsu-b-editor__search-bar">
-				<input type="text" name="" value="" placeholder="Search" />
-				<input type="submit" name="submit" value="Search" />
+		<>
+			{
+				<InspectorControls>
+					<PanelBody title="Style" initialOpen={false}>
+						<SpacingSelector />
+					</PanelBody>
+				</InspectorControls>
+			}
+			<div className="wsu-b-editor__search-bar__edit-wrapper">
+				<div class="wsu-b-editor__search-bar">
+					<input type="text" name="" value="" placeholder="Search" />
+					<input type="submit" name="submit" value="Search" />
+				</div>
 			</div>
-		</div>
+		</>
 	)
-
 }
-
-
 
 export default edit;

@@ -14,6 +14,7 @@ const {
 } = wp.blockEditor;
 
 import { spacing } from '../../../block-components';
+import { SpacingSelector } from '../../../block-controls';
 
 const editColumn = ( { className, attributes, setAttributes } ) => {
 
@@ -21,7 +22,7 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 		<>
 			{
 				<InspectorControls>
-					<PanelBody title="General">
+					<PanelBody title="Style" initialOpen={false}>
 						<SelectControl
 							label="Background Color"
 							value={attributes.backgroundColor}
@@ -32,32 +33,7 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 								{ label: 'Gray 10%', value: 'gray-10' },
 							]}
 						/>
-					</PanelBody>
-					<PanelBody title="Spacing" initialOpen={false}>
-						<SelectControl
-							label="Padding Before"
-							value={attributes.paddingBefore}
-							onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Padding After"
-							value={attributes.paddingAfter}
-							onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Margin Before"
-							value={attributes.marginBefore}
-							onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Margin After"
-							value={attributes.marginAfter}
-							onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
-							options={spacing}
-						/>
+						<SpacingSelector />
 					</PanelBody>
 				</InspectorControls>
 			}
@@ -68,7 +44,6 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 			</div>
 		</>
 	)
-
 }
 
 export default editColumn;
