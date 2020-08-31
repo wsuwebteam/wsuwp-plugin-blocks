@@ -82,7 +82,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 								}
 							/>
 						</BaseControl>
-						<SpacingSelector />
+						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 					</PanelBody>
 				</InspectorControls>
 			}

@@ -76,7 +76,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					/>
 				</PanelBody>
 				<PanelBody title="Style" initialOpen={false}>
-					<SpacingSelector />
+					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
 			</InspectorControls>
 			

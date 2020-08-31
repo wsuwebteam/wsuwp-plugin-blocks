@@ -33,7 +33,7 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 								{ label: 'Gray 10%', value: 'gray-10' },
 							]}
 						/>
-						<SpacingSelector />
+						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 					</PanelBody>
 				</InspectorControls>
 			}

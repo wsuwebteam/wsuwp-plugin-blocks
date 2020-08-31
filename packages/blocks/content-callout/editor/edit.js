@@ -136,7 +136,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={ (shape) => setAttributes( { shape } ) }
 						options={shapeOptions}
 					/>
-					<SpacingSelector />
+					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
 			</InspectorControls>
 			<ContentCallout

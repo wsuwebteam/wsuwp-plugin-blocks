@@ -144,7 +144,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(patterns) => setAttributes({ patterns})}
 						placeholder={'Enter pattern classes here.'}
 					/>
-					<SpacingSelector />
+					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
 			</InspectorControls>
 		</>

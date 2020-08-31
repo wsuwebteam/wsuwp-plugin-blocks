@@ -136,7 +136,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 							]}
 							onChange={(verticalSpacing) => setAttributes({ verticalSpacing })}
 						/>
-						<SpacingSelector />
+						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 					</PanelBody>
 				</InspectorControls>
 			}
