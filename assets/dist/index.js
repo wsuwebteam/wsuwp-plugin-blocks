@@ -7000,7 +7000,7 @@ var edit = function edit(_ref) {
     var placeholders = [];
     var count = attributes.count < 5 ? attributes.count : 5;
 
-    for (i = 0; i < count; i++) {
+    for (var i = 0; i < count; i++) {
       placeholders.push(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuAccordion, {
         title: "Feed: Accordion Title Here"
       }));
