@@ -62,6 +62,8 @@ class Blocks {
 
 		add_filter( 'block_categories', __CLASS__ . '::add_block_categories', 10, 2 );
 
+		add_filter('block_editor_settings', __CLASS__ . '::unset_editor_default_styles');
+
 	}
 
 
@@ -181,6 +183,19 @@ class Blocks {
 
 		return $allowed_blocks;
 
+	}
+
+	/* 
+	 * Removes default editor style reset that gutenberg adds to ensure its blocks display correctly
+	 * See https://github.com/WordPress/gutenberg/issues/18595#issuecomment-555376731
+	 * 
+	 * @since 0.13.0
+	 * 
+	 */
+	public static function unset_editor_default_styles( $editor_settings ) {
+		unset($editor_settings['styles'][0]);
+
+		return $editor_settings;
 	}
 }
 
