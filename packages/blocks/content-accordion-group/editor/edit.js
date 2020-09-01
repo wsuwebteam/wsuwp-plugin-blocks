@@ -58,7 +58,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 		let count = ( attributes.count < 5 ) ? attributes.count : 5;
 
 
-		for ( i = 0; i < count; i++ ) {
+		for ( let i = 0; i < count; i++ ) {
 
 			placeholders.push( <WsuAccordion title="Feed: Accordion Title Here"></WsuAccordion> )
 
