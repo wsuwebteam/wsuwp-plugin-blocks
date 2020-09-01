@@ -31,6 +31,8 @@ class Blocks {
 		require_once $block_dir . 'content-post-title/content-post-title.php';
 		require_once $block_dir . 'content-page-banner/content-page-banner.php';
 		require_once $block_dir . 'content-accordion/content-accordion.php';
+		require_once $block_dir . 'content-accordion-group/content-accordion-group.php';
+		require_once $block_dir . 'content-separator/content-separator.php';
 
 		// EM Blocks
 		require_once $em_block_dir . 'content-separator/content-separator.php';
@@ -96,6 +98,8 @@ class Blocks {
 		Content_Post_Title::register_block();
 		Content_Page_Banner::register_block();
 		Content_Accordion::register_block();
+		Content_Accordion_Group::register_block();
+		Content_Separator::register_block();
 
 		EM_Content_Separator::register_block();
 		EM_Content_Stat::register_block();
@@ -161,6 +165,8 @@ class Blocks {
 			'wsuwp/callout',
 			'wsuwp/page-banner',
 			'wsuwp/accordion',
+			'wsuwp/accordion-group',
+			'wsuwp/separator',
 		);
 
 		$em_blocks = array(

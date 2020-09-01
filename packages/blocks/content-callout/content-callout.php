@@ -4,9 +4,9 @@ class Content_Callout extends Block_Base {
 
 	protected static $slug = 'callout';
 	protected static $default_atts = array(
+		'wrapper_class'  => '',
 		'class_name'     => '',
 		'id'             => '',
-		'wrapper_class'  => '',
 		'image_src'      => '',
 		'image_alt'      => '',
 		'image_size'     => 'default',
@@ -31,14 +31,14 @@ class Content_Callout extends Block_Base {
 
 		$atts['wrapper_class'] = static::get_classes(
 			array(
-				'class_name'       => '',
-				'margin_before'    => 'wsu-u-margin-before--',
-				'margin_after'     => 'wsu-u-margin-after--',
-				'padding_before'   => 'wsu-u-padding-before--',
-				'padding_after'    => 'wsu-u-padding-after--',
-				'shape'            => 'wsu-c-callout__image--',
-				'image_size'       => 'wsu-c-callout__image--',
-				'layout'           => 'wsu-c-callout__layout--',
+				'class_name'     => '',
+				'margin_before'  => 'wsu-u-margin-before--',
+				'margin_after'   => 'wsu-u-margin-after--',
+				'padding_before' => 'wsu-u-padding-before--',
+				'padding_after'  => 'wsu-u-padding-after--',
+				'shape'          => 'wsu-c-callout__image--',
+				'image_size'     => 'wsu-c-callout__image--',
+				'layout'         => 'wsu-c-callout__layout--',
 			),
 			$atts,
 			array( 'wsu-c-callout' )

@@ -1,4 +1,4 @@
-const spacing = [
+const spacingOptions = [
 	{ 
 		label: 'Default',
 		value: 'default' 
@@ -33,4 +33,4 @@ const spacing = [
 	}
 ];
 
-export default spacing;
+export default spacingOptions;

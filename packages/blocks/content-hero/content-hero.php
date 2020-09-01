@@ -22,6 +22,10 @@ class Content_Hero extends Block_Base {
 		'img_dimensions'    => '',
 		'style'             => 'default',
 		'vertical_spacing'  => 'default',
+		'padding_before'    => 'default',
+		'padding_after'     => 'default',
+		'margin_before'     => 'default',
+		'margin_after'      => 'default',
 	);
 
 	protected static function render( $atts, $content ) {

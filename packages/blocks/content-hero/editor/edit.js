@@ -22,6 +22,7 @@ import './style.scss';
 
 import '@wsuwebteam/build-tools/js/helpers/ranges';
 import { wsuRange } from '@wsuwebteam/build-tools/js/helpers/ranges';
+import { SpacingSelector } from '../../../block-controls';
 
 const edit = ({ className, attributes, setAttributes }) => {
 
@@ -36,7 +37,6 @@ const edit = ({ className, attributes, setAttributes }) => {
 							onChange={(title) => setAttributes({ title })}
 							placeholder={'Enter title text here.'}
 						/>
-
 						<TextControl
 							label="Subtitle"
 							value={attributes.subtitle}
@@ -55,11 +55,8 @@ const edit = ({ className, attributes, setAttributes }) => {
 							onChange={(imgCaption) => setAttributes({ imgCaption })}
 							placeholder={'Enter image caption text here.'}
 						/>
-						
-
 						<Panel>
 							<PanelBody title="Background" initialOpen={false}>
-
 								{ attributes.imgSrc &&
 									<BaseControl
 										label="Focal Point Picker"
@@ -126,7 +123,6 @@ const edit = ({ className, attributes, setAttributes }) => {
 								{ label: 'Default', value: 'default' },
 							]}
 						/>
-
 						<SelectControl
 							label="Banner Height"
 							value={attributes.verticalSpacing}
@@ -140,41 +136,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 							]}
 							onChange={(verticalSpacing) => setAttributes({ verticalSpacing })}
 						/>
-
-						<Panel>
-							<PanelBody title="Spacing" initialOpen={false}>
-								<SelectControl
-									label="Margin Before"
-									value={attributes.marginBefore}
-									options={[
-										{ label: 'Default', value: 'default' },
-										{ label: 'None', value: 'none' },
-										{ label: 'Extra Small', value: 'xsmall' },
-										{ label: 'Small', value: 'small' },
-										{ label: 'Medium', value: 'medium' },
-										{ label: 'Medium Large', value: 'medium-large' },
-										{ label: 'Large', value: 'large' },
-										{ label: 'Extra Large', value: 'xlarge' }
-									]}
-									onChange={(marginBefore) => setAttributes({ marginBefore })}
-								/>
-								<SelectControl
-									label="Margin After"
-									value={attributes.marginAfter}
-									options={[
-										{ label: 'Default', value: 'default' },
-										{ label: 'None', value: 'none' },
-										{ label: 'Extra Small', value: 'xsmall' },
-										{ label: 'Small', value: 'small' },
-										{ label: 'Medium', value: 'medium' },
-										{ label: 'Medium Large', value: 'medium-large' },
-										{ label: 'Large', value: 'large' },
-										{ label: 'Extra Large', value: 'xlarge' }
-									]}
-									onChange={(marginAfter) => setAttributes({ marginAfter })}
-								/>
-							</PanelBody>
-						</Panel>
+						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 					</PanelBody>
 				</InspectorControls>
 			}
@@ -206,7 +168,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 									value={attributes.caption}
 									onChange={(caption) => setAttributes({ caption })}
 									allowedFormats={[]}
-									placeholder={'Enter caption text here.'}
+									placeholder={'Enter caption text here'}
 								/>
 							</div>
 							<div href="#" className="wsu-c-button">
@@ -215,6 +177,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 									value={attributes.buttonText}
 									onChange={(buttonText) => setAttributes({ buttonText })}
 									allowedFormats={[]}
+									placeholder={'Button Text Here'}
 								/>
 							</div>
 						</div>

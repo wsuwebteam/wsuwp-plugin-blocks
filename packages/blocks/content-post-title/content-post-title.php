@@ -4,10 +4,14 @@ class Content_Post_Title extends Block_Base {
 
 	protected static $slug = 'post-title';
 	protected static $default_atts = array(
-		'wrapper_class' => '',
-		'class_name'    => '',
-		'id'            => '',
-		'title'         => '',
+		'wrapper_class'  => '',
+		'class_name'     => '',
+		'id'             => '',
+		'title'          => '',
+		'padding_before' => 'default',
+		'padding_after'  => 'default',
+		'margin_before'  => 'default',
+		'margin_after'   => 'default',
 	);
 
 
@@ -21,7 +25,11 @@ class Content_Post_Title extends Block_Base {
 
 		$atts['wrapper_class'] = static::get_classes(
 			array(
-				'class_name' => '',
+				'class_name'     => '',
+				'margin_before'  => 'wsu-u-margin-before--',
+				'margin_after'   => 'wsu-u-margin-after--',
+				'padding_before' => 'wsu-u-padding-before--',
+				'padding_after'  => 'wsu-u-padding-after--',
 			),
 			$atts
 		);

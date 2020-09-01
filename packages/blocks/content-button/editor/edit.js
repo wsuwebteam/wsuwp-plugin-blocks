@@ -10,25 +10,17 @@ const {
 } = wp.blockEditor;
 
 const {
+	BaseControl,
+	Panel,
 	PanelBody,
 	TextControl,
 	SelectControl,
-	FocalPointPicker,
-	BaseControl
 } = wp.components;
 
-import {
-	empty,
-	ContentButton
-} from '../../../block-components/index';
+const { WsuButton } = wsu_wds.components; 
 
-import {
-	SelectIcon
-} from '../../../block-controls/index';
-
-import { spacing } from '../../../block-components';
-
-
+import { SelectIcon, SpacingSelector } from '../../../block-controls';
+import { empty } from '../../../block-components';
 
 const edit = ( { className, attributes, setAttributes } ) => { 
 
@@ -60,18 +52,22 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							isFullWidth
 						/>
 					</BaseControl>
-					<SelectIcon 
-						label='Icon Before'
-						icon={attributes.iconBefore}
-						onchange={ ( value ) => { setAttributes( { iconBefore: value } ) } }
-						 />
-					<SelectIcon 
-						label='Icon After'
-						icon={attributes.iconAfter}
-						onchange={ ( value ) => { setAttributes( { iconAfter: value } ) } }
-						 />
+					<Panel>
+						<PanelBody title="Icon" initialOpen={false}>
+							<SelectIcon 
+								label='Icon Before'
+								icon={attributes.iconBefore}
+								onchange={ ( value ) => { setAttributes( { iconBefore: value } ) } }
+							/>
+							<SelectIcon 
+								label='Icon After'
+								icon={attributes.iconAfter}
+								onchange={ ( value ) => { setAttributes( { iconAfter: value } ) } }
+							/>
+						</PanelBody>
+					</Panel>
 				</PanelBody>
-				<PanelBody title="Display" initialOpen={false}>
+				<PanelBody title="Style" initialOpen={false}>
 					<SelectControl
 						label="Shape"
 						value={attributes.shape}
@@ -103,54 +99,41 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							{ label: 'Large', value: 'large' },
 						]}
 					/>
-					<AlignmentToolbar
-						value={ attributes.buttonAlign }
-						onChange={ ( buttonAlign ) =>
-							setAttributes( { buttonAlign: buttonAlign } )
-						}
-					/>
-				</PanelBody>
-				<PanelBody title="Layout" initialOpen={false}>
-					<SelectControl
-						label="Padding Before"
-						value={attributes.paddingBefore}
-						onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Padding After"
-						value={attributes.paddingAfter}
-						onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin Before"
-						value={attributes.marginBefore}
-						onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
-						options={spacing}
-					/>
-					<SelectControl
-						label="Margin After"
-						value={attributes.marginAfter}
-						onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
-						options={spacing}
-					/>
+					<BaseControl
+						label="Alignment"
+						help=""
+					>
+						<AlignmentToolbar
+							value={ attributes.buttonAlign }
+							onChange={ ( buttonAlign ) =>
+								setAttributes( { buttonAlign: buttonAlign } )
+							}
+						/>
+					</BaseControl>
+
+					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
 			</InspectorControls>
-			<ContentButton 
-				buttonText={attributes.buttonText}
-				buttonUrl={attributes.buttonUrl}
-				shape={attributes.shape}
-				size={attributes.size}
-				color={attributes.color}
-				setAttributes={setAttributes} 
-				className={className} 
-			/>
+
+			{/* TODO: Doesn't address changes of style options (utility classes) */}
+			<div className={ 'wsu-c-button__wrapper' }>
+				<RichText
+					tagName="div"
+					className={ 'wsu-c-button' }
+					value={ attributes.buttonText }
+					onChange={ ( buttonText ) => setAttributes( { buttonText } ) }
+					multiline={'false'}
+					allowedFormats={[]}
+					placeholder='Button Text Here ...'
+				/>
+				<URLInput
+					className={ className }
+					value={ attributes.buttonUrl }
+					onChange={ ( buttonUrl ) => setAttributes( { buttonUrl } ) }
+				/>
+			</div>
 		</>
 	)
-
 }
-
-
 
 export default edit;
