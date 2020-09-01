@@ -5,7 +5,7 @@
  */
 
 // Filters
-import '../../packages/block-components/advanced-controls';
+import '../../packages/block-controls/advanced-controls';
 
 // Editor Styles
 import './editor.scss';
@@ -17,7 +17,6 @@ import '../../packages/blocks/content-hero/editor/block';
 import '../../packages/blocks/content-columns/editor/block';
 import '../../packages/blocks/content-column/editor/block';
 import '../../packages/blocks/content-columns/editor/block';
-import '../../packages/blocks/core-paragraph/editor/block';
 import '../../packages/blocks/content-heading/editor/block';
 import '../../packages/blocks/content-button/editor/block';
 import '../../packages/blocks/content-cards/editor/block';
@@ -27,6 +26,7 @@ import '../../packages/blocks/content-post-title/editor/block';
 import '../../packages/blocks/content-search-bar/editor/block';
 import '../../packages/blocks/content-page-banner/editor/block';
 import '../../packages/blocks/content-accordion/editor/block';
+import '../../packages/blocks/content-accordion-group/editor/block';
 
 // EM Blocks
 import '../../packages/em-blocks/content-separator/editor/block'; 

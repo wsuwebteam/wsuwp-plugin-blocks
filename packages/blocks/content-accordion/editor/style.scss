@@ -88,3 +88,19 @@
 		max-height: none !important;
 	}
 }
+
+.wp-block[data-type="wsuwp/accordion"] {
+
+	&.has-child-selected,
+	&.is-selected {
+
+		.wsu-c-accordion__content {
+			max-height: none !important;
+		}
+	}
+
+	.wsu-c-accordion {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}

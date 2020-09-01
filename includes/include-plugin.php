@@ -45,6 +45,7 @@ class Plugin {
 	public function __construct() {
 
 		self::require_class( 'utilities' );
+		self::require_class( 'query' );
 
 	}
 
