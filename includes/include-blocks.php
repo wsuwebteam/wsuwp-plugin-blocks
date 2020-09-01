@@ -135,8 +135,8 @@ class Blocks {
 		);
 
 		wp_enqueue_style(
-			'wsu-design-system-bundle-editor-styles',
-			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . $wds_version . '/build/dist/platforms/wsu-design-system.wordpress.gutenberg.bundle.dist.css',
+			'wsu-design-system-bundle-content-styles',
+			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . $wds_version . '/build/dist/wsu-design-system.content.bundle.dist.css',
 			array(),
 			Plugin::get_plugin_version()
 		);
