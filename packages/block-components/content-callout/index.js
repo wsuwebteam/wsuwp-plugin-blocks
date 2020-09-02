@@ -8,7 +8,6 @@ const {
 import {
 	empty,
 	getUtilityClasses,
-	ContentButton,
 } from '../index';
 
 import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';

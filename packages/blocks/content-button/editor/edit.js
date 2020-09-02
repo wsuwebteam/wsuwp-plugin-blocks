@@ -115,23 +115,24 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				</PanelBody>
 			</InspectorControls>
 
-			{/* TODO: Doesn't address changes of style options (utility classes) */}
-			<div className={ 'wsu-c-button__wrapper' }>
-				<RichText
-					tagName="div"
-					className={ 'wsu-c-button' }
-					value={ attributes.buttonText }
-					onChange={ ( buttonText ) => setAttributes( { buttonText } ) }
-					multiline={'false'}
-					allowedFormats={[]}
-					placeholder='Button Text Here ...'
-				/>
-				<URLInput
-					className={ className }
-					value={ attributes.buttonUrl }
-					onChange={ ( buttonUrl ) => setAttributes( { buttonUrl } ) }
-				/>
-			</div>
+			<WsuButton 
+				buttonText={
+					<RichText
+						tagName="div"
+						value={ attributes.buttonText }
+						onChange={ ( buttonText ) => setAttributes( { buttonText } ) }
+						multiline={'false'}
+						allowedFormats={[]}
+						placeholder='Add Button Text'
+					/>
+				}
+				buttonUrl={attributes.buttonUrl}
+				shape={attributes.shape}
+				size={attributes.size}
+				color={attributes.color}
+				setAttributes={setAttributes}
+				className={className}
+			/>
 		</>
 	)
 }

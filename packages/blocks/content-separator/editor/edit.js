@@ -10,10 +10,7 @@ const {
 	SelectControl,
 } = wp.components;
 
-const { 
-	WsuAccordion,
-	WsuSeparator
-} = wsu_wds.components;
+const { WsuSeparator } = wsu_wds.components;
 
 import { SpacingSelector } from '../../../block-controls';
 

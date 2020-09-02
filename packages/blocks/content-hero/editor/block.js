@@ -56,7 +56,7 @@ registerBlockType(
 			},
 			imgSrc: {
 				type: 'string',
-				default: '',
+				default: 'https://s3.wp.wsu.edu/uploads/sites/2438/2020/08/Coug-Logo-on-Chinook-crop_8520.jpg',
 			},
 			imgFocalPoint: {
 				type: 'object',
