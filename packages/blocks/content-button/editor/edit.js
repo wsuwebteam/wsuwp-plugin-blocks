@@ -123,7 +123,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={ ( buttonText ) => setAttributes( { buttonText } ) }
 						multiline={'false'}
 						allowedFormats={[]}
-						placeholder='Text Here'
+						placeholder='Add Button Text'
 					/>
 				}
 				buttonUrl={attributes.buttonUrl}

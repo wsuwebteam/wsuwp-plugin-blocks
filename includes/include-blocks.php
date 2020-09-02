@@ -62,7 +62,7 @@ class Blocks {
 
 		add_filter( 'block_categories', __CLASS__ . '::add_block_categories', 10, 2 );
 
-		add_filter('block_editor_settings', __CLASS__ . '::unset_editor_default_styles');
+		add_filter( 'block_editor_settings', __CLASS__ . '::unset_editor_default_styles');
 
 	}
 

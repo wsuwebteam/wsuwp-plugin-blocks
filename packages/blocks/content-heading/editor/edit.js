@@ -13,12 +13,14 @@ const {
 } = wp.components;
 
 const {
+	AlignmentToolbar,
 	RichText,
 	URLInput,
 	InspectorControls,
 	BlockControls,
-	AlignmentToolbar,
 } = wp.blockEditor;
+
+const { WsuHeading } = wsu_wds.components;
 
 import {
 	more,
@@ -123,17 +125,22 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				/>
 			</BlockControls>
 
-			<div className="wsu-b-heading__wrapper">
+			<WsuHeading 
+				tag={ 'h' + level }
+				link={ attributes.link }
+				style={ attributes.style }
+				width={ attributes.width }
+				textAlign={ attributes.textAlign }
+			>
 				<RichText
-					tagName={"h" + attributes.level }
 					className={ 'wsu-b-heading__text' }
 					value={ attributes.content }
 					onChange={ ( content ) => setAttributes( { content } ) }
 					multiline={'false'}
 					allowedFormats={[]}
-					placeholder={'Heading Here ...'}
+					placeholder={'Add heading'}
 				/>
-			</div>
+			</WsuHeading>
 		</>
 	)
 }

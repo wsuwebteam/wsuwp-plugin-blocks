@@ -24,6 +24,8 @@ const {
 	BaseControl
 } = wp.components;
 
+const { WsuCallout } = wsu_wds.components;
+
 import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';
 import { ContentCallout } from '../../../block-components';
 import { SpacingSelector } from '../../../block-controls';
@@ -139,21 +141,24 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
 			</InspectorControls>
-			<ContentCallout
+			{console.log(attributes)}
+			<WsuCallout
 				imageAlt={attributes.imageAlt}
 				imageSize={attributes.imageSize}
 				imageSrc={attributes.imageSrc}
 				shape={attributes.shape}
 				link={attributes.link}
-				title={<RichText
-					tagName="span"
-					className='wsu-c-callout__title-control'
-					value={attributes.title }
-					onChange={ ( title ) => setAttributes( { title } ) }
-					multiline={'false'}
-					allowedFormats={[]}
-					placeholder='Title Text Here ...'
-				/>}
+				title={
+					<RichText
+						tagName="span"
+						className='wsu-c-callout__title-control'
+						value={attributes.title }
+						onChange={ ( title ) => setAttributes( { title } ) }
+						multiline={'false'}
+						allowedFormats={[]}
+						placeholder='Title Text Here'
+					/>
+				}
 				tag={attributes.tag}
 				description={attributes.description}
 				layout={attributes.layout}
@@ -162,11 +167,11 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				buttonText={attributes.buttonText}
 				buttonUrl={attributes.buttonUrl}
 				videoSrc={attributes.videoSrc}
-				>
+			>
 				<InnerBlocks
-						templateLock={ false }
-					/>
-			</ContentCallout>
+					templateLock={ false }
+				/>
+			</WsuCallout>
 		</>
 	)
 

@@ -19,6 +19,8 @@ const {
 	BaseControl
 } = wp.components;
 
+const { WsuCard } = wsu_wds.components;
+
 import './style.scss';
 import { spacing } from '../../../block-components';
 import { SpacingSelector } from '../../../block-controls';
@@ -79,6 +81,25 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
 			</InspectorControls>
+
+			<WsuCard 
+				title={
+					<RichText
+						tagName="div"
+						value={attributes.title}
+						onChange={(title) => setAttributes({ title })}
+						allowedFormats={[]}
+						placeholder="Enter title text here"
+					/>
+				}
+				description={'testing'}
+				addressLine1={'testing'}
+				addressLine2={'testing'}
+				phoneNumber={'testing'}
+				email={'testing'}
+				website={'testing'}
+				image={'testing'}
+			/>
 			
 			<div className="wsu-c-card__wrapper">
 				<div className="wsu-c-card__container">

@@ -1,5 +1,3 @@
-export { default as ContentButton } from './content-button';
-export { default as ContentCallout } from './content-callout';
 export { default as PatternControl } from './pattern-control';
 export { default as spacingOptions } from './spacing-options';
 export { default as spacing } from './spacing-options';
