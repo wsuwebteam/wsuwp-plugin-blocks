@@ -58,6 +58,10 @@
 
 	padding: 0 14px;
 
+	& .block-editor-inner-blocks {
+		width: 100%;
+	}
+
 	& > .block-editor-inner-blocks > .block-editor-block-list__layout  {
 		display: flex;
 	}

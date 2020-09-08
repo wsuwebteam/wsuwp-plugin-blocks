@@ -60,7 +60,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 
 		for ( let i = 0; i < count; i++ ) {
 
-			placeholders.push( <WsuAccordion title="Feed: Accordion Title Here"></WsuAccordion> )
+			placeholders.push( <WsuAccordion title="Feed: Accordion Title Here"></WsuAccordion> );
 
 		}
 

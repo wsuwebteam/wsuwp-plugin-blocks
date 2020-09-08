@@ -2,6 +2,7 @@ import React from 'react';
 
 const { __ } = wp.i18n;
 const { 
+	BlockControls,
 	URLInputButton,
 	URLInput,
 	PlainText,
@@ -24,6 +25,8 @@ const {
 	BaseControl
 } = wp.components;
 
+const { WsuPageBanner } = wsu_wds.components;
+
 import './style.scss';
 import { PatternControl } from '../../../block-components'; // TODO: Move PatternControl from block-components to block-controls
 import { SpacingSelector } from '../../../block-controls';
@@ -32,20 +35,19 @@ const edit = ( { className, attributes, setAttributes } ) => {
 
 	return (
 		<>
-			<pre>Page Banner</pre>
 			<InspectorControls>
 				<PanelBody title="General">
 					<TextControl
 						label="Title"
 						value={attributes.title}
 						onChange={(title) => setAttributes({ title })}
-						placeholder={'Enter title text here.'}
+						placeholder={'Add Title Text'}
 					/>
 					<TextControl
 						label="Eyebrow Header"
 						value={attributes.eyebrowHeader}
 						onChange={(eyebrowHeader) => setAttributes({ eyebrowHeader })}
-						placeholder={'Enter eybrow header here.'}
+						placeholder={'Add Eyebrow Header Text'}
 					/>
 					<Panel>
 						<PanelBody title="Background" initialOpen={false}>
@@ -123,6 +125,13 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							]
 						}
 					/>
+					{/* TODO: Abstract into reusable "accesibility warning" component */}
+					{attributes.titleTag == 'h1' && 
+						<div style={{background: '#fff491', padding: '16px', borderRadius: '10px', marginBottom: '16px'}}>
+							<div style={{fontWeight: 'bold'}}>Accessibility Warning</div> 
+							<p style={{marginBottom: '0'}}>Make sure that you are not using more than one H1 on your page! See <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html">WCAG 1.3.1 Info and Relationships</a> for more information.</p>
+						</div>
+					}
 					<AlignmentToolbar
 						value={ attributes.textAlign }
 						onChange={ ( textAlign ) => setAttributes( { textAlign } ) }
@@ -147,9 +156,40 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
 			</InspectorControls>
+			
+			<WsuPageBanner
+				title={
+					<RichText
+						tagName="div"
+						value={ attributes.title }
+						onChange={ ( title ) => setAttributes( { title } ) }
+						multiline={'false'}
+						allowedFormats={[]}
+						placeholder='Add Title Text'
+					/>
+				}
+				eyebrowHeader={
+					<RichText
+						tagName="div"
+						value={ attributes.eyebrowHeader }
+						onChange={ ( eyebrowHeader ) => setAttributes( { eyebrowHeader } ) }
+						multiline={'false'}
+						allowedFormats={[]}
+						placeholder='Add Eyebrow Header Text'
+					/>
+				}
+				imageSrc={attributes.imageSrc}
+				imageAlt={attributes.imageAlt}
+				imageCaption={attributes.imageCaption}
+				height={attributes.height}
+				isNotched={attributes.isNotched}
+				isFullBleed={attributes.isFullBleed}
+				textAlign={attributes.textAlign}
+				overlay={attributes.overlay}
+				titleTag={attributes.titleTag}
+			/>
 		</>
 	)
-
 }
 
 export default edit;
