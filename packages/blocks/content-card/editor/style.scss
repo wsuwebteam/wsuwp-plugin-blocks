@@ -46,11 +46,10 @@
 	}
 
 }
-
-.wsu-c-card__position-title {
-	padding: 0 20px;
-}
-
-.wsu-c-card__subtitle {
-	padding: 0 20px;
+.wsu-g-cards--2,
+.wsu-g-cards--3,
+.wsu-g-cards--4 {
+	.wp-block .wp-block {
+		width: initial;
+	}
 }
