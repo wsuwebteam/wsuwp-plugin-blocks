@@ -17,7 +17,7 @@ const {
 	BaseControl
 } = wp.components;
 
-import BlockOptionsSelect from '../../../block-components/block-options-select';
+import BlockOptionsSelect from '../../../block-controls/block-options-select';
 import { spacing } from '../../../block-components';
 import { SpacingSelector } from '../../../block-controls';
 

@@ -27,7 +27,6 @@ const {
 const { WsuCallout } = wsu_wds.components;
 
 import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';
-import { ContentCallout } from '../../../block-components';
 import { SpacingSelector } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {

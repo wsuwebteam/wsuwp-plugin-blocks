@@ -11,7 +11,9 @@ const {
 } = wp.blockEditor;
 
 const {
+	Panel,
 	PanelBody,
+	PanelRow,
 	TextControl,
 	SelectControl,
 	Button,
@@ -24,116 +26,88 @@ const { WsuCard } = wsu_wds.components;
 import './style.scss';
 import { spacing } from '../../../block-components';
 import { SpacingSelector } from '../../../block-controls';
+import {
+	DefaultCard,
+	DefaultCardControls,
+	PersonCard,
+	PersonCardControls,
+	NewsCard,
+	NewsCardControls,
+	CustomCard,
+	CustomCardControls
+} from '../../../block-controls/card-type-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
+
+	const cardTypes = [ 
+		{ value: 'default', label: 'Default' },
+		{ value: 'person', label: 'Person' },
+		{ value: 'news', label: 'News' },
+		{ value: 'custom', label: 'Custom' }
+	];
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody title="General">
-					{ attributes.imgSrc &&
-						<BaseControl
-							label="Focal Point Picker"
-							help="Select where you would like the image to resize around."
-						>
-							<FocalPointPicker
-								url={attributes.imgSrc}
-								dimensions={attributes.imgDimensions}
-								value={attributes.imgFocalPoint}
-								onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
-							/>
-						</BaseControl>
-					}
+			
+					<SelectControl
+						label="Type"
+						options={ cardTypes }
+						onChange={ ( cardType ) => { setAttributes( { cardType } ) } }
+						value={ attributes.cardType }
+					/>
 
-					<MediaUploadCheck>
-						<MediaUpload
-							onSelect={(media) => setAttributes({ imgSrc: media.url })}
-							// allowedTypes={ALLOWED_MEDIA_TYPES}
-							// value={mediaId}
-							render={({ open }) => (
-								<BaseControl label="Add/Replace Card Image">
-									<Button isLink onClick={open}>Open Media Library</Button>
+					{/* Show fields based on cardType */}
+
+					{ attributes.cardType == 'default' && <DefaultCardControls attributes={attributes} setAttributes={setAttributes} /> }
+
+					{ attributes.cardType == 'person' && <PersonCardControls attributes={attributes} setAttributes={setAttributes} /> }
+
+					{ attributes.cardType == 'news' && <NewsCardControls attributes={attributes} setAttributes={setAttributes} /> }
+					
+					{ attributes.cardType == 'custom' && <CustomCardControls attributes={attributes} setAttributes={setAttributes} /> }
+
+					<Panel>
+						<PanelBody title="Image" initialOpen={ false }>
+							{ attributes.imgSrc &&
+								<BaseControl
+									label="Focal Point Picker"
+									help="Select where you would like the image to resize around."
+								>
+									<FocalPointPicker
+										url={attributes.imgSrc}
+										dimensions={attributes.imgDimensions}
+										value={attributes.imgFocalPoint}
+										onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
+									/>
 								</BaseControl>
-							)}
-						/>
-					</MediaUploadCheck>
-					<TextControl
-						label="Title"
-						value={attributes.title}
-						onChange={(title) => setAttributes({ title })}
-						placeholder={'Enter title text here.'}
-					/>
+							}
 
-					<TextControl
-						label="Subtitle"
-						value={attributes.subtitle}
-						onChange={(subtitle) => setAttributes({ subtitle })}
-						placeholder={'Enter subtitle text here.'}
-					/>
-					<TextControl
-						label="Caption"
-						value={attributes.caption}
-						onChange={(caption) => setAttributes({ caption })}
-						placeholder={'Enter caption text here.'}
-					/>
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={(media) => setAttributes({ imgSrc: media.url })}
+									// allowedTypes={ALLOWED_MEDIA_TYPES}
+									// value={mediaId}
+									render={({ open }) => (
+										<BaseControl label="Add/Replace Card Image">
+											<Button isLink onClick={open}>Open Media Library</Button>
+										</BaseControl>
+									)}
+								/>
+							</MediaUploadCheck>
+						</PanelBody>
+					</Panel>
 				</PanelBody>
 				<PanelBody title="Style" initialOpen={false}>
 					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
 			</InspectorControls>
 
-			<div className="wsu-c-card__wrapper">
-				<div className="wsu-c-card__container">
-					<div className="wsu-c-card__content">
-						<div className="wsu-c-card__photo-frame">
-							<div className="wsu-c-card__photo-wrapper">
-								<img
-									className="wsu-c-card__photo"
-									src={attributes.imgSrc}
-									alt={attributes.imgCaption}
-									data-object-fit=""
-								/>
-							</div>
-						</div>
-						<h3 className="wsu-c-card__heading">
-							<RichText
-								tagName="div"
-								value={attributes.title}
-								onChange={(title) => setAttributes({ title })}
-								allowedFormats={[]}
-								placeholder="Enter title text here"
-							/>
-						</h3>
-						<div className="wsu-c-card__subtitle">
-							<RichText
-								tagName="div"
-								value={attributes.subtitle}
-								onChange={(subtitle) => setAttributes({ subtitle })}
-								allowedFormats={[]}
-								placeholder="Enter subtitle text here"
-							/>
-						</div>
-						<div className="wsu-c-card__position-title">
-							<RichText
-								tagName="div"
-								value={attributes.positionTitle}
-								onChange={(positionTitle) => setAttributes({ positionTitle })}
-								allowedFormats={[]}
-								placeholder="Enter position text here"
-							/>
-						</div>
-						<p className="wsu-c-card__description">
-							<RichText
-								tagName="div"
-								value={attributes.caption}
-								onChange={(caption) => setAttributes({ caption })}
-								allowedFormats={[]}
-								placeholder={'Enter caption text here.'}
-							/>
-						</p>
-					</div>
-				</div>
-			</div>
+			{ attributes.cardType == 'default' && <DefaultCard attributes={attributes} setAttributes={setAttributes} /> }
+			{ attributes.cardType == 'person' && <PersonCard attributes={attributes} setAttributes={setAttributes} /> }
+			{ attributes.cardType == 'news' && <NewsCard attributes={attributes} setAttributes={setAttributes} /> }
+			{ attributes.cardType == 'custom' && <CustomCard attributes={attributes} setAttributes={setAttributes} /> }
 		</>
 	)
 }
