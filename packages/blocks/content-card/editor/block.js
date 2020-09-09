@@ -153,7 +153,14 @@ registerBlockType(
 				type: 'string',
 				default: ''
 			},
-
+			authorName: {
+				type: 'string',
+				default: ''
+			},
+			authorUrl: {
+				type: 'string',
+				default: ''
+			},
 		},
 		edit
 	}
