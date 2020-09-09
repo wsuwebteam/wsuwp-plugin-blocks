@@ -24,7 +24,7 @@ const {
 } = wp.components;
 
 const { dateI18n } = wp.date;
-const { WsuCard } = wsu_wds.components;
+const { WsuCard, WsuHr } = wsu_wds.components;
 
 import { empty } from '../../block-components';
 
@@ -68,6 +68,7 @@ const DefaultCard = ( props ) => {
 				/>
 			}
 			image={{'src': props.attributes.imgSrc, 'alt': props.attributes.imgCaption}}
+			imgFocalPoint={props.attributes.imgFocalPoint}
 		/>
 	);
 }
@@ -107,7 +108,7 @@ const DefaultCardControls = ( props ) => {
 }
 
 const PersonCard = ( props ) => {
-	console.log(props);
+
 	return (
 		<WsuCard 
 			title={
@@ -119,6 +120,15 @@ const PersonCard = ( props ) => {
 					placeholder="Add person name"
 				/>
 			}
+			subtitle={
+				<RichText
+					tagName="div"
+					value={props.attributes.subtitle}
+					onChange={(subtitle) => props.setAttributes({ subtitle })}
+					allowedFormats={[]}
+					placeholder="Add subtitle"
+				/>
+			}
 			description={
 				<RichText
 					tagName="div"
@@ -126,6 +136,15 @@ const PersonCard = ( props ) => {
 					onChange={(description) => props.setAttributes({ description })}
 					allowedFormats={[]}
 					placeholder={'Add description text'}
+				/>
+			}
+			positionTitle={
+				<RichText
+					tagName="div"
+					value={props.attributes.positionTitle}
+					onChange={(positionTitle) => props.setAttributes({ positionTitle })}
+					allowedFormats={[]}
+					placeholder="Add position title"
 				/>
 			}
 			addressLine1={
@@ -174,6 +193,7 @@ const PersonCard = ( props ) => {
 				/>
 			}
 			image={{'src': props.attributes.imgSrc, 'alt': props.attributes.imgCaption}}
+			imgFocalPoint={props.attributes.imgFocalPoint}
 		/>
 	);
 }
@@ -188,20 +208,19 @@ const PersonCardControls = ( props ) => {
 				placeholder={'Add person name'}
 			/>
 
-			{/* <TextControl
+			<TextControl
 				label="Subtitle"
 				value={props.attributes.subtitle}
 				onChange={(subtitle) => props.setAttributes({ subtitle })}
 				placeholder={'Add subtitle'}
-			/> */}
+			/>
 
-
-			{/* <TextControl
-				label="Subtitle"
-				value={props.attributes.subtitle}
-				onChange={(subtitle) => props.setAttributes({ subtitle })}
-				placeholder={'Add subtitle'}
-			/> */}
+			<TextControl
+				label="Position Title"
+				value={props.attributes.positionTitle}
+				onChange={(positionTitle) => props.setAttributes({ positionTitle })}
+				placeholder={'Add position title'}
+			/>
 
 			<TextControl
 				label="Description"
@@ -250,6 +269,19 @@ const PersonCardControls = ( props ) => {
 
 const NewsCard = ( props ) => {
 
+	let date = (empty(props.attributes.date) ? '' : dateI18n(`${ 'n/j/y' }`, props.attributes.date));
+	let authorName = (empty(props.attributes.authorName) ? 'learn more' : props.attributes.authorName);
+	let authorUrl = (empty(props.attributes.authorUrl) ? 'learn more' : props.attributes.authorUrl);
+
+	let author = {
+		'name': authorName, 
+		'url': authorUrl
+	};
+
+	if (empty(props.attributes.authorName) || empty(props.attributes.authorUrl)) {
+		author = '';
+	}
+
 	return (
 		<WsuCard 
 			title={
@@ -271,6 +303,7 @@ const NewsCard = ( props ) => {
 				/>
 			}
 			image={{'src': props.attributes.imgSrc, 'alt': props.attributes.imgCaption}}
+			imgFocalPoint={props.attributes.imgFocalPoint}
 			// categories={[
 			// 	{
 			// 		'name': 'Sed category',
@@ -295,11 +328,8 @@ const NewsCard = ( props ) => {
 			// 		'url': '#'
 			// 	}
 			// ]}
-			author={{
-				'name': '', 
-				'url': ''
-			}}
-			date={dateI18n(`${ 'n/j/y' }`, props.attributes.date)}
+			author={author}
+			date={date}
 		/>
 	);
 }
@@ -321,6 +351,8 @@ const NewsCardControls = ( props ) => {
 				onChange={(description) => props.setAttributes({ description })}
 				placeholder={'Add description'}
 			/>
+
+			<WsuHr /> 
 
 			<PanelRow>
 				<span>Date</span>
@@ -345,6 +377,20 @@ const NewsCardControls = ( props ) => {
 					) }
 				/>
 			</PanelRow>
+
+			<TextControl
+				label="Author Name"
+				value={props.attributes.authorName}
+				onChange={(authorName) => props.setAttributes({ authorName })}
+				placeholder={'Add author name'}
+			/>
+
+			<TextControl
+				label="Author Url"
+				value={props.attributes.authorUrl}
+				onChange={(authorUrl) => props.setAttributes({ authorUrl })}
+				placeholder={'Add author url'}
+			/>
 		</>
 	);
 }

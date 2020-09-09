@@ -18,9 +18,9 @@ import './style.scss';
 registerBlockType(
 	"wsuwp/accordion",
 	{
-		title: "Accordion",
+		title: "Accordion Item",
 		category: "content",
-		icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 11C5 9.89543 5.89543 9 7 9H17C18.1046 9 19 9.89543 19 11V12C19 13.1046 18.1046 14 17 14H7C5.89543 14 5 13.1046 5 12V11Z" fill="white"/><path fill-rule="evenodd" clip-rule="evenodd" d="M7 7H17C19.2091 7 21 8.79086 21 11V12C21 14.2091 19.2091 16 17 16H7C4.79086 16 3 14.2091 3 12V11C3 8.79086 4.79086 7 7 7ZM7 9C5.89543 9 5 9.89543 5 11V12C5 13.1046 5.89543 14 7 14H17C18.1046 14 19 13.1046 19 12V11C19 9.89543 18.1046 9 17 9H7Z"/></svg>,
+		icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" fill="white"/><rect y="2" width="16" height="4" rx="2" fill-opacity="0.2"/><rect y="10" width="16" height="4" rx="2"/><rect y="18" width="16" height="4" rx="2" fill-opacity="0.2"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21 1C20.4477 1 20 1.44772 20 2V3H19C18.4477 3 18 3.44772 18 4C18 4.55228 18.4477 5 19 5H20V6C20 6.55228 20.4477 7 21 7C21.5523 7 22 6.55228 22 6V5H23C23.5523 5 24 4.55228 24 4C24 3.44772 23.5523 3 23 3H22V2C22 1.44772 21.5523 1 21 1Z" fill-opacity="0.2"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21 9C20.4477 9 20 9.44772 20 10V11H19C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13H20V14C20 14.5523 20.4477 15 21 15C21.5523 15 22 14.5523 22 14V13H23C23.5523 13 24 12.5523 24 12C24 11.4477 23.5523 11 23 11H22V10C22 9.44772 21.5523 9 21 9Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M21 17C20.4477 17 20 17.4477 20 18V19H19C18.4477 19 18 19.4477 18 20C18 20.5523 18.4477 21 19 21H20V22C20 22.5523 20.4477 23 21 23C21.5523 23 22 22.5523 22 22V21H23C23.5523 21 24 20.5523 24 20C24 19.4477 23.5523 19 23 19H22V18C22 17.4477 21.5523 17 21 17Z" fill-opacity="0.2"/></svg>,
 		attributes: {
 			...globalBlockAtts,
 			title: {

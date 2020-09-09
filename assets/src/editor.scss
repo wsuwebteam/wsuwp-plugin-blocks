@@ -1,3 +1,8 @@
 .wp-block {
 	max-width: 1200px;
 }
+
+.block-editor-block-inspector .components-base-control,
+.block-editor-block-inspector .components-panel__row {
+	margin-bottom: 18px;
+}
