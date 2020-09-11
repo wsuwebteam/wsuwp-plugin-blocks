@@ -52,8 +52,8 @@ const edit = ({ className, attributes, setAttributes }) => {
 					/>
 					<TextControl
 						label="Image Caption"
-						value={attributes.imgCaption}
-						onChange={(imgCaption) => setAttributes({ imgCaption })}
+						value={attributes.imageCaption}
+						onChange={(imageCaption) => setAttributes({ imageCaption })}
 						placeholder={'Add image caption text'}
 					/>
 					<Panel>
@@ -184,8 +184,8 @@ const edit = ({ className, attributes, setAttributes }) => {
 				imageCaption={
 					<RichText
 						tagName="span"
-						value={attributes.imgCaption}
-						onChange={(imgCaption) => setAttributes({ imgCaption })}
+						value={attributes.imageCaption}
+						onChange={(imageCaption) => setAttributes({ imageCaption })}
 						allowedFormats={[]}
 						placeholder="Add image caption text"
 					/>
