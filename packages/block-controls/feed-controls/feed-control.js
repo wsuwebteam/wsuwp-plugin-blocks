@@ -29,7 +29,7 @@ const FeedControls = ( { attributes, setAttributes, taxonomyOptions } ) => {
 			<TextControl
 				label="Count"
 				value={attributes.count}
-				onChange={ (count) => setAttributes( { count } ) }
+				onChange={ (count) => setAttributes( { count: parseInt( count ) } ) }
 				placeholder={'Enter # of items.'}
 			/>				
 		</PanelBody>
