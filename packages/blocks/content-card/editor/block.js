@@ -137,6 +137,10 @@ registerBlockType(
 				type: 'number',
 				default: 3,
 			},
+			addressLine1: {
+				type: 'string',
+				default: ''
+			},
 			addressLine2: {
 				type: 'string',
 				default: ''
