@@ -178,8 +178,12 @@ class Blocks {
 			'wsuwp-em/heading',
 		);
 
+		$third_party = array(
+			'gravityforms/form'
+		);
+
 		// Check for allow EM Blocks
-		$allowed_blocks = ( Options::get_option( 'block_settings_enable_em_blocks', false ) ) ? array_merge( $core_blocks, $wsu_blocks, $em_blocks ) : array_merge( $core_blocks, $wsu_blocks );
+		$allowed_blocks = ( Options::get_option( 'block_settings_enable_em_blocks', false ) ) ? array_merge( $core_blocks, $wsu_blocks, $em_blocks, $third_party) : array_merge( $core_blocks, $wsu_blocks, $third_party );
 
 		return $allowed_blocks;
 
