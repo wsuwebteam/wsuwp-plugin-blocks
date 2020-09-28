@@ -24,6 +24,7 @@ const {
 } = wp.components;
 
 const { dateI18n } = wp.date;
+
 const { WsuCard, WsuHr } = wsu_wds.components;
 
 import { empty } from '../../block-components';
@@ -383,6 +384,7 @@ const NewsCardControls = ( props ) => {
 				value={props.attributes.authorName}
 				onChange={(authorName) => props.setAttributes({ authorName })}
 				placeholder={'Add author name'}
+				help={(!empty(props.attributes.authorName) && empty(props.attributes.authorUrl) ) ? 'Author name is only displayed if a name and URL are included.' : '' }
 			/>
 
 			<TextControl
