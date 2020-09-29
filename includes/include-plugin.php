@@ -55,6 +55,7 @@ class Plugin {
 		require_once __DIR__ . '/include-options.php';
 		require_once __DIR__ . '/include-blocks.php';
 		require_once __DIR__ . '/include-customizer.php';
+		require_once __DIR__ . '/include-plugin-scripts.php';
 
 	}
 
