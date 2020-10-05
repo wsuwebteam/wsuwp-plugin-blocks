@@ -57,6 +57,8 @@ class Blocks {
 
 		add_action( 'init', __CLASS__ . '::register_block_types' );
 
+		add_action( 'init', __CLASS__ . '::register_block_shortcodes' );
+
 		add_filter( 'block_categories', __CLASS__ . '::add_block_categories', 10, 2 );
 
 	}
@@ -102,6 +104,30 @@ class Blocks {
 		EM_Content_Stat::register_block();
 		EM_Content_Callout::register_block();
 		EM_Content_Heading::register_block();
+
+	}
+
+	public static function register_block_shortcodes() {
+
+		Content_Hero::register_shortcode();
+		Content_Columns::register_shortcode();
+		Content_Column::register_shortcode();
+		Content_Heading::register_shortcode();
+		Content_Button::register_shortcode();
+		Legacy_Columns::register_shortcode();
+		Content_Cards::register_shortcode();
+		Content_Card::register_shortcode();
+		Content_Callout::register_shortcode();
+		Content_Post_Title::register_shortcode();
+		Content_Page_Banner::register_shortcode();
+		Content_Accordion::register_shortcode();
+		Content_Accordion_Group::register_shortcode();
+		Content_Separator::register_shortcode();
+
+		EM_Content_Separator::register_shortcode();
+		EM_Content_Stat::register_shortcode();
+		EM_Content_Callout::register_shortcode();
+		EM_Content_Heading::register_shortcode();
 
 	}
 

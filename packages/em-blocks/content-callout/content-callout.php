@@ -34,7 +34,6 @@ class EM_Content_Callout extends Block_Base {
 		'img_focal_point' => ['x' => '0.5', 'y' => '0.5'],
 	);
 
-
 	protected static function render( $atts, $content ) {
 
 		$base_class = ( 'default' != $atts['style'] ) ? 'wsu-c-em-callout--' . $atts['style'] : 'wsu-c-em-callout';
