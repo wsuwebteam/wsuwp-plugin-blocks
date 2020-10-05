@@ -24,6 +24,7 @@ class Plugin_Scripts {
 		add_action( 'enqueue_block_editor_assets', __CLASS__ . '::enqueue_block_editor_assets' );
 		add_action( 'wp_enqueue_scripts', __CLASS__ . '::enqueue_frontend_assets' );
 
+		// Filters
 		add_filter( 'block_editor_settings', __CLASS__ . '::unset_editor_default_styles');
 
 	}
@@ -32,33 +33,42 @@ class Plugin_Scripts {
 	public static function enqueue_block_editor_assets() {
 
 		$wds_version = ( ! empty( get_theme_mod( 'wsu_wds_settings_version' ) ) ) ? get_theme_mod( 'wsu_wds_settings_version' ) : '1.x';
+		$is_local = false;
+
+		if ( function_exists( 'wp_get_environment_type' ) && ( 'local' === wp_get_environment_type() ) && defined( 'WDS_LOCALHOST_URL' ) ) {
+			$is_local = true;
+		}
 
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-scripts',
 			Plugin::get_plugin_url() . 'assets/dist/index.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wsuwp-plugin-blocks-wds-components'),
-			Plugin::get_plugin_version( true )
+			Plugin::get_plugin_version( $is_local )
 		);
 
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-wds-components',
 			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . $wds_version . '/build/dist/wsu-design-system.components.bundle.dist.js',
 			array(),
-			Plugin::get_plugin_version()
+			Plugin::get_plugin_version( $is_local )
 		);
 
 		wp_enqueue_style(
 			'wsu-design-system-bundle',
 			Plugin::get_plugin_url() . 'assets/dist/index.css',
 			array(),
-			Plugin::get_plugin_version( true )
+			Plugin::get_plugin_version( $is_local )
 		);
 
 		wp_enqueue_style(
 			'wsu-design-system-bundle-content-styles',
 			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . $wds_version . '/build/dist/wsu-design-system.content.bundle.dist.css',
 			array(),
-			Plugin::get_plugin_version()
+			Plugin::get_plugin_version( $is_local )
+		);
+
+	}
+
 	public static function enqueue_frontend_assets() {
 
 		if ( !Options::get_option( 'block_settings_enqueue_stylesheet', false) ) {
