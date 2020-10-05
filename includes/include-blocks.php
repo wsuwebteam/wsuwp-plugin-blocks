@@ -52,17 +52,14 @@ class Blocks {
 
 	public function init() {
 
-		// Actions
-		add_action( 'enqueue_block_editor_assets', __CLASS__ . '::enqueue_block_editor_assets' );
-
 		// Filters
 		add_filter( 'allowed_block_types', __CLASS__ . '::allowed_block_types' );
 
 		add_action( 'init', __CLASS__ . '::register_block_types' );
 
-		add_filter( 'block_categories', __CLASS__ . '::add_block_categories', 10, 2 );
+		add_action( 'init', __CLASS__ . '::register_block_shortcodes' );
 
-		add_filter( 'block_editor_settings', __CLASS__ . '::unset_editor_default_styles');
+		add_filter( 'block_categories', __CLASS__ . '::add_block_categories', 10, 2 );
 
 	}
 
@@ -110,40 +107,30 @@ class Blocks {
 
 	}
 
+	public static function register_block_shortcodes() {
 
-	public static function enqueue_block_editor_assets() {
+		Content_Hero::register_shortcode();
+		Content_Columns::register_shortcode();
+		Content_Column::register_shortcode();
+		Content_Heading::register_shortcode();
+		Content_Button::register_shortcode();
+		Legacy_Columns::register_shortcode();
+		Content_Cards::register_shortcode();
+		Content_Card::register_shortcode();
+		Content_Callout::register_shortcode();
+		Content_Post_Title::register_shortcode();
+		Content_Page_Banner::register_shortcode();
+		Content_Accordion::register_shortcode();
+		Content_Accordion_Group::register_shortcode();
+		Content_Separator::register_shortcode();
 
-		$wds_version = ( ! empty( get_theme_mod( 'wsu_wds_settings_version' ) ) ) ? get_theme_mod( 'wsu_wds_settings_version' ) : '1.x';
-
-		wp_enqueue_script(
-			'wsuwp-plugin-blocks-scripts',
-			Plugin::get_plugin_url() . 'assets/dist/index.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wsuwp-plugin-blocks-wds-components'),
-			Plugin::get_plugin_version( true )
-		);
-
-		wp_enqueue_script(
-			'wsuwp-plugin-blocks-wds-components',
-			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . $wds_version . '/build/dist/wsu-design-system.components.bundle.dist.js',
-			array(),
-			Plugin::get_plugin_version()
-		);
-
-		wp_enqueue_style(
-			'wsu-design-system-bundle',
-			Plugin::get_plugin_url() . 'assets/dist/index.css',
-			array(),
-			Plugin::get_plugin_version( true )
-		);
-
-		wp_enqueue_style(
-			'wsu-design-system-bundle-content-styles',
-			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . $wds_version . '/build/dist/wsu-design-system.content.bundle.dist.css',
-			array(),
-			Plugin::get_plugin_version()
-		);
+		EM_Content_Separator::register_shortcode();
+		EM_Content_Stat::register_shortcode();
+		EM_Content_Callout::register_shortcode();
+		EM_Content_Heading::register_shortcode();
 
 	}
+
 
 	public static function allowed_block_types( $allowed_blocks ) {
 
@@ -153,7 +140,7 @@ class Blocks {
 			'core/list',
 			'core/image',
 			'core/shortcode',
-			'core/table'
+			'core/table',
 		);
 
 		$wsu_blocks = array(
@@ -179,7 +166,7 @@ class Blocks {
 		);
 
 		$third_party = array(
-			'gravityforms/form'
+			'gravityforms/form',
 		);
 
 		// Check for allow EM Blocks
@@ -189,18 +176,6 @@ class Blocks {
 
 	}
 
-	/* 
-	 * Removes default editor style reset that gutenberg adds to ensure its blocks display correctly
-	 * See https://github.com/WordPress/gutenberg/issues/18595#issuecomment-555376731
-	 * 
-	 * @since 0.13.0
-	 * 
-	 */
-	public static function unset_editor_default_styles( $editor_settings ) {
-		unset($editor_settings['styles'][0]);
-
-		return $editor_settings;
-	}
 }
 
 (new Blocks)->init();

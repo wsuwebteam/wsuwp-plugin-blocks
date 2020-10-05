@@ -38,6 +38,26 @@ class Customizer {
 			)
 		);
 
+		$wp_customize->add_setting(
+			'wsu_options[block_settings_enqueue_stylesheet]',
+			array(
+				'default'     => false,
+				'transport'   => 'refresh',
+				'type'        => 'option',
+			)
+		);
+
+		$wp_customize->add_control(
+			'wsu_options_block_settings_enqueue_stylesheet_control',
+			array(
+				'settings'    => 'wsu_options[block_settings_enqueue_stylesheet]',
+				'label'       => 'Enqueue WDS Component Stylesheet',
+				'description' => 'This option allows you to enqueue the WDS stylesheet without having to use the WDS theme.',
+				'section'     => $section_id,
+				'type'        => 'checkbox',
+			)
+		);
+
 		if ( in_array( $current_user->user_email, $authorized_admins ) ) {
 
 			$wp_customize->add_control(

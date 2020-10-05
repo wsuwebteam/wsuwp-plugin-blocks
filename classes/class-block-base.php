@@ -43,8 +43,11 @@ class Block_Base {
 		if ( static::$as_shortcode ) {
 
 			$slug = str_replace( '-', '_', static::$slug );
+			$prefix = str_replace( '-', '_', static::$prefix );
 
-			add_shortcode( $slug, array( get_called_class(), 'render_shortcode' ) );
+			$shortcode_slug = $prefix . '_' . $slug;
+
+			add_shortcode( $shortcode_slug, array( get_called_class(), 'render_shortcode' ) );
 
 		}
 
@@ -101,7 +104,7 @@ class Block_Base {
 
 	public static function render_shortcode( $atts, $content = '', $tag ) {
 
-		$atts = shortcode_atts( static::default_atts, $atts, $tag );
+		$atts = shortcode_atts( static::$default_atts, $atts, $tag );
 
 		return static::render( $atts, $content );
 
