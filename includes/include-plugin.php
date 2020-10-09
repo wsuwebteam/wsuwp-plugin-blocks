@@ -8,7 +8,7 @@
  */
 class Plugin {
 
-	protected static $version = '0.15.0';
+	protected static $version = '0.16.0';
 
 	protected static $options;
 	protected static $authorized_admins = array(
