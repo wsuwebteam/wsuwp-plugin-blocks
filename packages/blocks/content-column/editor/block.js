@@ -34,6 +34,10 @@ registerBlockType(
 				type: 'string',
 				default: 'default',
 			},
+			decorators: {
+				type: 'array',
+				default: [],
+			}
 		},
 		edit,
 		save,
