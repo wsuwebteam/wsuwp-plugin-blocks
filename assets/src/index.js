@@ -29,6 +29,7 @@ import '../../packages/blocks/content-accordion/editor/block';
 import '../../packages/blocks/content-accordion-group/editor/block';
 import '../../packages/blocks/content-separator/editor/block';
 import '../../packages/blocks/content-quote/editor/block';
+import '../../packages/blocks/content-image/editor/block';
 
 // EM Blocks
 import '../../packages/em-blocks/content-separator/editor/block'; 
