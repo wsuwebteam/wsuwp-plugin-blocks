@@ -41,6 +41,7 @@ class Blocks {
 		require_once $em_block_dir . 'content-stat/content-stat.php';
 		require_once $em_block_dir . 'content-callout/content-callout.php';
 		require_once $em_block_dir . 'content-heading/content-heading.php';
+		require_once $em_block_dir . 'content-decorator/content-decorator.php';
 
 		// Block Parts
 		require_once $block_part_dir . 'image-frame/image-frame.php';

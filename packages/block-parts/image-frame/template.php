@@ -13,4 +13,5 @@
 			/>
 		<?php if ( ! empty( $atts['link'] ) ) : ?></a><?php endif; ?>
 	</div>
+	<?php echo EM_Content_Decorator::render_from_array( $atts['decorators'] ); ?>
 </div>

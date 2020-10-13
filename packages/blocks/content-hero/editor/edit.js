@@ -24,7 +24,7 @@ import './style.scss';
 
 import '@wsuwebteam/build-tools/js/helpers/ranges';
 import { wsuRange } from '@wsuwebteam/build-tools/js/helpers/ranges';
-import { SpacingSelector } from '../../../block-controls';
+import { SpacingSelector, DecoratorControl } from '../../../block-controls';
 
 const edit = ({ className, attributes, setAttributes }) => {
 
@@ -115,7 +115,10 @@ const edit = ({ className, attributes, setAttributes }) => {
 						</PanelBody>
 					</Panel>
 				</PanelBody>
-				
+				<DecoratorControl 
+						decorators={attributes.decorators}
+						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+						/>
 				<PanelBody title="Style" initialOpen={false}>
 					<SelectControl
 						label="Display Style"
