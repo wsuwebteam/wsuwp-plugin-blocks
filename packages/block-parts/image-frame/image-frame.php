@@ -13,10 +13,14 @@ class Image_Frame extends Block_Part {
 		'wrapper_classes' => '',
 		'patterns'        => '',
 		'imgFocalPoint'   => ['x' => '0.5', 'y' => '0.5'],
+		'decorators'        => array(),
+		'has_decorators'    => false,
 	);
 
 
 	protected static function render( $atts, $content ) {
+
+		$atts['has_decorators'] = ( ! empty( $atts['decorators'] ) ) ? true : false;
 
 		$atts['wrapper_classes'] = static::get_utility_classes(
 
@@ -31,6 +35,7 @@ class Image_Frame extends Block_Part {
 					'is_bool' => true,
 					'value' => 'notched',
 				),
+				array( 'key' => 'has_decorators', 'prefix' => 'wsu-c-has-', 'is_bool' => true, 'value' => 'decorators' ),
 			),
 			$atts,
 			array( 'wsu-c-image-frame' )

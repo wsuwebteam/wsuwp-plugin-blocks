@@ -74,6 +74,12 @@ class Block_Base {
 
 	protected static function parse_atts( &$atts, $to_snake_case = true ) {
 
+		if ( is_object( $atts ) ) {
+
+			$atts = ( array ) $atts;
+
+		}
+
 		if ( $to_snake_case ) {
 
 			static::to_snake_case( $atts );

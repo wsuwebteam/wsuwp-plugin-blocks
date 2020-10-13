@@ -2,6 +2,7 @@
 
 <div<?php if (!empty($atts['wrapper_class'])) : ?> class="<?php echo esc_attr( $atts['wrapper_class']); ?>"<?php endif; ?><?php if (!empty($atts['id'])) : ?> id="<?php echo esc_attr( $atts['id'] ); ?>"<?php endif; ?>>
 	<div class="wsu-c-hero__container" style="background-image: url(<?php echo esc_attr( $atts['img_src'] ); ?>)">
+		<?php echo EM_Content_Decorator::render_from_array( $atts['decorators'] ); ?>
 		<div class="wsu-c-hero__content">
 			<?php if ( ! empty( $atts['title'] ) ) : ?>
 				<<?php echo esc_html( $atts['title_tag'] ); ?> class="wsu-c-hero__title"><?php echo esc_html( $atts['title'] ); ?></<?php echo esc_html( $atts['title_tag'] ); ?>>

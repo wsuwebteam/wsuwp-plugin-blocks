@@ -6996,10 +6996,54 @@ function _arrayLikeToArray(arr, len) {
 var _wp$components = wp.components,
     TextControl = _wp$components.TextControl,
     PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl;
+    PanelRow = _wp$components.PanelRow,
+    SelectControl = _wp$components.SelectControl,
+    ToggleControl = _wp$components.ToggleControl;
 var decoratorOptions = [{
   label: 'Crimson Bar',
   value: 'crimson-bar'
+}, {
+  label: 'Crimson Bar | Light',
+  value: 'crimson-bar-light'
+}, {
+  label: 'Angled Lines | Gray',
+  value: 'angled-lines-gray'
+}, {
+  label: 'Angled Lines | Crimson',
+  value: 'angled-lines-crimson'
+}, {
+  label: 'Plus | Gray',
+  value: 'plus-gray'
+}, {
+  label: 'Plus | Crimson',
+  value: 'plus-crimson'
+}, {
+  label: 'Text | White',
+  value: 'text-white'
+}, {
+  label: 'Text | Outline Gray',
+  value: 'text-outline-gray'
+}, {
+  label: 'Text | Outline Crimson',
+  value: 'text-outline-crimson'
+}, {
+  label: 'Cougar | White',
+  value: 'cougar-head-white'
+}, {
+  label: 'Cougar | Crimson',
+  value: 'cougar-head-crimson'
+}, {
+  label: 'Overlay | Crimson',
+  value: 'overlay-crimson'
+}, {
+  label: 'Overlay | gray',
+  value: 'overlay-gray'
+}, {
+  label: 'WSU Watermark Vert | White',
+  value: 'wsu-watermark-vertical-white'
+}, {
+  label: 'WSU Watermark Vert | Crimson',
+  value: 'wsu-watermark-vertical-crimson'
 }];
 
 var getDecoratorLabel = function getDecoratorLabel(slug) {
@@ -7029,12 +7073,16 @@ var getDecoratorLabel = function getDecoratorLabel(slug) {
 var Decorator = function Decorator(props) {
   var type = props.decorator.hasOwnProperty('type') ? props.decorator.type : '';
   var label = getDecoratorLabel(type);
+  var text = props.decorator.hasOwnProperty('text') ? props.decorator.text : '';
   var positionTop = props.decorator.hasOwnProperty('positionTop') ? props.decorator.positionTop : '';
   var positionBottom = props.decorator.hasOwnProperty('positionBottom') ? props.decorator.positionBottom : '';
   var positionRight = props.decorator.hasOwnProperty('positionRight') ? props.decorator.positionRight : '';
   var positionLeft = props.decorator.hasOwnProperty('positionLeft') ? props.decorator.positionLeft : '';
   var width = props.decorator.hasOwnProperty('width') ? props.decorator.width : '';
   var height = props.decorator.hasOwnProperty('height') ? props.decorator.height : '';
+  var hideOnMobile = props.decorator.hasOwnProperty('hideOnMobile') ? props.decorator.hideOnMobile : false;
+  var hideOnTablet = props.decorator.hasOwnProperty('hideOnTablet') ? props.decorator.hideOnTablet : false;
+  var hideOnDesktop = props.decorator.hasOwnProperty('hideOnDesktop') ? props.decorator.hideOnDesktop : false;
 
   if (!label) {
     return null;
@@ -7042,7 +7090,7 @@ var Decorator = function Decorator(props) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelBody, {
       title: label,
       initialOpen: false
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
       label: "Top",
       value: positionTop,
       onChange: function onChange(value) {
@@ -7050,19 +7098,61 @@ var Decorator = function Decorator(props) {
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
       label: "Bottom",
-      value: positionBottom
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
+      value: positionBottom,
+      onChange: function onChange(value) {
+        props.updateDecorator(props.index, 'positionBottom', value);
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
       label: "Right",
-      value: positionRight
+      value: positionRight,
+      onChange: function onChange(value) {
+        props.updateDecorator(props.index, 'positionRight', value);
+      }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
       label: "left",
-      value: positionLeft
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
+      value: positionLeft,
+      onChange: function onChange(value) {
+        props.updateDecorator(props.index, 'positionLeft', value);
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
       label: "Width",
-      value: width
+      value: width,
+      onChange: function onChange(value) {
+        props.updateDecorator(props.index, 'width', value);
+      }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
       label: "Height",
-      value: height
+      value: height,
+      onChange: function onChange(value) {
+        props.updateDecorator(props.index, 'height', value);
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(TextControl, {
+      label: "Text",
+      value: text,
+      onChange: function onChange(value) {
+        props.updateDecorator(props.index, 'text', value);
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(ToggleControl, {
+      label: "Hide on Mobile",
+      help: hideOnMobile ? 'Hidden.' : 'Visible.',
+      checked: hideOnMobile,
+      onChange: function onChange(value) {
+        props.updateDecorator(props.index, 'hideOnMobile', value);
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(ToggleControl, {
+      label: "Hide on Tablet",
+      help: hideOnTablet ? 'Hidden.' : 'Visible.',
+      checked: hideOnTablet,
+      onChange: function onChange(value) {
+        props.updateDecorator(props.index, 'hideOnTablet', value);
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(ToggleControl, {
+      label: "Hide on Desktop",
+      help: hideOnDesktop ? 'Hidden.' : 'Visible.',
+      checked: hideOnDesktop,
+      onChange: function onChange(value) {
+        props.updateDecorator(props.index, 'hideOnDesktop', value);
+      }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("button", {
       onClick: function onClick(event) {
         props.removeDecorator(props.index);
@@ -7129,7 +7219,9 @@ var DecoratorControl = /*#__PURE__*/function (_React$Component) {
         initialOpen: false
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(SelectControl, {
         label: "Select Decorator",
-        value: this.state.selectedDecorator,
+        onChange: function onChange(value) {
+          _this2.state.selectedDecorator = value;
+        },
         options: decoratorOptions
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])("button", {
         onClick: function onClick(event) {
@@ -8507,6 +8599,10 @@ registerBlockType("wsuwp/callout", {
         width: 1070,
         height: 500
       }
+    },
+    decorators: {
+      type: 'array',
+      default: []
     }
   }),
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -8682,7 +8778,14 @@ var edit = function edit(_ref) {
         onClick: open
       }, "Open Media Library"));
     }
-  }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+  }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["DecoratorControl"], {
+    decorators: attributes.decorators,
+    onChange: function onChange(decoratorArray) {
+      setAttributes({
+        decorators: decoratorArray
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "Style",
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
@@ -9825,6 +9928,10 @@ registerBlockType("wsuwp/columns", {
     verticalSpacing: {
       type: 'string',
       default: 'default'
+    },
+    decorators: {
+      type: 'array',
+      default: []
     }
   }),
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -10050,7 +10157,14 @@ var ColumnsEdit = function ColumnsEdit(_ref) {
         return LayoutOption(layout, attributes, setAttributes);
       })));
     } else {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["DecoratorControl"], {
+        decorators: attributes.decorators,
+        onChange: function onChange(decoratorArray) {
+          setAttributes({
+            decorators: decoratorArray
+          });
+        }
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
         title: "Style",
         initialOpen: false
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
@@ -10665,6 +10779,10 @@ registerBlockType("wsuwp/content-hero", {
     verticalSpacing: {
       type: 'string',
       default: 'default'
+    },
+    decorators: {
+      type: 'array',
+      default: []
     }
   }),
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -10815,7 +10933,14 @@ var edit = function edit(_ref) {
       label: 'Default',
       value: 'default'
     }]
-  })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+  })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["DecoratorControl"], {
+    decorators: attributes.decorators,
+    onChange: function onChange(decoratorArray) {
+      setAttributes({
+        decorators: decoratorArray
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "Style",
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
@@ -11159,6 +11284,10 @@ registerBlockType("wsuwp/page-banner", {
     titleTag: {
       type: 'string',
       default: 'h2'
+    },
+    decorators: {
+      type: 'array',
+      default: []
     }
   }),
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -11268,7 +11397,14 @@ var edit = function edit(_ref) {
         onClick: open
       }, "Open Media Library"));
     }
-  }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+  }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_4__["DecoratorControl"], {
+    decorators: attributes.decorators,
+    onChange: function onChange(decoratorArray) {
+      setAttributes({
+        decorators: decoratorArray
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "Style",
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
@@ -12435,6 +12571,10 @@ registerBlockType("wsuwp-em/callout", {
     id: {
       type: 'string',
       default: ''
+    },
+    decorators: {
+      type: 'array',
+      default: []
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -12459,6 +12599,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./packages/em-blocks/content-callout/editor/style.scss");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _block_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../block-components */ "./packages/block-components/index.js");
+/* harmony import */ var _block_controls__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../block-controls */ "./packages/block-controls/index.js");
 
 
 var __ = wp.i18n.__;
@@ -12479,6 +12620,7 @@ var _wp$components = wp.components,
     Button = _wp$components.Button,
     FocalPointPicker = _wp$components.FocalPointPicker,
     BaseControl = _wp$components.BaseControl;
+
 
 
 
@@ -12754,7 +12896,14 @@ var edit = function edit(_ref) {
       });
     },
     options: _block_components__WEBPACK_IMPORTED_MODULE_3__["spacing"]
-  }))));
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_4__["DecoratorControl"], {
+    decorators: attributes.decorators,
+    onChange: function onChange(decoratorArray) {
+      setAttributes({
+        decorators: decoratorArray
+      });
+    }
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (edit);

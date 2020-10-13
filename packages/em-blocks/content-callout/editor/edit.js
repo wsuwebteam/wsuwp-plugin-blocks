@@ -25,6 +25,11 @@ const {
 import './style.scss';
 import { PatternControl, spacing } from '../../../block-components';
 
+import { 
+	SpacingSelector,
+	DecoratorControl
+} from '../../../block-controls';
+
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -214,6 +219,10 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						options={spacing}
 					/>
 				</PanelBody>
+				<DecoratorControl 
+					decorators={attributes.decorators}
+					onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+					/>
 			</InspectorControls>
 		</>
 	)

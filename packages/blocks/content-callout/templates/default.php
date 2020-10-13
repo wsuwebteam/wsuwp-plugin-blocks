@@ -3,7 +3,7 @@
 <div<?php if (!empty($atts['wrapper_class'])) : ?> class="<?php echo esc_attr( $atts['wrapper_class']); ?>"<?php endif; ?><?php if (!empty($atts['id'])) : ?> id="<?php echo esc_attr( $atts['id'] ); ?>"<?php endif; ?>>
 	<div class="wsu-c-callout__container">
 		<?php if ( ! empty( $atts['image_src'] ) || ! empty( $atts['video_src'] ) ) : ?>
-			<div class="wsu-c-callout__image-frame">
+			<div class="wsu-c-callout__image-frame<?php if ( ! empty( $atts['has_decorators'] ) ) : ?> wsu-c-has-decorators<?php endif; ?>">
 				<div class="wsu-c-callout__image-wrapper">
 					<?php if ( ! empty( $atts['video_src'] ) ) : ?>
 						<iframe
@@ -22,6 +22,7 @@
 						<?php if ( ! empty( $atts['link'] ) ) : ?></a><?php endif; ?>
 					<?php endif; ?>
 				</div>
+				<?php echo EM_Content_Decorator::render_from_array( $atts['decorators'] ); ?>
 			</div>
 		<?php endif; ?>
 		<div class="wsu-c-callout__content">

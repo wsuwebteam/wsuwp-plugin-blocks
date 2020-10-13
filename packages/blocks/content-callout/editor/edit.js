@@ -27,7 +27,7 @@ const {
 const { WsuCallout } = wsu_wds.components;
 
 import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';
-import { SpacingSelector } from '../../../block-controls';
+import { SpacingSelector, DecoratorControl } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -118,6 +118,10 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						</PanelBody>
 					</Panel>
 				</PanelBody>
+				<DecoratorControl 
+						decorators={attributes.decorators}
+						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+						/>
 				<PanelBody title="Style" initialOpen={false}>
 					<SelectControl
 						label="Layout"

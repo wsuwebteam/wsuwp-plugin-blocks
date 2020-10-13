@@ -132,6 +132,10 @@ registerBlockType(
 				type: 'string',
 				default: ''
 			},
+			decorators: {
+				type: 'array',
+				default: [],
+			}
 		},
 
 		edit,
