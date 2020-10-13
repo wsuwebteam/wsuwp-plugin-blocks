@@ -91,6 +91,10 @@ registerBlockType(
 					width: 1070,
 					height: 500
 				}
+			},
+			decorators: {
+				type: 'array',
+				default: [],
 			}
 		},
 		edit,

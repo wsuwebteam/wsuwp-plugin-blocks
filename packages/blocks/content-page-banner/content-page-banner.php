@@ -24,10 +24,14 @@ class Content_Page_Banner extends Block_Base {
 		'overlay'         => 'default',
 		'text_align'      => 'default',
 		'title_tag'       => 'h2',
+		'decorators'        => array(),
+		'has_decorators'    => false,
 	);
 
 
 	protected static function render( $atts, $content ) {
+
+		$atts['has_decorators'] = ( ! empty( $atts['decorators'] ) ) ? true : false;
 
 		$atts['overlay'] = ( ! empty( $atts['title'] ) && 'default' == $atts['overlay'] ) ? 'gray' : 'default';
 
@@ -42,6 +46,7 @@ class Content_Page_Banner extends Block_Base {
 				array( 'key' => 'height', 'prefix' => 'wsu-c-page-banner__image--' ),
 				array( 'key' => 'overlay', 'prefix' => 'wsu-c-page-banner__overlay--' ),
 				array( 'key' => 'is_full_bleed', 'prefix' => 'wsu-c-page-banner--', 'is_bool' => true, 'value' => 'full-bleed' ),
+				array( 'key' => 'has_decorators', 'prefix' => 'wsu-c-has-', 'is_bool' => true, 'value' => 'decorators' ),
 			),
 			$atts,
 			array( 'wsu-c-page-banner' )

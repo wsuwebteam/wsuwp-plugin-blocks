@@ -87,6 +87,10 @@ registerBlockType(
 				type: 'string',
 				default: 'h2'
 			},
+			decorators: {
+				type: 'array',
+				default: [],
+			}
 		},
 		edit
 

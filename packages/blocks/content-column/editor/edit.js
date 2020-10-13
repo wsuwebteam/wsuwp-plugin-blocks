@@ -14,7 +14,10 @@ const {
 } = wp.blockEditor;
 
 import { spacing } from '../../../block-components';
-import { SpacingSelector } from '../../../block-controls';
+import { 
+	SpacingSelector,
+	DecoratorControl
+} from '../../../block-controls';
 
 const editColumn = ( { className, attributes, setAttributes } ) => {
 
@@ -35,6 +38,10 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 						/>
 						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 					</PanelBody>
+					<DecoratorControl 
+						decorators={attributes.decorators}
+						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+						/>
 				</InspectorControls>
 			}
 			<div className="wsu-c-column wsu-u-no-js">

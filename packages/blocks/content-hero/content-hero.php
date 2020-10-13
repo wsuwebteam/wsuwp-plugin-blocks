@@ -26,9 +26,13 @@ class Content_Hero extends Block_Base {
 		'padding_after'     => 'default',
 		'margin_before'     => 'default',
 		'margin_after'      => 'default',
+		'decorators'        => array(),
+		'has_decorators'    => false,
 	);
 
 	protected static function render( $atts, $content ) {
+
+		$atts['has_decorators'] = ( ! empty( $atts['decorators'] ) ) ? true : false;
 
 		$atts['wrapper_class'] = static::get_utility_classes(
 			array(
@@ -37,6 +41,7 @@ class Content_Hero extends Block_Base {
 				array( 'key' => 'margin_after', 'prefix' => 'wsu-u-margin-after--'),
 				array( 'key' => 'padding_before', 'prefix' => 'wsu-u-padding-before--'),
 				array( 'key' => 'padding_after', 'prefix' => 'wsu-u-padding-after--'),
+				array( 'key' => 'has_decorators', 'prefix' => 'wsu-c-has-', 'is_bool' => true, 'value' => 'decorators' ),
 			),
 			$atts,
 			array( 'wsu-c-hero__wrapper', 'wsu-u-no-js', 'wsu-c-full-width' )

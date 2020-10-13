@@ -24,21 +24,25 @@ class Content_Callout extends Block_Base {
 		'padding_before' => 'default',
 		'padding_after'  => 'default',
 		'imgFocalPoint'  => ['x' => '0.5', 'y' => '0.5'],
+		'decorators'        => array(),
+		'has_decorators'    => false,
 	);
 
 
 	protected static function render( $atts, $content ) {
 
-		$atts['wrapper_class'] = static::get_classes(
+		$atts['has_decorators'] = ( ! empty( $atts['decorators'] ) ) ? true : false;
+
+		$atts['wrapper_class'] = static::get_utility_classes(
 			array(
-				'class_name'     => '',
-				'margin_before'  => 'wsu-u-margin-before--',
-				'margin_after'   => 'wsu-u-margin-after--',
-				'padding_before' => 'wsu-u-padding-before--',
-				'padding_after'  => 'wsu-u-padding-after--',
-				'shape'          => 'wsu-c-callout__image--',
-				'image_size'     => 'wsu-c-callout__image--',
-				'layout'         => 'wsu-c-callout__layout--',
+				array( 'key' => 'class_name', 'prefix' => '' ),
+				array( 'key' => 'margin_before', 'prefix' => 'wsu-u-margin-before--' ),
+				array( 'key' => 'margin_after', 'prefix' => 'wsu-u-margin-after--' ),
+				array( 'key' => 'padding_before', 'prefix' => 'wsu-u-padding-before--' ),
+				array( 'key' => 'padding_after', 'prefix' => 'wsu-u-padding-after--' ),
+				array( 'key' => 'shape', 'prefix' => 'wsu-c-callout__image--' ),
+				array( 'key' => 'image_size', 'prefix' => 'wsu-c-callout__image--' ),
+				array( 'key' => 'layout', 'prefix' => 'wsu-c-callout__layout--' ),
 			),
 			$atts,
 			array( 'wsu-c-callout' )

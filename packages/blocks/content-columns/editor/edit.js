@@ -16,7 +16,7 @@ const {
 } = wp.components;
 
 import EditOptions from './edit-options';
-import { SpacingSelector } from '../../../block-controls';
+import { SpacingSelector, DecoratorControl } from '../../../block-controls';
 
 const columnFormats = [
 
@@ -126,6 +126,10 @@ const ColumnsEdit = ( { className, attributes, setAttributes } ) => {
 				<>
 					{
 						<InspectorControls>
+							<DecoratorControl 
+								decorators={attributes.decorators}
+								onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+								/>
 							<PanelBody title="Style" initialOpen={false}>
 								<SelectControl
 									label="Background Color"
