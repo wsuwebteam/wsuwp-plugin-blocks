@@ -42,6 +42,7 @@ class Blocks {
 		require_once $em_block_dir . 'content-callout/content-callout.php';
 		require_once $em_block_dir . 'content-heading/content-heading.php';
 		require_once $em_block_dir . 'content-decorator/content-decorator.php';
+		require_once $em_block_dir . 'content-hero/content-hero.php';
 
 		// Block Parts
 		require_once $block_part_dir . 'image-frame/image-frame.php';
@@ -109,6 +110,7 @@ class Blocks {
 		EM_Content_Stat::register_block();
 		EM_Content_Callout::register_block();
 		EM_Content_Heading::register_block();
+		EM_Content_Hero::register_block();
 
 	}
 
@@ -135,6 +137,7 @@ class Blocks {
 		EM_Content_Stat::register_shortcode();
 		EM_Content_Callout::register_shortcode();
 		EM_Content_Heading::register_shortcode();
+		EM_Content_Hero::register_shortcode();
 
 	}
 
@@ -172,6 +175,7 @@ class Blocks {
 			'wsuwp-em/stat',
 			'wsuwp-em/callout',
 			'wsuwp-em/heading',
+			'wsuwp-em/hero',
 		);
 
 		$third_party = array(

@@ -5,18 +5,30 @@ class Plugin_Scripts {
 
 
 	protected static $option_key = 'wsu_options';
+	protected static $version = '1.x';
+	protected static $is_local = false;
 
+	public function __construct() {
+
+		self::$version = ( ! empty( get_theme_mod( 'wsu_wds_settings_version' ) ) ) ? get_theme_mod( 'wsu_wds_settings_version' ) : '1.x';
+		self::$is_local = ( function_exists( 'wp_get_environment_type' ) && ( 'local' === wp_get_environment_type() ) && defined( 'WDS_LOCALHOST_URL' ) ) ? WDS_LOCALHOST_URL : false;
+
+	}
 
 	public static function get( $property ) {
 
 		switch ( $property ) {
 			case 'option_key':
 				return self::$option_key;
+			case 'version':
+				return self::$version;
+			case 'is_local':
+				return self::$is_local;
 			default:
 				return '';
 		}
-	}
 
+	}
 
 	public function init() {
 
@@ -32,39 +44,37 @@ class Plugin_Scripts {
 
 	public static function enqueue_block_editor_assets() {
 
-		$wds_version = ( ! empty( get_theme_mod( 'wsu_wds_settings_version' ) ) ) ? get_theme_mod( 'wsu_wds_settings_version' ) : '1.x';
-		$local_host  = ( function_exists( 'wp_get_environment_type' ) && ( 'local' === wp_get_environment_type() ) && defined( 'WDS_LOCALHOST_URL' ) ) ? WDS_LOCALHOST_URL : false;
-
+		// Block Editor
 		wp_enqueue_script(
 			'wsuwp-plugin-blocks-scripts',
 			Plugin::get_plugin_url() . 'assets/dist/index.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wsuwp-plugin-blocks-wds-components'),
-			Plugin::get_plugin_version( $local_host )
-		);
-
-		$wsu_design_system_bundle = ( $local_host ) ? $local_host . '/bundles/dist/wsu-design-system.components.bundle.dist.js' : 'https://cdn.web.wsu.edu/designsystem/' . $wds_version . '/build/dist/wsu-design-system.components.bundle.dist.js';
-
-		wp_enqueue_script(
-			'wsuwp-plugin-blocks-wds-components',
-			$wsu_design_system_bundle,
-			array(),
-			Plugin::get_plugin_version( $local_host )
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wsu_design_system_bundle_component_scripts'),
+			Plugin::get_plugin_version( self::get('is_local') )
 		);
 
 		wp_enqueue_style(
-			'wsu-design-system-bundle',
+			'wsuwp-plugin-blocks-styles',
 			Plugin::get_plugin_url() . 'assets/dist/index.css',
 			array(),
-			Plugin::get_plugin_version( $local_host )
+			Plugin::get_plugin_version( self::get('is_local') )
 		);
 
-		$wsu_design_system_bundle_content_styles = ( $local_host ) ? $local_host . '/bundles/dist/wsu-design-system.content.bundle.dist.css' : 'https://cdn.web.wsu.edu/designsystem/' . $wds_version . '/build/dist/wsu-design-system.content.bundle.dist.css';
+		// WSU WDS Assets
+		$wsu_design_system_bundle_component_scripts = ( self::get('is_local') ) ? WDS_LOCALHOST_URL . '/bundles/dist/wsu-design-system.components.bundle.dist.js' : 'https://cdn.web.wsu.edu/designsystem/' . $wds_version . '/build/dist/wsu-design-system.components.bundle.dist.js';
+		$wsu_design_system_bundle_component_styles = ( self::get('is_local') ) ? WDS_LOCALHOST_URL . '/bundles/dist/wsu-design-system.components.bundle.dist.css' : 'https://cdn.web.wsu.edu/designsystem/' . $wds_version . '/build/dist/wsu-design-system.components.bundle.dist.css';
+
+		wp_enqueue_script(
+			'wsu_design_system_bundle_component_scripts',
+			$wsu_design_system_bundle_component_scripts,
+			array(),
+			Plugin::get_plugin_version( self::get('is_local') )
+		);
 
 		wp_enqueue_style(
-			'wsu-design-system-bundle-content-styles',
-			$wsu_design_system_bundle_content_styles,
+			'wsu_design_system_bundle_component_styles',
+			$wsu_design_system_bundle_component_styles,
 			array(),
-			Plugin::get_plugin_version( $local_host )
+			Plugin::get_plugin_version( self::get('is_local') )
 		);
 
 	}
@@ -75,18 +85,11 @@ class Plugin_Scripts {
 			return;
 		}
 
-		$wds_version = ( ! empty( get_theme_mod( 'wsu_wds_settings_version' ) ) ) ? get_theme_mod( 'wsu_wds_settings_version' ) : '1.x';
-		$is_local = false;
-
-		if ( function_exists( 'wp_get_environment_type' ) && ( 'local' === wp_get_environment_type() ) && defined( 'WDS_LOCALHOST_URL' ) ) {
-			$is_local = true;
-		}
-
 		wp_enqueue_style(
 			'wsu-design-system-bundle-component-styles',
-			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . $wds_version . '/build/dist/wsu-design-system.components.bundle.dist.css',
+			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . self::get('version') . '/build/dist/wsu-design-system.components.bundle.dist.css',
 			array(),
-			Plugin::get_plugin_version( $is_local )
+			Plugin::get_plugin_version( self::get('is_local') )
 		);
 
 	}

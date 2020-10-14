@@ -5,7 +5,7 @@
  */
 
 // Filters
-import '../../packages/block-controls/advanced-controls';
+import '../../packages/block-controls/filters/advanced-controls';
 
 // Editor Styles
 import './editor.scss';
@@ -32,10 +32,11 @@ import '../../packages/blocks/content-quote/editor/block';
 import '../../packages/blocks/content-image/editor/block';
 
 // EM Blocks
-import '../../packages/em-blocks/content-separator/editor/block'; 
-import '../../packages/em-blocks/content-stat/editor/block'; 
+import '../../packages/em-blocks/content-separator/editor/block';
+import '../../packages/em-blocks/content-stat/editor/block';
 import '../../packages/em-blocks/content-callout/editor/block';
-import '../../packages/em-blocks/content-heading/editor/block'; 
+import '../../packages/em-blocks/content-heading/editor/block';
+import '../../packages/em-blocks/content-hero/editor/block';
 
 // Block Collections
 import '../../packages/block-collections';
