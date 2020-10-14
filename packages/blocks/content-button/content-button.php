@@ -9,6 +9,7 @@ class Content_Button extends Block_Base {
 		'id'             => '',
 		'button_text'    => '',
 		'button_url'     => '',
+		'style'          => 'default',
 		'shape'          => 'default',
 		'color'          => 'default',
 		'size'           => 'default',
@@ -36,18 +37,19 @@ class Content_Button extends Block_Base {
 				'button_align'     => 'wsu-u-textalign--',
 			),
 			$atts,
-			array('wsu-c-button__wrapper')
+			array( 'wsu-c-button__wrapper' )
 		);
+
+		$base_class = ( 'link' === $atts['style'] ) ? 'wsu-c-button--' . $atts['style'] : 'wsu-c-button';
 
 		$atts['button_class'] = static::get_classes(
 			array(
-				'style' => 'wsu-c-heading--',
 				'shape' => 'wsu-c-button--',
 				'color' => 'wsu-c-button--',
 				'size'  => 'wsu-c-button--',
 			),
 			$atts,
-			array('wsu-c-button')
+			array( $base_class )
 		);
 
 		$content = ( ! empty( $content ) ) ? $content : $atts['button_text'];

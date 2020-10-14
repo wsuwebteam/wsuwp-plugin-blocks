@@ -69,6 +69,15 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				</PanelBody>
 				<PanelBody title="Style" initialOpen={false}>
 					<SelectControl
+						label="Display Style"
+						value={attributes.style}
+						onChange={ ( style ) => setAttributes({ style }) }
+						options={[
+							{ label: 'Default', value: 'default' },
+							{ label: 'Link', value: 'link' },
+						]}
+					/>
+					<SelectControl
 						label="Shape"
 						value={attributes.shape}
 						options={[

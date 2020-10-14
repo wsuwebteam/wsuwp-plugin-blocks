@@ -30,6 +30,10 @@ registerBlockType(
 				type: 'string',
 				default: '',
 			},
+			style: {
+				type: 'string',
+				default: 'default',
+			},
 			shape: {
 				type: 'string',
 				default: 'default',
