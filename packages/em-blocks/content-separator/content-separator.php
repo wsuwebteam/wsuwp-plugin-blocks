@@ -24,11 +24,11 @@ class EM_Content_Separator extends Block_Base {
 				array( 'key' => 'margin_after', 'prefix' => 'wsu-u-margin-after--'),
 				array( 'key' => 'padding_before', 'prefix' => 'wsu-u-padding-before--'),
 				array( 'key' => 'padding_after', 'prefix' => 'wsu-u-padding-after--'),
-				array( 'key' => 'is_hatched', 'prefix' => 'wsu-c-separator--', 'is_bool' => true, 'value' => 'isHatched'),
-				array( 'key' => 'show_more_indicator', 'prefix' => 'wsu-c-separator--', 'is_bool' => true, 'value' => 'showMoreIndicator'),
+				array( 'key' => 'is_hatched', 'prefix' => 'wsu-c-em-separator--', 'is_bool' => true, 'value' => 'isHatched'),
+				array( 'key' => 'show_more_indicator', 'prefix' => 'wsu-c-em-separator--', 'is_bool' => true, 'value' => 'showMoreIndicator'),
 			),
 			$atts,
-			array( 'wsu-c-separator' )
+			array( 'wsu-c-em-separator' )
 		);
 
 		ob_start();

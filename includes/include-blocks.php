@@ -34,12 +34,15 @@ class Blocks {
 		require_once $block_dir . 'content-accordion-group/content-accordion-group.php';
 		require_once $block_dir . 'content-separator/content-separator.php';
 		require_once $block_dir . 'content-quote/content-quote.php';
+		require_once $block_dir . 'content-image/content-image.php';
 
 		// EM Blocks
 		require_once $em_block_dir . 'content-separator/content-separator.php';
 		require_once $em_block_dir . 'content-stat/content-stat.php';
 		require_once $em_block_dir . 'content-callout/content-callout.php';
 		require_once $em_block_dir . 'content-heading/content-heading.php';
+		require_once $em_block_dir . 'content-decorator/content-decorator.php';
+		require_once $em_block_dir . 'content-hero/content-hero.php';
 
 		// Block Parts
 		require_once $block_part_dir . 'image-frame/image-frame.php';
@@ -101,11 +104,13 @@ class Blocks {
 		Content_Accordion_Group::register_block();
 		Content_Separator::register_block();
 		Content_Quote::register_block();
+		Content_Image::register_block();
 
 		EM_Content_Separator::register_block();
 		EM_Content_Stat::register_block();
 		EM_Content_Callout::register_block();
 		EM_Content_Heading::register_block();
+		EM_Content_Hero::register_block();
 
 	}
 
@@ -126,11 +131,13 @@ class Blocks {
 		Content_Accordion_Group::register_shortcode();
 		Content_Separator::register_shortcode();
 		Content_Quote::register_shortcode();
+		Content_Image::register_shortcode();
 
 		EM_Content_Separator::register_shortcode();
 		EM_Content_Stat::register_shortcode();
 		EM_Content_Callout::register_shortcode();
 		EM_Content_Heading::register_shortcode();
+		EM_Content_Hero::register_shortcode();
 
 	}
 
@@ -160,6 +167,7 @@ class Blocks {
 			'wsuwp/accordion-group',
 			'wsuwp/separator',
 			'wsuwp/quote',
+			'wsuwp/image',
 		);
 
 		$em_blocks = array(
@@ -167,6 +175,7 @@ class Blocks {
 			'wsuwp-em/stat',
 			'wsuwp-em/callout',
 			'wsuwp-em/heading',
+			'wsuwp-em/hero',
 		);
 
 		$third_party = array(

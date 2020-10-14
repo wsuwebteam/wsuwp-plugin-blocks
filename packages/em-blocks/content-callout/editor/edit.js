@@ -14,6 +14,7 @@ const {
 
 const {
 	PanelBody,
+	PanelRow,
 	ToggleControl,
 	TextControl,
 	SelectControl,
@@ -22,8 +23,15 @@ const {
 	BaseControl
 } = wp.components;
 
+const { EmContentCallout } = wsu_wds.emComponents;
+
 import './style.scss';
 import { PatternControl, spacing } from '../../../block-components';
+
+import { 
+	SpacingSelector,
+	DecoratorControl
+} from '../../../block-controls';
 
 
 const edit = ( { className, attributes, setAttributes } ) => {
@@ -55,13 +63,6 @@ const edit = ( { className, attributes, setAttributes } ) => {
 
 	return (
 		<>
-			<div class="wsu-b-wrapper">
-				<pre>EM Callout</pre>
-				<InnerBlocks
-					templateLock={ false }
-				/>
-			</div>
-
 			<InspectorControls>
 				<PanelBody title="General">
 					<TextControl
@@ -76,7 +77,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(title) => setAttributes({ title })}
 						placeholder={'Enter title text here.'}
 					/>
-						<TextControl
+					<TextControl
 						label="Caption"
 						value={attributes.description}
 						onChange={(description) => setAttributes({ description})}
@@ -214,7 +215,23 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						options={spacing}
 					/>
 				</PanelBody>
+				<DecoratorControl 
+					decorators={attributes.decorators}
+					onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+					/>
 			</InspectorControls>
+
+			<EmContentCallout 
+				eyebrowTitle={ attributes.eyebrowHeader }
+				title={ attributes.title }
+				description={ 
+					<InnerBlocks
+						templateLock={ false }
+					/> 
+				}
+				link={ attributes.link }
+				imageSrc={ attributes.imageSrc }
+			/>
 		</>
 	)
 

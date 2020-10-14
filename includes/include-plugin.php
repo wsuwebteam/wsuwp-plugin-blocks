@@ -17,7 +17,6 @@ class Plugin {
 		'erik.solveson@wsu.edu',
 	);
 
-
 	public static function get( $property ) {
 
 		switch ( $property ) {
@@ -97,7 +96,7 @@ class Plugin {
 	public static function get_plugin_version( $isDev = false ) {
 
 		if ( $isDev ) {
-			return date( "m.d.y.g:i:s" ) . '--is-in-dev-mode';
+			return date( "m.d.y.g:i:s" ) . '--is-dev';
 		} else {
 			return self::$version;
 		}

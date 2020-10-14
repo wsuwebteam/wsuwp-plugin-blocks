@@ -32,11 +32,15 @@ class EM_Content_Callout extends Block_Base {
 		'title_size'      => 'default',
 		'patterns'        => '', 
 		'img_focal_point' => ['x' => '0.5', 'y' => '0.5'],
+		'decorators'        => array(),
+		'has_decorators'    => false,
 	);
 
 	protected static function render( $atts, $content ) {
 
 		$base_class = ( 'default' != $atts['style'] ) ? 'wsu-c-em-callout--' . $atts['style'] : 'wsu-c-em-callout';
+
+		$atts['has_decorators'] = ( ! empty( $atts['decorators'] ) ) ? true : false;
 
 		$atts['wrapper_classes'] = static::get_utility_classes(
 			array(

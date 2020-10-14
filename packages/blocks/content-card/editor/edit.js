@@ -87,8 +87,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							<MediaUploadCheck>
 								<MediaUpload
 									onSelect={(media) => setAttributes({ imgSrc: media.url })}
-									// allowedTypes={ALLOWED_MEDIA_TYPES}
-									// value={mediaId}
+									allowedTypes="image/*"
 									render={({ open }) => (
 										<BaseControl label="Add/Replace Card Image">
 											<Button isLink onClick={open}>Open Media Library</Button>

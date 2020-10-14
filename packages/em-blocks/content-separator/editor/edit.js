@@ -18,13 +18,19 @@ const {
 	BaseControl
 } = wp.components;
 
+const { EmSeparator } = wsu_wds.emComponents;
+
 import { spacing } from '../../../block-components';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
 	return (
 		<>
-			<pre>EM Separator</pre>
+			<EmSeparator
+				isHatched={ attributes.isHatched }
+				showMoreIndicator={ attributes.showMoreIndicator }
+				className={ className }
+			/>
 
 			<InspectorControls>
 					<PanelBody title="General">

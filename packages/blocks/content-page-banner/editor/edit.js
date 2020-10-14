@@ -29,7 +29,7 @@ const { WsuPageBanner } = wsu_wds.components;
 
 import './style.scss';
 import { PatternControl } from '../../../block-components'; // TODO: Move PatternControl from block-components to block-controls
-import { SpacingSelector } from '../../../block-controls';
+import { SpacingSelector, DecoratorControl } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -80,6 +80,10 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						</PanelBody>
 					</Panel>
 				</PanelBody>
+				<DecoratorControl 
+						decorators={attributes.decorators}
+						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+						/>
 				<PanelBody title="Style" initialOpen={false}>
 					<SelectControl
 						label="Height"
