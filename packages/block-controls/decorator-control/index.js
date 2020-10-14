@@ -218,7 +218,7 @@ class DecoratorControl extends React.Component {
 }
 
 DecoratorControl.defaultProps = {
-	decorators:[],
+	decorators: [],
 }
 
 

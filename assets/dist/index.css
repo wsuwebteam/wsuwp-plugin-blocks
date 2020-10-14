@@ -732,6 +732,7 @@
   line-height: 1.5;
   padding: 1em 3em;
   transition: box-shadow 300ms cubic-bezier(0, 0, 0.03, 1);
+  text-decoration: none;
   cursor: pointer;
 }
 .wsu-c-button a:hover,
@@ -747,6 +748,18 @@
 .wsu-c-content .wsu-c-button:visited,
 .wsu-c-button:visited {
   color: #fff;
+}
+.wsu-c-button a .wsu-icon:first-child,
+.wsu-c-content button .wsu-icon:first-child,
+.wsu-c-content .wsu-c-button .wsu-icon:first-child,
+.wsu-c-button .wsu-icon:first-child {
+  margin-right: 0.75em;
+}
+.wsu-c-button a .wsu-icon:last-child,
+.wsu-c-content button .wsu-icon:last-child,
+.wsu-c-content .wsu-c-button .wsu-icon:last-child,
+.wsu-c-button .wsu-icon:last-child {
+  margin-left: 0.75em;
 }
 
 .wsu-c-button a {
@@ -4081,6 +4094,7 @@ url("https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/1.x/wsu-icons/d
   margin-bottom: 0;
 }
 
+
 body {
   background: red;
 }
@@ -4091,5 +4105,6 @@ body {
   border-bottom: 3px solid #333;
   border-radius: 4px;
 }
+
 
 /*# sourceMappingURL=index.css.map*/
