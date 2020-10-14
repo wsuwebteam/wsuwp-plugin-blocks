@@ -8199,6 +8199,10 @@ registerBlockType("wsuwp/button", {
       type: 'string',
       default: ''
     },
+    style: {
+      type: 'string',
+      default: 'default'
+    },
     shape: {
       type: 'string',
       default: 'default'
@@ -8320,6 +8324,21 @@ var edit = function edit(_ref) {
     title: "Style",
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: "Display Style",
+    value: attributes.style,
+    onChange: function onChange(style) {
+      return setAttributes({
+        style: style
+      });
+    },
+    options: [{
+      label: 'Default',
+      value: 'default'
+    }, {
+      label: 'Link',
+      value: 'link'
+    }]
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
     label: "Shape",
     value: attributes.shape,
     options: [{
