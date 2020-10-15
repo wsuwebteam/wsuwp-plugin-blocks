@@ -21,7 +21,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							label="Subtitle"
 							value={attributes.subtitle}
 							onChange={(subtitle) => setAttributes({ subtitle })}
-							placeholder={'Enter subtile here.'}
+							placeholder={'Enter subtile here'}
 							/>
 						<ToggleControl
 							label="Hide Author"

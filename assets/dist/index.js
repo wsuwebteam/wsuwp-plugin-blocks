@@ -12082,7 +12082,7 @@ var edit = function edit(_ref) {
         subtitle: subtitle
       });
     },
-    placeholder: 'Enter subtile here.'
+    placeholder: 'Enter subtile here'
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
     label: "Hide Author",
     help: attributes.hideAuthor ? 'Hidden.' : 'Visible.',
