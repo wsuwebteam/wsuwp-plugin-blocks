@@ -41,6 +41,10 @@ registerBlockType(
 			backgroundImageUrl: {
 				type: 'string',
 				default: 'https://s3.wp.wsu.edu/uploads/sites/2438/2020/08/Coug-Logo-on-Chinook-crop_8520.jpg'
+			},
+			decorators: {
+				type: 'array',
+				default: [],
 			}
 		},
 		edit

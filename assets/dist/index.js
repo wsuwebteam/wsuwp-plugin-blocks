@@ -13816,6 +13816,10 @@ registerBlockType("wsuwp-em/hero", {
     backgroundImageUrl: {
       type: 'string',
       default: 'https://s3.wp.wsu.edu/uploads/sites/2438/2020/08/Coug-Logo-on-Chinook-crop_8520.jpg'
+    },
+    decorators: {
+      type: 'array',
+      default: []
     }
   }),
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -13919,7 +13923,14 @@ var edit = function edit(_ref) {
         onClick: open
       }, "Open Media Library"));
     }
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["DecoratorControl"], {
+    decorators: attributes.decorators,
+    onChange: function onChange(decoratorArray) {
+      setAttributes({
+        decorators: decoratorArray
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "Style",
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
