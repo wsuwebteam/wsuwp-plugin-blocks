@@ -14,15 +14,16 @@ class Content_Card extends Block_Base {
 		'margin_after'      => 'default',
 		'button_text'       => '',
 		'button_url'        => '',
-		'img_src'           => '',
-		'img_caption'       => '',
-		'img_focal_point'   => '',
-		'img_focal_point_x' => '', // for shortcode only
-		'img_focal_point_y' => '', // for shortcode only
+		'image_src'           => '',
+		'image_alt'           => '',
+		'image_focal_point'   => '',
+		'image_focal_point_x' => '', // for shortcode only
+		'image_focal_point_y' => '', // for shortcode only
 		'title'             => '',
+		'link'              => '',
 		'subtitle'          => '',
 		'position_title'    => '',
-		'description'       => '',
+		'caption'           => '',
 		'address_line1'     => '',
 		'address_line2'     => '',
 		'phone_number'      => '',
@@ -30,7 +31,7 @@ class Content_Card extends Block_Base {
 		'website'           => '',
 		'date'              => '',
 		'author_name'       => '',
-		'author_url'        => '',
+		'author_link'       => '',
 		'card_type'         => 'default',
 	);
 
@@ -53,8 +54,10 @@ class Content_Card extends Block_Base {
 		switch ($atts['card_type']) {
 			case 'person':
 				include __DIR__ . '/templates/person.php';
+				break;
 			case 'news':
 				include __DIR__ . '/templates/news.php';
+				break;
 			default:
 				include __DIR__ . '/templates/default.php';
 		}
