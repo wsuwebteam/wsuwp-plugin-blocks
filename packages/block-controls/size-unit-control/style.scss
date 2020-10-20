@@ -1,0 +1,31 @@
+.wsu-control__size-unit-control {
+	display: flex;
+
+	.components-number-control {
+		margin-right: 5px;
+
+		&:last-child {
+			margin-right: 0;
+			margin-bottom: 18px;
+		}
+	}
+
+	.components-base-control__field select {
+		min-width: 58px;
+	}
+
+	.components-base-control__label {
+		margin-bottom: 5px;
+	}
+
+	// Have to use crazy selectors because the fields are still in experimental mode
+	// and I wanted them to match the old input field styles. In the future, once all
+	// the input fields match in style, this can likely be removed.
+	.css-h7hvkg-Input.css-h7hvkg-Input.css-h7hvkg-Input {
+		border-radius: 3px !important;
+	}
+	
+	.css-1qis1o8-Fieldset.css-1qis1o8-Fieldset.css-1qis1o8-Fieldset {
+		border-color: #7e8993 !important;
+	}
+}

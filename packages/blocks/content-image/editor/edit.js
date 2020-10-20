@@ -29,10 +29,35 @@ const {
 
 const { WsuImage, WsuHr, WsuHeading, WsuIcon, WsuP } = wsu_wds.components; 
 
-import { SelectIcon, SpacingSelector } from '../../../block-controls';
+import { SelectIcon, SpacingSelector, SizeUnitControl } from '../../../block-controls';
 import { empty } from '../../../block-components';
 
 import './style.scss';
+
+const MediaUploadCheckControl = () => {
+	return (
+		<MediaUploadCheck>
+			<MediaUpload
+				onSelect={(media) => {
+
+					let ratio = (media.width / media.height).toFixed(2);
+
+					setAttributes({ 
+						src: media.url,
+						alt: media.alt,
+						width: media.width,
+						height: media.height,
+						ratio: ratio
+					})
+				} }
+				allowedTypes="image/*"
+				render={({ open }) => (
+					<Button isPrimary onClick={open}>Open Media Library</Button>
+				)}
+			/>
+		</MediaUploadCheck>
+	)
+}
 
 const edit = ( { className, attributes, setAttributes, isSelected, toggleSelection } ) => { 
 
@@ -54,20 +79,9 @@ const edit = ( { className, attributes, setAttributes, isSelected, toggleSelecti
 						]}
 						onChange={(srcType) => setAttributes({ srcType: srcType })}
 					/>
+					
 					{ attributes.srcType == 'media' &&
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={(media) => setAttributes({ src: media.url, alt: media.alt })}
-								allowedTypes="image/*"
-								render={({ open }) => (
-									<BaseControl
-										label="Add/Update Image"
-									>
-										<Button isPrimary onClick={open}>Open Media Library</Button>
-									</BaseControl>
-								)}
-							/>
-						</MediaUploadCheck>
+						<MediaUploadCheckControl />
 					}
 
 					{ attributes.srcType == 'url' &&
@@ -91,30 +105,7 @@ const edit = ( { className, attributes, setAttributes, isSelected, toggleSelecti
 					{/* IDEA: make images linkable */}
 				</PanelBody>
 				<PanelBody title="Style" initialOpen={false}>
-					<PanelRow>
-						<span>Width</span>
-						{console.log('width ' + attributes.width)}
-						<__experimentalUnitControl
-							value={ attributes.width }
-							units={[
-								{ value: 'px', label: 'px', default: 0 },
-								{ value: '%', label: '%', default: 0 },
-							]}
-							onChange={(value) => console.log(value)}
-						/>
-						
-						<span>Height</span>
-						{console.log('height ' + attributes.height)}
-						<__experimentalUnitControl 
-							value={ attributes.height }
-							units={[
-								{ value: 'px', label: 'px', default: 0 },
-								{ value: '%', label: '%', default: 0 },
-							]}
-							onChange={(value) => console.log(value)}
-						/>
-					</PanelRow>
-
+					<SizeUnitControl attributes={attributes} setAttributes={setAttributes} />
 					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
 			</InspectorControls>
@@ -125,7 +116,16 @@ const edit = ( { className, attributes, setAttributes, isSelected, toggleSelecti
 						<MediaUploadCheck>
 							<MediaUpload
 								onSelect={(media) => {
-									setAttributes({ src: media.url, alt: media.alt, width: media.width, height: media.height })
+
+									let ratio = (media.width / media.height).toFixed(2);
+
+									setAttributes({ 
+										src: media.url,
+										alt: media.alt,
+										width: media.width,
+										height: media.height,
+										ratio: ratio
+									})
 								} }
 								allowedTypes="image/*"
 								render={({ open }) => (
@@ -139,12 +139,17 @@ const edit = ( { className, attributes, setAttributes, isSelected, toggleSelecti
 
 			{ attributes.src && 
 				<ResizableBox
+					size={{
+						width: attributes.width,
+						height: attributes.height 
+					}}
+					lockAspectRatio
 					className={ "wsu-c-image-container wsu-c-image-container--" + attributes.alignment } 
 					showHandle={ isSelected }
 					enable={{
 						top: false,
 						right: true,
-						bottom: false,
+						bottom: true,
 						left: true,
 						topRight: false,
 						bottomRight: false,
@@ -152,16 +157,49 @@ const edit = ( { className, attributes, setAttributes, isSelected, toggleSelecti
 						topLeft: false
 					}}
 					onResizeStop={ ( event, direction, elt, delta ) => {
-						console.log('delta height: ' + delta.height);
-						console.log('delta Width: ' + delta.width);
 
-						setAttributes( {
-							height: parseInt( attributes.height + delta.height, 10 ),
-							width: parseInt( attributes.width + delta.width, 10 ),
-						} );
+						// If direction is width
+						if ( direction == 'right' || direction == 'left') {
+							// Store new width value: width + delta
+							let newWidth = parseInt( attributes.width + delta.width, 10 );
+							
+							// Store new height value that is equal new width * ratio
+							let newHeight = parseInt( newWidth * attributes.ratio, 10 );
 
-						console.log('new height: ' + attributes.height);
-						console.log('new Width: ' + attributes.width);
+							// Set width/height value
+							setAttributes( { height: newHeight, width: newWidth } );
+
+							// Debugging
+							console.groupCollapsed('onResizeStop - Direction is R/L');
+								console.log('ratio is ' + attributes.ratio);
+								console.log('newWidth ' + newWidth);
+								console.log('newHeight ' + newHeight);
+							console.groupEnd();
+
+						} 
+						// If direction is bottom
+						else if ( direction == 'bottom' ) {
+							// Store new height value: height + delta
+							let newHeight = parseInt( attributes.height + delta.height, 10 );
+
+							// Store new width value that is equal to height * ratio
+							let newWidth = parseInt( newHeight * attributes.ratio, 10 );
+
+							// Set width/height value
+							setAttributes( { height: newHeight, width: newWidth } );
+
+							// Debugging
+							console.groupCollapsed('onResizeStop - Direction is Bottom');
+								console.log('ratio is ' + attributes.ratio);
+								console.log('newWidth ' + newWidth);
+								console.log('newHeight ' + newHeight);
+							console.groupEnd();
+						} 
+						// Error out as not valid direction value only left/right bottom are supported
+						else {
+							console.error( 'Not a valid/supported direction: ' + direction ); 
+						}
+
 						toggleSelection( true );
 					} }
 				>

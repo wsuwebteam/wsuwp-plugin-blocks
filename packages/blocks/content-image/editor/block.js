@@ -41,9 +41,29 @@ registerBlockType(
 				type: 'integer',
 				default: 0
 			},
+			naturalWidth: {
+				type: 'integer',
+				default: 0
+			},
+			naturalHeight: {
+				type: 'integer',
+				default: 0
+			},
 			alignment: {
 				type: 'string',
 				default: ''
+			},
+			ratio: {
+				type: 'number',
+				default: '1'
+			},
+			naturalRatio: {
+				type: 'number',
+				default: '1'
+			},
+			unit: {
+				type: 'string',
+				default: 'px'
 			}
 		},
 		edit
