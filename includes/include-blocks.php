@@ -35,6 +35,7 @@ class Blocks {
 		require_once $block_dir . 'content-separator/content-separator.php';
 		require_once $block_dir . 'content-quote/content-quote.php';
 		require_once $block_dir . 'content-image/content-image.php';
+		require_once $block_dir . 'content-news/content-news.php';
 
 		// EM Blocks
 		require_once $em_block_dir . 'content-separator/content-separator.php';
@@ -105,6 +106,7 @@ class Blocks {
 		Content_Separator::register_block();
 		Content_Quote::register_block();
 		Content_Image::register_block();
+		Content_News::register_block();
 
 		EM_Content_Separator::register_block();
 		EM_Content_Stat::register_block();
@@ -168,6 +170,7 @@ class Blocks {
 			'wsuwp/separator',
 			'wsuwp/quote',
 			'wsuwp/image',
+			'wsuwp/news',
 		);
 
 		$em_blocks = array(
