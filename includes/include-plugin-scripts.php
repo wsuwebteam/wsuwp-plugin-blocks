@@ -60,8 +60,8 @@ class Plugin_Scripts {
 		);
 
 		// WSU WDS Assets
-		$wsu_design_system_bundle_component_scripts = ( self::get('is_local') ) ? WDS_LOCALHOST_URL . '/bundles/dist/wsu-design-system.components.bundle.dist.js' : 'https://cdn.web.wsu.edu/designsystem/' . $wds_version . '/build/dist/wsu-design-system.components.bundle.dist.js';
-		$wsu_design_system_bundle_component_styles = ( self::get('is_local') ) ? WDS_LOCALHOST_URL . '/bundles/dist/wsu-design-system.components.bundle.dist.css' : 'https://cdn.web.wsu.edu/designsystem/' . $wds_version . '/build/dist/wsu-design-system.components.bundle.dist.css';
+		$wsu_design_system_bundle_component_scripts = ( self::get('is_local') ) ? WDS_LOCALHOST_URL . '/bundles/dist/wsu-design-system.components.bundle.dist.js' : 'https://cdn.web.wsu.edu/designsystem/' . self::get('version') . '/build/dist/wsu-design-system.components.bundle.dist.js';
+		$wsu_design_system_bundle_component_styles = ( self::get('is_local') ) ? WDS_LOCALHOST_URL . '/bundles/dist/wsu-design-system.components.bundle.dist.css' : 'https://cdn.web.wsu.edu/designsystem/' . self::get('version') . '/build/dist/wsu-design-system.components.bundle.dist.css';
 
 		wp_enqueue_script(
 			'wsu_design_system_bundle_component_scripts',
