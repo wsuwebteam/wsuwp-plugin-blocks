@@ -55,11 +55,11 @@ registerBlockType(
 			},
 			ratio: {
 				type: 'number',
-				default: '1'
+				default: 1
 			},
 			naturalRatio: {
 				type: 'number',
-				default: '1'
+				default: 1
 			},
 			unit: {
 				type: 'string',

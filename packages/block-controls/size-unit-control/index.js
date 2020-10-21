@@ -1,78 +1,89 @@
 
 const {
-	Panel,
-	PanelBody,
-	PanelRow,
+	Button,
+	ButtonGroup,
 	SelectControl,
-	TextControl,
 	__experimentalNumberControl
 } = wp.components;
 
 const NumberControl = __experimentalNumberControl;
 
-import { spacingOptions } from '../../block-components';
-import { empty } from '@wsuwebteam/build-tools/js/helpers';
-
 import './style.scss';
+
+const imageSizePresets = [ 25, 33.33, 50, 66.66, 75, 100 ];
 
 const SizeUnitControl = ( props ) => {
 
+	function updateDimensions( nextWidth, nextHeight ) {
+		return () => {
+			props.setAttributes( { width: nextWidth, height: nextHeight } );
+		};
+	}
+
 	return (
-		<div className="wsu-control__size-unit-control">
-			<NumberControl
-				label="Width"
-				isShiftStepEnabled={ true }
-				shiftStep={ 10 }
-				value={ props.attributes.width }
-				onChange={ ( width ) => {
-					let preChangeWidth = props.attributes.width;
+		<>
+			<div className="wsu-control__size-unit-control">
+				<NumberControl
+					label="Width"
+					isShiftStepEnabled={ true }
+					shiftStep={ 10 }
+					value={ props.attributes.width }
+					onChange={ ( width ) => {
+						props.setAttributes({ 
+							width: width,
+							height: parseInt(width * props.attributes.ratio, 10)
+						});
+					}}
+				/>
 
-					// TODO
-					// IF width is empty, reset to initial width
-					if ( empty( width ) ) {
-						props.setAttributes({ preChangeWidth });
-					} else {
-						props.setAttributes({ width })
-					}
-				}}
-			/>
+				<NumberControl
+					label="Height"
+					isShiftStepEnabled={ true }
+					shiftStep={ 10 }
+					value={ props.attributes.height }
+					onChange={ ( height ) => {
+						props.setAttributes({ 
+							height: height,
+							width: parseInt(height * props.attributes.ratio, 10)
+						});
+					}}
+				/>
+				
+				<SelectControl
+					label="Unit"
+					value={ props.attributes.unit }
+					options ={[
+						{ label: 'px', value: 'px' },
+						{ label: 'em', value: 'em' },
+						{ label: 'rem', value: 'rem' },
+						{ label: 'vw', value: 'vw' },
+						{ label: 'vh', value: 'vh' },
+					]}
+					onChange={ ( unit ) => {
+						if ( unit !== props.attributes.unit ) {
+							props.setAttributes( { unit } );
+						}
+					}}
+				/>
+			</div>
+			<div className="wsu-control__size-unit-control">
+				<ButtonGroup className="button-group">
+					{ imageSizePresets.map( ( scale ) => {
+						const scaledWidth = Math.round( props.attributes.naturalWidth * ( scale / 100 ) );
+						const scaledHeight = Math.round( props.attributes.naturalHeight * ( scale / 100 ) );
 
-			<NumberControl
-				label="Height"
-				isShiftStepEnabled={ true }
-				shiftStep={ 10 }
-				value={ props.attributes.height }
-				onChange={ ( height ) => {
-					// TODO
-					// IF height is empty, reset to initial height
-					props.setAttributes( { height } )
-				}}
-			/>
-			
-			<SelectControl
-				label="Unit"
-				value={props.attributes.unit}
-				options={[
-					{ label: 'px', value: 'px' },
-					{ label: '%', value: '%' },
-					{ label: 'em', value: 'em' },
-					{ label: 'rem', value: 'rem' },
-					{ label: 'vw', value: 'vw' },
-					{ label: 'vh', value: 'vh' },
-				]}
-				onChange={ ( unit ) => {
-					// TODO
-					// Check if unit is different
-
-						// Set new attribute unit type
-						props.setAttributes( { unit } ) 
-
-						// Convert width/height to new unit type
-
-						// Set new width/height values 
-				}}
-			/>
-		</div>
+						return (
+							<Button
+								isSmall
+								onClick={ updateDimensions( scaledWidth, scaledHeight ) }
+							>
+								{ Math.round(scale) }%
+							</Button>
+						)
+					})}
+				</ButtonGroup>
+			</div>
+		</>
 	)
 };
 
