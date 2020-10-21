@@ -14,76 +14,96 @@ const imageSizePresets = [ 25, 33.33, 50, 66.66, 75, 100 ];
 
 const SizeUnitControl = ( props ) => {
 
+	const { attributes, setAttributes } = props;
+
+
 	function updateDimensions( nextWidth, nextHeight ) {
 		return () => {
-			props.setAttributes( { width: nextWidth, height: nextHeight } );
+			setAttributes( { width: nextWidth, height: nextHeight } );
 		};
 	}
 
 	return (
 		<>
-			<div className="wsu-control__size-unit-control">
-				<NumberControl
-					label="Width"
-					isShiftStepEnabled={ true }
-					shiftStep={ 10 }
-					value={ props.attributes.width }
-					onChange={ ( width ) => {
-						props.setAttributes({ 
-							width: width,
-							height: parseInt(width * props.attributes.ratio, 10)
-						});
-					}}
-				/>
+			<SelectControl
+				label="Sizing Type"
+				value={ attributes.unit }
+				options={[
+					{ label: 'Responsive', value: '%' },
+					{ label: 'Static', value: 'px' },
+				]}
+				onChange={ ( type ) => setAttributes( { unit: type } ) }
+			/>
 
-				<NumberControl
-					label="Height"
-					isShiftStepEnabled={ true }
-					shiftStep={ 10 }
-					value={ props.attributes.height }
-					onChange={ ( height ) => {
-						props.setAttributes({ 
-							height: height,
-							width: parseInt(height * props.attributes.ratio, 10)
-						});
-					}}
-				/>
-				
-				<SelectControl
-					disabled // Remove when more than one unit type is supported
-					label="Unit"
-					value={ props.attributes.unit }
-					options ={[
-						{ label: 'px', value: 'px' },
-						// { label: 'em', value: 'em' },
-						// { label: 'rem', value: 'rem' },
-						// { label: 'vw', value: 'vw' },
-						// { label: 'vh', value: 'vh' },
-					]}
-					onChange={ ( unit ) => {
-						if ( unit !== props.attributes.unit ) {
-							props.setAttributes( { unit } );
-						}
-					}}
-				/>
-			</div>
-			<div className="wsu-control__size-unit-control">
-				<ButtonGroup className="button-group">
-					{ imageSizePresets.map( ( scale ) => {
-						const scaledWidth = Math.round( props.attributes.naturalWidth * ( scale / 100 ) );
-						const scaledHeight = Math.round( props.attributes.naturalHeight * ( scale / 100 ) );
+			{ attributes.unit == '%' && 
+				<div className="wsu-control__size-unit-control">
+					<ButtonGroup className="button-group">
+						{ imageSizePresets.map( ( scale ) => {
+							const scaledWidth = scale;
+							const scaledHeight = 'auto';
 
-						return (
-							<Button
-								isSmall
-								onClick={ updateDimensions( scaledWidth, scaledHeight ) }
-							>
-								{ Math.round(scale) }%
-							</Button>
-						)
-					})}
-				</ButtonGroup>
-			</div>
+							return (
+								<Button
+									isSmall
+									isPressed={ ( scale == attributes.width ) ? true : false }
+									onClick={ updateDimensions( scaledWidth, scaledHeight ) }
+								>
+									{ Math.round(scale) }%
+								</Button>
+							)
+						})}
+					</ButtonGroup>
+				</div>
+			}
+
+			{ attributes.unit == 'px' && 
+				<div className="wsu-control__size-unit-control-wrapper">
+					<div className="wsu-control__size-unit-control">
+						<NumberControl
+							label="Width"
+							isShiftStepEnabled={ true }
+							shiftStep={ 10 }
+							value={ attributes.width }
+							onChange={ ( width ) => {
+								setAttributes({ 
+									width: width,
+									height: parseInt(width * attributes.ratio, 10)
+								});
+							}}
+						/>
+
+						<NumberControl
+							label="Height"
+							isShiftStepEnabled={ true }
+							shiftStep={ 10 }
+							value={ attributes.height }
+							onChange={ ( height ) => {
+								setAttributes({ 
+									height: height,
+									width: parseInt(height * attributes.ratio, 10)
+								});
+							}}
+						/>
+					</div>
+					<div className="wsu-control__size-unit-control">
+						<ButtonGroup className="button-group">
+							{ imageSizePresets.map( ( scale ) => {
+								const newWidth = Math.round( attributes.scaledWidth * ( scale / 100 ) );
+								const newHeight = Math.round( attributes.scaledHeight * ( scale / 100 ) );
+
+								return (
+									<Button
+										isSmall
+										onClick={ updateDimensions( newWidth, newHeight ) }
+									>
+										{ Math.round(scale) }%
+									</Button>
+								)
+							})}
+						</ButtonGroup>
+					</div>
+				</div>
+			}
 		</>
 	)
 };
@@ -105,6 +125,14 @@ const sizeUnitControlAtts = {
 		type: 'integer',
 		default: 0
 	},
+	scaledWidth: {
+		type: 'integer',
+		default: 0,
+	},
+	scaledHeight: {
+		type: 'integer',
+		default: 0,
+	},
 	ratio: {
 		type: 'number',
 		default: 1
@@ -115,8 +143,8 @@ const sizeUnitControlAtts = {
 	},
 	unit: {
 		type: 'string',
-		default: 'px'
-	}
+		default: '%'
+	},
 };
 
 export { sizeUnitControlAtts };

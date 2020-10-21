@@ -37,7 +37,11 @@ registerBlockType(
 			alignment: {
 				type: 'string',
 				default: ''
-			}
+			},
+			attachmentId: {
+				type: 'integer',
+				default: null
+			},
 		},
 		edit
 	}
