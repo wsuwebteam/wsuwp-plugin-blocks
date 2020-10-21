@@ -50,14 +50,15 @@ const SizeUnitControl = ( props ) => {
 				/>
 				
 				<SelectControl
+					disabled // Remove when more than one unit type is supported
 					label="Unit"
 					value={ props.attributes.unit }
 					options ={[
 						{ label: 'px', value: 'px' },
-						{ label: 'em', value: 'em' },
-						{ label: 'rem', value: 'rem' },
-						{ label: 'vw', value: 'vw' },
-						{ label: 'vh', value: 'vh' },
+						// { label: 'em', value: 'em' },
+						// { label: 'rem', value: 'rem' },
+						// { label: 'vw', value: 'vw' },
+						// { label: 'vh', value: 'vh' },
 					]}
 					onChange={ ( unit ) => {
 						if ( unit !== props.attributes.unit ) {
@@ -87,4 +88,36 @@ const SizeUnitControl = ( props ) => {
 	)
 };
 
+const sizeUnitControlAtts = {
+	width: {
+		type: 'integer',
+		default: 0
+	},
+	height: {
+		type: 'integer',
+		default: 0
+	},
+	naturalWidth: {
+		type: 'integer',
+		default: 0
+	},
+	naturalHeight: {
+		type: 'integer',
+		default: 0
+	},
+	ratio: {
+		type: 'number',
+		default: 1
+	},
+	naturalRatio: {
+		type: 'number',
+		default: 1
+	},
+	unit: {
+		type: 'string',
+		default: 'px'
+	}
+};
+
+export { sizeUnitControlAtts };
 export default SizeUnitControl;

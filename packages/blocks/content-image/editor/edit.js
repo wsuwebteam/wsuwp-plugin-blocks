@@ -44,16 +44,8 @@ const MediaUploadCheckControl = ( props ) => {
 				onSelect={(media) => {
 					const ratio = (media.height / media.width).toFixed(2);
 
-					console.log('media width ' + media.width);
-					console.log('max width ' + MAX_WIDTH);
-					console.log('ratio ' + ratio);
-
 					let width = (media.width > MAX_WIDTH) ? MAX_WIDTH : media.width;
 					let height = (media.width > MAX_WIDTH) ? Math.round(MAX_WIDTH * ratio) : media.height;
-
-					console.log('width ' + width);
-
-					console.log('height ' + height);
 
 					props.setAttributes({ 
 						src: media.url,
@@ -63,15 +55,7 @@ const MediaUploadCheckControl = ( props ) => {
 						naturalWidth: width,
 						naturalHeight: height,
 						ratio: ratio
-					})
-
-					console.groupCollapsed('Media Upload Check Control');
-						console.log(media);
-						console.log('width ' + media.width);
-						console.log('height ' + media.height);
-						console.log('ratio ' + ratio);
-
-					console.groupEnd;
+					});
 					
 				} }
 				allowedTypes="image/*"
@@ -169,7 +153,6 @@ const edit = ( props ) => {
 						bottomLeft: false,
 						topLeft: false
 					}}
-					// TODO add max width
 					onResizeStop={ ( event, direction, elt, delta ) => {
 						// If direction is width
 						if ( direction == 'right' || direction == 'left') {
@@ -181,14 +164,6 @@ const edit = ( props ) => {
 
 							// Set width/height value
 							setAttributes( { height: newHeight, width: newWidth } );
-
-							// Debugging
-							console.groupCollapsed('onResizeStop - Direction is R/L');
-								console.log('ratio is ' + attributes.ratio);
-								console.log('newWidth ' + newWidth);
-								console.log('newHeight ' + newHeight);
-							console.groupEnd();
-
 						} 
 						// If direction is bottom
 						else if ( direction == 'bottom' ) {
@@ -200,13 +175,6 @@ const edit = ( props ) => {
 
 							// Set width/height value
 							setAttributes( { height: newHeight, width: newWidth } );
-
-							// Debugging
-							console.groupCollapsed('onResizeStop - Direction is Bottom');
-								console.log('ratio is ' + attributes.ratio);
-								console.log('newWidth ' + newWidth);
-								console.log('newHeight ' + newHeight);
-							console.groupEnd();
 						} 
 						// Error out as not valid direction value only left/right bottom are supported
 						else {
