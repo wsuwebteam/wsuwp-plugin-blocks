@@ -8,6 +8,266 @@
  */
 class Blocks {
 
+	protected static $block_directory = array(
+		// WDS Blocks
+		array( 
+			'name'               => 'Content_Hero',
+			'slug'               => 'content-hero',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Columns',
+			'slug'               => 'content-columns',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Column',
+			'slug'               => 'content-column',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Heading',
+			'slug'               => 'content-heading',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Button',
+			'slug'               => 'content-button',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Legacy-_Olumns',
+			'slug'               => 'legacy-columns',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Cards',
+			'slug'               => 'content-cards',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Card',
+			'slug'               => 'content-card',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Callout',
+			'slug'               => 'content-callout',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Post_Title',
+			'slug'               => 'content-post-title',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Page_Banner',
+			'slug'               => 'content-page-banner',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Accordion',
+			'slug'               => 'content-accordion',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Accordion_Group',
+			'slug'               => 'content-accordion-group',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Separator',
+			'slug'               => 'content-separator',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Quote',
+			'slug'               => 'content-quote',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_Image',
+			'slug'               => 'content-image',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array( 
+			'name'               => 'Content_News',
+			'slug'               => 'content-news',
+			'type'               => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		// EM Blocks
+		array(
+			'name'               => 'Content_Separator',
+			'slug'               => 'content-separator',
+			'type'               => 'wsuwp-em',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array(
+			'name'               => 'Content_Stat',
+			'slug'               => 'content-stat',
+			'type'               => 'wsuwp-em',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array(
+			'name'               => 'Content_Callout',
+			'slug'               => 'content-callout',
+			'type'               => 'wsuwp-em',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array(
+			'name'               => 'Content_Heading',
+			'slug'               => 'content-heading',
+			'type'               => 'wsuwp-em',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array(
+			'name'               => 'Content_Decorator',
+			'slug'               => 'content-decorator',
+			'type'               => 'wsuwp-em',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array(
+			'name'               => 'Content_Hero',
+			'slug'               => 'content-hero',
+			'type'               => 'wsuwp-em',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		array(
+			'name'               => 'Content_Hero',
+			'slug'               => 'content-hero',
+			'type'               => 'wsuwp-em',
+			'register_block'     => true,
+			'register_shortcode' => true,
+		),
+		// Block Parts
+		array(
+			'name'               => 'Image-f_Ame',
+			'slug'               => 'image-frame',
+			'type'               => 'block-part',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		array(
+			'name'               => 'Pattern',
+			'slug'               => 'pattern',
+			'type'               => 'block-part',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		array(
+			'name'               => 'Block_Title',
+			'slug'               => 'block-title',
+			'type'               => 'block-part',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		array(
+			'name'               => 'Wrapper_Link',
+			'slug'               => 'wrapper-link',
+			'type'               => 'block-part',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		array(
+			'name'               => 'Icon',
+			'slug'               => 'icon',
+			'type'               => 'block-part',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		// Core Blocks
+		array(
+			'name'               => 'Paragraph',
+			'slug'               => 'paragraph',
+			'type'               => 'core',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		array(
+			'name'               => 'Freeform',
+			'slug'               => 'freeform',
+			'type'               => 'core',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		array(
+			'name'               => 'List',
+			'slug'               => 'list',
+			'type'               => 'core',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		array(
+			'name'               => 'Image',
+			'slug'               => 'image',
+			'type'               => 'core',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		array(
+			'name'               => 'Shortcode',
+			'slug'               => 'shortcode',
+			'type'               => 'core',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		array(
+			'name'               => 'Table',
+			'slug'               => 'table',
+			'type'               => 'core',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+		// Third Party Blocks
+		array(
+			'name'               => 'Form',
+			'slug'               => 'form',
+			'type'               => 'gravityforms',
+			'register_block'     => false,
+			'register_shortcode' => false,
+		),
+	);
+
 
 	public function __construct() {
 
@@ -18,40 +278,26 @@ class Blocks {
 		$em_block_dir = Plugin::get_plugin_dir() . 'packages/em-blocks/';
 		$block_part_dir = Plugin::get_plugin_dir() . 'packages/block-parts/';
 
-		// WDS Blocks
-		require_once $block_dir . 'content-hero/content-hero.php';
-		require_once $block_dir . 'content-columns/content-columns.php';
-		require_once $block_dir . 'content-column/content-column.php';
-		require_once $block_dir . 'content-heading/content-heading.php';
-		require_once $block_dir . 'content-button/content-button.php';
-		require_once $block_dir . 'legacy-columns/legacy-columns.php';
-		require_once $block_dir . 'content-cards/content-cards.php';
-		require_once $block_dir . 'content-card/content-card.php';
-		require_once $block_dir . 'content-callout/content-callout.php';
-		require_once $block_dir . 'content-post-title/content-post-title.php';
-		require_once $block_dir . 'content-page-banner/content-page-banner.php';
-		require_once $block_dir . 'content-accordion/content-accordion.php';
-		require_once $block_dir . 'content-accordion-group/content-accordion-group.php';
-		require_once $block_dir . 'content-separator/content-separator.php';
-		require_once $block_dir . 'content-quote/content-quote.php';
-		require_once $block_dir . 'content-image/content-image.php';
-		require_once $block_dir . 'content-news/content-news.php';
+		// Add blocks from $block_directory
+		foreach ( Blocks::$block_directory as $block ) {
+			switch ( $block['type'] ) {
+				
+				// WDS Blocks
+				case 'wsuwp':
+					require_once $block_dir . $block['slug'] . '/' . $block['slug'] . '.php';
+				break;
+				
+				// EM Blocks
+				case 'wsuwp-em':
+					require_once $em_block_dir . $block['slug'] . '/' . $block['slug'] . '.php';
+				break;
 
-		// EM Blocks
-		require_once $em_block_dir . 'content-separator/content-separator.php';
-		require_once $em_block_dir . 'content-stat/content-stat.php';
-		require_once $em_block_dir . 'content-callout/content-callout.php';
-		require_once $em_block_dir . 'content-heading/content-heading.php';
-		require_once $em_block_dir . 'content-decorator/content-decorator.php';
-		require_once $em_block_dir . 'content-hero/content-hero.php';
-
-		// Block Parts
-		require_once $block_part_dir . 'image-frame/image-frame.php';
-		require_once $block_part_dir . 'pattern/pattern.php';
-		require_once $block_part_dir . 'block-title/block-title.php';
-		require_once $block_part_dir . 'wrapper-link/wrapper-link.php';
-		require_once $block_part_dir . 'icon/icon.php';
-
+				// Block Parts
+				case 'block-part':
+					require_once $block_part_dir . $block['slug'] . '/' . $block['slug'] . '.php';
+				break;
+			}
+		}
 	}
 
 
@@ -90,100 +336,57 @@ class Blocks {
 
 	public static function register_block_types() {
 
-		Content_Hero::register_block();
-		Content_Columns::register_block();
-		Content_Column::register_block();
-		Content_Heading::register_block();
-		Content_Button::register_block();
-		Legacy_Columns::register_block();
-		Content_Cards::register_block();
-		Content_Card::register_block();
-		Content_Callout::register_block();
-		Content_Post_Title::register_block();
-		Content_Page_Banner::register_block();
-		Content_Accordion::register_block();
-		Content_Accordion_Group::register_block();
-		Content_Separator::register_block();
-		Content_Quote::register_block();
-		Content_Image::register_block();
-		Content_News::register_block();
-
-		EM_Content_Separator::register_block();
-		EM_Content_Stat::register_block();
-		EM_Content_Callout::register_block();
-		EM_Content_Heading::register_block();
-		EM_Content_Hero::register_block();
+		foreach ( Blocks::$block_directory as $block ) {
+			if ( $block['register_block'] == true ) {
+				$block['name'] + '::register_block()';
+			}
+		}
 
 	}
 
 	public static function register_block_shortcodes() {
 
-		Content_Hero::register_shortcode();
-		Content_Columns::register_shortcode();
-		Content_Column::register_shortcode();
-		Content_Heading::register_shortcode();
-		Content_Button::register_shortcode();
-		Legacy_Columns::register_shortcode();
-		Content_Cards::register_shortcode();
-		Content_Card::register_shortcode();
-		Content_Callout::register_shortcode();
-		Content_Post_Title::register_shortcode();
-		Content_Page_Banner::register_shortcode();
-		Content_Accordion::register_shortcode();
-		Content_Accordion_Group::register_shortcode();
-		Content_Separator::register_shortcode();
-		Content_Quote::register_shortcode();
-		Content_Image::register_shortcode();
-
-		EM_Content_Separator::register_shortcode();
-		EM_Content_Stat::register_shortcode();
-		EM_Content_Callout::register_shortcode();
-		EM_Content_Heading::register_shortcode();
-		EM_Content_Hero::register_shortcode();
+		foreach ( Blocks::$block_directory as $block ) {
+			if ( $block['register_shortcode'] == true ) {
+				$block['name'] + '::register_shortcode()';
+			}
+		}
 
 	}
 
 
 	public static function allowed_block_types( $allowed_blocks ) {
 
-		$core_blocks = array(
-			'core/paragraph',
-			'core/freeform',
-			'core/list',
-			'core/image',
-			'core/shortcode',
-			'core/table',
-		);
+		$core_blocks = array();
+		$wsu_blocks = array();
+		$em_blocks = array();
+		$third_party = array();
 
-		$wsu_blocks = array(
-			'wsuwp/heading',
-			'wsuwp/button',
-			'wsuwp/post-title',
-			'wsuwp/search-bar',
-			'wsuwp/content-hero',
-			'wsuwp/columns',
-			'wsuwp/cards',
-			'wsuwp/callout',
-			'wsuwp/page-banner',
-			'wsuwp/accordion',
-			'wsuwp/accordion-group',
-			'wsuwp/separator',
-			'wsuwp/quote',
-			'wsuwp/image',
-			'wsuwp/news',
-		);
+		
+		// Add blocks from $block_directory
+		foreach ( Blocks::$block_directory as $block ) {
+			switch ( $block['type'] ) {
+				// Core Blocks
+				case 'core':
+					$core_blocks .= $block['type'] . '/' . $block['slug'];
+				break;
 
-		$em_blocks = array(
-			'wsuwp-em/separator',
-			'wsuwp-em/stat',
-			'wsuwp-em/callout',
-			'wsuwp-em/heading',
-			'wsuwp-em/hero',
-		);
+				// WDS Blocks
+				case 'wsuwp':
+					$wsu_blocks .= $block['type'] . '/' . $block['slug'];
+				break;
+				
+				// EM Blocks
+				case 'wsuwp-em':
+					$em_blocks .= $block['type'] . '/' . $block['slug'];
+				break;
 
-		$third_party = array(
-			'gravityforms/form',
-		);
+				// Third Party
+				default: 
+					$third_party .= $block['type'] . '/' . $block['slug'];
+				break;
+			}
+		}
 
 		// Check for allow EM Blocks
 		$allowed_blocks = ( Options::get_option( 'block_settings_enable_em_blocks', false ) ) ? array_merge( $core_blocks, $wsu_blocks, $em_blocks, $third_party) : array_merge( $core_blocks, $wsu_blocks, $third_party );
