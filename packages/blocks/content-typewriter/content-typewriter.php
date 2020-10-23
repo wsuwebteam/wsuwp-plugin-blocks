@@ -1,8 +1,8 @@
 <?php namespace WSUWP\Plugin\Blocks;
 
-class Content_Separator extends Block_Base {
+class Content_Typewriter extends Block_Base {
 
-	protected static $slug = 'separator';
+	protected static $slug = 'content-typewriter';
 	protected static $default_atts = array(
 		'wrapper_class'  => '',
 		'class_name'     => '',
@@ -17,7 +17,7 @@ class Content_Separator extends Block_Base {
 
 	protected static function render( $atts, $content ) {
 
-		$base_class = ( 'default' !== $atts['style'] ) ? 'wsu-c-separator--' . $atts['style'] : 'wsu-c-separator';
+		$base_class = ( 'default' !== $atts['style'] ) ? 'wsu-c-typewriter--' . $atts['style'] : 'wsu-c-typewriter';
 
 		$atts['wrapper_class'] = static::get_classes(
 			array(
