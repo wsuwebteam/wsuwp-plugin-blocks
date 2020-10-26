@@ -5,6 +5,7 @@ const {
 	MediaUpload,
 	MediaUploadCheck,
 	URLInput,
+	InnerBlocks,
 	InspectorControls,
 } = wp.blockEditor;
 
@@ -110,7 +111,11 @@ const edit = ({ className, attributes, setAttributes }) => {
 				titleAriaLabel={ attributes.titleAriaLabel }
 				description={ attributes.description }
 				backgroundImageUrl={ attributes.backgroundImageUrl }
-			/>
+			>
+				<InnerBlocks
+					templateLock={ false }
+				/> 
+			</EmHero>
 		</>
 	)
 
