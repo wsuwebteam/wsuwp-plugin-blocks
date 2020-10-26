@@ -365,12 +365,12 @@ class Blocks {
 				
 				// EM Blocks
 				case 'wsuwp-em':
-					require_once $em_block_dir . $block['file_name'] . '/' . $block['file_name '] . '.php';
+					require_once $em_block_dir . $block['file_name'] . '/' . $block['file_name'] . '.php';
 				break;
 
 				// Block Parts
 				case 'block-part':
-					require_once $block_part_dir . $block['file_name'] . '/' . $block['file_name '] . '.php';
+					require_once $block_part_dir . $block['file_name'] . '/' . $block['file_name'] . '.php';
 				break;
 			}
 		}
