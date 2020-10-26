@@ -1,4 +1,7 @@
-<div class="<?php echo esc_attr($atts['wrapper_classes']); ?>">
+<div 
+	class="<?php echo esc_attr($atts['wrapper_classes']); ?>"
+	<?php if ( ! empty( $atts['inline_style'] ) ) : ?> style="<?php echo esc_attr( $atts['inline_style'] ); ?>"<?php endif; ?>
+	>
 	<?php if ( !empty($atts['label'])) : ?>
 		<div class="wsu-c-stat__label">
 			<?php echo $atts['label']; ?>

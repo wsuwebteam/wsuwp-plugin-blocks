@@ -37,6 +37,10 @@ registerBlockType(
 			decorators: {
 				type: 'array',
 				default: [],
+			},
+			style: {
+				type: 'object',
+				default: {}
 			}
 		},
 		edit,

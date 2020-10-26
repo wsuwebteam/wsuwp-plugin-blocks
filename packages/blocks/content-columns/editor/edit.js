@@ -16,7 +16,8 @@ const {
 } = wp.components;
 
 import EditOptions from './edit-options';
-import { SpacingSelector, DecoratorControl } from '../../../block-controls';
+import { SpacingSelector, DecoratorControl,
+	SpacingPanelVertical } from '../../../block-controls';
 
 const columnFormats = [
 
@@ -141,8 +142,8 @@ const ColumnsEdit = ( { className, attributes, setAttributes } ) => {
 										{ label: 'Gray 10%', value: 'gray-10' },
 									]}
 								/>
-								<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 							</PanelBody>
+							<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 						</InspectorControls>
 					}
 					<div className={'wsu-c-column__wrapper wsu-u-no-js wsu-c-columns--' + attributes.layout }  >

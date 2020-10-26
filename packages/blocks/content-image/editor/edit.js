@@ -29,7 +29,8 @@ const {
 
 const { WsuImage, WsuHr, WsuHeading, WsuIcon, WsuP } = wsu_wds.components; 
 
-import { SelectIcon, SpacingSelector, SizeUnitControl } from '../../../block-controls';
+import { SelectIcon, SpacingSelector, SizeUnitControl,
+	SpacingPanelVertical } from '../../../block-controls';
 import { empty } from '../../../block-components';
 
 import './style.scss';
@@ -122,8 +123,8 @@ const edit = ( props ) => {
 				</PanelBody>
 				<PanelBody title="Style" initialOpen={false}>
 					<SizeUnitControl attributes={attributes} setAttributes={setAttributes} />
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 
 			{ !attributes.src && 

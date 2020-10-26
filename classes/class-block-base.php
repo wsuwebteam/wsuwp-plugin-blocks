@@ -7,7 +7,9 @@ class Block_Base {
 	protected static $default_atts = array();
 	protected static $register_block = true;
 	protected static $as_shortcode = true;
-
+	protected static $global_atts = array(
+		'inline_style' => array(),
+	);
 
 	public static function get( $property ) {
 
@@ -96,6 +98,17 @@ class Block_Base {
 			}
 		}
 
+		// Check that each default is set
+		foreach ( static::$global_atts as $key => $value ) {
+
+			if ( ! array_key_exists( $key, $atts ) ) {
+
+				$atts[ $key ] = $value;
+
+			}
+		}
+
+
 	}
 
 
@@ -103,6 +116,12 @@ class Block_Base {
 
 		// parse_atts converts to snake case and fills in defaults
 		static::parse_atts( $atts );
+
+		if ( ! empty( $atts['inline_style'] ) ) {
+
+			static::to_snake_case( $atts['inline_style'] );
+
+		}
 
 		return static::render( $atts, $content );
 
@@ -219,6 +238,75 @@ class Block_Base {
 		}
 
 		return $classes;
+	}
+
+
+	protected static function get_inline_styles( $style_map, $style_atts, $atts = array(), $as_array = false ) {
+
+		$inline_style_array = array();
+
+		$empty_values = array( false, true, '', 'default' );
+
+		foreach ( $style_map as $style ) {
+
+			$key      = ( ! empty( $style['key'] ) ) ? $style['key'] : false;
+			$property = ( ! empty( $style['property'] ) ) ? $style['property'] : str_replace( '_', '-', $key );
+			$value = 'default';
+			$legacy_map = ( ! empty( $style['legacy_map'] ) && is_array( $style['legacy_map'] ) ) ? $style['legacy_map'] : array();
+			$is_att = ( ! empty( $style['is_att'] ) ) ? true : false;
+			$style_values = ( $is_att ) ? $atts : $style_atts;
+
+
+			if ( ! empty( $key ) ) {
+				
+				if ( ! empty( $style['is_bool'] ) ) {
+
+					if ( ! empty( $style_values[ $key ] ) ) {
+
+						$value = $style['value'];
+
+					}
+				} else {
+
+					if ( isset( $style_values[ $key ] ) ) {
+
+						$value = $style_values[ $key ];
+
+					}
+				}
+
+				if ( ! empty( $legacy_map ) && isset( $legacy_map[ $value ] ) ) {
+
+					$value = $legacy_map[ $value ];
+
+				}
+
+				if ( ! in_array( $value, $empty_values, true ) ) {
+
+					$inline_style_array[ $property ] = $value;
+
+				}
+			}
+		}
+
+		if ( $as_array ) {
+
+			return $inline_style_array;
+
+		} else {
+
+			$inline_style = '';
+
+			foreach ( $inline_style_array as $css_property => $css_value ) {
+
+				$inline_style .=  $css_property . ':' . $css_value . ';';
+
+			}
+
+			return $inline_style;
+
+		}
+
 	}
 
 }

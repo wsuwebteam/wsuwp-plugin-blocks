@@ -17,6 +17,17 @@ class EM_Content_Heading extends Block_Base {
 
 	protected static function render( $atts, $content ) {
 
+		$atts['inline_style'] = static::get_inline_styles(
+			array(
+				array( 'key' => 'margin_top' ),
+				array( 'key' => 'margin_bottom' ),
+				array( 'key' => 'padding_top' ),
+				array( 'key' => 'padding_bottom' ),
+			),
+			$atts['inline_style'],
+			$atts
+		);
+
 		$atts['wrapper_class'] = static::get_utility_classes(
 			array(
 				'class_name' => '',

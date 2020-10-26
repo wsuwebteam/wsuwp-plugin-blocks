@@ -19,7 +19,8 @@ const {
 
 import BlockOptionsSelect from '../../../block-controls/block-options-select';
 import { spacing } from '../../../block-components';
-import { SpacingSelector } from '../../../block-controls';
+import { SpacingSelector,
+	SpacingPanelVertical } from '../../../block-controls';
 
 const getCardTemplate = ( cardsPerRow ) => {
 
@@ -95,9 +96,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					
 				</PanelBody> */}
 
-				<PanelBody title="Style" initialOpen={false}>
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
-				</PanelBody>
+<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 
 			<div className="wsu-c-cards__wrapper">

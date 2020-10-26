@@ -1,6 +1,10 @@
 <?php namespace WSUWP\Plugin\Blocks; ?>
 
-<header class="<?php echo esc_attr( $atts['wrapper_class'] ); ?>" <?php if ( ! empty( $atts['id'] ) ) : ?> id="<?php echo esc_attr( $atts['id'] ); ?>"<?php endif; ?> >
+<header 
+	class="<?php echo esc_attr( $atts['wrapper_class'] ); ?>" 
+	<?php if ( ! empty( $atts['id'] ) ) : ?> id="<?php echo esc_attr( $atts['id'] ); ?>"<?php endif; ?>
+	<?php if ( ! empty( $atts['inline_style'] ) ) : ?> style="<?php echo esc_attr( $atts['inline_style'] ); ?>"<?php endif; ?>
+	>
 	<h1 class="wsu-c-article-header__title"><?php echo wp_kses_post( $atts['title'] ); ?></h1>
 	<?php if ( ! empty( $atts['subtitle'] ) ) : ?>
 	<div class="wsu-c-article-header__subtitle">
