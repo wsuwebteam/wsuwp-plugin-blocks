@@ -1,4 +1,7 @@
-<blockquote class="<?php echo esc_attr( $atts['wrapper_class']); ?>">
+<blockquote 
+	class="<?php echo esc_attr( $atts['wrapper_class']); ?>"
+	<?php if ( ! empty( $atts['inline_style'] ) ) : ?> style="<?php echo esc_attr( $atts['inline_style'] ); ?>"<?php endif; ?>
+	>
 	<?php echo $content; ?>
 	<?php if ( ! empty( $atts['name'] ) || ! empty( $atts['cite'] ) ) : ?>
 	<footer class="<?php echo esc_attr( $atts['footer_class']); ?>">

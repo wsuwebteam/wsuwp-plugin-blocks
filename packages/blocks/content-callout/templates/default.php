@@ -1,6 +1,10 @@
 <?php namespace WSUWP\Plugin\Blocks; ?>
 
-<div<?php if (!empty($atts['wrapper_class'])) : ?> class="<?php echo esc_attr( $atts['wrapper_class']); ?>"<?php endif; ?><?php if (!empty($atts['id'])) : ?> id="<?php echo esc_attr( $atts['id'] ); ?>"<?php endif; ?>>
+<div
+	<?php if (!empty($atts['wrapper_class'])) : ?> class="<?php echo esc_attr( $atts['wrapper_class']); ?>"<?php endif; ?>
+	<?php if (!empty($atts['id'])) : ?> id="<?php echo esc_attr( $atts['id'] ); ?>"<?php endif; ?>
+	<?php if ( ! empty( $atts['inline_style'] ) ) : ?> style="<?php echo esc_attr( $atts['inline_style'] ); ?>"<?php endif; ?>
+	>
 	<div class="wsu-c-callout__container">
 		<?php if ( ! empty( $atts['image_src'] ) || ! empty( $atts['video_src'] ) ) : ?>
 			<div class="wsu-c-callout__image-frame<?php if ( ! empty( $atts['has_decorators'] ) ) : ?> wsu-c-has-decorators<?php endif; ?>">

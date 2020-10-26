@@ -6,7 +6,8 @@ const {
 } = wp.components;
 const { PostTitle } = wp.editor;
 
-import { SpacingSelector } from '../../../block-controls';
+import { SpacingSelector,
+	SpacingPanelVertical } from '../../../block-controls';
 
 const { WsuArticleHeader } = wsu_wds.components;
 
@@ -36,9 +37,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							onChange={ (hidePublishDate) => setAttributes({ hidePublishDate }) }
 						/>
 					</PanelBody>
-					<PanelBody title="Style" initialOpen={false}>
-						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
-					</PanelBody>
+					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 				</InspectorControls>
 			}
 			<WsuArticleHeader 

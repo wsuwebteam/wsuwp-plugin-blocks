@@ -19,7 +19,10 @@ const {
 
 const { WsuButton } = wsu_wds.components; 
 
-import { SelectIcon, SpacingSelector } from '../../../block-controls';
+import { 
+	SelectIcon, 
+	SpacingSelector,
+	SpacingPanelVertical } from '../../../block-controls';
 import { empty } from '../../../block-components';
 
 const edit = ( { className, attributes, setAttributes } ) => { 
@@ -120,8 +123,9 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						/>
 					</BaseControl>
 
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
+					
 				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 
 			<WsuButton 

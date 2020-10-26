@@ -32,7 +32,8 @@ import {
 } from '@wordpress/icons';
 
 import HeadingLevelIcon from './heading-level-icon';
-import { SpacingSelector } from '../../../block-controls';
+import { SpacingSelector,
+	SpacingPanelVertical } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -84,8 +85,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 								}
 							/>
 						</BaseControl>
-						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 					</PanelBody>
+					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 				</InspectorControls>
 			}
 			<BlockControls>

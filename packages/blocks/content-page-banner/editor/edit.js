@@ -29,7 +29,8 @@ const { WsuPageBanner } = wsu_wds.components;
 
 import './style.scss';
 import { PatternControl } from '../../../block-components'; // TODO: Move PatternControl from block-components to block-controls
-import { SpacingSelector, DecoratorControl } from '../../../block-controls';
+import { SpacingSelector, DecoratorControl,
+	SpacingPanelVertical } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -157,8 +158,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(patterns) => setAttributes({ patterns})}
 						placeholder={'Enter pattern classes here.'}
 					/>
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 			
 			<WsuPageBanner

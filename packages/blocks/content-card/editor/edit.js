@@ -25,7 +25,8 @@ const { WsuCard } = wsu_wds.components;
 
 import './style.scss';
 import { spacing } from '../../../block-components';
-import { SpacingSelector } from '../../../block-controls';
+import { SpacingSelector,
+	SpacingPanelVertical } from '../../../block-controls';
 import {
 	DefaultCard,
 	DefaultCardControls,
@@ -98,9 +99,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						</PanelBody>
 					</Panel>
 				</PanelBody>
-				<PanelBody title="Style" initialOpen={false}>
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
-				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 
 			{ attributes.cardType == 'default' && <DefaultCard attributes={attributes} setAttributes={setAttributes} /> }

@@ -30,7 +30,8 @@ import { PatternControl, spacing } from '../../../block-components';
 
 import { 
 	SpacingSelector,
-	DecoratorControl
+	DecoratorControl,
+	SpacingPanelVertical
 } from '../../../block-controls';
 
 
@@ -219,6 +220,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					decorators={attributes.decorators}
 					onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
 					/>
+					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 
 			<EmContentCallout 

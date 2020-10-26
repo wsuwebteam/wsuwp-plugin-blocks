@@ -14,7 +14,8 @@ const { WsuAccordion } = wsu_wds.components;
 
 import { 
 	SpacingSelector,
-	FeedControls
+	FeedControls,
+	SpacingPanelVertical
 } from '../../../block-controls';
 
 
@@ -39,9 +40,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							options={sourceOptions}
 						/>
 					</PanelBody>
-					<PanelBody title="Style" initialOpen={false}>
-						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
-					</PanelBody>
+					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 				</InspectorControls>
 				<div className="wsu-c-accordion-group">
 					<InnerBlocks

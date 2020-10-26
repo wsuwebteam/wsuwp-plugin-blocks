@@ -14,7 +14,8 @@ const { WsuAccordion } = wsu_wds.components;
 
 import { 
 	SpacingSelector,
-	FeedControls
+	FeedControls,
+	SpacingPanelVertical
 } from '../../../block-controls';
 
 
@@ -86,9 +87,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						<FeedControls attributes={attributes} setAttributes={setAttributes} />
 					</PanelBody>
 					{ 'card' == attributes.type && <CardControls attributes={attributes} setAttributes={setAttributes} /> }
-					<PanelBody title="Style" initialOpen={false}>
-						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
-					</PanelBody>
+					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 				</InspectorControls>
 				<pre>News</pre>
 			</>

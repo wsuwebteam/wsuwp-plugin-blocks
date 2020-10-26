@@ -27,7 +27,10 @@ const {
 const { WsuCallout } = wsu_wds.components;
 
 import '@wsuwebteam/web-design-system/packages/components/content-callout/style.scss';
-import { SpacingSelector, DecoratorControl } from '../../../block-controls';
+import { 
+	SpacingSelector, 
+	DecoratorControl,
+	SpacingPanelVertical } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -141,8 +144,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={ (shape) => setAttributes( { shape } ) }
 						options={shapeOptions}
 					/>
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 			{console.log(attributes)}
 			<WsuCallout

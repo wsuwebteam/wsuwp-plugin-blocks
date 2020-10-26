@@ -14,6 +14,7 @@ const { WsuBlockquote } = wsu_wds.components;
 
 import { 
 	SpacingSelector,
+	SpacingPanelVertical
 } from '../../../block-controls';
 
 
@@ -84,8 +85,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						]}
 						onChange={ ( width ) => setAttributes({ width }) }
 					/>
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 			<WsuBlockquote
 				name={<RichText

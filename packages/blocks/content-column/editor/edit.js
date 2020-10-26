@@ -16,8 +16,11 @@ const {
 import { spacing } from '../../../block-components';
 import { 
 	SpacingSelector,
-	DecoratorControl
+	DecoratorControl,
+	SpacingPanelVertical
 } from '../../../block-controls';
+
+import { SpacingUnitControlPaddingHorizontal } from '../../../block-controls/spacing-unit-control/index';
 
 const editColumn = ( { className, attributes, setAttributes } ) => {
 
@@ -38,6 +41,7 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 						/>
 						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 					</PanelBody>
+					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 					<DecoratorControl 
 						decorators={attributes.decorators}
 						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }

@@ -22,6 +22,9 @@ const { EmSeparator } = wsu_wds.emComponents;
 
 import { spacing } from '../../../block-components';
 
+import {
+	SpacingPanelVertical } from '../../../block-controls';
+
 const edit = ( { className, attributes, setAttributes } ) => {
 
 	return (
@@ -77,6 +80,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							options={spacing}
 						/>
 					</PanelBody>
+					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 		</>
 	)

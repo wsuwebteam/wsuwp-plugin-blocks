@@ -8,7 +8,7 @@
  */
 class Plugin {
 
-	protected static $version = '0.19.0';
+	protected static $version = '0.20.0';
 
 	protected static $options;
 	protected static $authorized_admins = array(
@@ -55,6 +55,7 @@ class Plugin {
 		require_once __DIR__ . '/include-blocks.php';
 		require_once __DIR__ . '/include-customizer.php';
 		require_once __DIR__ . '/include-plugin-scripts.php';
+		require_once __DIR__ . '/include-legacy.php';
 
 	}
 
