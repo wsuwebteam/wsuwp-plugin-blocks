@@ -35,13 +35,24 @@ class Content_Page_Banner extends Block_Base {
 
 		$atts['overlay'] = ( ! empty( $atts['title'] ) && 'default' == $atts['overlay'] ) ? 'gray' : 'default';
 
+		$atts['inline_style'] = static::get_inline_styles(
+			array(
+				array( 'key' => 'margin_before', 'property' => 'margin-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'margin_after', 'property' => 'margin-bottom', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'padding_before', 'property' => 'padding-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'padding_after', 'property' => 'padding-bottom', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'margin_top' ),
+				array( 'key' => 'margin_bottom' ),
+				array( 'key' => 'padding_top' ),
+				array( 'key' => 'padding_bottom' ),
+			),
+			$atts['inline_style'],
+			$atts
+		);
+
 		$atts['wrapper_class'] = static::get_utility_classes(
 			array(
 				array( 'key' => 'class_name', 'prefix' => '' ),
-				array( 'key' => 'marginBefore', 'classSlug' => 'margin-before' ),
-				array( 'key' => 'marginAfter', 'classSlug' => 'margin-after' ),
-				array( 'key' => 'marginLeft', 'classSlug' => 'margin-left' ),
-				array( 'key' => 'marginRight', 'classSlug' => 'margin-right' ),
 				array( 'key' => 'textAlign', 'classSlug' => 'textalign' ),
 				array( 'key' => 'height', 'prefix' => 'wsu-c-page-banner__image--' ),
 				array( 'key' => 'overlay', 'prefix' => 'wsu-c-page-banner__overlay--' ),

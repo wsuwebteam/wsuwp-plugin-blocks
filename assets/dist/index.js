@@ -6800,6 +6800,1085 @@ const getUtilityClasses = ( utilityClasses, props, addClasses = [], asString = t
 
 /***/ }),
 
+/***/ "./node_modules/object-assign/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/object-assign/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/checkPropTypes.js":
+/*!***************************************************!*\
+  !*** ./node_modules/prop-types/checkPropTypes.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var printWarning = function() {};
+
+if (true) {
+  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+  var loggedTypeFailures = {};
+  var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (true) {
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          );
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes.resetWarningCache = function() {
+  if (true) {
+    loggedTypeFailures = {};
+  }
+}
+
+module.exports = checkPropTypes;
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/factoryWithTypeCheckers.js":
+/*!************************************************************!*\
+  !*** ./node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
+
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
+
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+var printWarning = function() {};
+
+if (true) {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (true) {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ( true && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!ReactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (true) {
+        if (arguments.length > 1) {
+          printWarning(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+       true ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : undefined;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/prop-types/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (true) {
+  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "./node_modules/prop-types/factoryWithTypeCheckers.js")(ReactIs.isElement, throwOnDirectAccess);
+} else {}
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-is/cjs/react-is.development.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-is/cjs/react-is.development.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-is/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/react-is/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
+}
+
+
+/***/ }),
+
 /***/ "./packages/block-collections/index.js":
 /*!*********************************************!*\
   !*** ./packages/block-collections/index.js ***!
@@ -8009,6 +9088,10 @@ var globalBlockAtts = {
   marginAfter: {
     type: 'string',
     default: 'default'
+  },
+  inlineStyle: {
+    type: 'object',
+    default: {}
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (globalBlockAtts);
@@ -8019,7 +9102,7 @@ var globalBlockAtts = {
 /*!******************************************!*\
   !*** ./packages/block-controls/index.js ***!
   \******************************************/
-/*! exports provided: SelectIcon, SpacingSelector, FeedControls, DecoratorControl, feedControlAtts, globalBlockAtts */
+/*! exports provided: SelectIcon, SpacingSelector, SpacingPanelVertical, FeedControls, DecoratorControl, feedControlAtts, globalBlockAtts, SizeUnitControl, sizeUnitControlAtts */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8030,17 +9113,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _spacing_selector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spacing-selector */ "./packages/block-controls/spacing-selector/index.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpacingSelector", function() { return _spacing_selector__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _feed_controls_feed_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./feed-controls/feed-control */ "./packages/block-controls/feed-controls/feed-control.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FeedControls", function() { return _feed_controls_feed_control__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _spacing_unit_control_spacing_panel_vertical__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./spacing-unit-control/spacing-panel-vertical */ "./packages/block-controls/spacing-unit-control/spacing-panel-vertical.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpacingPanelVertical", function() { return _spacing_unit_control_spacing_panel_vertical__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _decorator_control__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./decorator-control */ "./packages/block-controls/decorator-control/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DecoratorControl", function() { return _decorator_control__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+/* harmony import */ var _feed_controls_feed_control__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./feed-controls/feed-control */ "./packages/block-controls/feed-controls/feed-control.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FeedControls", function() { return _feed_controls_feed_control__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _feed_controls_feed_control_atts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./feed-controls/feed-control-atts */ "./packages/block-controls/feed-controls/feed-control-atts.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "feedControlAtts", function() { return _feed_controls_feed_control_atts__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+/* harmony import */ var _decorator_control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./decorator-control */ "./packages/block-controls/decorator-control/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DecoratorControl", function() { return _decorator_control__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
-/* harmony import */ var _global_block_atts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./global-block-atts */ "./packages/block-controls/global-block-atts/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "globalBlockAtts", function() { return _global_block_atts__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+/* harmony import */ var _feed_controls_feed_control_atts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./feed-controls/feed-control-atts */ "./packages/block-controls/feed-controls/feed-control-atts.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "feedControlAtts", function() { return _feed_controls_feed_control_atts__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _global_block_atts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./global-block-atts */ "./packages/block-controls/global-block-atts/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "globalBlockAtts", function() { return _global_block_atts__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _size_unit_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./size-unit-control */ "./packages/block-controls/size-unit-control/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SizeUnitControl", function() { return _size_unit_control__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sizeUnitControlAtts", function() { return _size_unit_control__WEBPACK_IMPORTED_MODULE_7__["sizeUnitControlAtts"]; });
+
+
+
 
 
 
@@ -8129,6 +9223,164 @@ SelectIcon.defaultProps = {
   className: 'wsu-b-select-icon'
 };
 /* harmony default export */ __webpack_exports__["default"] = (SelectIcon);
+
+/***/ }),
+
+/***/ "./packages/block-controls/size-unit-control/index.js":
+/*!************************************************************!*\
+  !*** ./packages/block-controls/size-unit-control/index.js ***!
+  \************************************************************/
+/*! exports provided: sizeUnitControlAtts, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sizeUnitControlAtts", function() { return sizeUnitControlAtts; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./packages/block-controls/size-unit-control/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_1__);
+
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    ButtonGroup = _wp$components.ButtonGroup,
+    SelectControl = _wp$components.SelectControl,
+    __experimentalNumberControl = _wp$components.__experimentalNumberControl;
+var NumberControl = __experimentalNumberControl;
+
+var imageSizePresets = [25, 33.33, 50, 66.66, 75, 100];
+
+var SizeUnitControl = function SizeUnitControl(props) {
+  var attributes = props.attributes,
+      setAttributes = props.setAttributes;
+
+  function updateDimensions(nextWidth, nextHeight) {
+    return function () {
+      setAttributes({
+        width: nextWidth,
+        height: nextHeight
+      });
+    };
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: "Sizing Type",
+    value: attributes.unit,
+    options: [{
+      label: 'Responsive',
+      value: '%'
+    }, {
+      label: 'Static',
+      value: 'px'
+    }],
+    onChange: function onChange(type) {
+      return setAttributes({
+        unit: type
+      });
+    }
+  }), attributes.unit == '%' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "wsu-control__size-unit-control"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ButtonGroup, {
+    className: "button-group"
+  }, imageSizePresets.map(function (scale) {
+    var scaledWidth = scale;
+    var scaledHeight = 'auto';
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+      isSmall: true,
+      isPressed: scale == attributes.width ? true : false,
+      onClick: updateDimensions(scaledWidth, scaledHeight)
+    }, Math.round(scale), "%");
+  }))), attributes.unit == 'px' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "wsu-control__size-unit-control-wrapper"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "wsu-control__size-unit-control"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(NumberControl, {
+    label: "Width",
+    isShiftStepEnabled: true,
+    shiftStep: 10,
+    value: attributes.width,
+    onChange: function onChange(width) {
+      setAttributes({
+        width: width,
+        height: parseInt(width * attributes.ratio, 10)
+      });
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(NumberControl, {
+    label: "Height",
+    isShiftStepEnabled: true,
+    shiftStep: 10,
+    value: attributes.height,
+    onChange: function onChange(height) {
+      setAttributes({
+        height: height,
+        width: parseInt(height * attributes.ratio, 10)
+      });
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "wsu-control__size-unit-control"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ButtonGroup, {
+    className: "button-group"
+  }, imageSizePresets.map(function (scale) {
+    var newWidth = Math.round(attributes.scaledWidth * (scale / 100));
+    var newHeight = Math.round(attributes.scaledHeight * (scale / 100));
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+      isSmall: true,
+      onClick: updateDimensions(newWidth, newHeight)
+    }, Math.round(scale), "%");
+  })))));
+};
+
+var sizeUnitControlAtts = {
+  width: {
+    type: 'integer',
+    default: 0
+  },
+  height: {
+    type: 'integer',
+    default: 0
+  },
+  naturalWidth: {
+    type: 'integer',
+    default: 0
+  },
+  naturalHeight: {
+    type: 'integer',
+    default: 0
+  },
+  scaledWidth: {
+    type: 'integer',
+    default: 0
+  },
+  scaledHeight: {
+    type: 'integer',
+    default: 0
+  },
+  ratio: {
+    type: 'number',
+    default: 1
+  },
+  naturalRatio: {
+    type: 'number',
+    default: 1
+  },
+  unit: {
+    type: 'string',
+    default: '%'
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SizeUnitControl);
+
+/***/ }),
+
+/***/ "./packages/block-controls/size-unit-control/style.scss":
+/*!**************************************************************!*\
+  !*** ./packages/block-controls/size-unit-control/style.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -8233,6 +9485,415 @@ var spacingOptions = [{
   value: 'xlarge'
 }];
 /* harmony default export */ __webpack_exports__["default"] = (spacingOptions);
+
+/***/ }),
+
+/***/ "./packages/block-controls/spacing-unit-control/index.js":
+/*!***************************************************************!*\
+  !*** ./packages/block-controls/spacing-unit-control/index.js ***!
+  \***************************************************************/
+/*! exports provided: SpacingUnitControlMarginVertical, SpacingUnitControlPaddingVertical, SpacingUnitControlVertical, SpacingPanel, SpacingPanelVertical, SpacingUnitControlPaddingHorizontal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _spacing_unit_control_margin_vertical__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./spacing-unit-control-margin-vertical */ "./packages/block-controls/spacing-unit-control/spacing-unit-control-margin-vertical.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpacingUnitControlMarginVertical", function() { return _spacing_unit_control_margin_vertical__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _spacing_unit_control_padding_vertical__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spacing-unit-control-padding-vertical */ "./packages/block-controls/spacing-unit-control/spacing-unit-control-padding-vertical.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpacingUnitControlPaddingVertical", function() { return _spacing_unit_control_padding_vertical__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _spacing_unit_control_vertical__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./spacing-unit-control-vertical */ "./packages/block-controls/spacing-unit-control/spacing-unit-control-vertical.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpacingUnitControlVertical", function() { return _spacing_unit_control_vertical__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _spacing_panel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./spacing-panel */ "./packages/block-controls/spacing-unit-control/spacing-panel.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpacingPanel", function() { return _spacing_panel__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _spacing_panel_vertical__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./spacing-panel-vertical */ "./packages/block-controls/spacing-unit-control/spacing-panel-vertical.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpacingPanelVertical", function() { return _spacing_panel_vertical__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _spacing_unit_control_padding_horizontal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./spacing-unit-control-padding-horizontal */ "./packages/block-controls/spacing-unit-control/spacing-unit-control-padding-horizontal.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpacingUnitControlPaddingHorizontal", function() { return _spacing_unit_control_padding_horizontal__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./packages/block-controls/spacing-unit-control/spacing-panel-vertical.js":
+/*!********************************************************************************!*\
+  !*** ./packages/block-controls/spacing-unit-control/spacing-panel-vertical.js ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index */ "./packages/block-controls/spacing-unit-control/index.js");
+
+var _wp$components = wp.components,
+    PanelRow = _wp$components.PanelRow,
+    TextControl = _wp$components.TextControl;
+
+
+var SpacingPanelVertical = function SpacingPanelVertical(props) {
+  var attributes = props.attributes,
+      setAttributes = props.setAttributes;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_index__WEBPACK_IMPORTED_MODULE_1__["SpacingPanel"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_index__WEBPACK_IMPORTED_MODULE_1__["SpacingUnitControlVertical"], {
+    attributes: attributes,
+    setAttributes: setAttributes
+  }), props.children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SpacingPanelVertical);
+
+/***/ }),
+
+/***/ "./packages/block-controls/spacing-unit-control/spacing-panel.js":
+/*!***********************************************************************!*\
+  !*** ./packages/block-controls/spacing-unit-control/spacing-panel.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+var _wp$components = wp.components,
+    Panel = _wp$components.Panel,
+    PanelBody = _wp$components.PanelBody;
+
+var SpacingPanel = function SpacingPanel(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Panel, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: "Spacing",
+    initialOpen: false
+  }, props.children));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SpacingPanel);
+
+/***/ }),
+
+/***/ "./packages/block-controls/spacing-unit-control/spacing-unit-control-margin-vertical.js":
+/*!**********************************************************************************************!*\
+  !*** ./packages/block-controls/spacing-unit-control/spacing-unit-control-margin-vertical.js ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./packages/block-controls/spacing-unit-control/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+var _wp$components = wp.components,
+    PanelRow = _wp$components.PanelRow,
+    TextControl = _wp$components.TextControl;
+
+
+var SpacingUnitControlMarginVertical = function SpacingUnitControlMarginVertical(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, {
+    className: "wsu-block-control__spacing-panel-row"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+    label: "Margin Top",
+    value: attributes.inlineStyle.marginTop,
+    onChange: function onChange(marginTop) {
+      return setAttributes({
+        inlineStyle: _objectSpread(_objectSpread({}, attributes.inlineStyle), {}, {
+          'marginTop': marginTop
+        })
+      });
+    },
+    placeholder: ''
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+    label: "Margin Bottom",
+    value: attributes.inlineStyle.marginBottom,
+    onChange: function onChange(marginBottom) {
+      return setAttributes({
+        inlineStyle: _objectSpread(_objectSpread({}, attributes.inlineStyle), {}, {
+          'marginBottom': marginBottom
+        })
+      });
+    },
+    placeholder: ''
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SpacingUnitControlMarginVertical);
+
+/***/ }),
+
+/***/ "./packages/block-controls/spacing-unit-control/spacing-unit-control-padding-horizontal.js":
+/*!*************************************************************************************************!*\
+  !*** ./packages/block-controls/spacing-unit-control/spacing-unit-control-padding-horizontal.js ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+var _wp$components = wp.components,
+    PanelRow = _wp$components.PanelRow,
+    TextControl = _wp$components.TextControl;
+
+var SpacingUnitControlPaddingHorizontal = function SpacingUnitControlPaddingHorizontal(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, {
+    className: "wsu-block-control__spacing-panel-row"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+    label: "Padding Left",
+    value: attributes.inlineStyle.paddingLeft,
+    onChange: function onChange(paddingLeft) {
+      return setAttributes({
+        inlineStyle: _objectSpread(_objectSpread({}, attributes.inlineStyle), {}, {
+          'paddingLeft': paddingLeft
+        })
+      });
+    },
+    placeholder: ''
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+    label: "Padding Right",
+    value: attributes.inlineStyle.paddingRight,
+    onChange: function onChange(paddingRight) {
+      return setAttributes({
+        inlineStyle: _objectSpread(_objectSpread({}, attributes.inlineStyle), {}, {
+          'paddingRight': paddingRight
+        })
+      });
+    },
+    placeholder: ''
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SpacingUnitControlPaddingHorizontal);
+
+/***/ }),
+
+/***/ "./packages/block-controls/spacing-unit-control/spacing-unit-control-padding-vertical.js":
+/*!***********************************************************************************************!*\
+  !*** ./packages/block-controls/spacing-unit-control/spacing-unit-control-padding-vertical.js ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+var _wp$components = wp.components,
+    PanelRow = _wp$components.PanelRow,
+    TextControl = _wp$components.TextControl;
+
+var SpacingUnitControlPaddingVertical = function SpacingUnitControlPaddingVertical(_ref) {
+  var attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, {
+    className: "wsu-block-control__spacing-panel-row"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+    label: "Padding Top",
+    value: attributes.inlineStyle.paddingTop,
+    onChange: function onChange(paddingTop) {
+      return setAttributes({
+        inlineStyle: _objectSpread(_objectSpread({}, attributes.inlineStyle), {}, {
+          'paddingTop': paddingTop
+        })
+      });
+    },
+    placeholder: ''
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+    label: "Padding Bottom",
+    value: attributes.inlineStyle.paddingBottom,
+    onChange: function onChange(paddingBottom) {
+      return setAttributes({
+        inlineStyle: _objectSpread(_objectSpread({}, attributes.inlineStyle), {}, {
+          'paddingBottom': paddingBottom
+        })
+      });
+    },
+    placeholder: ''
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SpacingUnitControlPaddingVertical);
+
+/***/ }),
+
+/***/ "./packages/block-controls/spacing-unit-control/spacing-unit-control-vertical.js":
+/*!***************************************************************************************!*\
+  !*** ./packages/block-controls/spacing-unit-control/spacing-unit-control-vertical.js ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index */ "./packages/block-controls/spacing-unit-control/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+
+var _wp$components = wp.components,
+    PanelRow = _wp$components.PanelRow,
+    TextControl = _wp$components.TextControl;
+
+
+
+var SpacingUnitControlVertical = function SpacingUnitControlVertical(props) {
+  var attributes = props.attributes,
+      setAttributes = props.setAttributes;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_index__WEBPACK_IMPORTED_MODULE_1__["SpacingUnitControlMarginVertical"], {
+    attributes: attributes,
+    setAttributes: setAttributes
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_index__WEBPACK_IMPORTED_MODULE_1__["SpacingUnitControlPaddingVertical"], {
+    attributes: attributes,
+    setAttributes: setAttributes
+  }), props.children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SpacingUnitControlVertical);
+
+/***/ }),
+
+/***/ "./packages/block-controls/spacing-unit-control/style.scss":
+/*!*****************************************************************!*\
+  !*** ./packages/block-controls/spacing-unit-control/style.scss ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -8402,13 +10063,10 @@ var edit = function edit(_ref) {
         });
       },
       options: sourceOptions
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      title: "Style",
-      initialOpen: false
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingSelector"], {
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingPanelVertical"], {
       attributes: attributes,
       setAttributes: setAttributes
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "wsu-c-accordion-group"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
       allowedBlocks: ['wsuwp/accordion'],
@@ -8657,13 +10315,10 @@ var edit = function edit(_ref) {
       });
     },
     placeholder: 'Enter title here.'
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-    title: "Style",
-    initialOpen: false
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingSelector"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuAccordion, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuAccordion, {
     title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "span",
       className: "wsu-c-accordion__title-control",
@@ -9019,10 +10674,10 @@ var edit = function edit(_ref) {
         buttonAlign: buttonAlign
       });
     }
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingSelector"], {
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuButton, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuButton, {
     buttonText: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
       value: attributes.buttonText,
@@ -9448,10 +11103,10 @@ var edit = function edit(_ref) {
       });
     },
     options: shapeOptions
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["SpacingSelector"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), console.log(attributes), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuCallout, {
+  })), console.log(attributes), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuCallout, {
     imageAlt: attributes.imageAlt,
     imageSize: attributes.imageSize,
     imageSrc: attributes.imageSrc,
@@ -9865,13 +11520,10 @@ var edit = function edit(_ref) {
         onClick: open
       }, "Open Media Library"));
     }
-  }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-    title: "Style",
-    initialOpen: false
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingSelector"], {
+  }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), attributes.cardType == 'default' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls_card_type_controls__WEBPACK_IMPORTED_MODULE_4__["DefaultCard"], {
+  })), attributes.cardType == 'default' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls_card_type_controls__WEBPACK_IMPORTED_MODULE_4__["DefaultCard"], {
     attributes: attributes,
     setAttributes: setAttributes
   }), attributes.cardType == 'person' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls_card_type_controls__WEBPACK_IMPORTED_MODULE_4__["PersonCard"], {
@@ -10195,13 +11847,10 @@ var edit = function edit(_ref) {
     }));
   }
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-    title: "Style",
-    initialOpen: false
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingSelector"], {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "wsu-c-cards__wrapper"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
     allowedBlocks: ['wsuwp/card']
@@ -10344,6 +11993,10 @@ registerBlockType("wsuwp/column", {
     decorators: {
       type: 'array',
       default: []
+    },
+    style: {
+      type: 'object',
+      default: {}
     }
   }),
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -10365,6 +12018,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _block_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../block-components */ "./packages/block-components/index.js");
 /* harmony import */ var _block_controls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../block-controls */ "./packages/block-controls/index.js");
+/* harmony import */ var _block_controls_spacing_unit_control_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../block-controls/spacing-unit-control/index */ "./packages/block-controls/spacing-unit-control/index.js");
 
 var __ = wp.i18n.__;
 var InnerBlocks = wp.blockEditor.InnerBlocks;
@@ -10376,6 +12030,7 @@ var _wp$blockEditor = wp.blockEditor,
     RichText = _wp$blockEditor.RichText,
     URLInput = _wp$blockEditor.URLInput,
     InspectorControls = _wp$blockEditor.InspectorControls;
+
 
 
 
@@ -10407,7 +12062,10 @@ var editColumn = function editColumn(_ref) {
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["SpacingSelector"], {
     attributes: attributes,
     setAttributes: setAttributes
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["DecoratorControl"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["SpacingPanelVertical"], {
+    attributes: attributes,
+    setAttributes: setAttributes
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["DecoratorControl"], {
     decorators: attributes.decorators,
     onChange: function onChange(decoratorArray) {
       setAttributes({
@@ -10817,10 +12475,10 @@ var ColumnsEdit = function ColumnsEdit(_ref) {
           label: 'Gray 10%',
           value: 'gray-10'
         }]
-      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["SpacingSelector"], {
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["SpacingPanelVertical"], {
         attributes: attributes,
         setAttributes: setAttributes
-      }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
         className: 'wsu-c-column__wrapper wsu-u-no-js wsu-c-columns--' + attributes.layout
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
         template: getColumnsTemplate(attributes),
@@ -11072,10 +12730,10 @@ var edit = function edit(_ref) {
         textAlign: textAlign
       });
     }
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingSelector"], {
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Toolbar, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(DropdownMenu, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Toolbar, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(DropdownMenu, {
     icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_heading_level_icon__WEBPACK_IMPORTED_MODULE_2__["default"], {
       level: attributes.level
     }),
@@ -11609,10 +13267,10 @@ var edit = function edit(_ref) {
         verticalSpacing: verticalSpacing
       });
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingSelector"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuHero, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuHero, {
     title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
       value: attributes.title,
@@ -11708,7 +13366,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./packages/blocks/content-image/editor/edit.js");
-/* harmony import */ var _block_controls_global_block_atts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../block-controls/global-block-atts */ "./packages/block-controls/global-block-atts/index.js");
+/* harmony import */ var _block_controls__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../block-controls */ "./packages/block-controls/index.js");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./packages/blocks/content-image/editor/style.scss");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_4__);
 
@@ -11775,7 +13433,7 @@ registerBlockType("wsuwp/image", {
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("path", {
     d: "M9.76431 2L10.2115 2.8944L10.7642 4H12.0003H14.0003V13.0236H2.00031V4H4.00031H5.23641L5.78921 2.8944L6.23641 2H9.76431ZM11.0003 0H5.00031L4.00031 2H2.00031C0.900305 2 0.000305176 2.9 0.000305176 4V13.0236C0.000305176 14.1236 0.900305 15.0236 2.00031 15.0236H14.0003C15.1003 15.0236 16.0003 14.1236 16.0003 13.0236V4C16.0003 2.9 15.1003 2 14.0003 2H12.0003L11.0003 0Z"
   })),
-  attributes: _objectSpread(_objectSpread({}, _block_controls_global_block_atts__WEBPACK_IMPORTED_MODULE_3__["default"]), {}, {
+  attributes: _objectSpread(_objectSpread(_objectSpread({}, _block_controls__WEBPACK_IMPORTED_MODULE_3__["globalBlockAtts"]), _block_controls__WEBPACK_IMPORTED_MODULE_3__["sizeUnitControlAtts"]), {}, {
     src: {
       type: 'string',
       default: ''
@@ -11788,17 +13446,13 @@ registerBlockType("wsuwp/image", {
       type: 'string',
       default: 'media'
     },
-    width: {
-      type: 'integer',
-      default: 0
-    },
-    height: {
-      type: 'integer',
-      default: 0
-    },
     alignment: {
       type: 'string',
       default: ''
+    },
+    attachmentId: {
+      type: 'integer',
+      default: null
     }
   }),
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -11856,13 +13510,46 @@ var _wsu_wds$components = wsu_wds.components,
 
 
 
+var MIN_WIDTH = 20;
+var MAX_WIDTH = 1128;
 
-var edit = function edit(_ref) {
-  var className = _ref.className,
-      attributes = _ref.attributes,
-      setAttributes = _ref.setAttributes,
-      isSelected = _ref.isSelected,
-      toggleSelection = _ref.toggleSelection;
+var MediaUploadCheckControl = function MediaUploadCheckControl(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+    onSelect: function onSelect(media) {
+      var ratio = (media.height / media.width).toFixed(2);
+      var width = media.width > MAX_WIDTH ? MAX_WIDTH : media.width;
+      var height = media.width > MAX_WIDTH ? Math.round(MAX_WIDTH * ratio) : media.height;
+      props.setAttributes({
+        src: media.url,
+        alt: media.alt,
+        width: width,
+        height: height,
+        naturalWidth: media.width,
+        naturalHeight: media.height,
+        scaledWidth: width,
+        scaledHeight: height,
+        ratio: ratio,
+        attachmentId: media.id
+      });
+    },
+    allowedTypes: "image/*",
+    render: function render(_ref) {
+      var open = _ref.open;
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+        isPrimary: true,
+        onClick: open
+      }, "Open Media Library");
+    }
+  }));
+};
+
+var edit = function edit(props) {
+  var attributes = props.attributes,
+      setAttributes = props.setAttributes,
+      isSelected = props.isSelected,
+      toggleSelection = props.toggleSelection;
+  var minWidth = attributes.naturalWidth < attributes.naturalHeight ? MIN_WIDTH : MIN_WIDTH * attributes.ratio;
+  var minHeight = attributes.naturalHeight < attributes.naturalWidth ? MIN_WIDTH : MIN_WIDTH / attributes.ratio;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockAlignmentToolbar, {
     onChange: function onChange(alignment) {
       return setAttributes({
@@ -11886,24 +13573,10 @@ var edit = function edit(_ref) {
         srcType: srcType
       });
     }
-  }), attributes.srcType == 'media' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
-    onSelect: function onSelect(media) {
-      return setAttributes({
-        src: media.url,
-        alt: media.alt
-      });
-    },
-    allowedTypes: "image/*",
-    render: function render(_ref2) {
-      var open = _ref2.open;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
-        label: "Add/Update Image"
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
-        isPrimary: true,
-        onClick: open
-      }, "Open Media Library"));
-    }
-  })), attributes.srcType == 'url' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+  }), attributes.srcType == 'media' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheckControl, {
+    attributes: attributes,
+    setAttributes: setAttributes
+  }), attributes.srcType == 'url' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Custom Image URL",
     value: attributes.src,
     onChange: function onChange(src) {
@@ -11923,38 +13596,13 @@ var edit = function edit(_ref) {
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "Style",
     initialOpen: false
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, "Width"), console.log('width ' + attributes.width), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(__experimentalUnitControl, {
-    value: attributes.width,
-    units: [{
-      value: 'px',
-      label: 'px',
-      default: 0
-    }, {
-      value: '%',
-      label: '%',
-      default: 0
-    }],
-    onChange: function onChange(value) {
-      return console.log(value);
-    }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, "Height"), console.log('height ' + attributes.height), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(__experimentalUnitControl, {
-    value: attributes.height,
-    units: [{
-      value: 'px',
-      label: 'px',
-      default: 0
-    }, {
-      value: '%',
-      label: '%',
-      default: 0
-    }],
-    onChange: function onChange(value) {
-      return console.log(value);
-    }
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingSelector"], {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SizeUnitControl"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), !attributes.src && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Placeholder, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingPanelVertical"], {
+    attributes: attributes,
+    setAttributes: setAttributes
+  })), !attributes.src && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Placeholder, {
     label: "Image",
     instructions: "Upload an image file, pick one from your media library, or add one with a URL.",
     icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
@@ -11968,30 +13616,24 @@ var edit = function edit(_ref) {
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
       d: "M9.76431 2L10.2115 2.8944L10.7642 4H12.0003H14.0003V13.0236H2.00031V4H4.00031H5.23641L5.78921 2.8944L6.23641 2H9.76431ZM11.0003 0H5.00031L4.00031 2H2.00031C0.900305 2 0.000305176 2.9 0.000305176 4V13.0236C0.000305176 14.1236 0.900305 15.0236 2.00031 15.0236H14.0003C15.1003 15.0236 16.0003 14.1236 16.0003 13.0236V4C16.0003 2.9 15.1003 2 14.0003 2H12.0003L11.0003 0Z"
     }))
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
-    onSelect: function onSelect(media) {
-      setAttributes({
-        src: media.url,
-        alt: media.alt,
-        width: media.width,
-        height: media.height
-      });
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheckControl, {
+    attributes: attributes,
+    setAttributes: setAttributes
+  })), attributes.src && props.attributes.unit == 'px' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ResizableBox, {
+    size: {
+      width: attributes.width + attributes.unit,
+      height: attributes.height + attributes.unit
     },
-    allowedTypes: "image/*",
-    render: function render(_ref3) {
-      var open = _ref3.open;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
-        isPrimary: true,
-        onClick: open
-      }, "Open Media Library");
-    }
-  })))), attributes.src && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ResizableBox, {
-    className: "wsu-c-image-container wsu-c-image-container--" + attributes.alignment,
+    minWidth: minWidth,
+    minHeight: minHeight,
+    maxWidth: MAX_WIDTH,
+    lockAspectRatio: true,
+    className: "wsu-c-image-container wsu-c-image__wrapper--" + attributes.alignment,
     showHandle: isSelected,
     enable: {
       top: false,
       right: true,
-      bottom: false,
+      bottom: true,
       left: true,
       topRight: false,
       bottomRight: false,
@@ -11999,19 +13641,46 @@ var edit = function edit(_ref) {
       topLeft: false
     },
     onResizeStop: function onResizeStop(event, direction, elt, delta) {
-      console.log('delta height: ' + delta.height);
-      console.log('delta Width: ' + delta.width);
-      setAttributes({
-        height: parseInt(attributes.height + delta.height, 10),
-        width: parseInt(attributes.width + delta.width, 10)
-      });
-      console.log('new height: ' + attributes.height);
-      console.log('new Width: ' + attributes.width);
+      // If direction is width
+      if (direction == 'right' || direction == 'left') {
+        // Store new width value: width + delta
+        var newWidth = parseInt(attributes.width + delta.width, 10); // Store new height value that is equal new width * ratio
+
+        var newHeight = parseInt(newWidth * attributes.ratio, 10); // Set width/height value
+
+        setAttributes({
+          height: newHeight,
+          width: newWidth
+        });
+      } // If direction is bottom
+      else if (direction == 'bottom') {
+          // Store new height value: height + delta
+          var _newHeight = parseInt(attributes.height + delta.height, 10); // Store new width value that is equal to height * ratio
+
+
+          var _newWidth = parseInt(_newHeight * attributes.ratio, 10); // Set width/height value
+
+
+          setAttributes({
+            height: _newHeight,
+            width: _newWidth
+          });
+        } // Error out as not valid direction value only left/right bottom are supported
+        else {
+            console.error('Not a valid/supported direction: ' + direction);
+          }
+
       toggleSelection(true);
     }
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuImage, {
     src: attributes.src,
     alt: attributes.alt
+  })), attributes.src && attributes.unit == '%' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "wsu-c-image__wrapper wsu-c-image__wrapper--" + attributes.alignment
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuImage, {
+    src: attributes.src,
+    alt: attributes.alt,
+    width: attributes.width + attributes.unit
   })));
 };
 
@@ -12273,13 +13942,10 @@ var edit = function edit(_ref2) {
     })), 'card' == attributes.type && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CardControls, {
       attributes: attributes,
       setAttributes: setAttributes
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      title: "Style",
-      initialOpen: false
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingSelector"], {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingPanelVertical"], {
       attributes: attributes,
       setAttributes: setAttributes
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", null, "News"));
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("pre", null, "News"));
   }
 };
 
@@ -12771,10 +14437,10 @@ var edit = function edit(_ref) {
       });
     },
     placeholder: 'Enter pattern classes here.'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_4__["SpacingSelector"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_4__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuPageBanner, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuPageBanner, {
     title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
       value: attributes.title,
@@ -12979,13 +14645,10 @@ var edit = function edit(_ref) {
         hidePublishDate: hidePublishDate
       });
     }
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-    title: "Style",
-    initialOpen: false
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingSelector"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuArticleHeader, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuArticleHeader, {
     title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PostTitle, null),
     subtitle: attributes.subtitle
   }));
@@ -13273,10 +14936,10 @@ var edit = function edit(_ref) {
         width: width
       });
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingSelector"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuBlockquote, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuBlockquote, {
     name: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "span",
       value: attributes.name,
@@ -13660,13 +15323,10 @@ var edit = function edit(_ref) {
       });
     },
     options: styleOptions
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-    title: "Style",
-    initialOpen: false
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingSelector"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuSeparator, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuSeparator, {
     style: attributes.style
   }));
 };
@@ -14187,6 +15847,9 @@ var edit = function edit(_ref) {
         decorators: decoratorArray
       });
     }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_4__["SpacingPanelVertical"], {
+    attributes: attributes,
+    setAttributes: setAttributes
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(EmContentCallout, {
     eyebrowTitle: attributes.eyebrowHeader,
     title: attributes.title,
@@ -14727,6 +16390,7 @@ var _wp$blockEditor = wp.blockEditor,
     MediaUpload = _wp$blockEditor.MediaUpload,
     MediaUploadCheck = _wp$blockEditor.MediaUploadCheck,
     URLInput = _wp$blockEditor.URLInput,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
     InspectorControls = _wp$blockEditor.InspectorControls;
 var _wp$components = wp.components,
     Panel = _wp$components.Panel,
@@ -14845,16 +16509,18 @@ var edit = function edit(_ref) {
         verticalSpacing: verticalSpacing
       });
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingSelector"], {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_3__["SpacingPanelVertical"], {
     attributes: attributes,
     setAttributes: setAttributes
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(EmHero, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(EmHero, {
     title: attributes.title,
     titleTag: attributes.titleTag,
     titleAriaLabel: attributes.titleAriaLabel,
     description: attributes.description,
     backgroundImageUrl: attributes.backgroundImageUrl
-  }));
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
+    templateLock: false
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (edit);
@@ -14966,6 +16632,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _block_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../block-components */ "./packages/block-components/index.js");
+/* harmony import */ var _block_controls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../block-controls */ "./packages/block-controls/index.js");
 
 var __ = wp.i18n.__;
 var _wp$blockEditor = wp.blockEditor,
@@ -14984,6 +16651,7 @@ var _wp$components = wp.components,
     FocalPointPicker = _wp$components.FocalPointPicker,
     BaseControl = _wp$components.BaseControl;
 var EmSeparator = wsu_wds.emComponents.EmSeparator;
+
 
 
 var edit = function edit(_ref) {
@@ -15053,7 +16721,10 @@ var edit = function edit(_ref) {
       });
     },
     options: _block_components__WEBPACK_IMPORTED_MODULE_1__["spacing"]
-  }))));
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["SpacingPanelVertical"], {
+    attributes: attributes,
+    setAttributes: setAttributes
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (edit);
@@ -15185,6 +16856,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _block_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../block-components */ "./packages/block-components/index.js");
+/* harmony import */ var _block_controls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../block-controls */ "./packages/block-controls/index.js");
 
 var __ = wp.i18n.__;
 var _wp$blockEditor = wp.blockEditor,
@@ -15204,6 +16876,7 @@ var _wp$components = wp.components,
     BaseControl = _wp$components.BaseControl,
     CheckboxControl = _wp$components.CheckboxControl,
     RangeControl = _wp$components.RangeControl;
+
 
 
 var edit = function edit(_ref) {
@@ -15305,7 +16978,10 @@ var edit = function edit(_ref) {
       });
     },
     options: _block_components__WEBPACK_IMPORTED_MODULE_1__["spacing"]
-  }))));
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_2__["SpacingPanelVertical"], {
+    attributes: attributes,
+    setAttributes: setAttributes
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (edit);

@@ -22,13 +22,24 @@ class Content_Quote extends Block_Base {
 
 	protected static function render( $atts, $content ) {
 
+		$atts['inline_style'] = static::get_inline_styles(
+			array(
+				array( 'key' => 'margin_before', 'property' => 'margin-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'margin_after', 'property' => 'margin-bottom', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'padding_before', 'property' => 'padding-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'padding_after', 'property' => 'padding-bottom', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'margin_top' ),
+				array( 'key' => 'margin_bottom' ),
+				array( 'key' => 'padding_top' ),
+				array( 'key' => 'padding_bottom' ),
+			),
+			$atts['inline_style'],
+			$atts
+		);
+
 		$atts['wrapper_class'] = static::get_classes(
 			array(
 				'class_name'       => '',
-				'margin_before'    => 'wsu-u-margin-before--',
-				'margin_after'     => 'wsu-u-margin-after--',
-				'padding_before'   => 'wsu-u-padding-before--',
-				'padding_after'    => 'wsu-u-padding-after--',
 				'text_size'        => 'wsu-c-blockquote--text-size-',
 				'width'            => 'wsu-c-blockquote--width-',
 

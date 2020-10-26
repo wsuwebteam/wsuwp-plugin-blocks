@@ -26,9 +26,13 @@ class EM_Content_Decorator extends Block_Base {
 
 		$decorator_content = '';
 
-		foreach ( $decorator_array as $decorator ) {
+		if ( is_array($decorator_array) ) {
 
-			$decorator_content .= static::render_block( $decorator );
+			foreach ( $decorator_array as $decorator ) {
+	
+				$decorator_content .= static::render_block( $decorator );
+	
+			}
 
 		}
 

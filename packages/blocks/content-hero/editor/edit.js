@@ -24,7 +24,8 @@ import './style.scss';
 
 import '@wsuwebteam/build-tools/js/helpers/ranges';
 import { wsuRange } from '@wsuwebteam/build-tools/js/helpers/ranges';
-import { SpacingSelector, DecoratorControl } from '../../../block-controls';
+import { SpacingSelector, DecoratorControl,
+	SpacingPanelVertical } from '../../../block-controls';
 
 const edit = ({ className, attributes, setAttributes }) => {
 
@@ -140,8 +141,8 @@ const edit = ({ className, attributes, setAttributes }) => {
 						]}
 						onChange={(verticalSpacing) => setAttributes({ verticalSpacing })}
 					/>
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
 				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 
 			<WsuHero

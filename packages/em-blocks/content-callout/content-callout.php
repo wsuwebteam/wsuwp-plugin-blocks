@@ -42,6 +42,21 @@ class EM_Content_Callout extends Block_Base {
 
 		$atts['has_decorators'] = ( ! empty( $atts['decorators'] ) ) ? true : false;
 
+		$atts['inline_style'] = static::get_inline_styles(
+			array(
+				array( 'key' => 'margin_before', 'property' => 'margin-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'margin_after', 'property' => 'margin-bottom', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'padding_before', 'property' => 'padding-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'padding_after', 'property' => 'padding-bottom', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'margin_top' ),
+				array( 'key' => 'margin_bottom' ),
+				array( 'key' => 'padding_top' ),
+				array( 'key' => 'padding_bottom' ),
+			),
+			$atts['inline_style'],
+			$atts
+		);
+
 		$atts['wrapper_classes'] = static::get_utility_classes(
 			array(
 				array( 'key' => 'class_name', 'prefix' => '' ),

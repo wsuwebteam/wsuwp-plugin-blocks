@@ -12,7 +12,8 @@ const {
 
 const { WsuSeparator } = wsu_wds.components;
 
-import { SpacingSelector } from '../../../block-controls';
+import { SpacingSelector,
+	SpacingPanelVertical } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => { 
 
@@ -32,9 +33,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							options={styleOptions}
 						/>
 				</PanelBody>
-				<PanelBody title="Style" initialOpen={false}>
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
-				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 			<WsuSeparator style={attributes.style} />
 		</>

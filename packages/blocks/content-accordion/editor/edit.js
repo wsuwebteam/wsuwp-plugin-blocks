@@ -12,7 +12,9 @@ const {
 
 const { WsuAccordion } = wsu_wds.components;
 
-import { SpacingSelector } from '../../../block-controls';
+import { 
+	SpacingSelector,
+	SpacingPanelVertical } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => { 
 
@@ -27,9 +29,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						placeholder={'Enter title here.'}
 					/>
 				</PanelBody>
-				<PanelBody title="Style" initialOpen={false}>
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
-				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 			<WsuAccordion 
 				title={

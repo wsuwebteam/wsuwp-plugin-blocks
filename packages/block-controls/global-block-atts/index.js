@@ -19,6 +19,10 @@ const globalBlockAtts = {
 		type: 'string',
 		default: 'default',
 	},
+	inlineStyle: {
+		type: 'object',
+		default: {}
+	}
 };
 
 

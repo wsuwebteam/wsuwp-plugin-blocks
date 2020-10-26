@@ -13,34 +13,50 @@ class Content_Image extends Block_Base {
 		'padding_after'  => 'default',
 		'src'            => '',
 		'alt'            => '',
+		'attachment_id'  => null,
+		'unit'           => '%',
+		'width'          => '100',
+		'alignment'      => ''
 	);
 
 
 	protected static function render( $atts, $content ) {
 
+		$atts['inline_style'] = static::get_inline_styles(
+			array(
+				array( 'key' => 'margin_before', 'property' => 'margin-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'margin_after', 'property' => 'margin-bottom', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'padding_before', 'property' => 'padding-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'padding_after', 'property' => 'padding-bottom', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
+				array( 'key' => 'margin_top' ),
+				array( 'key' => 'margin_bottom' ),
+				array( 'key' => 'padding_top' ),
+				array( 'key' => 'padding_bottom' ),
+			),
+			$atts['inline_style'],
+			$atts
+		);
+
 		$atts['wrapper_class'] = static::get_classes(
 			array(
 				'class_name'       => '',
-				'margin_before'    => 'wsu-u-margin-before--',
-				'margin_after'     => 'wsu-u-margin-after--',
-				'padding_before'   => 'wsu-u-padding-before--',
-				'padding_after'    => 'wsu-u-padding-after--',
+				'alignment'        => 'wsu-c-image__wrapper--',
+				'width'            => 'wsu-c-image-width--',
 			),
 			$atts,
 			array('wsu-c-image__wrapper')
 		);
 
-		$atts['image_class'] = static::get_classes(
-			array(
-				
-			),
-			$atts,
-			array('wsu-c-image')
-		);
-
 		ob_start();
 
-		include __DIR__ . '/templates/default.php';
+		switch ( $atts['unit'] ) {
+			case 'px':
+				include __DIR__ . '/templates/static-width.php';
+				break;
+			default:
+				include __DIR__ . '/templates/default.php';
+				break;
+		}
 
 		return ob_get_clean();
 

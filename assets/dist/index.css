@@ -893,6 +893,44 @@
 .wsu-c-button--link.wsu-c-button--large {
   font-size: 1.5rem;
 }
+.wsu-block-control__spacing-panel-row {
+  align-items: flex-start;
+  margin-bottom: 0 !important;
+}
+.wsu-block-control__spacing-panel-row .components-base-control {
+  margin-bottom: 0;
+  margin-right: 1em;
+}
+.wsu-block-control__spacing-panel-row .components-base-control__label {
+  font-size: 11px;
+}
+.wsu-control__size-unit-control {
+  display: flex;
+}
+.wsu-control__size-unit-control .components-number-control {
+  margin-right: 5px;
+}
+.wsu-control__size-unit-control .components-number-control:last-child {
+  margin-right: 0;
+  margin-bottom: 18px;
+}
+.wsu-control__size-unit-control .components-base-control__field select {
+  min-width: 58px;
+}
+.wsu-control__size-unit-control .components-base-control__label {
+  margin-bottom: 5px;
+}
+.wsu-control__size-unit-control .css-h7hvkg-Input.css-h7hvkg-Input.css-h7hvkg-Input {
+  border-radius: 3px !important;
+}
+.wsu-control__size-unit-control .css-1qis1o8-Fieldset.css-1qis1o8-Fieldset.css-1qis1o8-Fieldset {
+  border-color: #7e8993 !important;
+}
+.wsu-control__size-unit-control .button-group {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+}
 /**
                         // //
                        // //
