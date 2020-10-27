@@ -22,8 +22,7 @@ const { EmSeparator } = wsu_wds.emComponents;
 
 import { SpacingSelector } from '../../../block-controls';
 
-import {
-	SpacingPanelVertical } from '../../../block-controls';
+import { SpacingPanelVertical } from '../../../block-controls';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -43,26 +42,6 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							help={ attributes.isHatched ? 'Has hatched background.' : 'No hatched background.' }
 							checked={ attributes.isHatched }
 							onChange={ (checked) => setAttributes({isHatched: checked}) }
-						/>
-					</BaseControl>
-					<BaseControl>
-						<ToggleControl
-							label="Show More Indicator"
-							help={ attributes.showMoreIndicator? 'Displays a "show more" indicator.' : 'No "show more" indicator is visible.' }
-							checked={ attributes.showMoreIndicator }
-							onChange={ (checked) => setAttributes({showMoreIndicator: checked}) }
-						/>
-						<SelectControl
-							label="Margin Before"
-							value={attributes.marginBefore}
-							onChange={ (marginBefore) => setAttributes( { marginBefore } ) }
-							options={spacing}
-						/>
-						<SelectControl
-							label="Margin After"
-							value={attributes.marginAfter}
-							onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
-							options={spacing}
 						/>
 					</BaseControl>
 				</PanelBody>

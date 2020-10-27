@@ -10,7 +10,7 @@ class Blocks {
 
 	protected static $block_directory = array(
 		// WDS Blocks
-		array( 
+		array(
 			'class_name'         => 'Content_Hero',
 			'file_name'          => 'content-hero',
 			'block_name'         => 'content-hero',
@@ -19,7 +19,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Columns',
 			'file_name'          => 'content-columns',
 			'block_name'         => 'columns',
@@ -28,7 +28,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Column',
 			'file_name'          => 'content-column',
 			'block_name'         => 'column',
@@ -37,7 +37,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Heading',
 			'file_name'          => 'content-heading',
 			'block_name'         => 'heading',
@@ -46,7 +46,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Button',
 			'file_name'          => 'content-button',
 			'block_name'         => 'button',
@@ -55,7 +55,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Legacy_Columns',
 			'file_name'          => 'legacy-columns',
 			'block_name'         => 'legacy-columns',
@@ -64,7 +64,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Cards',
 			'file_name'          => 'content-cards',
 			'block_name'         => 'cards',
@@ -73,7 +73,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Card',
 			'file_name'          => 'content-card',
 			'block_name'         => 'card',
@@ -82,7 +82,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Callout',
 			'file_name'          => 'content-callout',
 			'block_name'         => 'callout',
@@ -91,7 +91,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Post_Title',
 			'file_name'          => 'content-post-title',
 			'block_name'         => 'post',
@@ -100,7 +100,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Page_Banner',
 			'file_name'          => 'content-page-banner',
 			'block_name'         => 'page-banner',
@@ -109,7 +109,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Accordion',
 			'file_name'          => 'content-accordion',
 			'block_name'         => 'accordion',
@@ -118,7 +118,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Accordion_Group',
 			'file_name'          => 'content-accordion-group',
 			'block_name'         => 'accordion-group',
@@ -127,7 +127,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Separator',
 			'file_name'          => 'content-separator',
 			'block_name'         => 'separator',
@@ -136,7 +136,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Quote',
 			'file_name'          => 'content-quote',
 			'block_name'         => 'quote',
@@ -145,7 +145,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Image',
 			'file_name'          => 'content-image',
 			'block_name'         => 'image',
@@ -154,7 +154,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_News',
 			'file_name'          => 'content-news',
 			'block_name'         => 'news',
@@ -163,7 +163,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Group',
 			'file_name'          => 'content-group',
 			'block_name'         => 'group',
@@ -334,7 +334,7 @@ class Blocks {
 			'register_shortcode' => false,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Typewriter',
 			'file_name'          => 'content-typewriter',
 			'block_name'         => 'typewriter',
@@ -343,7 +343,7 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
-		array( 
+		array(
 			'class_name'         => 'Content_Video',
 			'file_name'          => 'content-video',
 			'block_name'         => 'video',
@@ -423,7 +423,7 @@ class Blocks {
 
 		foreach ( Blocks::$block_directory as $block ) {
 			if ( $block['register_block'] == true ) {
-				call_user_func( array( __NAMESPACE__ . '\\' . $block['class_name'], 'register_block' ) );
+				call_user_func( array(__NAMESPACE__ . '\\' . $block['class_name'], 'register_block' ) );
 			}
 		}
 

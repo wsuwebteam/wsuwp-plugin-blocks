@@ -4,13 +4,13 @@ const {
 } = wp.components;
 
 
-const LayoutPanel = ( props ) => {
+const GeneralPanel = ( props ) => {
 
 	let { attributes, setAttributes } = props;
 
 	return (
 
-		<PanelBody title="Layout & Spacing" initialOpen={false}>
+		<PanelBody title="General" initialOpen={false}>
 			{props.children}
 		</PanelBody>
 
@@ -18,4 +18,4 @@ const LayoutPanel = ( props ) => {
 
 }
 
-export default LayoutPanel;
+export default GeneralPanel;
