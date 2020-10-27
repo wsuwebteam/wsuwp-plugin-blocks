@@ -22,6 +22,11 @@ class Content_Image extends Block_Base {
 
 	protected static function render( $atts, $content ) {
 
+		// Class names don't like decimals :) 33.33 will become 33, 66.66 will become 66 so we can use class names correctly
+		if (is_float($atts['width'])) {
+			$atts['width'] = round($atts['width']);
+		}
+
 		$atts['inline_style'] = static::get_inline_styles(
 			array(
 				array( 'key' => 'margin_before', 'property' => 'margin-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),

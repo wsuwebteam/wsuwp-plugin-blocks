@@ -20,7 +20,7 @@ const {
 
 const { EmSeparator } = wsu_wds.emComponents;
 
-import { spacing } from '../../../block-components';
+import { SpacingSelector } from '../../../block-controls';
 
 import {
 	SpacingPanelVertical } from '../../../block-controls';
@@ -36,36 +36,21 @@ const edit = ( { className, attributes, setAttributes } ) => {
 			/>
 
 			<InspectorControls>
-					<PanelBody title="General">
-						<BaseControl>	
-							<ToggleControl
-								label="Use Hatched Background"
-								help={ attributes.isHatched ? 'Has hatched background.' : 'No hatched background.' }
-								checked={ attributes.isHatched }
-								onChange={ (checked) => setAttributes({isHatched: checked}) }
-							/>
-						</BaseControl>
-						<BaseControl>	
-							<ToggleControl
-								label="Show More Indicator"
-								help={ attributes.showMoreIndicator? 'Displays a "show more" indicator.' : 'No "show more" indicator is visible.' }
-								checked={ attributes.showMoreIndicator }
-								onChange={ (checked) => setAttributes({showMoreIndicator: checked}) }
-							/>
-						</BaseControl>
-					</PanelBody>
-					<PanelBody title="Layout" initialOpen={false}>
-						<SelectControl
-							label="Padding Before"
-							value={attributes.paddingBefore}
-							onChange={ (paddingBefore) => setAttributes( { paddingBefore } ) }
-							options={spacing}
+				<PanelBody title="General">
+					<BaseControl>
+						<ToggleControl
+							label="Use Hatched Background"
+							help={ attributes.isHatched ? 'Has hatched background.' : 'No hatched background.' }
+							checked={ attributes.isHatched }
+							onChange={ (checked) => setAttributes({isHatched: checked}) }
 						/>
-						<SelectControl
-							label="Padding After"
-							value={attributes.paddingAfter}
-							onChange={ (paddingAfter) => setAttributes( { paddingAfter } ) }
-							options={spacing}
+					</BaseControl>
+					<BaseControl>
+						<ToggleControl
+							label="Show More Indicator"
+							help={ attributes.showMoreIndicator? 'Displays a "show more" indicator.' : 'No "show more" indicator is visible.' }
+							checked={ attributes.showMoreIndicator }
+							onChange={ (checked) => setAttributes({showMoreIndicator: checked}) }
 						/>
 						<SelectControl
 							label="Margin Before"
@@ -79,8 +64,9 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							onChange={ (marginAfter) => setAttributes( { marginAfter } ) }
 							options={spacing}
 						/>
-					</PanelBody>
-					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
+					</BaseControl>
+				</PanelBody>
+				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 		</>
 	)

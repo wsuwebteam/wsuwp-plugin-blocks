@@ -13,7 +13,7 @@ class Blocks {
 		array( 
 			'class_name'         => 'Content_Hero',
 			'file_name'          => 'content-hero',
-			'block_name'         => 'hero',
+			'block_name'         => 'content-hero',
 			'block_namespace'    => 'wsuwp',
 			'register_block'     => true,
 			'register_shortcode' => true,
@@ -103,7 +103,7 @@ class Blocks {
 		array( 
 			'class_name'         => 'Content_Page_Banner',
 			'file_name'          => 'content-page-banner',
-			'block_name'         => 'page',
+			'block_name'         => 'page-banner',
 			'block_namespace'    => 'wsuwp',
 			'register_block'     => true,
 			'register_shortcode' => true,
@@ -212,15 +212,6 @@ class Blocks {
 			'class_name'         => 'EM_Content_Decorator',
 			'file_name'          => 'content-decorator',
 			'block_name'         => 'decorator',
-			'block_namespace'    => 'wsuwp-em',
-			'register_block'     => true,
-			'register_shortcode' => true,
-			'allow_block_type'   => true
-		),
-		array(
-			'class_name'         => 'EM_Content_Hero',
-			'file_name'          => 'content-hero',
-			'block_name'         => 'hero',
 			'block_namespace'    => 'wsuwp-em',
 			'register_block'     => true,
 			'register_shortcode' => true,
@@ -347,6 +338,15 @@ class Blocks {
 			'class_name'         => 'Content_Typewriter',
 			'file_name'          => 'content-typewriter',
 			'block_name'         => 'typewriter',
+			'block_namespace'    => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+			'allow_block_type'   => true
+		),
+		array( 
+			'class_name'         => 'Content_Video',
+			'file_name'          => 'content-video',
+			'block_name'         => 'video',
 			'block_namespace'    => 'wsuwp',
 			'register_block'     => true,
 			'register_shortcode' => true,

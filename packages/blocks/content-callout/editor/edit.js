@@ -121,10 +121,6 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						</PanelBody>
 					</Panel>
 				</PanelBody>
-				<DecoratorControl 
-						decorators={attributes.decorators}
-						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
-						/>
 				<PanelBody title="Style" initialOpen={false}>
 					<SelectControl
 						label="Layout"
@@ -146,8 +142,12 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					/>
 				</PanelBody>
 				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
+				<DecoratorControl 
+					decorators={attributes.decorators}
+					onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+				/>
 			</InspectorControls>
-			{console.log(attributes)}
+
 			<WsuCallout
 				imageAlt={attributes.imageAlt}
 				imageSize={attributes.imageSize}

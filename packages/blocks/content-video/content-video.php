@@ -1,23 +1,21 @@
 <?php namespace WSUWP\Plugin\Blocks;
 
-class Content_Typewriter extends Block_Base {
+class Content_Video extends Block_Base {
 
-	protected static $slug = 'typewriter';
+	protected static $slug = 'video';
 	protected static $default_atts = array(
 		'wrapper_class'  => '',
 		'class_name'     => '',
 		'id'             => '',
-		'style'          => 'default',
 		'margin_before'  => 'default',
 		'margin_after'   => 'default',
 		'padding_before' => 'default',
 		'padding_after'  => 'default',
+		'url'            => '',
 	);
 
 
 	protected static function render( $atts, $content ) {
-
-		$base_class = ( 'default' !== $atts['style'] ) ? 'wsu-c-typewriter--' . $atts['style'] : 'wsu-c-typewriter';
 
 		$atts['wrapper_class'] = static::get_classes(
 			array(
@@ -28,7 +26,7 @@ class Content_Typewriter extends Block_Base {
 				'padding_after'    => 'wsu-u-padding-after--',
 			),
 			$atts,
-			array( $base_class )
+			array('wsu-c-video__wrapper')
 		);
 
 		ob_start();

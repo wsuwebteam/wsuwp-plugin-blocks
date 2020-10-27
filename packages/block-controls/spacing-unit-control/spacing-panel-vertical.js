@@ -21,7 +21,7 @@ const SpacingPanelVertical = ( props ) => {
 		<LayoutPanel>
 			<SpacingUnitControlVertical attributes={attributes} setAttributes={setAttributes} />
 			{props.children}
-		</ LayoutPanel>
+		</LayoutPanel>
 	)
 	
 }
