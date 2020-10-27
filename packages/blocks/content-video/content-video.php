@@ -77,12 +77,8 @@ class Content_Video extends Block_Base {
 
 		$oembed_api_endpoint = 'https://vimeo.com/api/oembed.json';
 
-		$curl = curl_init($oembed_api_endpoint . '?url=' . $atts['url']);
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-		$response = json_decode(curl_exec($curl));
-		curl_close($curl);
+		$response = wp_remote_request( $oembed_api_endpoint . '?url=' . $atts['url'] );
+		$response = json_decode($response['body']);
 
 		$atts['title'] = $response->title;
 		$atts['video_id'] = $response->video_id;

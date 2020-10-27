@@ -19,7 +19,6 @@ class Content_Image extends Block_Base {
 		'alignment'      => ''
 	);
 
-
 	protected static function render( $atts, $content ) {
 
 		// Class names don't like decimals :) 33.33 will become 33, 66.66 will become 66 so we can use class names correctly
