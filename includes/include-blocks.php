@@ -103,7 +103,7 @@ class Blocks {
 		array( 
 			'class_name'         => 'Content_Page_Banner',
 			'file_name'          => 'content-page-banner',
-			'block_name'         => 'page',
+			'block_name'         => 'page-banner',
 			'block_namespace'    => 'wsuwp',
 			'register_block'     => true,
 			'register_shortcode' => true,
