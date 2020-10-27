@@ -45,7 +45,7 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 					<DecoratorControl 
 						decorators={attributes.decorators}
 						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
-						/>
+					/>
 				</InspectorControls>
 			}
 			<div className="wsu-c-column wsu-u-no-js">

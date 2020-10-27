@@ -11,7 +11,7 @@ const SpacingUnitControlMarginVertical = ( { attributes, setAttributes } ) => {
 
 	return (
 
-		<PanelRow  className="wsu-block-control__spacing-panel-row">
+		<PanelRow className="wsu-block-control__spacing-panel-row">
 			<TextControl
 				label="Margin Top"
 				value={attributes.inlineStyle.marginTop}

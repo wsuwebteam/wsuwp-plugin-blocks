@@ -19,8 +19,13 @@ class Content_Image extends Block_Base {
 		'alignment'      => ''
 	);
 
-
 	protected static function render( $atts, $content ) {
+
+		// Class names don't like decimals :) 33.33 will become 33, 66.66 will become 66 so we can use class names correctly
+		if (is_float($atts['width'])) {
+			$atts['width'] = explode('.', $atts['width']);
+			$atts['width'] = $atts['width'][0];
+		}
 
 		$atts['inline_style'] = static::get_inline_styles(
 			array(

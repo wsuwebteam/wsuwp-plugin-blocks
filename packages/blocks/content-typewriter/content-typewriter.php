@@ -2,7 +2,7 @@
 
 class Content_Typewriter extends Block_Base {
 
-	protected static $slug = 'content-typewriter';
+	protected static $slug = 'typewriter';
 	protected static $default_atts = array(
 		'wrapper_class'  => '',
 		'class_name'     => '',

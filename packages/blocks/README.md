@@ -4,7 +4,8 @@
 ## Panels
 - General
 - Source
-- Background
-- Display
-- Layout
+- Image Options
+- Background Options
+- Display Options
+- Layout & Spacing
 - Advanced
