@@ -7,23 +7,20 @@ class Content_Video extends Block_Base {
 		'wrapper_class'  => '',
 		'class_name'     => '',
 		'id'             => '',
-		'margin_before'  => 'default',
-		'margin_after'   => 'default',
-		'padding_before' => 'default',
-		'padding_after'  => 'default',
 		'url'            => '',
 	);
-
+	protected static $supported_platforms = array(
+		'youtube',
+		'vimeo'
+	);
 
 	protected static function render( $atts, $content ) {
 
+		$atts = self::process_video_url($atts);
+
 		$atts['wrapper_class'] = static::get_classes(
 			array(
-				'class_name'       => '',
-				'margin_before'    => 'wsu-u-margin-before--',
-				'margin_after'     => 'wsu-u-margin-after--',
-				'padding_before'   => 'wsu-u-padding-before--',
-				'padding_after'    => 'wsu-u-padding-after--',
+				'class_name' => '',
 			),
 			$atts,
 			array('wsu-c-video__wrapper')
@@ -31,10 +28,72 @@ class Content_Video extends Block_Base {
 
 		ob_start();
 
-		include __DIR__ . '/templates/default.php';
+		switch ($atts['platform']) {
+			case 'youtube':
+				self::render_youtube($atts);
+			break;
+
+			case 'vimeo':
+				self::render_vimeo($atts);
+			break;
+			
+			default:
+				self::render_default($atts);
+			break;
+		}
 
 		return ob_get_clean();
 
 	}
 
+	protected static function process_video_url($atts) {
+
+		foreach (self::$supported_platforms as $platform) {
+
+			if ( strpos( $atts['url'], $platform ) !== false ) {
+
+				// Assign platform
+				$atts['platform'] = $platform;
+
+			}
+
+		}
+
+		return $atts;
+
+	}
+
+	protected static function render_youtube($atts) {
+
+		parse_str( parse_url( $atts['url'], PHP_URL_QUERY ), $url_atts );
+
+		$atts['video_id'] = $url_atts['v'];
+
+		include __DIR__ . '/templates/youtube.php';
+
+	}
+
+	protected static function render_vimeo($atts) {
+
+		$oembed_api_endpoint = 'https://vimeo.com/api/oembed.json';
+
+		$curl = curl_init($oembed_api_endpoint . '?url=' . $atts['url']);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+		$response = json_decode(curl_exec($curl));
+		curl_close($curl);
+
+		$atts['title'] = $response->title;
+		$atts['video_id'] = $response->video_id;
+
+		include __DIR__ . '/templates/vimeo.php';
+
+	}
+
+	protected static function render_default($atts) {
+
+		include __DIR__ . '/templates/default.php';
+
+	}
 }

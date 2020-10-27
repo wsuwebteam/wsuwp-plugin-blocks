@@ -15,7 +15,7 @@ registerBlockType(
 	{
 		title: 'Video',
 		category: 'content',
-		icon: 'dashicons-video-alt3',
+		icon: 'video-alt3',
 		attributes: {
 			...globalBlockAtts,
 			url: {

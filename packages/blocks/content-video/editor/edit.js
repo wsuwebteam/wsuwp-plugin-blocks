@@ -30,6 +30,7 @@ const {
 const { WsuImage, WsuHr, WsuHeading, WsuIcon, WsuP } = wsu_wds.components; 
 
 import { SelectIcon, SpacingSelector, SizeUnitControl } from '../../../block-controls';
+import { GeneralPanel, LayoutPanel, SpacingUnitControlVertical} from '../../../block-controls';
 import { empty } from '../../../block-components';
 
 import './style.scss';
@@ -37,9 +38,6 @@ import './style.scss';
 const edit = ( props ) => { 
 
 	const { attributes, setAttributes, isSelected, toggleSelection } = props;
-
-	const minWidth = attributes.naturalWidth < attributes.naturalHeight ? MIN_WIDTH : MIN_WIDTH * attributes.ratio;
-	const minHeight = attributes.naturalHeight < attributes.naturalWidth ? MIN_WIDTH : MIN_WIDTH / attributes.ratio;
 	
 	return (
 		<>
@@ -49,53 +47,22 @@ const edit = ( props ) => {
 				/>
 			</BlockControls>
 			<InspectorControls>
-				<PanelBody title="General">
-					<SelectControl
-						label="Video Source"
-						value={ attributes.srcType }
-						options={[
-							{ label: 'YouTube', value: 'youtube' },
-							{ label: 'Vimeo', value: 'vimeo' },
-							{ label: 'Custom URL', value: 'custom', disabled },
-						]}
-						onChange={(srcType) => setAttributes({ srcType: srcType })}
-					/>
-					
-					{ attributes.srcType == 'media' &&
-						<MediaUploadCheckControl attributes={attributes} setAttributes={setAttributes} />
-					}
-
-					{ attributes.srcType == 'url' &&
-						<TextControl
-							label="Custom Image URL"
-							value={ attributes.src }
-							onChange={ ( src ) => setAttributes( { src: src } ) }
-						/>
-					}
-
-					<WsuHr />
-
+				<GeneralPanel>
 					<TextControl
-						label="Alt Text"
-						value={attributes.alt}
-						onChange={(alt) => setAttributes({ alt })}
-						placeholder={'Enter image alt text here.'}
+						label="Video Url"
+						value={ attributes.url }
+						onChange={ ( url ) => setAttributes( { url: url } ) }
+						help="Make sure to include the full video URL (not a shortened version of it). Currently supports YouTube and Vimeo videos."
 					/>
-
-					{/* IDEA: add lightbox view */}
-					{/* IDEA: make images linkable */}
-				</PanelBody>
-				<PanelBody title="Style" initialOpen={false}>
-					<SizeUnitControl attributes={attributes} setAttributes={setAttributes} />
-					<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
-				</PanelBody>
+				</GeneralPanel>
 			</InspectorControls>
 
-			<Placeholder label="Video" instructions="Add the URL for which your video is hosted!" icon="dashicons-video-alt3">
+			<Placeholder label="Video" instructions="Add the URL for which your video is hosted!" icon="video-alt3">
 				<TextControl
-					label="Url"
+					label="Video Url"
 					value={ attributes.url }
 					onChange={ ( url ) => setAttributes( { url: url } ) }
+					help="Make sure to include the full video URL (not a shortendered version of it). Currently supports YouTube and Vimeo videos."
 				/>
 			</Placeholder>
 
