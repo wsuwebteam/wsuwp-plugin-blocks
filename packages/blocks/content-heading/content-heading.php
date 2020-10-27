@@ -20,8 +20,6 @@ class Content_Heading extends Block_Base {
 
 	protected static function render( $atts, $content ) {
 
-		var_dump( $atts );
-
 		$atts['inline_style'] = static::get_inline_styles(
 			array(
 				array( 'key' => 'margin_before', 'property' => 'margin-top', 'is_att' => true, 'legacy_map' => Legacy::get( 'spacing_legacy_map' ) ),
