@@ -396,11 +396,11 @@ class Blocks {
 		return array_merge(
 			array(
 				array(
-					'js_name' => 'content',
+					'slug' => 'content',
 					'title' => 'Content',
 				),
 				array(
-					'js_name' => 'embeds',
+					'slug' => 'embeds',
 					'title' => 'Embeds',
 				),
 			),
