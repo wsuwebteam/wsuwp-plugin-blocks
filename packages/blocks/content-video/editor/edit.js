@@ -52,8 +52,11 @@ const edit = ( props ) => {
 						label="Video Url"
 						value={ attributes.url }
 						onChange={ ( url ) => setAttributes( { url: url } ) }
-						help="Make sure to include the full video URL (not a shortened version of it). Currently supports YouTube and Vimeo videos."
+						help="Supports YouTube and Vimeo videos."
 					/>
+					{ attributes.url.includes('youtu.be') &&
+						<code>Video player doesn't support shortened urls. Please include the full YouTube url.</code>
+					}
 				</GeneralPanel>
 			</InspectorControls>
 
@@ -62,8 +65,11 @@ const edit = ( props ) => {
 					label="Video Url"
 					value={ attributes.url }
 					onChange={ ( url ) => setAttributes( { url: url } ) }
-					help="Make sure to include the full video URL (not a shortendered version of it). Currently supports YouTube and Vimeo videos."
+					help="Supports YouTube and Vimeo videos."
 				/>
+				{ attributes.url.includes('youtu.be') &&
+					<code>Video player doesn't support shortened urls. Please include the full YouTube url.</code>
+				}
 			</Placeholder>
 
 		</>

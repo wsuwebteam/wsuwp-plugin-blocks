@@ -28,8 +28,6 @@
 				'onStateChange': onPlayerStateChange
 			},
 		});
-
-		console.log(player);
 	}
 
 	// 4. The API will call this function when the video player is ready.
