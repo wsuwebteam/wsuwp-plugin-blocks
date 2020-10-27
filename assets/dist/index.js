@@ -9431,8 +9431,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sizeUnitControlAtts", function() { return _size_unit_control__WEBPACK_IMPORTED_MODULE_7__["sizeUnitControlAtts"]; });
 
-/* harmony import */ var _block_control_panels_layout_panel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./block-control-panels/layout-panel */ "./packages/block-controls/block-control-panels/layout-panel.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayoutPanel", function() { return _block_control_panels_layout_panel__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+/* harmony import */ var _block_control_panels_layout_panel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./block-control-panels/layout-panel */ "./packages/block-controls/block-control-panels/layout-panel.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayoutPanel", function() { return _block_control_panels_layout_panel__WEBPACK_IMPORTED_MODULE_8__["default"]; });
 
 
 
