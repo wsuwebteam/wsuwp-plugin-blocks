@@ -31,6 +31,7 @@ import '../../packages/blocks/content-separator/editor/block';
 import '../../packages/blocks/content-quote/editor/block';
 import '../../packages/blocks/content-image/editor/block';
 import '../../packages/blocks/content-news/editor/block';
+import '../../packages/blocks/content-group/editor/block';
 
 // EM Blocks
 import '../../packages/em-blocks/content-separator/editor/block';

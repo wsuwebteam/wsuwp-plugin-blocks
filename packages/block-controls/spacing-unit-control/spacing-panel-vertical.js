@@ -9,6 +9,8 @@ import {
 	SpacingUnitControlVertical,
 } from './index';
 
+import { LayoutPanel } from '../index';
+
 
 const SpacingPanelVertical = ( props ) => {
 
@@ -16,10 +18,10 @@ const SpacingPanelVertical = ( props ) => {
 
 	return (
 
-		<SpacingPanel>
+		<LayoutPanel>
 			<SpacingUnitControlVertical attributes={attributes} setAttributes={setAttributes} />
 			{props.children}
-		</ SpacingPanel>
+		</ LayoutPanel>
 	)
 	
 }

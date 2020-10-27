@@ -9,3 +9,5 @@ export { default as globalBlockAtts } from './global-block-atts';
 
 export { default as SizeUnitControl } from './size-unit-control';
 export { sizeUnitControlAtts as sizeUnitControlAtts } from './size-unit-control';
+
+export { default as LayoutPanel } from './block-control-panels/layout-panel'
