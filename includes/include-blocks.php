@@ -163,6 +163,15 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
+		array( 
+			'class_name'         => 'Content_Group',
+			'file_name'          => 'content-group',
+			'block_name'         => 'group',
+			'block_namespace'    => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => true,
+			'allow_block_type'   => true,
+		),
 		array(
 			'class_name'         => 'EM_Content_Separator',
 			'file_name'          => 'content-separator',
