@@ -7,7 +7,7 @@ const FullWidthControl = ( { attributes, setAttributes } ) => {
 
 	return (
 		<ToggleControl
-			label="Full Width Background"
+			label="Full Width"
 			checked={ attributes.fullWidth }
 			onChange={ ( fullWidth ) => setAttributes( { fullWidth } ) }
 		/>

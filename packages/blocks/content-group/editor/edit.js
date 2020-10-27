@@ -29,7 +29,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					<PanelBody title="General" initialOpen={true}>
 						<FullWidthControl attributes={attributes} setAttributes={setAttributes} />
 						<ContentFullWidthControl attributes={attributes} setAttributes={setAttributes} />
-					</PanelBody>
+					</PanelBody> 
 					<PanelBody title="Background" initialOpen={false}>
 						<BackgroundColorControl attributes={attributes} setAttributes={setAttributes} /> 
 					</PanelBody>

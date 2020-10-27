@@ -15,6 +15,12 @@ class Content_Group extends Block_Base {
 
 	protected static function render( $atts, $content ) {
 
+		if ( ! empty( $atts['content_full_width'] ) ) {
+
+			$atts['full_width'] = true;
+
+		}
+
 		$atts['inline_style'] = static::get_inline_styles(
 			array(
 				array( 'key' => 'margin_top' ),
