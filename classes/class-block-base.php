@@ -283,6 +283,13 @@ class Block_Base {
 
 				if ( ! in_array( $value, $empty_values, true ) ) {
 
+					switch ( $property ) {
+
+						case 'background-image':
+							$value = 'url(' . $value . ')';
+							break;
+					}
+
 					$inline_style_array[ $property ] = $value;
 
 				}

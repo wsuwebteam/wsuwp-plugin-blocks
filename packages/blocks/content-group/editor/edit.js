@@ -18,7 +18,7 @@ import {
 	FullWidthControl,
 	ContentFullWidthControl, 
 	BackgroundColorControl 
-} from '../../../block-controls/block-control-library';
+} from '../../../block-controls/';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
