@@ -94,7 +94,7 @@ class Blocks {
 		array(
 			'class_name'         => 'Content_Post_Title',
 			'file_name'          => 'content-post-title',
-			'block_name'         => 'post',
+			'block_name'         => 'post-title',
 			'block_namespace'    => 'wsuwp',
 			'register_block'     => true,
 			'register_shortcode' => true,
