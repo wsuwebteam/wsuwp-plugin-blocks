@@ -17,7 +17,7 @@ import {
 	contentFullWidthControlAtts, 
 	backgroundColorControlAtts,
 	fullWidthControlAtts,
-} from '../../../block-controls/block-control-library';
+} from '../../../block-controls/';
 
 
 registerBlockType(

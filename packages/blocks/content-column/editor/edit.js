@@ -1,6 +1,8 @@
 const { __ } = wp.i18n;
 const { InnerBlocks } = wp.blockEditor;
 
+const { WsuColumn } = wsu_wds.components;
+
 const {
 	PanelBody,
 	TextControl,
@@ -17,7 +19,15 @@ import { spacing } from '../../../block-components';
 import { 
 	SpacingSelector,
 	DecoratorControl,
-	SpacingPanelVertical
+	SpacingPanelVertical,
+	BackgroundOptionsPanel,
+	BackgroundImageControl,
+	LayoutPanel,
+	MarginVerticalControlGroup,
+	PaddingVerticalControlGroup,
+	MinHeightControl,
+	EmOptionsPanel,
+	IsNotchedControl,
 } from '../../../block-controls';
 
 import { SpacingUnitControlPaddingHorizontal } from '../../../block-controls/spacing-unit-control/index';
@@ -28,7 +38,7 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 		<>
 			{
 				<InspectorControls>
-					<PanelBody title="Style" initialOpen={false}>
+					<BackgroundOptionsPanel>
 						<SelectControl
 							label="Background Color"
 							value={attributes.backgroundColor}
@@ -39,20 +49,27 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 								{ label: 'Gray 10%', value: 'gray-10' },
 							]}
 						/>
-						<SpacingSelector attributes={attributes} setAttributes={setAttributes} />
-					</PanelBody>
-					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
-					<DecoratorControl 
+						<BackgroundImageControl attributes={attributes} setAttributes={setAttributes} />
+					</BackgroundOptionsPanel>
+					<LayoutPanel>
+						<MarginVerticalControlGroup attributes={attributes} setAttributes={setAttributes} />
+						<PaddingVerticalControlGroup attributes={attributes} setAttributes={setAttributes} />
+						<MinHeightControl attributes={attributes} setAttributes={setAttributes} />
+					</LayoutPanel>
+					<EmOptionsPanel>
+						<DecoratorControl 
 						decorators={attributes.decorators}
 						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
 						/>
+						<IsNotchedControl attributes={attributes} setAttributes={setAttributes} />
+					</EmOptionsPanel>
 				</InspectorControls>
 			}
-			<div className="wsu-c-column wsu-u-no-js">
+			<WsuColumn >
 				<InnerBlocks
 					templateLock={ false }
 				/>
-			</div>
+			</WsuColumn>
 		</>
 	)
 }

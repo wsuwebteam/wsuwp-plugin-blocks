@@ -8,6 +8,9 @@ class Content_Column extends Block_Base {
 		'id'                => '',
 		'wrapper_class'     => '',
 		'background_color'  => 'default',
+		'background_image_src' => '',
+		'background_image_alt' => '',
+		'background_image_focal_point' => array(),
 		'margin_before'     => 'default',
 		'margin_after'      => 'default',
 		'padding_before'    => 'default',
@@ -15,12 +18,19 @@ class Content_Column extends Block_Base {
 		'decorators'        => array(),
 		'has_decorators'    => false,
 		'inline_style'      => array(),
+		'background_image_position' => '',
  	);
 
 
 	protected static function render( $atts, $content ) {
 
 		$atts['has_decorators'] = ( ! empty( $atts['decorators'] ) ) ? true : false;
+
+		if ( ! empty( $atts['background_image_focal_point'] ) ) {
+
+			$atts['background_image_position'] = ( 100 * $atts['background_image_focal_point']['x'] ) . '% ' . ( 100 * $atts['background_image_focal_point']['y'] ) . '%';
+
+		}
 
 		$atts['inline_style'] = static::get_inline_styles(
 			array(
@@ -34,6 +44,9 @@ class Content_Column extends Block_Base {
 				array( 'key' => 'padding_bottom' ),
 				array( 'key' => 'padding_left' ),
 				array( 'key' => 'padding_right' ),
+				array( 'key' => 'min_height' ),
+				array( 'key' => 'background_image_src', 'property' => 'background-image', 'is_att' => true ),
+				array( 'key' => 'background_image_position', 'property' => 'background-position', 'is_att' => true ),
 			),
 			$atts['inline_style'],
 			$atts

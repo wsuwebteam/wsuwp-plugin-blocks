@@ -1,5 +1,13 @@
+
 const {
-	ToggleControl,
+	MediaUpload,
+	MediaUploadCheck,
+} = wp.blockEditor;
+
+const {
+	Button,
+	FocalPointPicker,
+	BaseControl
 } = wp.components;
 
 
@@ -13,19 +21,16 @@ const BackgroundImageControl = ( { attributes, setAttributes } ) => {
 					help="Select where you would like the background to resize around."
 				>
 					<FocalPointPicker
-						url={attributes.imgSrc}
-						dimensions={attributes.imgDimensions}
+						url={attributes.backgroundImageSrc}
+						dimensions={attributes.backgroundImageDimensions}
 						value={attributes.backgroundImageFocalPoint}
 						onChange={(focalPoint) => setAttributes({ backgroundImageFocalPoint: focalPoint })}
 					/>
 				</BaseControl>
 			}
-
 			<MediaUploadCheck>
 				<MediaUpload
-					onSelect={(media) => setAttributes({ imgSrc: media.url })}
-					// allowedTypes={ALLOWED_MEDIA_TYPES}
-					// value={mediaId}
+					onSelect={(media) => setAttributes({ backgroundImageSrc: media.url })}
 					render={({ open }) => (
 						<BaseControl label="Replace Background Image">
 							<Button isLink onClick={open}>Open Media Library</Button>
@@ -40,12 +45,12 @@ const BackgroundImageControl = ( { attributes, setAttributes } ) => {
 
 const backgroundImageControlAtts = {
 	backgroundImageSrc: {
-		type: 'boolean',
-		default: false,
+		type: 'string',
+		default: '',
 	},
 	backgroundImageAlt: {
-		type: 'boolean',
-		default: false,
+		type: 'string',
+		default: '',
 	},
 	backgroundImageFocalPoint: {
 		type: 'object',
