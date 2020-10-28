@@ -1,12 +1,17 @@
 import React from 'react';
 
 const { 
-	TextControl, 
+	TextControl,
+	Panel,
 	PanelBody,
 	PanelRow,
 	SelectControl,
 	ToggleControl,
+	Button
 } = wp.components;
+
+const { WsuHr } = wsu_wds.components;
+
 
 const decoratorOptions = [
 	{ label: 'Crimson Bar', value: 'crimson-bar' },
@@ -70,68 +75,75 @@ const Decorator = ( props ) => {
 
 		return(
 
-			<PanelBody title={label} initialOpen={false}>
-				<PanelRow >
+			<Panel>
+				<PanelBody title={label} initialOpen={false}>
+					<div style={{display: 'flex'}}>
+						<TextControl
+							label="Top"
+							value={positionTop}
+							onChange={ ( value ) => { props.updateDecorator( props.index, 'positionTop', value ) } }
+						/>
+						<TextControl
+							label="Bottom"
+							value={positionBottom}
+							onChange={ ( value ) => { props.updateDecorator( props.index, 'positionBottom', value ) } }
+						/>
+					</div>
+					<div style={{display: 'flex'}}>
+						<TextControl
+							label="Right"
+							value={positionRight}
+							onChange={ ( value ) => { props.updateDecorator( props.index, 'positionRight', value ) } }
+						/>
+						<TextControl
+							label="left"
+							value={positionLeft}
+							onChange={ ( value ) => { props.updateDecorator( props.index, 'positionLeft', value ) } }
+						/>
+					</div>
+					<div style={{display: 'flex'}}>
+						<TextControl
+							label="Width"
+							value={width}
+							onChange={ ( value ) => { props.updateDecorator( props.index, 'width', value ) } }
+						/>
+						<TextControl
+							label="Height"
+							value={height}
+							onChange={ ( value ) => { props.updateDecorator( props.index, 'height', value ) } }
+						/>
+					</div>
 					<TextControl
-						label="Top"
-						value={positionTop}
-						onChange={ ( value ) => { props.updateDecorator( props.index, 'positionTop', value ) } }
+						label="Text"
+						value={text}
+						onChange={ ( value ) => { props.updateDecorator( props.index, 'text', value ) } }
 					/>
-					<TextControl
-						label="Bottom"
-						value={positionBottom}
-						onChange={ ( value ) => { props.updateDecorator( props.index, 'positionBottom', value ) } }
+					<ToggleControl
+							label="Hide on Mobile"
+							help={ hideOnMobile ? 'Hidden.' : 'Visible.' }
+							checked={ hideOnMobile }
+							onChange={ ( value ) => { props.updateDecorator( props.index, 'hideOnMobile', value ) } }
 					/>
-				</PanelRow>
-				<PanelRow >
-				<TextControl
-					label="Right"
-					value={positionRight}
-					onChange={ ( value ) => { props.updateDecorator( props.index, 'positionRight', value ) } }
-				/>
-				<TextControl
-					label="left"
-					value={positionLeft}
-					onChange={ ( value ) => { props.updateDecorator( props.index, 'positionLeft', value ) } }
-				/>
-				</PanelRow>
-				<PanelRow >
-				<TextControl
-					label="Width"
-					value={width}
-					onChange={ ( value ) => { props.updateDecorator( props.index, 'width', value ) } }
-				/>
-				<TextControl
-					label="Height"
-					value={height}
-					onChange={ ( value ) => { props.updateDecorator( props.index, 'height', value ) } }
-				/>
-				</PanelRow>
-				<TextControl
-					label="Text"
-					value={text}
-					onChange={ ( value ) => { props.updateDecorator( props.index, 'text', value ) } }
-				/>
-				<ToggleControl
-						label="Hide on Mobile"
-						help={ hideOnMobile ? 'Hidden.' : 'Visible.' }
-						checked={ hideOnMobile }
-						onChange={ ( value ) => { props.updateDecorator( props.index, 'hideOnMobile', value ) } }
+					<ToggleControl
+							label="Hide on Tablet"
+							help={ hideOnTablet ? 'Hidden.' : 'Visible.' }
+							checked={ hideOnTablet }
+							onChange={ ( value ) => { props.updateDecorator( props.index, 'hideOnTablet', value ) } }
 					/>
-				<ToggleControl
-						label="Hide on Tablet"
-						help={ hideOnTablet ? 'Hidden.' : 'Visible.' }
-						checked={ hideOnTablet }
-						onChange={ ( value ) => { props.updateDecorator( props.index, 'hideOnTablet', value ) } }
+					<ToggleControl
+							label="Hide on Desktop"
+							help={ hideOnDesktop ? 'Hidden.' : 'Visible.' }
+							checked={ hideOnDesktop }
+							onChange={ ( value ) => { props.updateDecorator( props.index, 'hideOnDesktop', value ) } }
 					/>
-				<ToggleControl
-						label="Hide on Desktop"
-						help={ hideOnDesktop ? 'Hidden.' : 'Visible.' }
-						checked={ hideOnDesktop }
-						onChange={ ( value ) => { props.updateDecorator( props.index, 'hideOnDesktop', value ) } }
-					/>
-				<button onClick={ ( event ) => { props.removeDecorator( props.index ) } } >Remove Decorator</button>
-			</PanelBody>
+					<Button 
+						onClick={ ( event ) => { props.removeDecorator( props.index ) } } 
+						isDestructive
+					>
+						Remove Decorator
+					</Button>
+				</PanelBody>
+			</Panel>
 
 		);
 
@@ -201,7 +213,11 @@ class DecoratorControl extends React.Component {
 					onChange={ ( value ) => { this.state.selectedDecorator = value } }
 					options={decoratorOptions}
 				/>
-				<button onClick={ ( event ) =>{ this.addDecoratorToArray( this.state.selectedDecorator ) } } >+ Add</button>
+				<Button 
+					onClick={ ( event ) =>{ this.addDecoratorToArray( this.state.selectedDecorator ) } } 
+					isSecondary
+				>Add Decorator</Button>
+				<WsuHr />
 				{ this.props.decorators.map( (decorator, index ) => { 
 					return (<Decorator 
 						decorator={ decorator } 

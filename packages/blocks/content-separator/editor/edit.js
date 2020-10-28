@@ -35,6 +35,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				</PanelBody>
 				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
+			
 			<WsuSeparator style={attributes.style} />
 		</>
 	)
