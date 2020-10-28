@@ -19,6 +19,7 @@ class Content_Column extends Block_Base {
 		'has_decorators'    => false,
 		'inline_style'      => array(),
 		'background_image_position' => '',
+		'is_notched'        => false,
  	);
 
 
@@ -28,7 +29,7 @@ class Content_Column extends Block_Base {
 
 		if ( ! empty( $atts['background_image_focal_point'] ) ) {
 
-			$atts['background_image_position'] = ( 100 * $atts['background_image_focal_point']['x'] ) . '% ' . ( 100 * $atts['background_image_focal_point']['y'] ) . '%';
+			$atts['inline_style']['background-position'] = ( 100 * $atts['background_image_focal_point']['x'] ) . '% ' . ( 100 * $atts['background_image_focal_point']['y'] ) . '%';
 
 		}
 
@@ -46,7 +47,7 @@ class Content_Column extends Block_Base {
 				array( 'key' => 'padding_right' ),
 				array( 'key' => 'min_height' ),
 				array( 'key' => 'background_image_src', 'property' => 'background-image', 'is_att' => true ),
-				array( 'key' => 'background_image_position', 'property' => 'background-position', 'is_att' => true ),
+				array( 'key' => 'background-position' ),
 			),
 			$atts['inline_style'],
 			$atts
@@ -57,6 +58,7 @@ class Content_Column extends Block_Base {
 				array( 'key' => 'class_name', 'prefix' => '' ),
 				array( 'key' => 'background_color', 'prefix' => 'wsu-u-background--' ),
 				array( 'key' => 'has_decorators', 'prefix' => 'wsu-c-has-', 'is_bool' => true, 'value' => 'decorators' ),
+				array( 'key' => 'is_notched', 'prefix' => 'wsu-u-', 'is_bool' => true, 'value' => 'is-notched' ),
 			),
 			$atts,
 			array( 'wsu-c-column' )
