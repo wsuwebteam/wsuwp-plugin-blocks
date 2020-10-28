@@ -84,10 +84,12 @@ const edit = ({ className, attributes, setAttributes }) => {
 				<PanelBody title="Style" initialOpen={false}>
 					<SelectControl
 						label="Display Style"
-						value=''
+						value={attributes.style}
 						options={[
 							{ label: 'Default', value: 'default' },
+							{ label: 'Boxed Background', value: 'boxed-background' },
 						]}
+						onChange={ ( style ) => { setAttributes( { style } ) } }
 					/>
 					<SelectControl
 						label="Banner Height"
@@ -112,6 +114,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 				titleAriaLabel={ attributes.titleAriaLabel }
 				description={ attributes.description }
 				backgroundImageUrl={ attributes.backgroundImageUrl }
+				style={ attributes.style }
 			>
 				<InnerBlocks
 					templateLock={ false }
