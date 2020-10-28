@@ -36,12 +36,16 @@ registerBlockType(
 			},
 			alignment: {
 				type: 'string',
-				default: ''
+				default: 'default'
 			},
 			attachmentId: {
 				type: 'integer',
 				default: null
 			},
+			decorators: {
+				type: 'array',
+				default: [],
+			}
 		},
 		edit
 	}

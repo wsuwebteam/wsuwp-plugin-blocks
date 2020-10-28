@@ -16,7 +16,9 @@ class Content_Image extends Block_Base {
 		'attachment_id'  => null,
 		'unit'           => '%',
 		'width'          => '100',
-		'alignment'      => ''
+		'alignment'      => '',
+		'decorators'     => array(),
+		'has_decorators' => false,
 	);
 
 	protected static function render( $atts, $content ) {
