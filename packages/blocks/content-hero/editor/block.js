@@ -74,7 +74,7 @@ registerBlockType(
 			},
 			style: {
 				type: 'string',
-				default: 'default',
+				default: 'boxed-background',
 			},
 			verticalSpacing: {
 				type: 'string',

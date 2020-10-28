@@ -82,12 +82,19 @@ const edit = ({ className, attributes, setAttributes }) => {
 				/>
 
 				<PanelBody title="Style" initialOpen={false}>
+					{/* TODO: Rework default template to be more flexible
+						- Create typewriter component that allows text to be edited dynamically
+						- Rebuild https://admission.wsu.edu/admitted-pullman/ using new typewriter block 
+						- Rename label to Default :) 
+					*/}
 					<SelectControl
 						label="Display Style"
-						value=''
+						value={attributes.style}
 						options={[
-							{ label: 'Default', value: 'default' },
+							{ label: 'Welcome #FutureCoug (Only used on Admitted and has a Hardcoded Title Field that is not editable at the moment)', value: 'default' },
+							{ label: 'Boxed Background', value: 'boxed-background' },
 						]}
+						onChange={ ( style ) => { setAttributes( { style } ) } }
 					/>
 					<SelectControl
 						label="Banner Height"
@@ -112,6 +119,7 @@ const edit = ({ className, attributes, setAttributes }) => {
 				titleAriaLabel={ attributes.titleAriaLabel }
 				description={ attributes.description }
 				backgroundImageUrl={ attributes.backgroundImageUrl }
+				style={ attributes.style }
 			>
 				<InnerBlocks
 					templateLock={ false }
