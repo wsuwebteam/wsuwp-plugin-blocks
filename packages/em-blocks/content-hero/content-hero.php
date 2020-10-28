@@ -17,6 +17,7 @@ class EM_Content_Hero extends Block_Base {
 		'padding_after'        => 'default',
 		'margin_before'        => 'default',
 		'margin_after'         => 'default',
+		'style'                => ''
 	);
 
 	protected static function render( $atts, $content ) {
@@ -39,6 +40,7 @@ class EM_Content_Hero extends Block_Base {
 		$atts['wrapper_class'] = static::get_utility_classes(
 			array(
 				array( 'key' => 'class_name', 'prefix' => '' ),
+				array( 'key' => 'style', 'prefix' => 'wsu-c-em-hero__wrapper--')
 			),
 			$atts,
 			array( 'wsu-c-em-hero__wrapper' )
@@ -46,7 +48,17 @@ class EM_Content_Hero extends Block_Base {
 
 		ob_start();
 
-		include __DIR__ . '/templates/default.php';
+		switch ($atts['style']) {
+			case 'boxed-background':
+				include __DIR__ . '/templates/boxed-background.php';
+				break;
+			
+			default:
+				include __DIR__ . '/templates/default.php';
+				break;
+		}
+
+		
 
 		return ob_get_clean();
 

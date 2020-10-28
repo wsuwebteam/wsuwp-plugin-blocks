@@ -45,6 +45,10 @@ registerBlockType(
 			decorators: {
 				type: 'array',
 				default: [],
+			},
+			style: {
+				type: 'string',
+				default: 'default'
 			}
 		},
 		edit
