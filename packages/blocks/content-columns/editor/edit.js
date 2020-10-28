@@ -143,6 +143,7 @@ const ColumnsEdit = ( { className, attributes, setAttributes } ) => {
 									]}
 								/>
 							</PanelBody>
+
 							<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 						</InspectorControls>
 					}
