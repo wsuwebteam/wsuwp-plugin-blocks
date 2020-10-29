@@ -16,7 +16,7 @@ import {
 
 import { 
 	FullWidthControl,
-	ContentFullWidthControl, 
+	LimitContentWidthControl, 
 	BackgroundColorControl,
 	IndentControl,
 	DisplayOptionsPanel,
@@ -40,8 +40,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				<InspectorControls>
 					<DisplayOptionsPanel>
 						<FullWidthControl attributes={attributes} setAttributes={setAttributes} />
-						<ContentFullWidthControl attributes={attributes} setAttributes={setAttributes} />
-						<IndentControl attributes={attributes} setAttributes={setAttributes} />
+						<LimitContentWidthControl attributes={attributes} setAttributes={setAttributes} />
 					</DisplayOptionsPanel> 
 					<BackgroundOptionsPanel>
 						<BackgroundColorControl attributes={attributes} setAttributes={setAttributes} /> 
@@ -51,6 +50,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						<PaddingVerticalControlGroup attributes={attributes} setAttributes={setAttributes} />
 						<PaddingHorizontalControlGroup attributes={attributes} setAttributes={setAttributes} />
 						<MaxWidthControl attributes={attributes} setAttributes={setAttributes} />
+						<IndentControl attributes={attributes} setAttributes={setAttributes} />
 					</LayoutPanel>
 					<EmOptionsPanel>
 						<DecoratorControl 

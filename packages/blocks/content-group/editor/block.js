@@ -14,11 +14,11 @@ import globalBlockAtts from '../../../block-controls/global-block-atts';
 import { 
 	bleedLeftControlAtts, 
 	bleedRightControlAtts, 
-	contentFullWidthControlAtts, 
 	backgroundColorControlAtts,
 	fullWidthControlAtts,
 	indentControlAtts,
 	isNotchedControlAtts,
+	limitContentWidthControlAtts,
 } from '../../../block-controls/';
 
 
@@ -31,7 +31,7 @@ registerBlockType(
 		attributes: {
 			...globalBlockAtts,
 			...fullWidthControlAtts,
-			...contentFullWidthControlAtts,
+			...limitContentWidthControlAtts,
 			...backgroundColorControlAtts,
 			...indentControlAtts,
 			...isNotchedControlAtts,

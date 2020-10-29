@@ -22,6 +22,9 @@ export { fullWidthControlAtts as fullWidthControlAtts } from './block-control-li
 export { ContentFullWidthControl as ContentFullWidthControl } from './block-control-library/content-full-width-control';
 export { contentFullWidthControlAtts as contentFullWidthControlAtts } from './block-control-library/content-full-width-control';
 
+export { LimitContentWidthControl as LimitContentWidthControl } from './block-control-library/limit-content-width-control';
+export { limitContentWidthControlAtts as limitContentWidthControlAtts } from './block-control-library/limit-content-width-control';
+
 export { BackgroundImageControl as BackgroundImageControl } from './block-control-library/background-image-control';
 export { backgroundImageControlAtts as backgroundImageControlAtts } from './block-control-library/background-image-control';
 
