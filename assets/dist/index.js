@@ -8364,6 +8364,9 @@ var fontSizeOptions = [{
   label: 'Medium',
   value: 'medium'
 }, {
+  label: 'Medium Large',
+  value: 'medium-large'
+}, {
   label: 'Large',
   value: 'large'
 }, {
