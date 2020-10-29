@@ -173,7 +173,13 @@ class Block_Base {
 
 				$key = $utility_class['key'];
 
-				if ( ! empty( $atts[ $key ] ) ) {
+				if ( ! empty( $utility_class['is_style'] ) ) {
+
+					if ( ! empty( $atts['inline_style'] ) && isset( $atts['inline_style'][ $key ] ) ) {
+
+						$classes[] = $prefix;
+					}
+				} elseif ( ! empty( $atts[ $key ] ) ) {
 
 					if ( ! empty( $utility_class['is_bool'] ) && $utility_class['value'] && $atts[ $key ] ) {
 

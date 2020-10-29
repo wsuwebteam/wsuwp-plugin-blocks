@@ -5,7 +5,7 @@
 - General
 - Source
 - Image Options
-- Background Options
 - Display Options
+- Background Options
 - Layout & Spacing
 - Advanced

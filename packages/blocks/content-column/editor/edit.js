@@ -30,6 +30,8 @@ import {
 	IsNotchedControl,
 } from '../../../block-controls';
 
+import './style.scss';
+
 import { SpacingUnitControlPaddingHorizontal } from '../../../block-controls/spacing-unit-control/index';
 
 const editColumn = ( { className, attributes, setAttributes } ) => {

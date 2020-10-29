@@ -43,3 +43,6 @@ import '../../packages/em-blocks/content-hero/editor/block';
 
 // Block Collections
 import '../../packages/block-collections';
+
+// Core Block Filters
+import '../../packages/blocks/core-paragraph';

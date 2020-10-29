@@ -15,6 +15,9 @@ class Content_Heading extends Block_Base {
 		'padding_after'  => 'default',
 		'margin_before'  => 'default',
 		'margin_after'   => 'default',
+		'font_size'      => '',
+		'font_weight'    => '',
+		'indent'         => '',
 	);
 
 
@@ -35,13 +38,17 @@ class Content_Heading extends Block_Base {
 			$atts
 		);
 
-		$atts['wrapper_class'] = static::get_classes(
+		$atts['wrapper_class'] = static::get_utility_classes(
 			array(
-				'class_name'     => '',
-				'style'          => 'wsu-c-heading--',
-				'text_align'     => 'wsu-u-textalign--',
+				array( 'key' => 'class_name', 'prefix' => '' ),
+				array( 'key' => 'style', 'prefix' => 'wsu-c-heading--' ),
+				array( 'key' => 'text_align', 'prefix' => 'wsu-u-textalign--' ),
+				array( 'key' => 'font_size', 'prefix' => 'wsu-u-font-size--' ),
+				array( 'key' => 'font_weight', 'prefix' => 'wsu-u-font-weight--' ),
+				array( 'key' => 'indent', 'prefix' => 'wsu-u-indent--' ),
 			),
-			$atts
+			$atts,
+			array( 'wsu-c-column' )
 		);
 
 		$content = ( ! empty( $atts['content'] ) ) ? $atts['content'] : '';
