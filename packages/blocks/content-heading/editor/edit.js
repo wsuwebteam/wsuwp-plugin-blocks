@@ -32,8 +32,16 @@ import {
 } from '@wordpress/icons';
 
 import HeadingLevelIcon from './heading-level-icon';
-import { SpacingSelector,
-	SpacingPanelVertical } from '../../../block-controls';
+import { 
+	DisplayOptionsPanel,
+	FontSizeControl,
+	FontWeightControl,
+	IndentControl,
+	LayoutPanel,
+	MarginVerticalControlGroup,
+	PaddingVerticalControlGroup,
+} from '../../../block-controls';
+
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -67,7 +75,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							/>
 						</BaseControl>
 					</PanelBody>
-					<PanelBody title="Style" initialOpen={false}>
+					<DisplayOptionsPanel >
 						<SelectControl
 							label="Display Style" 
 							value={attributes.style}
@@ -85,8 +93,14 @@ const edit = ( { className, attributes, setAttributes } ) => {
 								}
 							/>
 						</BaseControl>
-					</PanelBody>
-					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
+						<FontSizeControl attributes={attributes} setAttributes={setAttributes} />
+						<FontWeightControl attributes={attributes} setAttributes={setAttributes} />
+						<IndentControl attributes={attributes} setAttributes={setAttributes} />
+					</DisplayOptionsPanel >
+					<LayoutPanel>
+						<MarginVerticalControlGroup attributes={attributes} setAttributes={setAttributes} />
+						<PaddingVerticalControlGroup attributes={attributes} setAttributes={setAttributes} />
+					</LayoutPanel>
 				</InspectorControls>
 			}
 			<BlockControls>

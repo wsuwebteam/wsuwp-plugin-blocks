@@ -17,6 +17,8 @@ import {
 	contentFullWidthControlAtts, 
 	backgroundColorControlAtts,
 	fullWidthControlAtts,
+	indentControlAtts,
+	isNotchedControlAtts,
 } from '../../../block-controls/';
 
 
@@ -31,6 +33,8 @@ registerBlockType(
 			...fullWidthControlAtts,
 			...contentFullWidthControlAtts,
 			...backgroundColorControlAtts,
+			...indentControlAtts,
+			...isNotchedControlAtts,
 			decorators: {
 				type: 'array',
 				default: [],
