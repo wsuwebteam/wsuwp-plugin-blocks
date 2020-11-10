@@ -18,17 +18,15 @@ class Content_News extends Block_Base {
 		'margin_after'   => 'default',
 		'padding_before' => 'default',
 		'padding_after'  => 'default',
+		'items_per_row'  => 3,
 	);
 
 
 	protected static function render( $atts, $content ) {
 
 		$supports_rows = array( 'card' );
-		$base_classes  = array( 'wsu-c-news__wrapper' );
 
-		if ( in_array( $atts['type'], $supports_rows, true ) ) {
-			$base_classes[] = 'wsu-c-news--per-row-' . $atts['items_per_row'];
-		}
+		$atts['items_per_row'] = ( in_array( $atts['type'], $supports_rows, true ) ) ? $atts['items_per_row'] : '';
 
 		$atts['inline_style'] = static::get_inline_styles(
 			array(
@@ -45,12 +43,13 @@ class Content_News extends Block_Base {
 			$atts
 		);
 
-		$atts['wrapper_class'] = static::get_classes(
+		$atts['wrapper_class'] = static::get_utility_classes(
 			array(
-				'class_name'       => '',
+				array( 'key' => 'class_name', 'prefix' => '' ),
+				array( 'key' => 'items_per_row', 'prefix' => 'wsu-c-news--per-row-' ),
 			),
 			$atts,
-			$base_classes
+			array( 'wsu-c-news__wrapper' )
 		);
 
 		ob_start();
