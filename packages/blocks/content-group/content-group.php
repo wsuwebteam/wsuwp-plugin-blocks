@@ -4,14 +4,14 @@ class Content_Group extends Block_Base {
 
 	protected static $slug = 'group';
 	protected static $default_atts = array(
-		'wrapper_class'      => '',
-		'class_name'         => '',
-		'id'                 => '',
-		'full_width'         => false,
-		'content_full_width' => false,
-		'background_color'   => '',
-		'is_notched'         => false,
-		'indent'             => '',
+		'wrapper_class'       => '',
+		'class_name'          => '',
+		'id'                  => '',
+		'full_width'          => false,
+		'limit_content_width' => false,
+		'background_color'    => '',
+		'is_notched'          => false,
+		'indent'              => '',
 	);
 
 
@@ -31,6 +31,7 @@ class Content_Group extends Block_Base {
 				array( 'key' => 'is_notched', 'prefix' => 'wsu-u-', 'is_bool' => true, 'value' => 'is-notched' ),
 				array( 'key' => 'indent', 'prefix' => 'wsu-u-indent--' ),
 				array( 'key' => 'max_width', 'prefix' => 'wsu-u-has-max-width', 'is_style' => true ),
+				array( 'key' => 'limit_content_width', 'prefix' => 'wsu-m-content-group--', 'is_bool' => true, 'value' => 'limit-content-width' ),
 			),
 			$atts,
 			array( 'wsu-c-group' )

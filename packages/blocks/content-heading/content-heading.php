@@ -48,7 +48,7 @@ class Content_Heading extends Block_Base {
 				array( 'key' => 'indent', 'prefix' => 'wsu-u-indent--' ),
 			),
 			$atts,
-			array( 'wsu-c-column' )
+			array( 'wsu-c-heading' )
 		);
 
 		$content = ( ! empty( $atts['content'] ) ) ? $atts['content'] : '';

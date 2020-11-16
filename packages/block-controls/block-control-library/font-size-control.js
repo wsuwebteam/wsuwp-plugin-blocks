@@ -8,6 +8,7 @@ const fontSizeOptions = [
 	{ label: 'Fine Print', value: 'xsmall' },
 	{ label: 'Small', value: 'small' },
 	{ label: 'Medium', value: 'medium' },
+	{ label: 'Medium Large', value: 'medium-large' },
 	{ label: 'Large', value: 'large' },
 	{ label: 'Extra Large', value: 'extra-large' },
 ]
