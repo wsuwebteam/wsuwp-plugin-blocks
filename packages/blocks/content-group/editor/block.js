@@ -14,10 +14,12 @@ import globalBlockAtts from '../../../block-controls/global-block-atts';
 import { 
 	bleedLeftControlAtts, 
 	bleedRightControlAtts, 
-	contentFullWidthControlAtts, 
 	backgroundColorControlAtts,
 	fullWidthControlAtts,
-} from '../../../block-controls/block-control-library';
+	indentControlAtts,
+	isNotchedControlAtts,
+	limitContentWidthControlAtts,
+} from '../../../block-controls/';
 
 
 registerBlockType(
@@ -29,8 +31,10 @@ registerBlockType(
 		attributes: {
 			...globalBlockAtts,
 			...fullWidthControlAtts,
-			...contentFullWidthControlAtts,
+			...limitContentWidthControlAtts,
 			...backgroundColorControlAtts,
+			...indentControlAtts,
+			...isNotchedControlAtts,
 			decorators: {
 				type: 'array',
 				default: [],

@@ -1,6 +1,6 @@
 {
   "name": "wsuwp-plugin-blocks",
-  "version": "0.19.0",
+  "version": "0.23.0",
   "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
   "main": "build/index.js",
   "scripts": {
@@ -26,16 +26,16 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
     "@wordpress/block-editor": "^3.5.0",
-    "@wordpress/blocks": "^6.24.0",
+    "@wordpress/blocks": "^6.24.1",
     "@wordpress/scripts": "^8.0.1",
-    "@wsuwebteam/build-tools": "^1.9.1",
+    "@wsuwebteam/build-tools": "^1.9.2",
     "@wsuwebteam/wsu-icons": "^2.0.3",
     "autoprefixer": "^9.8.6",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^4.3.0",
@@ -50,7 +50,7 @@
     "parcel-bundler": "^1.12.3",
     "postcss-loader": "^3.0.0",
     "progress-bar-webpack-plugin": "^2.1.0",
-    "sass": "^1.27.0",
+    "sass": "^1.29.0",
     "sass-loader": "^9.0.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"

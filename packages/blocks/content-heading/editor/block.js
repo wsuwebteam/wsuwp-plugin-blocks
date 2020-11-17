@@ -9,6 +9,12 @@ const { InnerBlocks } = wp.blockEditor;
 const { URLInputButton } = wp.blockEditor;
 import { heading as icon } from '@wordpress/icons';
 
+import { 
+	fontSizeControlAtts,
+	fontWeightControlAtts,
+	indentControlAtts,
+} from '../../../block-controls';
+
 import edit from "./edit";
 //import save from "./save";
 import globalBlockAtts from '../../../block-controls/global-block-atts';
@@ -23,6 +29,9 @@ registerBlockType(
 		icon,
 		attributes: {
 			...globalBlockAtts,
+			...fontSizeControlAtts,
+			...fontWeightControlAtts,
+			...indentControlAtts,
 			align: {
 				"type": "string"
 			},

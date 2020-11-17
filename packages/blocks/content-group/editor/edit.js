@@ -16,9 +16,21 @@ import {
 
 import { 
 	FullWidthControl,
-	ContentFullWidthControl, 
-	BackgroundColorControl 
-} from '../../../block-controls/block-control-library';
+	LimitContentWidthControl, 
+	BackgroundColorControl,
+	IndentControl,
+	DisplayOptionsPanel,
+	EmOptionsPanel,
+	LayoutPanel,
+	MarginVerticalControlGroup,
+	PaddingVerticalControlGroup,
+	PaddingHorizontalControlGroup,
+	BackgroundOptionsPanel,
+	IsNotchedControl,
+	MaxWidthControl,
+} from '../../../block-controls/';
+
+import './style.scss';
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
@@ -26,18 +38,27 @@ const edit = ( { className, attributes, setAttributes } ) => {
 		<>
 			{
 				<InspectorControls>
-					<PanelBody title="General" initialOpen={true}>
+					<DisplayOptionsPanel>
 						<FullWidthControl attributes={attributes} setAttributes={setAttributes} />
-						<ContentFullWidthControl attributes={attributes} setAttributes={setAttributes} />
-					</PanelBody> 
-					<PanelBody title="Background" initialOpen={false}>
+						<LimitContentWidthControl attributes={attributes} setAttributes={setAttributes} />
+					</DisplayOptionsPanel> 
+					<BackgroundOptionsPanel>
 						<BackgroundColorControl attributes={attributes} setAttributes={setAttributes} /> 
-					</PanelBody>
-					<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
-					<DecoratorControl 
+					</BackgroundOptionsPanel>
+					<LayoutPanel>
+						<MarginVerticalControlGroup attributes={attributes} setAttributes={setAttributes} />
+						<PaddingVerticalControlGroup attributes={attributes} setAttributes={setAttributes} />
+						<PaddingHorizontalControlGroup attributes={attributes} setAttributes={setAttributes} />
+						<MaxWidthControl attributes={attributes} setAttributes={setAttributes} />
+						<IndentControl attributes={attributes} setAttributes={setAttributes} />
+					</LayoutPanel>
+					<EmOptionsPanel>
+						<DecoratorControl 
 						decorators={attributes.decorators}
 						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
 						/>
+						<IsNotchedControl attributes={attributes} setAttributes={setAttributes} />
+					</EmOptionsPanel>
 				</InspectorControls>
 			}
 			<div className="wsu-c-group">
