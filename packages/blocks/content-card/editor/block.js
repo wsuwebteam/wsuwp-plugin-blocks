@@ -9,7 +9,7 @@ const { InnerBlocks } = wp.blockEditor;
 const { URLInputButton } = wp.blockEditor;
 
 import edit from "./edit";
-//import save from "./save";
+import save from "./save";
 import globalBlockAtts from '../../../block-controls/global-block-atts';
 
 import './style.scss'; 
@@ -28,6 +28,10 @@ registerBlockType(
 				default: 'default'
 			},
 			imageCaption: {
+				type: 'string',
+				default: '',
+			},
+			imgSrc: {
 				type: 'string',
 				default: '',
 			},
@@ -61,11 +65,7 @@ registerBlockType(
 				type: 'string',
 				default: '',
 			},
-			positionTitle: {
-				type: 'string',
-				default: '',
-			},
-			description: {
+			caption: {
 				type: 'string',
 				default: '',
 			},
@@ -166,6 +166,7 @@ registerBlockType(
 				default: ''
 			},
 		},
-		edit
+		edit,
+		save
 	}
 );

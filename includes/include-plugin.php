@@ -97,7 +97,7 @@ class Plugin {
 	public static function get_plugin_version( $isDev = false ) {
 
 		if ( $isDev ) {
-			return date( "m.d.y.g:i:s" ) . '--is-dev';
+			return date( "m.d.y.g:i:s" ) . '--is-local';
 		} else {
 			return self::$version;
 		}

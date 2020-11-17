@@ -40,7 +40,7 @@ import {
 
 const edit = ( { className, attributes, setAttributes } ) => {
 
-	const cardTypes = [ 
+	const cardTypeOptions = [ 
 		{ value: 'default', label: 'Default' },
 		{ value: 'person', label: 'Person' },
 		{ value: 'news', label: 'News' },
@@ -54,8 +54,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 			
 					<SelectControl
 						label="Type"
-						options={ cardTypes }
-						onChange={ ( cardType ) => { setAttributes( { cardType } ) } }
+						options={ cardTypeOptions }
+						onChange={ ( cardType ) => { setAttributes( { cardType: cardType } ) } }
 						value={ attributes.cardType }
 					/>
 
@@ -102,10 +102,15 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				<SpacingPanelVertical attributes={attributes} setAttributes={setAttributes} />
 			</InspectorControls>
 
+
 			{ attributes.cardType == 'default' && <DefaultCard attributes={attributes} setAttributes={setAttributes} /> }
+
 			{ attributes.cardType == 'person' && <PersonCard attributes={attributes} setAttributes={setAttributes} /> }
+
 			{ attributes.cardType == 'news' && <NewsCard attributes={attributes} setAttributes={setAttributes} /> }
-			{ attributes.cardType == 'custom' && <CustomCard attributes={attributes} setAttributes={setAttributes} /> }
+
+			{ attributes.cardType == 'custom' && <CustomCard attributes={attributes} setAttributes={setAttributes} InnerBlocks={InnerBlocks}/> }
+
 		</>
 	)
 }

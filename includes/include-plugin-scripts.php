@@ -11,7 +11,7 @@ class Plugin_Scripts {
 	public function __construct() {
 
 		self::$version = ( ! empty( get_theme_mod( 'wsu_wds_settings_version' ) ) ) ? get_theme_mod( 'wsu_wds_settings_version' ) : '1.x';
-		self::$is_local = ( function_exists( 'wp_get_environment_type' ) && ( 'local' === wp_get_environment_type() ) && defined( 'WDS_LOCALHOST_URL' ) ) ? WDS_LOCALHOST_URL : false;
+		self::$is_local = ( defined( 'WDS_LOCALHOST_URL' ) ) ? true : false;
 
 	}
 
@@ -85,9 +85,11 @@ class Plugin_Scripts {
 			return;
 		}
 
+		$wsu_design_system_bundle_component_styles = ( self::get('is_local') ) ? WDS_LOCALHOST_URL . '/bundles/dist/wsu-design-system.components.bundle.dist.css' : 'https://cdn.web.wsu.edu/designsystem/' . self::get('version') . '/build/dist/wsu-design-system.components.bundle.dist.css';
+
 		wp_enqueue_style(
 			'wsu-design-system-bundle-component-styles',
-			'https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/' . self::get('version') . '/build/dist/wsu-design-system.components.bundle.dist.css',
+			$wsu_design_system_bundle_component_styles,
 			array(),
 			Plugin::get_plugin_version( self::get('is_local') )
 		);

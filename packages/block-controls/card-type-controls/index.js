@@ -5,7 +5,6 @@ const {
 	PlainText,
 	RichText,
 	InspectorControls,
-	InnerBlocks,
 	MediaUpload,
 	MediaUploadCheck,
 } = wp.blockEditor;
@@ -30,13 +29,18 @@ const { WsuCard, WsuHr } = wsu_wds.components;
 import { empty } from '../../block-components';
 
 const DefaultCard = ( props ) => {
+
+	const { attributes, setAttributes } = props;
+
 	return (
-		<WsuCard 
+		<WsuCard
+			{...attributes}
+			cardType={'default'}
 			title={
 				<RichText
 					tagName="div"
-					value={props.attributes.title}
-					onChange={(title) => props.setAttributes({ title })}
+					value={attributes.title}
+					onChange={(title) => setAttributes({ title })}
 					allowedFormats={[]}
 					placeholder="Add title"
 				/>
@@ -44,32 +48,24 @@ const DefaultCard = ( props ) => {
 			subtitle={
 				<RichText
 					tagName="div"
-					value={props.attributes.subtitle}
-					onChange={(subtitle) => props.setAttributes({ subtitle })}
+					value={attributes.subtitle}
+					onChange={(subtitle) => setAttributes({ subtitle })}
 					allowedFormats={[]}
 					placeholder="Add subtitle"
 				/>
 			}
-			positionTitle={
+			caption={
 				<RichText
 					tagName="div"
-					value={props.attributes.positionTitle}
-					onChange={(positionTitle) => props.setAttributes({ positionTitle })}
+					value={attributes.caption}
+					onChange={(caption) => setAttributes({ caption })}
 					allowedFormats={[]}
-					placeholder="Add position title"
+					placeholder={'Add caption text'}
 				/>
 			}
-			description={
-				<RichText
-					tagName="div"
-					value={props.attributes.description}
-					onChange={(description) => props.setAttributes({ description })}
-					allowedFormats={[]}
-					placeholder="Add description"
-				/>
-			}
-			image={{'src': props.attributes.imgSrc, 'alt': props.attributes.imgCaption}}
-			imgFocalPoint={props.attributes.imgFocalPoint}
+			imgSrc={attributes.imgSrc}
+			imgAlt={attributes.imgAlt}
+			imgFocalPoint={attributes.imgFocalPoint}
 		/>
 	);
 }
@@ -92,17 +88,10 @@ const DefaultCardControls = ( props ) => {
 			/>
 
 			<TextControl
-				label="Position Title"
-				value={props.attributes.positionTitle}
-				onChange={(positionTitle) => props.setAttributes({ positionTitle })}
-				placeholder={'Add position title'}
-			/>
-
-			<TextControl
-				label="Description"
-				value={props.attributes.description}
-				onChange={(description) => props.setAttributes({ description })}
-				placeholder={'Add description'}
+				label="Caption"
+				value={props.attributes.caption}
+				onChange={(caption) => props.setAttributes({ caption })}
+				placeholder={'Add caption'}
 			/>
 		</>
 	);
@@ -110,13 +99,17 @@ const DefaultCardControls = ( props ) => {
 
 const PersonCard = ( props ) => {
 
+	const { attributes, setAttributes } = props; 
+	
 	return (
-		<WsuCard 
+		<WsuCard
+			{...attributes}
+			cardType={'person'}
 			title={
 				<RichText
 					tagName="div"
-					value={props.attributes.title}
-					onChange={(title) => props.setAttributes({ title })}
+					value={attributes.title}
+					onChange={(title) => setAttributes({ title })}
 					allowedFormats={[]}
 					placeholder="Add person name"
 				/>
@@ -124,34 +117,25 @@ const PersonCard = ( props ) => {
 			subtitle={
 				<RichText
 					tagName="div"
-					value={props.attributes.subtitle}
-					onChange={(subtitle) => props.setAttributes({ subtitle })}
+					value={attributes.subtitle}
+					onChange={(subtitle) => setAttributes({ subtitle })}
 					allowedFormats={[]}
-					placeholder="Add subtitle"
+					placeholder="Add position"
 				/>
 			}
-			description={
+			caption={
 				<RichText
 					tagName="div"
-					value={props.attributes.description}
-					onChange={(description) => props.setAttributes({ description })}
+					value={attributes.caption}
+					onChange={(caption) => setAttributes({ caption })}
 					allowedFormats={[]}
-					placeholder={'Add description text'}
-				/>
-			}
-			positionTitle={
-				<RichText
-					tagName="div"
-					value={props.attributes.positionTitle}
-					onChange={(positionTitle) => props.setAttributes({ positionTitle })}
-					allowedFormats={[]}
-					placeholder="Add position title"
+					placeholder={'Add caption text'}
 				/>
 			}
 			addressLine1={
 				<RichText
 					tagName="div"
-					value={props.attributes.addressLine1}
+					value={attributes.addressLine1}
 					onChange={(addressLine1) => props.setAttributes({ addressLine1 })}
 					allowedFormats={[]}
 					placeholder={'Add address line 1'}
@@ -160,7 +144,7 @@ const PersonCard = ( props ) => {
 			addressLine2={
 				<RichText
 					tagName="div"
-					value={props.attributes.addressLine2}
+					value={attributes.addressLine2}
 					onChange={(addressLine2) => props.setAttributes({ addressLine2 })}
 					allowedFormats={[]}
 					placeholder={'Add address line 2'}
@@ -169,7 +153,7 @@ const PersonCard = ( props ) => {
 			phoneNumber={
 				<RichText
 					tagName="div"
-					value={props.attributes.phoneNumber}
+					value={attributes.phoneNumber}
 					onChange={(phoneNumber) => props.setAttributes({ phoneNumber })}
 					allowedFormats={[]}
 					placeholder={'Add phone number'}
@@ -178,7 +162,7 @@ const PersonCard = ( props ) => {
 			email={
 				<RichText
 					tagName="div"
-					value={props.attributes.email}
+					value={attributes.email}
 					onChange={(email) => props.setAttributes({ email })}
 					allowedFormats={[]}
 					placeholder={'Add email'}
@@ -187,14 +171,15 @@ const PersonCard = ( props ) => {
 			website={
 				<RichText
 					tagName="div"
-					value={props.attributes.website}
+					value={attributes.website}
 					onChange={(website) => props.setAttributes({ website })}
 					allowedFormats={[]}
 					placeholder={'Add website address'}
 				/>
 			}
-			image={{'src': props.attributes.imgSrc, 'alt': props.attributes.imgCaption}}
-			imgFocalPoint={props.attributes.imgFocalPoint}
+			imgSrc={attributes.imgSrc}
+			imgAlt={attributes.imgAlt}
+			imgFocalPoint={attributes.imgFocalPoint}
 		/>
 	);
 }
@@ -210,24 +195,17 @@ const PersonCardControls = ( props ) => {
 			/>
 
 			<TextControl
-				label="Subtitle"
+				label="Position Title"
 				value={props.attributes.subtitle}
 				onChange={(subtitle) => props.setAttributes({ subtitle })}
-				placeholder={'Add subtitle'}
-			/>
-
-			<TextControl
-				label="Position Title"
-				value={props.attributes.positionTitle}
-				onChange={(positionTitle) => props.setAttributes({ positionTitle })}
 				placeholder={'Add position title'}
 			/>
 
 			<TextControl
-				label="Description"
-				value={props.attributes.description}
-				onChange={(description) => props.setAttributes({ description })}
-				placeholder={'Add description'}
+				label="Caption"
+				value={props.attributes.caption}
+				onChange={(caption) => props.setAttributes({ caption })}
+				placeholder={'Add caption'}
 			/>
 
 			<TextControl
@@ -270,41 +248,33 @@ const PersonCardControls = ( props ) => {
 
 const NewsCard = ( props ) => {
 
-	let date = (empty(props.attributes.date) ? '' : dateI18n(`${ 'n/j/y' }`, props.attributes.date));
-	let authorName = (empty(props.attributes.authorName) ? 'learn more' : props.attributes.authorName);
-	let authorUrl = (empty(props.attributes.authorUrl) ? 'learn more' : props.attributes.authorUrl);
-
-	let author = {
-		'name': authorName, 
-		'url': authorUrl
-	};
-
-	if (empty(props.attributes.authorName) || empty(props.attributes.authorUrl)) {
-		author = '';
-	}
+	const { attributes, setAttributes } = props; 
+	let date = (empty(attributes.date) ? '' : dateI18n(`${ 'n/j/y' }`, attributes.date));
 
 	return (
 		<WsuCard 
+			cardType={'news'}
 			title={
 				<RichText
 					tagName="div"
-					value={props.attributes.title}
-					onChange={(title) => props.setAttributes({ title })}
+					value={attributes.title}
+					onChange={(title) => setAttributes({ title })}
 					allowedFormats={[]}
 					placeholder={'Add title'}
 				/>
 			}
-			description={
+			caption={
 				<RichText
 					tagName="div"
-					value={props.attributes.description}
-					onChange={(description) => props.setAttributes({ description })}
+					value={attributes.caption}
+					onChange={(caption) => setAttributes({ caption })}
 					allowedFormats={[]}
-					placeholder={'Add description text'}
+					placeholder={'Add caption text'}
 				/>
 			}
-			image={{'src': props.attributes.imgSrc, 'alt': props.attributes.imgCaption}}
-			imgFocalPoint={props.attributes.imgFocalPoint}
+			imgSrc={attributes.imgSrc}
+			imgAlt={attributes.imgAlt}
+			imgFocalPoint={attributes.imgFocalPoint}
 			// categories={[
 			// 	{
 			// 		'name': 'Sed category',
@@ -329,7 +299,8 @@ const NewsCard = ( props ) => {
 			// 		'url': '#'
 			// 	}
 			// ]}
-			author={author}
+			authorName={attributes.authorName}
+			authorUrl={attributes.authorUrl}
 			date={date}
 		/>
 	);
@@ -347,10 +318,10 @@ const NewsCardControls = ( props ) => {
 			/>
 
 			<TextControl
-				label="Description"
-				value={props.attributes.description}
-				onChange={(description) => props.setAttributes({ description })}
-				placeholder={'Add description'}
+				label="Caption"
+				value={props.attributes.caption}
+				onChange={(caption) => props.setAttributes({ caption })}
+				placeholder={'Add caption'}
 			/>
 
 			<WsuHr /> 
@@ -398,14 +369,38 @@ const NewsCardControls = ( props ) => {
 }
 
 const CustomCard = ( props ) => {
+
+	const { attributes, setAttributes, InnerBlocks } = props;
+
 	return (
 		<WsuCard 
-			description={ 
+			cardType={'custom'}
+			title={
+				<RichText
+					tagName="div"
+					value={attributes.title}
+					onChange={(title) => setAttributes({ title })}
+					allowedFormats={[]}
+					placeholder="Add title"
+				/>
+			}
+			subtitle={
+				<RichText
+					tagName="div"
+					value={attributes.subtitle}
+					onChange={(subtitle) => setAttributes({ subtitle })}
+					allowedFormats={[]}
+					placeholder="Add subtitle"
+				/>
+			}
+			caption={ 
 				<InnerBlocks
 					templateLock={ false }
 				/>
-			 }
-			image={{'src': props.attributes.imgSrc, 'alt': props.attributes.imgCaption}}
+			}
+			imgSrc={attributes.imgSrc}	
+			imgAlt={attributes.imgAlt}
+			imgFocalPoint={attributes.imgFocalPoint}
 		/>
 	);
 }
@@ -413,7 +408,21 @@ const CustomCard = ( props ) => {
 const CustomCardControls = ( props ) => {
 	return (
 		<>
-			<p>Have fun! There are no fields for custom cards, just use blocks!</p>
+			<TextControl
+				label="Title"
+				value={props.attributes.title}
+				onChange={(title) => props.setAttributes({ title })}
+				placeholder={'Add title'}
+			/>
+
+			<TextControl
+				label="Subtitle"
+				value={props.attributes.subtitle}
+				onChange={(subtitle) => props.setAttributes({ subtitle })}
+				placeholder={'Add subtitle'}
+			/>
+
+			<p>Looking to add something else? Try adding a inner block!</p>
 		</>
 	);
 }
