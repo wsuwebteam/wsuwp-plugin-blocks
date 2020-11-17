@@ -28,11 +28,9 @@
 				<?php if ( !empty( $atts['subtitle'] ) ) : ?>
 					<div class="wsu-c-card__subtitle"><?php echo esc_html( $atts['subtitle'] ); ?></div>
 				<?php endif; ?>
-
-				<?php if ( !empty( $atts['caption'] ) ) : ?>
-					<p class="wsu-c-card__caption">
-						<?php echo esc_html( $atts['caption'] ); ?>
-					</p>
+				
+				<?php if ( !empty( $content ) ) : ?>
+					<?php echo $content; ?>
 				<?php endif; ?>
 
 			</div>
