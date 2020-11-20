@@ -58,6 +58,8 @@ class Block_Base {
 
 	protected static function to_snake_case( &$atts ) {
 
+		$convert_sub_atts = array( 'inline_style', 'feedSource' );
+
 		// Turn camelCase into snake_case
 		foreach ( $atts as $key => $value ) {
 
@@ -66,6 +68,12 @@ class Block_Base {
 			unset( $atts[ $key ] );
 
 			$snake_key = strtolower( implode( '_', $parts ) );
+
+			if ( in_array( $key, $convert_sub_atts, true ) && is_array( $value ) ) {
+
+				static::to_snake_case( $value );
+
+			}
 
 			$atts[ $snake_key ] = $value;
 
@@ -116,12 +124,6 @@ class Block_Base {
 
 		// parse_atts converts to snake case and fills in defaults
 		static::parse_atts( $atts );
-
-		if ( ! empty( $atts['inline_style'] ) ) {
-
-			static::to_snake_case( $atts['inline_style'] );
-
-		}
 
 		return static::render( $atts, $content );
 
