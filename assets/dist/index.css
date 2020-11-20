@@ -4298,8 +4298,12 @@ url("https://cdn-web-wsu.s3-us-west-2.amazonaws.com/designsystem/1.x/wsu-icons/d
   margin-right: 0.5em;
 }
 
-
-
+body {
+  background: red;
+}
+body {
+  background: red;
+}
 .wsu-b-wrapper {
   border-bottom: 3px solid #333;
   border-radius: 4px;

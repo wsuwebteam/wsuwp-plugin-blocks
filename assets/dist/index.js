@@ -358,35 +358,6 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/helpers/extends.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/extends.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-module.exports = _extends;
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
@@ -9466,12 +9437,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewsCardControls", function() { return NewsCardControls; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomCard", function() { return CustomCard; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomCardControls", function() { return CustomCardControls; });
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _block_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../block-components */ "./packages/block-components/index.js");
-
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _block_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../block-components */ "./packages/block-components/index.js");
 
 var __ = wp.i18n.__;
 var _wp$blockEditor = wp.blockEditor,
@@ -9480,6 +9448,7 @@ var _wp$blockEditor = wp.blockEditor,
     PlainText = _wp$blockEditor.PlainText,
     RichText = _wp$blockEditor.RichText,
     InspectorControls = _wp$blockEditor.InspectorControls,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
     MediaUpload = _wp$blockEditor.MediaUpload,
     MediaUploadCheck = _wp$blockEditor.MediaUploadCheck;
 var _wp$components = wp.components,
@@ -9500,51 +9469,61 @@ var _wsu_wds$components = wsu_wds.components,
 
 
 var DefaultCard = function DefaultCard(props) {
-  var attributes = props.attributes,
-      setAttributes = props.setAttributes;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(WsuCard, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, attributes, {
-    cardType: 'default',
-    title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuCard, {
+    title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.title,
+      value: props.attributes.title,
       onChange: function onChange(title) {
-        return setAttributes({
+        return props.setAttributes({
           title: title
         });
       },
       allowedFormats: [],
       placeholder: "Add title"
     }),
-    subtitle: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    subtitle: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.subtitle,
+      value: props.attributes.subtitle,
       onChange: function onChange(subtitle) {
-        return setAttributes({
+        return props.setAttributes({
           subtitle: subtitle
         });
       },
       allowedFormats: [],
       placeholder: "Add subtitle"
     }),
-    caption: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    positionTitle: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.caption,
-      onChange: function onChange(caption) {
-        return setAttributes({
-          caption: caption
+      value: props.attributes.positionTitle,
+      onChange: function onChange(positionTitle) {
+        return props.setAttributes({
+          positionTitle: positionTitle
         });
       },
       allowedFormats: [],
-      placeholder: 'Add caption text'
+      placeholder: "Add position title"
     }),
-    imgSrc: attributes.imgSrc,
-    imgAlt: attributes.imgAlt,
-    imgFocalPoint: attributes.imgFocalPoint
-  }));
+    description: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      tagName: "div",
+      value: props.attributes.description,
+      onChange: function onChange(description) {
+        return props.setAttributes({
+          description: description
+        });
+      },
+      allowedFormats: [],
+      placeholder: "Add description"
+    }),
+    image: {
+      'src': props.attributes.imgSrc,
+      'alt': props.attributes.imgCaption
+    },
+    imgFocalPoint: props.attributes.imgFocalPoint
+  });
 };
 
 var DefaultCardControls = function DefaultCardControls(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Title",
     value: props.attributes.title,
     onChange: function onChange(title) {
@@ -9553,7 +9532,7 @@ var DefaultCardControls = function DefaultCardControls(props) {
       });
     },
     placeholder: 'Add title'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Subtitle",
     value: props.attributes.subtitle,
     onChange: function onChange(subtitle) {
@@ -9562,59 +9541,76 @@ var DefaultCardControls = function DefaultCardControls(props) {
       });
     },
     placeholder: 'Add subtitle'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-    label: "Caption",
-    value: props.attributes.caption,
-    onChange: function onChange(caption) {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Position Title",
+    value: props.attributes.positionTitle,
+    onChange: function onChange(positionTitle) {
       return props.setAttributes({
-        caption: caption
+        positionTitle: positionTitle
       });
     },
-    placeholder: 'Add caption'
+    placeholder: 'Add position title'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Description",
+    value: props.attributes.description,
+    onChange: function onChange(description) {
+      return props.setAttributes({
+        description: description
+      });
+    },
+    placeholder: 'Add description'
   }));
 };
 
 var PersonCard = function PersonCard(props) {
-  var attributes = props.attributes,
-      setAttributes = props.setAttributes;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(WsuCard, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, attributes, {
-    cardType: 'person',
-    title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuCard, {
+    title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.title,
+      value: props.attributes.title,
       onChange: function onChange(title) {
-        return setAttributes({
+        return props.setAttributes({
           title: title
         });
       },
       allowedFormats: [],
       placeholder: "Add person name"
     }),
-    subtitle: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    subtitle: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.subtitle,
+      value: props.attributes.subtitle,
       onChange: function onChange(subtitle) {
-        return setAttributes({
+        return props.setAttributes({
           subtitle: subtitle
         });
       },
       allowedFormats: [],
-      placeholder: "Add position"
+      placeholder: "Add subtitle"
     }),
-    caption: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    description: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.caption,
-      onChange: function onChange(caption) {
-        return setAttributes({
-          caption: caption
+      value: props.attributes.description,
+      onChange: function onChange(description) {
+        return props.setAttributes({
+          description: description
         });
       },
       allowedFormats: [],
-      placeholder: 'Add caption text'
+      placeholder: 'Add description text'
     }),
-    addressLine1: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    positionTitle: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.addressLine1,
+      value: props.attributes.positionTitle,
+      onChange: function onChange(positionTitle) {
+        return props.setAttributes({
+          positionTitle: positionTitle
+        });
+      },
+      allowedFormats: [],
+      placeholder: "Add position title"
+    }),
+    addressLine1: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+      tagName: "div",
+      value: props.attributes.addressLine1,
       onChange: function onChange(addressLine1) {
         return props.setAttributes({
           addressLine1: addressLine1
@@ -9623,9 +9619,9 @@ var PersonCard = function PersonCard(props) {
       allowedFormats: [],
       placeholder: 'Add address line 1'
     }),
-    addressLine2: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    addressLine2: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.addressLine2,
+      value: props.attributes.addressLine2,
       onChange: function onChange(addressLine2) {
         return props.setAttributes({
           addressLine2: addressLine2
@@ -9634,9 +9630,9 @@ var PersonCard = function PersonCard(props) {
       allowedFormats: [],
       placeholder: 'Add address line 2'
     }),
-    phoneNumber: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    phoneNumber: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.phoneNumber,
+      value: props.attributes.phoneNumber,
       onChange: function onChange(phoneNumber) {
         return props.setAttributes({
           phoneNumber: phoneNumber
@@ -9645,9 +9641,9 @@ var PersonCard = function PersonCard(props) {
       allowedFormats: [],
       placeholder: 'Add phone number'
     }),
-    email: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    email: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.email,
+      value: props.attributes.email,
       onChange: function onChange(email) {
         return props.setAttributes({
           email: email
@@ -9656,9 +9652,9 @@ var PersonCard = function PersonCard(props) {
       allowedFormats: [],
       placeholder: 'Add email'
     }),
-    website: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    website: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.website,
+      value: props.attributes.website,
       onChange: function onChange(website) {
         return props.setAttributes({
           website: website
@@ -9667,14 +9663,16 @@ var PersonCard = function PersonCard(props) {
       allowedFormats: [],
       placeholder: 'Add website address'
     }),
-    imgSrc: attributes.imgSrc,
-    imgAlt: attributes.imgAlt,
-    imgFocalPoint: attributes.imgFocalPoint
-  }));
+    image: {
+      'src': props.attributes.imgSrc,
+      'alt': props.attributes.imgCaption
+    },
+    imgFocalPoint: props.attributes.imgFocalPoint
+  });
 };
 
 var PersonCardControls = function PersonCardControls(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Person Name",
     value: props.attributes.title,
     onChange: function onChange(title) {
@@ -9683,25 +9681,34 @@ var PersonCardControls = function PersonCardControls(props) {
       });
     },
     placeholder: 'Add person name'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-    label: "Position Title",
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Subtitle",
     value: props.attributes.subtitle,
     onChange: function onChange(subtitle) {
       return props.setAttributes({
         subtitle: subtitle
       });
     },
-    placeholder: 'Add position title'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-    label: "Caption",
-    value: props.attributes.caption,
-    onChange: function onChange(caption) {
+    placeholder: 'Add subtitle'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Position Title",
+    value: props.attributes.positionTitle,
+    onChange: function onChange(positionTitle) {
       return props.setAttributes({
-        caption: caption
+        positionTitle: positionTitle
       });
     },
-    placeholder: 'Add caption'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+    placeholder: 'Add position title'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Description",
+    value: props.attributes.description,
+    onChange: function onChange(description) {
+      return props.setAttributes({
+        description: description
+      });
+    },
+    placeholder: 'Add description'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Address Line 1",
     value: props.attributes.addressLine1,
     onChange: function onChange(addressLine1) {
@@ -9710,7 +9717,7 @@ var PersonCardControls = function PersonCardControls(props) {
       });
     },
     placeholder: 'Add address line 1'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Address Line 2",
     value: props.attributes.addressLine2,
     onChange: function onChange(addressLine2) {
@@ -9719,7 +9726,7 @@ var PersonCardControls = function PersonCardControls(props) {
       });
     },
     placeholder: 'Add address line 2'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Phone Number",
     value: props.attributes.phoneNumber,
     onChange: function onChange(phoneNumber) {
@@ -9728,7 +9735,7 @@ var PersonCardControls = function PersonCardControls(props) {
       });
     },
     placeholder: 'Add phone number'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Email",
     value: props.attributes.email,
     onChange: function onChange(email) {
@@ -9737,7 +9744,7 @@ var PersonCardControls = function PersonCardControls(props) {
       });
     },
     placeholder: 'Add email address'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Website",
     value: props.attributes.website,
     onChange: function onChange(website) {
@@ -9750,36 +9757,46 @@ var PersonCardControls = function PersonCardControls(props) {
 };
 
 var NewsCard = function NewsCard(props) {
-  var attributes = props.attributes,
-      setAttributes = props.setAttributes;
-  var date = Object(_block_components__WEBPACK_IMPORTED_MODULE_2__["empty"])(attributes.date) ? '' : dateI18n('n/j/y', attributes.date);
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(WsuCard, {
-    cardType: 'news',
-    title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+  var date = Object(_block_components__WEBPACK_IMPORTED_MODULE_1__["empty"])(props.attributes.date) ? '' : dateI18n('n/j/y', props.attributes.date);
+  var authorName = Object(_block_components__WEBPACK_IMPORTED_MODULE_1__["empty"])(props.attributes.authorName) ? 'learn more' : props.attributes.authorName;
+  var authorUrl = Object(_block_components__WEBPACK_IMPORTED_MODULE_1__["empty"])(props.attributes.authorUrl) ? 'learn more' : props.attributes.authorUrl;
+  var author = {
+    'name': authorName,
+    'url': authorUrl
+  };
+
+  if (Object(_block_components__WEBPACK_IMPORTED_MODULE_1__["empty"])(props.attributes.authorName) || Object(_block_components__WEBPACK_IMPORTED_MODULE_1__["empty"])(props.attributes.authorUrl)) {
+    author = '';
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuCard, {
+    title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.title,
+      value: props.attributes.title,
       onChange: function onChange(title) {
-        return setAttributes({
+        return props.setAttributes({
           title: title
         });
       },
       allowedFormats: [],
       placeholder: 'Add title'
     }),
-    caption: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+    description: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
       tagName: "div",
-      value: attributes.caption,
-      onChange: function onChange(caption) {
-        return setAttributes({
-          caption: caption
+      value: props.attributes.description,
+      onChange: function onChange(description) {
+        return props.setAttributes({
+          description: description
         });
       },
       allowedFormats: [],
-      placeholder: 'Add caption text'
+      placeholder: 'Add description text'
     }),
-    imgSrc: attributes.imgSrc,
-    imgAlt: attributes.imgAlt,
-    imgFocalPoint: attributes.imgFocalPoint // categories={[
+    image: {
+      'src': props.attributes.imgSrc,
+      'alt': props.attributes.imgCaption
+    },
+    imgFocalPoint: props.attributes.imgFocalPoint // categories={[
     // 	{
     // 		'name': 'Sed category',
     // 		'url': '#' 
@@ -9804,14 +9821,13 @@ var NewsCard = function NewsCard(props) {
     // 	}
     // ]}
     ,
-    authorName: attributes.authorName,
-    authorUrl: attributes.authorUrl,
+    author: author,
     date: date
   });
 };
 
 var NewsCardControls = function NewsCardControls(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Title",
     value: props.attributes.title,
     onChange: function onChange(title) {
@@ -9820,30 +9836,30 @@ var NewsCardControls = function NewsCardControls(props) {
       });
     },
     placeholder: 'Add title'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-    label: "Caption",
-    value: props.attributes.caption,
-    onChange: function onChange(caption) {
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Description",
+    value: props.attributes.description,
+    onChange: function onChange(description) {
       return props.setAttributes({
-        caption: caption
+        description: description
       });
     },
-    placeholder: 'Add caption'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(WsuHr, null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", null, "Date"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Dropdown, {
+    placeholder: 'Add description'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuHr, null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, "Date"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Dropdown, {
     className: "my-container-class-name",
     contentClassName: "my-popover-content-classname",
     position: "bottom right",
     renderToggle: function renderToggle(_ref) {
       var isOpen = _ref.isOpen,
           onToggle = _ref.onToggle;
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
         isTertiary: true,
         onClick: onToggle,
         "aria-expanded": isOpen
-      }, Object(_block_components__WEBPACK_IMPORTED_MODULE_2__["empty"])(props.attributes.date) ? 'Select date' : dateI18n('M j, Y'.concat(" ", 'g:i a'), props.attributes.date));
+      }, Object(_block_components__WEBPACK_IMPORTED_MODULE_1__["empty"])(props.attributes.date) ? 'Select date' : dateI18n('M j, Y'.concat(" ", 'g:i a'), props.attributes.date));
     },
     renderContent: function renderContent() {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(DateTimePicker, {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(DateTimePicker, {
         currentDate: props.attributes.date,
         onChange: function onChange(date) {
           return props.setAttributes({
@@ -9853,7 +9869,7 @@ var NewsCardControls = function NewsCardControls(props) {
         is12Hour: true
       }));
     }
-  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Author Name",
     value: props.attributes.authorName,
     onChange: function onChange(authorName) {
@@ -9862,8 +9878,8 @@ var NewsCardControls = function NewsCardControls(props) {
       });
     },
     placeholder: 'Add author name',
-    help: !Object(_block_components__WEBPACK_IMPORTED_MODULE_2__["empty"])(props.attributes.authorName) && Object(_block_components__WEBPACK_IMPORTED_MODULE_2__["empty"])(props.attributes.authorUrl) ? 'Author name is only displayed if a name and URL are included.' : ''
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+    help: !Object(_block_components__WEBPACK_IMPORTED_MODULE_1__["empty"])(props.attributes.authorName) && Object(_block_components__WEBPACK_IMPORTED_MODULE_1__["empty"])(props.attributes.authorUrl) ? 'Author name is only displayed if a name and URL are included.' : ''
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
     label: "Author Url",
     value: props.attributes.authorUrl,
     onChange: function onChange(authorUrl) {
@@ -9876,62 +9892,19 @@ var NewsCardControls = function NewsCardControls(props) {
 };
 
 var CustomCard = function CustomCard(props) {
-  var attributes = props.attributes,
-      setAttributes = props.setAttributes,
-      InnerBlocks = props.InnerBlocks;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(WsuCard, {
-    cardType: 'custom',
-    title: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
-      tagName: "div",
-      value: attributes.title,
-      onChange: function onChange(title) {
-        return setAttributes({
-          title: title
-        });
-      },
-      allowedFormats: [],
-      placeholder: "Add title"
-    }),
-    subtitle: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
-      tagName: "div",
-      value: attributes.subtitle,
-      onChange: function onChange(subtitle) {
-        return setAttributes({
-          subtitle: subtitle
-        });
-      },
-      allowedFormats: [],
-      placeholder: "Add subtitle"
-    }),
-    caption: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InnerBlocks, {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WsuCard, {
+    description: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
       templateLock: false
     }),
-    imgSrc: attributes.imgSrc,
-    imgAlt: attributes.imgAlt,
-    imgFocalPoint: attributes.imgFocalPoint
+    image: {
+      'src': props.attributes.imgSrc,
+      'alt': props.attributes.imgCaption
+    }
   });
 };
 
 var CustomCardControls = function CustomCardControls(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-    label: "Title",
-    value: props.attributes.title,
-    onChange: function onChange(title) {
-      return props.setAttributes({
-        title: title
-      });
-    },
-    placeholder: 'Add title'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-    label: "Subtitle",
-    value: props.attributes.subtitle,
-    onChange: function onChange(subtitle) {
-      return props.setAttributes({
-        subtitle: subtitle
-      });
-    },
-    placeholder: 'Add subtitle'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "Looking to add something else? Try adding a inner block!"));
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, "Have fun! There are no fields for custom cards, just use blocks!"));
 };
 
 
@@ -10363,9 +10336,25 @@ DecoratorControl.defaultProps = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var feedControlAtts = {
-  feedSource: {
-    type: 'object',
-    default: {}
+  postType: {
+    type: 'string',
+    default: 'post'
+  },
+  taxonomy: {
+    type: 'string',
+    default: 'category'
+  },
+  termIds: {
+    type: 'string',
+    default: ''
+  },
+  count: {
+    type: 'integer',
+    default: 5
+  },
+  offset: {
+    type: 'integer',
+    default: 0
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (feedControlAtts);
@@ -10381,130 +10370,72 @@ var feedControlAtts = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     TextControl = _wp$components.TextControl,
-    SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl;
+    SelectControl = _wp$components.SelectControl;
 
 var FeedControls = function FeedControls(_ref) {
   var attributes = _ref.attributes,
       setAttributes = _ref.setAttributes,
       taxonomyOptions = _ref.taxonomyOptions;
-  var feedSource = attributes.hasOwnProperty('feedSource') ? attributes.feedSource : {};
-  var postType = feedSource.hasOwnProperty('postType') ? feedSource.postType : 'post';
-  var taxonomy = feedSource.hasOwnProperty('taxonomy') ? feedSource.taxonomy : 'category';
-  var termIds = feedSource.hasOwnProperty('termIds') ? feedSource.termIds : '';
-  var count = feedSource.hasOwnProperty('count') ? feedSource.count : 5;
-  var orLogic = feedSource.hasOwnProperty('orLogic') ? feedSource.orLogic : false;
-  taxonomyOptions = taxonomyOptions && Array.isArray(taxonomyOptions) ? taxonomyOptions : [{
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: "Feed Settings"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Content Type (post type)",
+    value: attributes.postType,
+    onChange: function onChange(postType) {
+      return setAttributes({
+        postType: postType
+      });
+    },
+    placeholder: 'Enter post type here.'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    label: "Feed By (taxonomy)",
+    value: attributes.taxonomy,
+    onChange: function onChange(taxonomy) {
+      return setAttributes({
+        taxonomy: taxonomy
+      });
+    },
+    options: taxonomyOptions
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Term IDs",
+    value: attributes.termIds,
+    onChange: function onChange(termIds) {
+      return setAttributes({
+        termIds: termIds
+      });
+    },
+    placeholder: 'Enter Term IDs here (5,6,7).'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Count",
+    value: attributes.count,
+    onChange: function onChange(count) {
+      return setAttributes({
+        count: parseInt(count)
+      });
+    },
+    placeholder: 'Enter # of items.'
+  }));
+};
+
+FeedControls.defaultProps = {
+  attributes: {},
+  setAttributes: function setAttributes() {
+    return false;
+  },
+  taxonomyOptions: [{
     label: 'Category',
     value: 'category'
   }, {
     label: 'Tag',
     value: 'tag'
-  }];
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, {
-    title: "Feed Settings"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-    label: "Content Type (post type)",
-    value: postType,
-    onChange: function onChange(postType) {
-      return setAttributes({
-        feedSource: _objectSpread(_objectSpread({}, feedSource), {}, {
-          postType: postType
-        })
-      });
-    },
-    placeholder: 'Enter post type here.'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(SelectControl, {
-    label: "Feed By (taxonomy)",
-    value: taxonomy,
-    onChange: function onChange(taxonomy) {
-      return setAttributes({
-        feedSource: _objectSpread(_objectSpread({}, feedSource), {}, {
-          taxonomy: taxonomy
-        })
-      });
-    },
-    options: taxonomyOptions
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-    label: "Term IDs",
-    value: termIds,
-    onChange: function onChange(termIds) {
-      return setAttributes({
-        feedSource: _objectSpread(_objectSpread({}, feedSource), {}, {
-          termIds: termIds
-        })
-      });
-    },
-    placeholder: 'Enter Term IDs here (5,6,7).'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
-    label: "Count",
-    value: count,
-    onChange: function onChange(count) {
-      return setAttributes({
-        feedSource: _objectSpread(_objectSpread({}, feedSource), {}, {
-          count: count
-        })
-      });
-    },
-    placeholder: 'Enter # of items.'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: "Use OR logic",
-    help: orLogic ? 'Using OR for term matching' : 'Using And for term matching',
-    checked: orLogic,
-    onChange: function onChange(orLogic) {
-      return setAttributes({
-        feedSource: _objectSpread(_objectSpread({}, feedSource), {}, {
-          orLogic: orLogic
-        })
-      });
-    }
-  }));
+  }]
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (FeedControls);
 
 /***/ }),
@@ -12833,13 +12764,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./packages/blocks/content-card/editor/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./packages/blocks/content-card/editor/save.js");
-/* harmony import */ var _block_controls_global_block_atts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../block-controls/global-block-atts */ "./packages/block-controls/global-block-atts/index.js");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./packages/blocks/content-card/editor/style.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_5__);
-
-
-var _objectSpread2;
+/* harmony import */ var _block_controls_global_block_atts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../block-controls/global-block-atts */ "./packages/block-controls/global-block-atts/index.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./packages/blocks/content-card/editor/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -12887,7 +12814,7 @@ var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var InnerBlocks = wp.blockEditor.InnerBlocks;
 var URLInputButton = wp.blockEditor.URLInputButton;
-
+ //import save from "./save";
 
 
 
@@ -12905,7 +12832,7 @@ registerBlockType("wsuwp/card", {
     "clip-rule": "evenodd",
     d: "M6 1H18C19.6569 1 21 2.34314 21 4V20C21 21.6569 19.6569 23 18 23H6C4.34315 23 3 21.6569 3 20V4C3 2.34315 4.34314 1 6 1ZM6 3C5.44772 3 5 3.44772 5 4V20C5 20.5523 5.44772 21 6 21H18C18.5523 21 19 20.5523 19 20V4C19 3.44772 18.5523 3 18 3H6ZM8.95601 11.5951C8.35989 10.8966 8 9.99032 8 9C8 6.79086 9.79086 5 12 5C14.2091 5 16 6.79086 16 9C16 9.99032 15.6401 10.8966 15.044 11.5951C15.0769 11.6108 15.1094 11.6268 15.1416 11.643C15.9004 12.0259 16.6166 12.6548 16.9003 13.5193C16.9664 13.7206 17 13.931 17 14.1429V17C17 18.1046 16.1046 19 15 19H9C7.89543 19 7 18.1046 7 17V14.1429C7 13.931 7.03365 13.7206 7.09969 13.5193C7.38336 12.6548 8.09958 12.0259 8.85842 11.643C8.89059 11.6268 8.92312 11.6108 8.95601 11.5951ZM12 11C13.1046 11 14 10.1046 14 9C14 7.89543 13.1046 7 12 7C10.8954 7 10 7.89543 10 9C10 10.1046 10.8954 11 12 11ZM9 17H15V14.1429C14.875 13.7619 14.1 13 12 13C9.9 13 9.125 13.7619 9 14.1429V17Z"
   })),
-  attributes: _objectSpread(_objectSpread({}, _block_controls_global_block_atts__WEBPACK_IMPORTED_MODULE_4__["default"]), {}, (_objectSpread2 = {
+  attributes: _objectSpread(_objectSpread({}, _block_controls_global_block_atts__WEBPACK_IMPORTED_MODULE_3__["default"]), {}, {
     cardType: {
       type: 'string',
       default: 'default'
@@ -12917,109 +12844,139 @@ registerBlockType("wsuwp/card", {
     imgSrc: {
       type: 'string',
       default: ''
+    },
+    imgFocalPoint: {
+      type: 'object',
+      default: {
+        x: 0.2,
+        y: 0.5
+      }
+    },
+    imgDimensions: {
+      type: 'object',
+      default: {
+        width: 1070,
+        height: 500
+      }
+    },
+    preTitle: {
+      type: 'string',
+      default: ''
+    },
+    title: {
+      type: 'string',
+      default: ''
+    },
+    subtitle: {
+      type: 'string',
+      default: ''
+    },
+    positionTitle: {
+      type: 'string',
+      default: ''
+    },
+    description: {
+      type: 'string',
+      default: ''
+    },
+    link: {
+      type: 'string',
+      default: ''
+    },
+    asModal: {
+      type: 'boolean',
+      default: false
+    },
+    buttonText: {
+      type: 'string',
+      default: ''
+    },
+    buttonUrl: {
+      type: 'string',
+      default: ''
+    },
+    showTags: {
+      type: 'boolean',
+      default: false
+    },
+    showAuthor: {
+      type: 'boolean',
+      default: false
+    },
+    date: {
+      type: 'string',
+      default: ''
+    },
+    showTitle: {
+      type: 'boolean',
+      default: false
+    },
+    showImg: {
+      type: 'boolean',
+      default: false
+    },
+    source: {
+      type: 'string',
+      default: ''
+    },
+    sourcePostType: {
+      type: 'string',
+      default: 'post'
+    },
+    sourceTaxonomy: {
+      type: 'string',
+      default: 'category'
+    },
+    sourceTerms: {
+      type: 'string',
+      default: ''
+    },
+    sourceLogic: {
+      type: 'string',
+      default: 'OR'
+    },
+    sourceOffset: {
+      type: 'number',
+      default: 0
+    },
+    sourceExclude: {
+      type: 'string',
+      default: ''
+    },
+    sourceCount: {
+      type: 'number',
+      default: 3
+    },
+    addressLine1: {
+      type: 'string',
+      default: ''
+    },
+    addressLine2: {
+      type: 'string',
+      default: ''
+    },
+    phoneNumber: {
+      type: 'string',
+      default: ''
+    },
+    email: {
+      type: 'string',
+      default: ''
+    },
+    website: {
+      type: 'string',
+      default: ''
+    },
+    authorName: {
+      type: 'string',
+      default: ''
+    },
+    authorUrl: {
+      type: 'string',
+      default: ''
     }
-  }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "imgSrc", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "imgFocalPoint", {
-    type: 'object',
-    default: {
-      x: 0.2,
-      y: 0.5
-    }
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "imgDimensions", {
-    type: 'object',
-    default: {
-      width: 1070,
-      height: 500
-    }
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "preTitle", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "title", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "subtitle", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "caption", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "link", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "asModal", {
-    type: 'boolean',
-    default: false
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "buttonText", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "buttonUrl", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "showTags", {
-    type: 'boolean',
-    default: false
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "showAuthor", {
-    type: 'boolean',
-    default: false
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "date", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "showTitle", {
-    type: 'boolean',
-    default: false
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "showImg", {
-    type: 'boolean',
-    default: false
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "source", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "sourcePostType", {
-    type: 'string',
-    default: 'post'
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "sourceTaxonomy", {
-    type: 'string',
-    default: 'category'
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "sourceTerms", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "sourceLogic", {
-    type: 'string',
-    default: 'OR'
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "sourceOffset", {
-    type: 'number',
-    default: 0
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "sourceExclude", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "sourceCount", {
-    type: 'number',
-    default: 3
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "addressLine1", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "addressLine2", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "phoneNumber", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "email", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "website", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "authorName", {
-    type: 'string',
-    default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "authorUrl", {
-    type: 'string',
-    default: ''
-  }), _objectSpread2)),
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }),
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 
 /***/ }),
@@ -13070,7 +13027,7 @@ var edit = function edit(_ref) {
   var className = _ref.className,
       attributes = _ref.attributes,
       setAttributes = _ref.setAttributes;
-  var cardTypeOptions = [{
+  var cardTypes = [{
     value: 'default',
     label: 'Default'
   }, {
@@ -13087,7 +13044,7 @@ var edit = function edit(_ref) {
     title: "General"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
     label: "Type",
-    options: cardTypeOptions,
+    options: cardTypes,
     onChange: function onChange(cardType) {
       setAttributes({
         cardType: cardType
@@ -13151,35 +13108,11 @@ var edit = function edit(_ref) {
     setAttributes: setAttributes
   }), attributes.cardType == 'custom' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls_card_type_controls__WEBPACK_IMPORTED_MODULE_4__["CustomCard"], {
     attributes: attributes,
-    setAttributes: setAttributes,
-    InnerBlocks: InnerBlocks
+    setAttributes: setAttributes
   }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (edit);
-
-/***/ }),
-
-/***/ "./packages/blocks/content-card/editor/save.js":
-/*!*****************************************************!*\
-  !*** ./packages/blocks/content-card/editor/save.js ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-
-var __ = wp.i18n.__;
-var InnerBlocks = wp.blockEditor.InnerBlocks;
-
-var save = function save(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null);
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (save);
 
 /***/ }),
 
