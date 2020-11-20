@@ -14,8 +14,8 @@ class Content_Card extends Block_Base {
 		'margin_after'        => 'default',
 		'button_text'         => '',
 		'button_url'          => '',
-		'image_src'           => '',
-		'image_alt'           => '',
+		'img_src'             => '',
+		'img_alt'             => '',
 		'image_focal_point'   => '',
 		'image_focal_point_x' => '', // for shortcode only
 		'image_focal_point_y' => '', // for shortcode only
@@ -31,7 +31,7 @@ class Content_Card extends Block_Base {
 		'website'             => '',
 		'date'                => '',
 		'author_name'         => '',
-		'author_link'         => '',
+		'author_url'          => '',
 		'card_type'           => 'default',
 	);
 
@@ -57,7 +57,8 @@ class Content_Card extends Block_Base {
 			array(
 				'class_name'     => '',
 			),
-			$atts
+			$atts,
+			'wsu-c-card__wrapper'
 		);
 
 		ob_start();
@@ -68,6 +69,9 @@ class Content_Card extends Block_Base {
 				break;
 			case 'news':
 				include __DIR__ . '/templates/news.php';
+				break;
+			case 'custom':
+				include __DIR__ . '/templates/custom.php';
 				break;
 			default:
 				include __DIR__ . '/templates/default.php';

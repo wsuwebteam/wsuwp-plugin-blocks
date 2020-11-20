@@ -8,7 +8,7 @@
  */
 class Plugin {
 
-	protected static $version = '0.23.2.4';
+	protected static $version = '0.24.0';
 
 	protected static $options;
 	protected static $authorized_admins = array(
@@ -97,7 +97,7 @@ class Plugin {
 	public static function get_plugin_version( $isDev = false ) {
 
 		if ( $isDev ) {
-			return date( "m.d.y.g:i:s" ) . '--is-dev';
+			return date( "m.d.y.g:i:s" ) . '--is-local';
 		} else {
 			return self::$version;
 		}

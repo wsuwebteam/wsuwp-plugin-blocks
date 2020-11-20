@@ -4,21 +4,18 @@ class Content_News extends Block_Base {
 
 	protected static $slug = 'news';
 	protected static $default_atts = array(
-		'wrapper_class'  => '',
-		'class_name'     => '',
-		'id'             => '',
-		'type'           => 'default',
-		'title_tag'      => 'h3',
-		'source'         => 'insert',
-		'post_type'      => 'post',
-		'taxonomy'       => 'category',
-		'term_ids'       => '',
-		'count'          => 5,
-		'margin_before'  => 'default',
-		'margin_after'   => 'default',
-		'padding_before' => 'default',
-		'padding_after'  => 'default',
-		'items_per_row'  => 3,
+		'wrapper_class'  	=> '',
+		'class_name'     	=> '',
+		'id'             	=> '',
+		'type'           	=> 'default',
+		'title_tag'      	=> 'h3',
+		'source'         	=> 'insert',
+		'margin_before'  	=> 'default',
+		'margin_after'   	=> 'default',
+		'padding_before' 	=> 'default',
+		'padding_after'  	=> 'default',
+		'items_per_row'  	=> 3,
+		'feed_source'       => array(),
 	);
 
 
@@ -67,7 +64,7 @@ class Content_News extends Block_Base {
 
 		$content = '';
 
-		$query_args = Query::get_query_args( $atts );
+		$query_args = Query::get_query_args( $atts['feed_source'] );
 
 		$the_query = new \WP_Query( $query_args );
 

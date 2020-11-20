@@ -4,7 +4,7 @@ const { InnerBlocks } = wp.blockEditor;
 const saveColumn = ( props ) => {
 
 	return (
-			<InnerBlocks.Content /> 
+		<InnerBlocks.Content /> 
 	)
 
 }
