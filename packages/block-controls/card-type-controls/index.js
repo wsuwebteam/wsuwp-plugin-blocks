@@ -63,9 +63,9 @@ const DefaultCard = ( props ) => {
 					placeholder={'Add caption text'}
 				/>
 			}
-			imgSrc={attributes.imgSrc}
-			imgAlt={attributes.imgAlt}
-			imgFocalPoint={attributes.imgFocalPoint}
+			imageSrc={attributes.imageSrc}
+			imageAlt={attributes.imageAlt}
+			imageFocalPoint={attributes.imageFocalPoint}
 		/>
 	);
 }
@@ -177,9 +177,9 @@ const PersonCard = ( props ) => {
 					placeholder={'Add website address'}
 				/>
 			}
-			imgSrc={attributes.imgSrc}
-			imgAlt={attributes.imgAlt}
-			imgFocalPoint={attributes.imgFocalPoint}
+			imageSrc={attributes.imageSrc}
+			imageAlt={attributes.imageAlt}
+			imageFocalPoint={attributes.imageFocalPoint}
 		/>
 	);
 }
@@ -272,9 +272,9 @@ const NewsCard = ( props ) => {
 					placeholder={'Add caption text'}
 				/>
 			}
-			imgSrc={attributes.imgSrc}
-			imgAlt={attributes.imgAlt}
-			imgFocalPoint={attributes.imgFocalPoint}
+			imageSrc={attributes.imageSrc}
+			imageAlt={attributes.imageAlt}
+			imageFocalPoint={attributes.imageFocalPoint}
 			// categories={[
 			// 	{
 			// 		'name': 'Sed category',
@@ -398,9 +398,9 @@ const CustomCard = ( props ) => {
 					templateLock={ false }
 				/>
 			}
-			imgSrc={attributes.imgSrc}	
-			imgAlt={attributes.imgAlt}
-			imgFocalPoint={attributes.imgFocalPoint}
+			imageSrc={attributes.imageSrc}	
+			imageAlt={attributes.imageAlt}
+			imageFocalPoint={attributes.imageFocalPoint}
 		/>
 	);
 }

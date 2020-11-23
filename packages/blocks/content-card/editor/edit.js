@@ -71,23 +71,23 @@ const edit = ( { className, attributes, setAttributes } ) => {
 
 					<Panel>
 						<PanelBody title="Image" initialOpen={ false }>
-							{ attributes.imgSrc &&
+							{ attributes.imageSrc &&
 								<BaseControl
 									label="Focal Point Picker"
 									help="Select where you would like the image to resize around."
 								>
 									<FocalPointPicker
-										url={attributes.imgSrc}
-										dimensions={attributes.imgDimensions}
-										value={attributes.imgFocalPoint}
-										onChange={(focalPoint) => setAttributes({ imgFocalPoint: focalPoint })}
+										url={attributes.imageSrc}
+										dimensions={attributes.imageDimensions}
+										value={attributes.imageFocalPoint}
+										onChange={(focalPoint) => setAttributes({ imageFocalPoint: focalPoint })}
 									/>
 								</BaseControl>
 							}
 
 							<MediaUploadCheck>
 								<MediaUpload
-									onSelect={(media) => setAttributes({ imgSrc: media.url })}
+									onSelect={(media) => setAttributes({ imageSrc: media.url })}
 									allowedTypes="image/*"
 									render={({ open }) => (
 										<BaseControl label="Add/Replace Card Image">
