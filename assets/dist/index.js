@@ -10437,7 +10437,7 @@ var FeedControls = function FeedControls(_ref) {
   var taxonomy = feedSource.hasOwnProperty('taxonomy') ? feedSource.taxonomy : 'category';
   var termIds = feedSource.hasOwnProperty('termIds') ? feedSource.termIds : '';
   var count = feedSource.hasOwnProperty('count') ? feedSource.count : 5;
-  var orLogic = feedSource.hasOwnProperty('orLogic') ? feedSource.orLogic : false;
+  var andLogic = feedSource.hasOwnProperty('andLogic') ? feedSource.andLogic : false;
   taxonomyOptions = taxonomyOptions && Array.isArray(taxonomyOptions) ? taxonomyOptions : [{
     label: 'Category',
     value: 'category'
@@ -10480,6 +10480,17 @@ var FeedControls = function FeedControls(_ref) {
       });
     },
     placeholder: 'Enter Term IDs here (5,6,7).'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
+    label: "Use And logic",
+    help: "Content must include ALL terms",
+    checked: andLogic,
+    onChange: function onChange(andLogic) {
+      return setAttributes({
+        feedSource: _objectSpread(_objectSpread({}, feedSource), {}, {
+          andLogic: andLogic
+        })
+      });
+    }
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
     label: "Count",
     value: count,
@@ -10491,17 +10502,6 @@ var FeedControls = function FeedControls(_ref) {
       });
     },
     placeholder: 'Enter # of items.'
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToggleControl, {
-    label: "Use OR logic",
-    help: orLogic ? 'Using OR for term matching' : 'Using And for term matching',
-    checked: orLogic,
-    onChange: function onChange(orLogic) {
-      return setAttributes({
-        feedSource: _objectSpread(_objectSpread({}, feedSource), {}, {
-          orLogic: orLogic
-        })
-      });
-    }
   }));
 };
 
