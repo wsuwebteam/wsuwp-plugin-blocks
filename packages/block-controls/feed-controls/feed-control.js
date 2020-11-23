@@ -12,7 +12,7 @@ const FeedControls = ( { attributes, setAttributes, taxonomyOptions } ) => {
 	let taxonomy   = feedSource.hasOwnProperty('taxonomy') ? feedSource.taxonomy : 'category';
 	let termIds    = feedSource.hasOwnProperty('termIds') ? feedSource.termIds : '';
 	let count      = feedSource.hasOwnProperty('count') ? feedSource.count : 5;
-	let orLogic    = feedSource.hasOwnProperty('orLogic') ? feedSource.orLogic : false;
+	let andLogic    = feedSource.hasOwnProperty('andLogic') ? feedSource.andLogic : false;
 
 	taxonomyOptions = ( taxonomyOptions && Array.isArray( taxonomyOptions) ) ? taxonomyOptions : [{label:'Category',value:'category'},{label:'Tag',value:'tag'}];
 
@@ -36,18 +36,18 @@ const FeedControls = ( { attributes, setAttributes, taxonomyOptions } ) => {
 				onChange={ (termIds) => setAttributes( { feedSource: { ...feedSource, termIds:termIds } } ) }
 				placeholder={'Enter Term IDs here (5,6,7).'}
 			/>
+			<ToggleControl
+				label="Use And logic"
+				help='Content must include ALL terms'
+				checked={ andLogic }
+				onChange={ (andLogic) => setAttributes( { feedSource: { ...feedSource, andLogic:andLogic } } ) }
+			/>
 			<TextControl
 				label="Count"
 				value={count}
 				onChange={ (count) => setAttributes( { feedSource: { ...feedSource, count:count } } ) }
 				placeholder={'Enter # of items.'}
-			/>
-			<ToggleControl
-				label="Use OR logic"
-				help={ orLogic ? 'Using OR for term matching' : 'Using And for term matching' }
-				checked={ orLogic }
-				onChange={ (orLogic) => setAttributes( { feedSource: { ...feedSource, orLogic:orLogic } } ) }
-			/>				
+			/>			
 		</PanelBody>
 	)
 	
