@@ -31,22 +31,22 @@ registerBlockType(
 				type: 'string',
 				default: '',
 			},
-			imgSrc: {
+			imageSrc: {
 				type: 'string',
 				default: '',
 			},
-			imgSrc: {
+			imageSrc: {
 				type: 'string',
 				default: '',
 			},
-			imgFocalPoint: {
+			imageFocalPoint: {
 				type: 'object',
 				default: {
 					x: 0.2,
 					y: 0.5
 				}
 			},
-			imgDimensions: {
+			imageDimensions: {
 				type: 'object',
 				default: {
 					width: 1070,
@@ -101,7 +101,7 @@ registerBlockType(
 				type: 'boolean',
 				default: false,
 			},
-			showImg: {
+			showImage: {
 				type: 'boolean',
 				default: false,
 			},

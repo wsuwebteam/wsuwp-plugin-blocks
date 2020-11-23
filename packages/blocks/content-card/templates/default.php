@@ -6,13 +6,13 @@
 >
 	<div class="wsu-c-card__container">
 		<div class="wsu-c-card__content">
-			<?php if ( !empty( $atts['img_src'] ) ) : ?>
+			<?php if ( !empty( $atts['image_src'] ) ) : ?>
 				<div class="wsu-c-card__photo-frame">
 					<div class="wsu-c-card__photo-wrapper">
 					<img
 						class="wsu-c-card__photo"
-						src="<?php echo esc_url( $atts['img_src'] ); ?>"
-						alt="<?php echo esc_url( $atts['img_caption'] ); ?>"
+						src="<?php echo esc_url( $atts['image_src'] ); ?>"
+						alt="<?php echo esc_url( $atts['image_caption'] ); ?>"
 						data-object-fit=""
 					/>
 					</div>

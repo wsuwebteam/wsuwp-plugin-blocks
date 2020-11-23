@@ -9537,9 +9537,9 @@ var DefaultCard = function DefaultCard(props) {
       allowedFormats: [],
       placeholder: 'Add caption text'
     }),
-    imgSrc: attributes.imgSrc,
-    imgAlt: attributes.imgAlt,
-    imgFocalPoint: attributes.imgFocalPoint
+    imageSrc: attributes.imageSrc,
+    imageAlt: attributes.imageAlt,
+    imageFocalPoint: attributes.imageFocalPoint
   }));
 };
 
@@ -9667,9 +9667,9 @@ var PersonCard = function PersonCard(props) {
       allowedFormats: [],
       placeholder: 'Add website address'
     }),
-    imgSrc: attributes.imgSrc,
-    imgAlt: attributes.imgAlt,
-    imgFocalPoint: attributes.imgFocalPoint
+    imageSrc: attributes.imageSrc,
+    imageAlt: attributes.imageAlt,
+    imageFocalPoint: attributes.imageFocalPoint
   }));
 };
 
@@ -9777,9 +9777,9 @@ var NewsCard = function NewsCard(props) {
       allowedFormats: [],
       placeholder: 'Add caption text'
     }),
-    imgSrc: attributes.imgSrc,
-    imgAlt: attributes.imgAlt,
-    imgFocalPoint: attributes.imgFocalPoint // categories={[
+    imageSrc: attributes.imageSrc,
+    imageAlt: attributes.imageAlt,
+    imageFocalPoint: attributes.imageFocalPoint // categories={[
     // 	{
     // 		'name': 'Sed category',
     // 		'url': '#' 
@@ -9906,9 +9906,9 @@ var CustomCard = function CustomCard(props) {
     caption: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InnerBlocks, {
       templateLock: false
     }),
-    imgSrc: attributes.imgSrc,
-    imgAlt: attributes.imgAlt,
-    imgFocalPoint: attributes.imgFocalPoint
+    imageSrc: attributes.imageSrc,
+    imageAlt: attributes.imageAlt,
+    imageFocalPoint: attributes.imageFocalPoint
   });
 };
 
@@ -12914,20 +12914,20 @@ registerBlockType("wsuwp/card", {
       type: 'string',
       default: ''
     },
-    imgSrc: {
+    imageSrc: {
       type: 'string',
       default: ''
     }
-  }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "imgSrc", {
+  }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "imageSrc", {
     type: 'string',
     default: ''
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "imgFocalPoint", {
+  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "imageFocalPoint", {
     type: 'object',
     default: {
       x: 0.2,
       y: 0.5
     }
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "imgDimensions", {
+  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "imageDimensions", {
     type: 'object',
     default: {
       width: 1070,
@@ -12969,7 +12969,7 @@ registerBlockType("wsuwp/card", {
   }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "showTitle", {
     type: 'boolean',
     default: false
-  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "showImg", {
+  }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "showImage", {
     type: 'boolean',
     default: false
   }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "source", {
@@ -13109,22 +13109,22 @@ var edit = function edit(_ref) {
   }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Panel, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
     title: "Image",
     initialOpen: false
-  }, attributes.imgSrc && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
+  }, attributes.imageSrc && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
     label: "Focal Point Picker",
     help: "Select where you would like the image to resize around."
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(FocalPointPicker, {
-    url: attributes.imgSrc,
-    dimensions: attributes.imgDimensions,
-    value: attributes.imgFocalPoint,
+    url: attributes.imageSrc,
+    dimensions: attributes.imageDimensions,
+    value: attributes.imageFocalPoint,
     onChange: function onChange(focalPoint) {
       return setAttributes({
-        imgFocalPoint: focalPoint
+        imageFocalPoint: focalPoint
       });
     }
   })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
     onSelect: function onSelect(media) {
       return setAttributes({
-        imgSrc: media.url
+        imageSrc: media.url
       });
     },
     allowedTypes: "image/*",
