@@ -20,11 +20,11 @@ class Query {
 
 	protected static function set_taxonomy_args( &$query_args, $query_atts) {
 
-		if ( ! empty( $query_atts['taxonomy'] ) && ! empty( $query_atts['term_ids'] ) ) {
+		if ( ! empty( $query_atts['term_ids'] ) ) {
 
 			$query_args['tax_query'] = array(
 				array(
-					'taxonomy' => $query_atts['taxonomy'],
+					'taxonomy' => ( ! empty( $query_atts['taxonomy'] ) ) ? $query_atts['taxonomy'] : 'category',
 					'field'    => 'term_id',
 					'terms'    => explode( ',', $query_atts['term_ids'] ),
 					'operator' => ( $query_atts['or_logic'] ) ? 'IN' : 'AND',
