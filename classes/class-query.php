@@ -27,7 +27,7 @@ class Query {
 					'taxonomy' => ( ! empty( $query_atts['taxonomy'] ) ) ? $query_atts['taxonomy'] : 'category',
 					'field'    => 'term_id',
 					'terms'    => explode( ',', $query_atts['term_ids'] ),
-					'operator' => ( $query_atts['or_logic'] ) ? 'IN' : 'AND',
+					'operator' => ( $query_atts['and_logic'] ) ? 'AND' : 'IN',
 				),
 			);
 
@@ -38,7 +38,7 @@ class Query {
 
 	protected static function parse_allowed_atts( &$query_atts ) {
 
-		$allowed_atts = array( 'term_ids', 'count', 'or_logic', 'taxonomy' );
+		$allowed_atts = array( 'term_ids', 'count', 'and_logic', 'taxonomy' );
 
 		foreach ( $query_atts as $key => $value ) {
 
