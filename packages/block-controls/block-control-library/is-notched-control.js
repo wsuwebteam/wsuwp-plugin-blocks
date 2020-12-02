@@ -6,11 +6,13 @@ const {
 const IsNotchedControl = ( { attributes, setAttributes } ) => {
 
 	return (
-		<ToggleControl
-			label="Is Notched"
-			checked={ attributes.isNotched }
-			onChange={ ( isNotched ) => setAttributes( { isNotched } ) }
-		/>
+		<div style={{ marginTop: '1em' }}>
+			<ToggleControl
+				label="Is Notched"
+				checked={ attributes.isNotched }
+				onChange={ ( isNotched ) => setAttributes( { isNotched } ) }
+			/>
+		</div>
 	)
 
 }

@@ -75,6 +75,7 @@ class EM_Content_Decorator extends Block_Base {
 
 			case 'wsu-watermark-vertical-white':
 			case 'wsu-watermark-vertical-crimson':
+			case 'wsu-watermark-vertical-gray':
 				include __DIR__ . '/templates/wsu-watermark-vertical.php';
 				break;
 			case 'cougar-head-white':
