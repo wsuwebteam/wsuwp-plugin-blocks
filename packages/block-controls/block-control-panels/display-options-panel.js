@@ -1,7 +1,4 @@
-const {
-	PanelBody
-} = wp.components;
-
+const { PanelBody } = wp.components;
 
 const DisplayOptionsPanel = ( props ) => {
 
