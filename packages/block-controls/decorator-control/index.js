@@ -10,9 +10,6 @@ const {
 	Button
 } = wp.components;
 
-const { WsuHr } = wsu_wds.components;
-
-
 const decoratorOptions = [
 	{ label: 'Crimson Bar', value: 'crimson-bar' },
 	{ label: 'Crimson Bar | Light', value: 'crimson-bar-light' },
@@ -20,6 +17,8 @@ const decoratorOptions = [
 	{ label: 'Angled Lines | Crimson', value: 'angled-lines-crimson' },
 	{ label: 'Plus | Gray', value: 'plus-gray' },
 	{ label: 'Plus | Crimson', value: 'plus-crimson' },
+	{ label: 'Triangle | Gray', value: 'triangle-gray' },
+	{ label: 'Triangle | Transparent White', value: 'triangle-white' },
 	{ label: 'Text | White', value: 'text-white' },
 	{ label: 'Text | Outline Gray', value: 'text-outline-gray' },
 	{ label: 'Text | Outline Crimson', value: 'text-outline-crimson' },
@@ -29,6 +28,7 @@ const decoratorOptions = [
 	{ label: 'Overlay | gray', value: 'overlay-gray' },
 	{ label: 'WSU Watermark Vert | White', value: 'wsu-watermark-vertical-white' },
 	{ label: 'WSU Watermark Vert | Crimson', value: 'wsu-watermark-vertical-crimson' },
+	{ label: 'WSU Watermark Vert | Gray', value: 'wsu-watermark-vertical-gray' },
 ];
 
 const getDecoratorLabel =( slug ) => {
