@@ -12,10 +12,14 @@ class Content_Group extends Block_Base {
 		'background_color'    => '',
 		'is_notched'          => false,
 		'indent'              => '',
+		'decorators'          => array(),
+		'has_decorators'      => false,
+		'inline_style'        => array(),
 	);
 
-
 	protected static function render( $atts, $content ) {
+
+		$atts['has_decorators'] = ( ! empty( $atts['decorators'] ) ) ? true : false;
 
 		if ( ! empty( $atts['content_full_width'] ) ) {
 
@@ -32,6 +36,7 @@ class Content_Group extends Block_Base {
 				array( 'key' => 'indent', 'prefix' => 'wsu-u-indent--' ),
 				array( 'key' => 'max_width', 'prefix' => 'wsu-u-has-max-width', 'is_style' => true ),
 				array( 'key' => 'limit_content_width', 'prefix' => 'wsu-m-content-group--', 'is_bool' => true, 'value' => 'limit-content-width' ),
+				array( 'key' => 'has_decorators', 'prefix' => 'wsu-c-has-', 'is_bool' => true, 'value' => 'decorators' ),
 			),
 			$atts,
 			array( 'wsu-c-group' )

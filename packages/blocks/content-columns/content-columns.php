@@ -23,6 +23,7 @@ class Content_Columns extends Block_Base {
 		'margin_after'      => 'default',
 		'decorators'        => array(),
 		'has_decorators'    => false,
+		'inline_style'      => array(),
 	);
 
 
