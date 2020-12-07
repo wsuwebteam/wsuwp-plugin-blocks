@@ -47,6 +47,7 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 							onChange={ (backgroundColor) => setAttributes( { backgroundColor } ) }
 							options={[
 								{ label: 'Default', value: 'default' },
+								{ label: 'White', value: 'white' },
 								{ label: 'Gray 5%', value: 'gray-5' },
 								{ label: 'Gray 10%', value: 'gray-10' },
 							]}
@@ -60,14 +61,14 @@ const editColumn = ( { className, attributes, setAttributes } ) => {
 					</LayoutPanel>
 					<EmOptionsPanel>
 						<DecoratorControl 
-						decorators={attributes.decorators}
-						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+							decorators={attributes.decorators}
+							onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
 						/>
 						<IsNotchedControl attributes={attributes} setAttributes={setAttributes} />
 					</EmOptionsPanel>
 				</InspectorControls>
 			}
-			<WsuColumn >
+			<WsuColumn>
 				<InnerBlocks
 					templateLock={ false }
 				/>

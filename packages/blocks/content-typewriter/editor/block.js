@@ -17,7 +17,7 @@ import './style.scss';
 registerBlockType(
 	"wsuwp/typewriter",
 	{
-		title: "Typewriter Effect",
+		title: "Typewriter Heading",
 		category: "content",
 		icon: 'book-alt',
 		attributes: {

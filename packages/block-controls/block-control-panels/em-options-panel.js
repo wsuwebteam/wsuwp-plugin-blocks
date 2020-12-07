@@ -1,8 +1,4 @@
-const {
-	Panel,
-	PanelBody
-} = wp.components;
-
+const { PanelBody } = wp.components;
 
 const EmOptionsPanel = ( props ) => {
 
@@ -10,11 +6,11 @@ const EmOptionsPanel = ( props ) => {
 
 	return (
 
-		<Panel className="wsu-b-panel-em-options">
+		<div className="wsu-b-panel-em-options">
 			<PanelBody title="EM Options" initialOpen={false}>
 				{props.children}
 			</PanelBody>
-		</Panel>
+		</div>
 
 	)
 

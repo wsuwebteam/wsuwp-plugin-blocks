@@ -352,6 +352,24 @@ class Blocks {
 			'register_shortcode' => true,
 			'allow_block_type'   => true
 		),
+		array(
+			'class_name'         => '',
+			'file_name'          => '',
+			'block_name'         => 'code',
+			'block_namespace'    => 'core',
+			'register_block'     => false,
+			'register_shortcode' => false,
+			'allow_block_type'   => true // TODO: Default value to false when customizer enable block feature is built out
+		),
+		array(
+			'class_name'         => '',
+			'file_name'          => '',
+			'block_name'         => 'html',
+			'block_namespace'    => 'core',
+			'register_block'     => false,
+			'register_shortcode' => false,
+			'allow_block_type'   => true // TODO: Default value to false when customizer enable block feature is built out
+		),
 	);
 
 
@@ -447,7 +465,9 @@ class Blocks {
 
 		// Add blocks from $block_directory
 		foreach ( Blocks::$block_directory as $block ) {
-			array_push($allowed_blocks, $block['block_namespace'] . '/' . $block['block_name']);
+			if ($block['allow_block_type'] == true) {
+				array_push($allowed_blocks, $block['block_namespace'] . '/' . $block['block_name']);
+			}
 		}
 
 		return $allowed_blocks;
