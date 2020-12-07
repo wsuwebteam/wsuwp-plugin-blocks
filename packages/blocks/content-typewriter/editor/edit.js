@@ -27,7 +27,11 @@ const edit = ( { className, attributes, setAttributes } ) => {
 				</PanelBody>
 			</InspectorControls>
 
-			<WsuTypewriter />
+			<WsuTypewriter
+				beforeText="Lorem Ipsum"
+				text="Dolor"
+				afterText="Sit Amet"
+			/>
 		</>
 	)
 

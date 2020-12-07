@@ -54,8 +54,8 @@ const edit = ( { className, attributes, setAttributes } ) => {
 					</LayoutPanel>
 					<EmOptionsPanel>
 						<DecoratorControl 
-						decorators={attributes.decorators}
-						onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
+							decorators={attributes.decorators}
+							onChange={ ( decoratorArray ) => { setAttributes( { decorators:decoratorArray } ) } }
 						/>
 						<IsNotchedControl attributes={attributes} setAttributes={setAttributes} />
 					</EmOptionsPanel>

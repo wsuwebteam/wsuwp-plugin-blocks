@@ -4,22 +4,22 @@ class Content_Column extends Block_Base {
 
 	protected static $slug = 'column';
 	protected static $default_atts = array(
-		'class_name'        => '',
-		'id'                => '',
-		'wrapper_class'     => '',
-		'background_color'  => 'default',
-		'background_image_src' => '',
-		'background_image_alt' => '',
+		'class_name'                   => '',
+		'id'                           => '',
+		'wrapper_class'                => '',
+		'background_color'             => 'default',
+		'background_image_src'         => '',
+		'background_image_alt'         => '',
 		'background_image_focal_point' => array(),
-		'margin_before'     => 'default',
-		'margin_after'      => 'default',
-		'padding_before'    => 'default',
-		'padding_after'     => 'default',
-		'decorators'        => array(),
-		'has_decorators'    => false,
-		'inline_style'      => array(),
-		'background_image_position' => '',
-		'is_notched'        => false,
+		'margin_before'                => 'default',
+		'margin_after'                 => 'default',
+		'padding_before'               => 'default',
+		'padding_after'                => 'default',
+		'decorators'                   => array(),
+		'has_decorators'               => false,
+		'inline_style'                 => array(),
+		'background_image_position'    => '',
+		'is_notched'                   => false,
  	);
 
 

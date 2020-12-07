@@ -23,6 +23,7 @@ class Content_Columns extends Block_Base {
 		'margin_after'      => 'default',
 		'decorators'        => array(),
 		'has_decorators'    => false,
+		'inline_style'      => array(),
 	);
 
 
@@ -51,10 +52,6 @@ class Content_Columns extends Block_Base {
 			array(
 				array( 'key' => 'class_name', 'prefix' => '' ),
 				array( 'key' => 'background_color', 'prefix' => 'wsu-u-background--' ),
-				array( 'key' => 'margin_before', 'prefix' => 'wsu-u-margin-before--' ),
-				array( 'key' => 'margin_after', 'prefix' => 'wsu-u-margin-after--' ),
-				array( 'key' => 'padding_before', 'prefix' => 'wsu-u-padding-before--' ),
-				array( 'key' => 'padding_after', 'prefix' => 'wsu-u-padding-after--' ),
 				array( 'key' => 'has_decorators', 'prefix' => 'wsu-c-has-', 'is_bool' => true, 'value' => 'decorators' ),
 			),
 			$atts,

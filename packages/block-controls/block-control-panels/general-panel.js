@@ -1,8 +1,4 @@
-const {
-	Panel,
-	PanelBody
-} = wp.components;
-
+const { PanelBody } = wp.components;
 
 const GeneralPanel = ( props ) => {
 

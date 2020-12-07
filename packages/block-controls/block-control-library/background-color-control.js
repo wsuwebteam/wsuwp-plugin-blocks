@@ -5,6 +5,7 @@ const {
 
 const backgroundColorContentOptions = [
 	{ label: 'Default', value: '' },
+	{ label: 'White', value: 'white' },
 	{ label: 'Gray 5%', value: 'gray-5' },
 	{ label: 'Gray 10%', value: 'gray-10' },
 	{ label: 'Gray 80%', value: 'gray-80' },
