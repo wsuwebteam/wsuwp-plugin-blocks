@@ -45,7 +45,7 @@ const getDecoratorLabel =( slug ) => {
 
 		}
 
-	  }
+	}
 
 	return label;
 
@@ -120,19 +120,19 @@ const Decorator = ( props ) => {
 					/>
 					<ToggleControl
 							label="Hide on Mobile"
-							help={ hideOnMobile ? 'Hidden.' : 'Visible.' }
+							help={ hideOnMobile ? 'This will not be displayed on Mobile.' : null }
 							checked={ hideOnMobile }
 							onChange={ ( value ) => { props.updateDecorator( props.index, 'hideOnMobile', value ) } }
 					/>
 					<ToggleControl
 							label="Hide on Tablet"
-							help={ hideOnTablet ? 'Hidden.' : 'Visible.' }
+							help={ hideOnTablet ? 'This will not be displayed on Tablet.' : null }
 							checked={ hideOnTablet }
 							onChange={ ( value ) => { props.updateDecorator( props.index, 'hideOnTablet', value ) } }
 					/>
 					<ToggleControl
 							label="Hide on Desktop"
-							help={ hideOnDesktop ? 'Hidden.' : 'Visible.' }
+							help={ hideOnDesktop ? 'This will not be displayed on Desktop.' : null }
 							checked={ hideOnDesktop }
 							onChange={ ( value ) => { props.updateDecorator( props.index, 'hideOnDesktop', value ) } }
 					/>
@@ -207,26 +207,31 @@ class DecoratorControl extends React.Component {
 	render() {
 
 		return (
-			<PanelBody title="Decorators" initialOpen={false}>
-				<SelectControl
-					label="Select Decorator"
-					onChange={ ( value ) => { this.state.selectedDecorator = value } }
-					options={decoratorOptions}
-				/>
-				<Button 
-					onClick={ ( event ) =>{ this.addDecoratorToArray( this.state.selectedDecorator ) } } 
-					isSecondary
-				>Add Decorator</Button>
-				<WsuHr />
-				{ this.props.decorators.map( (decorator, index ) => { 
-					return (<Decorator 
-						decorator={ decorator } 
-						index={index} 
-						removeDecorator={ ( index ) => { this.removeDecorator( index ) } }
-						updateDecorator={ ( index, property, value ) => { this.updateDecoratorArray( index, property, value ) } }
-						/>);
+			<Panel>
+				<PanelBody title="Decorators" initialOpen={false}>
+					<SelectControl
+						label="Select Decorator"
+						onChange={ ( value ) => { this.state.selectedDecorator = value } }
+						options={ decoratorOptions }
+					/>
+					<Button 
+						onClick={ ( event ) =>{ this.addDecoratorToArray( this.state.selectedDecorator ) } } 
+						isSecondary
+					>
+						Add Decorator
+					</Button>
+					{ this.props.decorators.map( (decorator, index ) => { 
+						return (
+							<Decorator 
+								decorator={ decorator } 
+								index={index} 
+								removeDecorator={ ( index ) => { this.removeDecorator( index ) } }
+								updateDecorator={ ( index, property, value ) => { this.updateDecoratorArray( index, property, value ) } }
+							/>
+						);
 					} ) }
-			</PanelBody>
+				</PanelBody>
+			</Panel>
 		)
 
 	}

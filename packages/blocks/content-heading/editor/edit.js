@@ -75,7 +75,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							/>
 						</BaseControl>
 					</PanelBody>
-					<DisplayOptionsPanel >
+					<DisplayOptionsPanel>
 						<SelectControl
 							label="Display Style" 
 							value={attributes.style}
@@ -96,7 +96,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						<FontSizeControl attributes={attributes} setAttributes={setAttributes} />
 						<FontWeightControl attributes={attributes} setAttributes={setAttributes} />
 						<IndentControl attributes={attributes} setAttributes={setAttributes} />
-					</DisplayOptionsPanel >
+					</DisplayOptionsPanel>
 					<LayoutPanel>
 						<MarginVerticalControlGroup attributes={attributes} setAttributes={setAttributes} />
 						<PaddingVerticalControlGroup attributes={attributes} setAttributes={setAttributes} />
