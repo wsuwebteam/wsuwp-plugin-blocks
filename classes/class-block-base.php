@@ -58,7 +58,7 @@ class Block_Base {
 
 	protected static function to_snake_case( &$atts ) {
 
-		$convert_sub_atts = array( 'inline_style', 'feedSource' );
+		$convert_sub_atts = array( 'inlineStyle', 'feedSource' );
 
 		// Turn camelCase into snake_case
 		foreach ( $atts as $key => $value ) {
