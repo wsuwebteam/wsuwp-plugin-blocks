@@ -10,9 +10,9 @@ module.exports = {
 			{
 				test: /\.s[ac]ss$/i,
 				use: [
-					{ loader: MiniCssExtractPlugin.loader },
-					{ loader: 'css-loader' },
-					{ loader: 'sass-loader' },
+					{ loader: MiniCssExtractPlugin.loader},
+					{ loader: 'css-loader', options: { url: false }  },
+					{ loader: 'sass-loader'  },
 				],
 			},
 			{

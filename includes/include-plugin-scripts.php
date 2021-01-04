@@ -81,6 +81,14 @@ class Plugin_Scripts {
 
 	public static function enqueue_frontend_assets() {
 
+		wp_register_script(
+			'wsu-blocks-public-js',
+			Plugin::get_plugin_url() . 'assets/dist/public.js',
+			array(),
+			Plugin::get_plugin_version(),
+			true
+		);
+
 		if ( !Options::get_option( 'block_settings_enqueue_stylesheet', false) ) {
 			return;
 		}

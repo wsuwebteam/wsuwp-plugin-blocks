@@ -34,6 +34,7 @@ import '../../packages/blocks/content-news/editor/block';
 import '../../packages/blocks/content-group/editor/block';
 import '../../packages/blocks/content-video/editor/block';
 import '../../packages/blocks/content-typewriter/editor/block';
+import '../../packages/blocks/embed-tableau/editor/block';
 
 // EM Blocks
 import '../../packages/em-blocks/content-separator/editor/block';
