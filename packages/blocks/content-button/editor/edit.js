@@ -70,7 +70,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						</PanelBody>
 					</Panel>
 				</PanelBody>
-				<PanelBody title="Style" initialOpen={false}>
+				<PanelBody title="Display Options" initialOpen={false}>
 					<SelectControl
 						label="Display Style"
 						value={attributes.style}

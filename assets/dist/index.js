@@ -12244,7 +12244,7 @@ var edit = function edit(_ref) {
       });
     }
   })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-    title: "Style",
+    title: "Display Options",
     initialOpen: false
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
     label: "Display Style",
