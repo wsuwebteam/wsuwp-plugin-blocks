@@ -8,12 +8,11 @@
  */
 class Plugin {
 
-	protected static $version = '0.25.0';
+	protected static $version = '0.25.1';
 
 	protected static $options;
 	protected static $authorized_admins = array(
 		'danial.bleile@wsu.edu',
-		'nicolas.ford@wsu.edu',
 		'erik.solveson@wsu.edu',
 	);
 
