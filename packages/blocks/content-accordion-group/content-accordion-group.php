@@ -9,6 +9,7 @@ class Content_Accordion_Group extends Block_Base {
 		'id'             => '',
 		'tag'            => 'h2',
 		'source'         => 'insert',
+		'feed_source'    => array(),
 		'post_type'      => 'post',
 		'taxonomy'       => 'category',
 		'term_ids'       => '',
@@ -60,7 +61,7 @@ class Content_Accordion_Group extends Block_Base {
 
 		$content = '';
 
-		$query_args = Query::get_query_args( $atts );
+		$query_args = Query::get_query_args( $atts['feed_source'] );
 
 		$the_query = new \WP_Query( $query_args );
 
