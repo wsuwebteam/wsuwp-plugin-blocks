@@ -4,8 +4,8 @@
   "description": "A WordPress implementation of WSU Design System components as Gutenberg blocks.",
   "main": "build/index.js",
   "scripts": {
-    "start": "wp-scripts start assets/src/index.js --output-path=assets/dist/",
-    "build": "wp-scripts build assets/src/index.js --output-path=assets/dist/"
+    "start": "wp-scripts start assets/src/index.js assets/src/public.js --output-path=assets/dist/",
+    "build": "wp-scripts build assets/src/index.js assets/src/public.js --output-path=assets/dist/"
   },
   "repository": {
     "type": "git",

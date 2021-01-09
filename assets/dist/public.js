@@ -91,9 +91,46 @@
   !*** ./assets/src/public.js ***!
   \******************************/
 /*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _packages_blocks_embed_tableau_script__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../packages/blocks/embed-tableau/script */ "./packages/blocks/embed-tableau/script.js");
+/* harmony import */ var _packages_blocks_embed_tableau_script__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_packages_blocks_embed_tableau_script__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ }),
+
+/***/ "./packages/blocks/embed-tableau/script.js":
+/*!*************************************************!*\
+  !*** ./packages/blocks/embed-tableau/script.js ***!
+  \*************************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/source-map-loader/index.js):\nError: ENOENT: no such file or directory, open 'C:\\Users\\danial.bleile\\Local Sites\\wds\\app\\public\\wp-content\\plugins\\wsuwp-plugin-blocks\\assets\\src\\public.js'");
+var embedTableau = function embedTableau() {
+  var instances = [];
+  var embeds = document.querySelectorAll('.wsu-e-tableau');
+
+  for (i = 0; i < embeds.length; ++i) {
+    var containerID = embeds[i].getAttribute('id');
+    var url = embeds[i].dataset.view;
+    var containerDiv = document.getElementById(containerID),
+        options = {
+      hideTabs: true,
+      onFirstInteractive: function onFirstInteractive() {
+        console.log("Run this code when the viz has finished loading.");
+      }
+    };
+    var viz = new tableau.Viz(containerDiv, url, options); // Create a viz object and embed it in the container div.
+
+    instances.push(viz);
+  }
+
+  return instances;
+};
+
+var wsuTableau = embedTableau();
 
 /***/ })
 

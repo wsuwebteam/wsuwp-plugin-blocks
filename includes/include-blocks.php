@@ -370,6 +370,15 @@ class Blocks {
 			'register_shortcode' => false,
 			'allow_block_type'   => true // TODO: Default value to false when customizer enable block feature is built out
 		),
+		array(
+			'class_name'         => 'Embed_Tableau',
+			'file_name'          => 'embed-tableau',
+			'block_name'         => 'tableau',
+			'block_namespace'    => 'wsuwp',
+			'register_block'     => true,
+			'register_shortcode' => false,
+			'allow_block_type'   => true // TODO: Default value to false when customizer enable block feature is built out
+		),
 	);
 
 

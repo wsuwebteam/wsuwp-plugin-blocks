@@ -1,0 +1,38 @@
+.wsu-e-tableau {
+
+	height: 400px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url('../images/tableau-background.jpg');
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(250,250,250,0.8);
+		display: block;
+	}
+
+	&__logo {
+		width: 200px;
+		height: 70px;
+		background-position: center;
+		background-size: 80% auto;
+		background-repeat: no-repeat;
+		background-image: url('../images/tableau-logo.png');
+		position: relative;
+		background-color: #fff;
+		padding: 14px;
+		border-radius: 3px;
+	}
+
+}
