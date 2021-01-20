@@ -9,18 +9,18 @@ class Embed_Tableau extends Block_Base {
 		'id'             => '',
 		'inline_style'   => '',
 		'view_url'       => '',
+		'height'         => '1000px',
+		'width'          => '100%',
+		'site_root'      => '',
+		'name'           => '',
+		'host_url'       => '',  
 	);
 
 
 	protected static function render( $atts, $content ) {
 
-		wp_enqueue_script(
-			'tableau-js',
-			'https://public.tableau.com/javascripts/api/tableau-2.min.js',
-			array(),
-			Plugin::get_plugin_version(),
-			true
-		);
+		self::escape_slashes( $atts );
+
 
 		$atts['inline_style'] = static::get_inline_styles(
 			array(
@@ -41,13 +41,20 @@ class Embed_Tableau extends Block_Base {
 			array( 'wsu-e-tableau' )
 		);
 
-		wp_enqueue_script( 'wsu-blocks-public-js' );
-
 		ob_start();
 
 		include __DIR__ . '/templates/default.php';
 
 		return ob_get_clean();
+
+	}
+
+
+	protected static function escape_slashes( &$atts ) {
+
+		$atts['name'] = str_replace( '/', '&#47;', $atts['name'] );
+		$atts['site_root'] = str_replace( '/', '&#47;', $atts['site_root'] );
+		$atts['host_url'] = str_replace( '/', '&#47;', trailingslashit( $atts['host_url'] ) );
 
 	}
 
