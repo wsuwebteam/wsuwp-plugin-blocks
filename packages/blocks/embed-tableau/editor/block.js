@@ -25,6 +25,26 @@ registerBlockType(
 				type: 'string',
 				default: '',
 			},
+			siteRoot: {
+				type: 'string',
+				default: '',
+			},
+			hostUrl: {
+				type: 'string',
+				default: '',
+			},
+			name: {
+				type: 'string',
+				default: '',
+			},
+			width: {
+				type: 'string',
+				default: '100%',
+			},
+			height: {
+				type: 'string',
+				default: '1000px',
+			},
 		},
 		edit
 	}

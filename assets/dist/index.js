@@ -17756,6 +17756,26 @@ registerBlockType("wsuwp/tableau", {
     viewUrl: {
       type: 'string',
       default: ''
+    },
+    siteRoot: {
+      type: 'string',
+      default: ''
+    },
+    hostUrl: {
+      type: 'string',
+      default: ''
+    },
+    name: {
+      type: 'string',
+      default: ''
+    },
+    width: {
+      type: 'string',
+      default: '100%'
+    },
+    height: {
+      type: 'string',
+      default: '1000px'
     }
   }),
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -17820,6 +17840,51 @@ var edit = function edit(_ref) {
       });
     },
     placeholder: 'Enter Tableau view URL here.'
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Width",
+    value: attributes.width,
+    onChange: function onChange(width) {
+      return setAttributes({
+        width: width
+      });
+    },
+    placeholder: ''
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Height",
+    value: attributes.height,
+    onChange: function onChange(height) {
+      return setAttributes({
+        height: height
+      });
+    },
+    placeholder: ''
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Host URL",
+    value: attributes.hostUrl,
+    onChange: function onChange(hostUrl) {
+      return setAttributes({
+        hostUrl: hostUrl
+      });
+    },
+    placeholder: ''
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Site Root",
+    value: attributes.siteRoot,
+    onChange: function onChange(siteRoot) {
+      return setAttributes({
+        siteRoot: siteRoot
+      });
+    },
+    placeholder: ''
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: "Name",
+    value: attributes.name,
+    onChange: function onChange(name) {
+      return setAttributes({
+        name: name
+      });
+    },
+    placeholder: ''
   }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "wsu-e-tableau"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {

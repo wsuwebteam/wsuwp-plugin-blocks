@@ -44,6 +44,36 @@ const edit = ( { className, attributes, setAttributes } ) => {
 						onChange={(viewUrl) => setAttributes({ viewUrl })}
 						placeholder={'Enter Tableau view URL here.'}
 					/>
+					<TextControl
+						label="Width"
+						value={attributes.width}
+						onChange={(width) => setAttributes({ width })}
+						placeholder={''}
+					/>
+					<TextControl
+						label="Height"
+						value={attributes.height}
+						onChange={(height) => setAttributes({ height })}
+						placeholder={''}
+					/>
+					<TextControl
+						label="Host URL"
+						value={attributes.hostUrl}
+						onChange={(hostUrl) => setAttributes({ hostUrl })}
+						placeholder={''}
+					/>
+					<TextControl
+						label="Site Root"
+						value={attributes.siteRoot}
+						onChange={(siteRoot) => setAttributes({ siteRoot })}
+						placeholder={''}
+					/>
+					<TextControl
+						label="Name"
+						value={attributes.name}
+						onChange={(name) => setAttributes({ name })}
+						placeholder={''}
+					/>
 				</PanelBody>
 			</InspectorControls>
 
