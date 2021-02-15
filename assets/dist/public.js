@@ -91,6 +91,7 @@
   !*** ./assets/src/public.js ***!
   \******************************/
 /*! no exports provided */
+<<<<<<< Updated upstream
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -131,6 +132,11 @@ var embedTableau = function embedTableau() {
 };
 
 var wsuTableau = embedTableau();
+=======
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/source-map-loader/index.js):\nError: ENOENT: no such file or directory, open 'C:\\Users\\danial.bleile\\Local Sites\\wds\\app\\public\\wp-content\\plugins\\wsuwp-plugin-blocks\\assets\\src\\public.js'");
+>>>>>>> Stashed changes
 
 /***/ })
 
