@@ -11,6 +11,7 @@ export { default as SizeUnitControl } from './size-unit-control';
 export { sizeUnitControlAtts as sizeUnitControlAtts } from './size-unit-control';
 
 export { default as GeneralPanel } from './block-control-panels/general-panel'
+
 /* Block Control Library
 =============================== */
 export { BackgroundColorControl as BackgroundColorControl } from './block-control-library/background-color-control';
@@ -55,6 +56,8 @@ export {default as PaddingLeftControl } from './block-control-library/padding-le
 export { default as MinHeightControl } from './block-control-library/min-height-control';
 
 export { default as MaxWidthControl } from './block-control-library/max-width-control';
+
+export { default as RemoteSiteUrlControl } from './block-control-library/remote-site-url-control';
 
 
 /* Block Control Groups

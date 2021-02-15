@@ -33,7 +33,7 @@
 
 				<?php if ( !empty( $atts['caption'] ) ) : ?>
 					<p class="wsu-c-card__caption">
-						<?php echo esc_html( $atts['caption'] ); ?>
+						<?php echo wp_kses_post( wp_strip_all_tags( $atts['caption'] ) ); ?>
 					</p>
 				<?php endif; ?>
 

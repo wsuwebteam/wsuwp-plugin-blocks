@@ -5,9 +5,13 @@ const {
 	ToggleControl
 } = wp.components;
 
+import { RemoteSiteUrlControl } from '../index';
+
 const FeedControls = ( { attributes, setAttributes, taxonomyOptions } ) => {
 
+	let source = attributes.hasOwnProperty('source') ? attributes.source : 'feed';
 	let feedSource = attributes.hasOwnProperty('feedSource') ? attributes.feedSource : {};
+	let remoteSiteUrl = feedSource.hasOwnProperty('remoteSiteUrl') ? feedSource.remoteSiteUrl : '';
 	let postType   = feedSource.hasOwnProperty('postType') ? feedSource.postType : 'post';
 	let taxonomy   = feedSource.hasOwnProperty('taxonomy') ? feedSource.taxonomy : 'category';
 	let termIds    = feedSource.hasOwnProperty('termIds') ? feedSource.termIds : '';
@@ -18,6 +22,16 @@ const FeedControls = ( { attributes, setAttributes, taxonomyOptions } ) => {
 
 	return (
 		<PanelBody title="Feed Settings">
+			{
+				source == 'feed_remote' && (
+					<RemoteSiteUrlControl
+						value={remoteSiteUrl}
+						attributes={attributes}
+						setAttributes={setAttributes}
+						onChange={ ( siteUrl ) => setAttributes( { feedSource: { ...feedSource, remoteSiteUrl:siteUrl } } ) }
+					/> 
+				) 
+			}
 			<TextControl
 				label="Content Type (post type)"
 				value={postType}
