@@ -37,8 +37,9 @@ const CardControls = ( { attributes, setAttributes }  ) => {
 const edit = ( { className, attributes, setAttributes } ) => {
 
 	const sourceOptions = [
-		{ label: 'Insert', value: 'insert' },
-		{ label: 'Feed', value: 'feed' },
+		{ label: 'Insert Individual Stories', value: 'insert' },
+		{ label: 'Feed From This Site', value: 'feed' },
+		{ label: 'Feed From Another Site', value: 'feed_remote' },
 	]
 	
 	

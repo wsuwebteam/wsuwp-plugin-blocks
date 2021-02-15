@@ -51,7 +51,7 @@ class Content_News extends Block_Base {
 
 		ob_start();
 
-		$content = ( 'feed' === $atts['source'] ) ? self::get_feed_content( $atts ) : $content;
+		$content = ( 'insert' === $atts['source'] ) ? $content : self::get_feed_content( $atts, $content );
 
 		include __DIR__ . '/templates/default.php';
 
@@ -60,52 +60,72 @@ class Content_News extends Block_Base {
 	}
 
 
-	protected static function get_feed_content( $atts ) {
+	protected static function get_feed_content( $atts, $content ) {
 
-		$content = '';
+		switch ( $atts['source'] ) {
 
-		$query_args = Query::get_query_args( $atts['feed_source'] );
+			case 'feed_remote':
+				$posts = self::get_rest_posts( $atts );
+				break;
+			case 'feed':
+				$posts = self::get_feed_posts( $atts );
+				break;
+			default:
+				$posts = array();
 
-		$the_query = new \WP_Query( $query_args );
+		}
 
-		if ( $the_query->have_posts() ) {
+		foreach ( $posts as $post ) {
 
-			while ( $the_query->have_posts() ) {
+			switch ( $atts['type'] ) {
 
-				$the_query->the_post();
-
-				$thumbnail_id = get_post_thumbnail_id( $the_query->post->ID );
-				$image_alt    = get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true );
-				$image_src    = get_the_post_thumbnail_url( $the_query->post->ID, 'medium' );
-				$caption      = wp_trim_words( get_the_excerpt(), 25, '...' );
-				$title = get_the_title();
-
-
-				switch ( $atts['type'] ) {
-
-					case 'card':
-						$content .= Content_Card::render_block(
-							array(
-								'title' => $title,
-								'image_src' => $image_src,
-								'image_alt' => $image_alt,
-								'caption'   => $caption,
-								'class_name' => 'wsu-c-news__item',
-								'card_type' => 'news',
-								'date' => get_the_date(),
-								'link' => get_permalink(),
-								'author_name' => get_the_author_meta( 'display_name'),
-
-							)
-						);
-				}
-
+				case 'card':
+					$content .= Content_Card::render_block(
+						array(
+							'title'       => $post->get( 'title' ),
+							'image_src'   => $post->get( 'image_src' ),
+							'image_alt'   => $post->get( 'image_alt' ),
+							'caption'     => $post->get( 'excerpt' ),
+							'class_name'  => 'wsu-c-news__item',
+							'card_type'   => 'news',
+							'date'        => $post->get( 'publish_date' ),
+							'link'        => $post->get( 'link' ),
+							'author_name' => $post->get( 'author_name' ),
+						)
+					);
+					break;
 			}
 		}
 
-		wp_reset_postdata();
-
 		return $content;
+
+	}
+
+
+	protected static function get_rest_posts( $atts ) {
+
+		$posts = array();
+
+		if ( 'feed_remote' === $atts['source'] && ! empty( $atts['feed_source']['remote_site_url'] ) ) {
+
+			$remote_site_url = $atts['feed_source']['remote_site_url'];
+
+			$post_query = Query_Rest::get_posts( $remote_site_url, $atts['feed_source'] );
+
+			$posts = ( ! empty( $post_query['posts'] ) ) ? $post_query['posts'] : array();
+
+		} 
+
+		return $posts;
+
+	}
+
+
+	protected static function get_feed_posts( $atts ) {
+
+		$post_query = Query::get_posts( $atts['feed_source'] );
+
+		return $post_query['posts'];
 
 	}
 

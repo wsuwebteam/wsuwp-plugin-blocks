@@ -2,32 +2,61 @@
 
 class Query {
 
-	public static function get_query_args( $query_atts ) {
 
-		static::parse_allowed_atts( $query_atts );
+	public static function get_posts( $atts ) {
 
-		$query_args = array(
-			'post_type'      => ( ! empty( $query_atts['post_type'] ) ) ? $query_atts['post_type'] : 'post',
-			'posts_per_page' => ( ! empty( $query_atts['count'] ) ) ? $query_atts['count'] : 5,
+		// TODO: add keys for total count
+		$post_query = array(
+			'posts' => array(),
 		);
 
-		self::set_taxonomy_args( $query_args, $query_atts );
+		$query_args = self::get_query_args( $atts );
+
+		$the_query = new \WP_Query( $query_args );
+
+		if ( $the_query->have_posts() ) {
+
+			while ( $the_query->have_posts() ) {
+
+				$the_query->the_post();
+
+				$post_query['posts'][] = new WP_Post( $the_query->post );
+
+			}
+		}
+
+		wp_reset_postdata();
+
+		return $post_query;
+
+	}
+
+	public static function get_query_args( $atts ) {
+
+		static::parse_allowed_atts( $atts );
+
+		$query_args = array(
+			'post_type'      => ( ! empty( $atts['post_type'] ) ) ? $atts['post_type'] : 'post',
+			'posts_per_page' => ( ! empty( $atts['count'] ) ) ? $atts['count'] : 5,
+		);
+
+		self::set_taxonomy_args( $query_args, $atts );
 
 		return $query_args;
 
 	}
 
 
-	protected static function set_taxonomy_args( &$query_args, $query_atts) {
+	protected static function set_taxonomy_args( &$query_args, $atts ) {
 
-		if ( ! empty( $query_atts['term_ids'] ) ) {
+		if ( ! empty( $atts['term_ids'] ) ) {
 
 			$query_args['tax_query'] = array(
 				array(
-					'taxonomy' => ( ! empty( $query_atts['taxonomy'] ) ) ? $query_atts['taxonomy'] : 'category',
+					'taxonomy' => ( ! empty( $atts['taxonomy'] ) ) ? $atts['taxonomy'] : 'category',
 					'field'    => 'term_id',
-					'terms'    => explode( ',', $query_atts['term_ids'] ),
-					'operator' => ( $query_atts['and_logic'] ) ? 'AND' : 'IN',
+					'terms'    => explode( ',', $atts['term_ids'] ),
+					'operator' => ( $atts['and_logic'] ) ? 'AND' : 'IN',
 				),
 			);
 
@@ -36,17 +65,17 @@ class Query {
 	}
 
 
-	protected static function parse_allowed_atts( &$query_atts ) {
+	protected static function parse_allowed_atts( &$atts ) {
 
 		$allowed_atts = array( 'term_ids', 'count', 'and_logic', 'taxonomy' );
 
-		foreach ( $query_atts as $key => $value ) {
+		foreach ( $atts as $key => $value ) {
 
 			if ( ! in_array( $key, $allowed_atts, true ) ) {
 
-				unset( $query_atts[ $key ] );
+				unset( $atts[ $key ] );
 			}
 		}
-	} 
+	}
 
 }

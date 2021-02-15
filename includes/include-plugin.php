@@ -8,7 +8,7 @@
  */
 class Plugin {
 
-	protected static $version = '0.25.2';
+	protected static $version = '0.26.0';
 
 	protected static $options;
 	protected static $authorized_admins = array(
@@ -44,6 +44,8 @@ class Plugin {
 
 		self::require_class( 'utilities' );
 		self::require_class( 'query' );
+		self::require_class( 'query-rest' );
+		self::require_class( 'wp-post' );
 
 	}
 
