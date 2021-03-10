@@ -9,16 +9,16 @@
 		<?php echo EM_Content_Decorator::render_from_array( $atts['decorators'] ); ?>
 		<div class="wsu-c-hero__content">
 			<?php if ( ! empty( $atts['title'] ) ) : ?>
-				<<?php echo esc_html( $atts['title_tag'] ); ?> class="wsu-c-hero__title"><?php echo esc_html( $atts['title'] ); ?></<?php echo esc_html( $atts['title_tag'] ); ?>>
+				<<?php echo esc_html( $atts['title_tag'] ); ?> class="wsu-c-hero__title"><?php echo wp_kses_post( $atts['title'] ); ?></<?php echo esc_html( $atts['title_tag'] ); ?>>
 			<?php endif; ?>
 			<?php if ( ! empty( $atts['subtitle'] ) ) : ?>
-				<div class="wsu-c-hero__subtitle"><?php echo esc_html( $atts['subtitle'] ); ?></div>
+				<div class="wsu-c-hero__subtitle"><?php echo wp_kses_post( $atts['subtitle'] ); ?></div>
 			<?php endif; ?>
 			<?php if ( ! empty( $atts['caption'] ) ) : ?>
-				<div class="wsu-c-hero__caption"><?php echo esc_html( $atts['caption'] ); ?></div>
+				<div class="wsu-c-hero__caption"><?php echo wp_kses_post( $atts['caption'] ); ?></div>
 			<?php endif; ?>
 			<?php if ( ! empty( $atts['button_text'] ) ) : ?>
-				<a href="<?php echo esc_html( $atts['button_url'] ); ?>" class="wsu-c-button"><?php echo esc_html( $atts['button_text'] ); ?></a>
+				<a href="<?php echo esc_html( $atts['button_url'] ); ?>" class="wsu-c-button"><?php echo wp_kses_post( $atts['button_text'] ); ?></a>
 			<?php endif; ?>
 		</div>
 		<?php if ( ! empty( $atts['button_text'] ) ) : ?>
