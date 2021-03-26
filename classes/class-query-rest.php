@@ -24,7 +24,7 @@ class Query_Rest {
 					$post_query['posts'][] = new WP_Post( $response_post, 'rest' );
 
 				}
-			} 
+			}
 		}
 
 		return $post_query;
