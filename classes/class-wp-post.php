@@ -106,7 +106,7 @@ class WP_Post {
 
 		$this->source = 'rest';
 		$this->id           = ( isset( $post_response['id'] ) ) ? $post_response['id'] : false;
-		$this->excerpt      = ( ! empty( $post_response['excerpt']['rendered'] ) ) ? $post_response['excerpt']['rendered'] : '';
+		$this->excerpt      = ( ! empty( $post_response['excerpt']['rendered'] ) ) ? wp_trim_words( $post_response['excerpt']['rendered'], 20 )  : '';
 		//$this->content      = get_the_content( $post );
 		$this->title        = ( ! empty( $post_response['title']['rendered'] ) ) ? $post_response['title']['rendered'] : '';
 		$this->publish_date = ( ! empty( $post_response['date'] ) ) ? wp_date( get_option( 'date_format' ), strtotime( $post_response['date'] ) ) : '';
