@@ -11,7 +11,7 @@ class Query_Rest {
 			'posts' => array(),
 		);
 
-		if ( ! empty( $remote_site_url ) && false !== strpos( $remote_site_url, 'wsu.edu' ) ) {
+		if ( ! empty( $remote_site_url ) && ( false !== strpos( $remote_site_url, 'wsu.edu' ) || false !== strpos( $remote_site_url, '.local' ) ) ) {
 
 			$query_url = self::get_build_query_url( $remote_site_url, $args );
 
@@ -81,6 +81,12 @@ class Query_Rest {
 
 				$query_args['categories'] = $atts['term_ids'];
 			}
+		}
+
+		if ( ! empty( $atts['and_logic'] ) ) {
+
+			$query_args['term_relation'] = 'AND';
+
 		}
 
 	}
