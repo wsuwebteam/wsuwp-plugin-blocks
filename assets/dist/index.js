@@ -15753,8 +15753,8 @@ registerBlockType("wsuwp/news", {
       default: 'default'
     },
     itemsPerRow: {
-      type: 'integer',
-      default: 3
+      type: 'string',
+      default: '3'
     }
   }, _block_controls_index__WEBPACK_IMPORTED_MODULE_3__["globalBlockAtts"]), _block_controls_index__WEBPACK_IMPORTED_MODULE_3__["feedControlAtts"]),
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
