@@ -35,8 +35,8 @@ registerBlockType(
 				default: 'default',
 			},
 			itemsPerRow: {
-				type: 'integer',
-				default: 3,
+				type: 'string',
+				default: '3',
 			},
 			...globalBlockAtts,
 			...feedControlAtts,
