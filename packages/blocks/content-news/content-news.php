@@ -16,6 +16,7 @@ class Content_News extends Block_Base {
 		'padding_after'  	=> 'default',
 		'items_per_row'  	=> 3,
 		'feed_source'       => array(),
+		'wrapper_tag'       => 'div',
 	);
 
 
@@ -52,6 +53,12 @@ class Content_News extends Block_Base {
 		ob_start();
 
 		$content = ( 'insert' === $atts['source'] ) ? $content : self::get_feed_content( $atts, $content );
+
+		if ( 'list' === $atts['type'] ) {
+
+			$atts['wrapper_tag'] = 'ul';
+
+		}
 
 		include __DIR__ . '/templates/default.php';
 
@@ -93,6 +100,15 @@ class Content_News extends Block_Base {
 							'author_name' => $post->get( 'author_name' ),
 						)
 					);
+					break;
+				default:
+
+					ob_start();
+
+					include __DIR__ . '/templates/list.php';
+
+					$content .= ob_get_clean();
+
 					break;
 			}
 		}

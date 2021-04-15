@@ -83,7 +83,7 @@ const edit = ( { className, attributes, setAttributes } ) => {
 							label="Display Type"
 							value={attributes.type}
 							onChange={ (type) => setAttributes( { type } ) }
-							options={[{ label:'Default',value:'default'},{label:'Card',value:'card'}]}
+							options={[{ label:'Default',value:'default'},{label:'Card',value:'card'},{label:'List',value:'list'}]}
 						/>
 						<FeedControls attributes={attributes} setAttributes={setAttributes} />
 					</PanelBody>
