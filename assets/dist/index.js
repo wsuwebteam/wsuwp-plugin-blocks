@@ -15878,6 +15878,9 @@ var edit = function edit(_ref2) {
       }, {
         label: 'Card',
         value: 'card'
+      }, {
+        label: 'List',
+        value: 'list'
       }]
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_controls__WEBPACK_IMPORTED_MODULE_1__["FeedControls"], {
       attributes: attributes,
