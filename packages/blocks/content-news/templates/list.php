@@ -8,9 +8,10 @@
 			<?php echo esc_html( $post->get( 'excerpt' ) ); ?>
 		</span>
 	</span>
-	<div class="wsu-c-image">
+	<?php if ( ! empty( $post->get( 'image_src' ) ) ) : ?><div class="wsu-c-image">
 		<img
 			src="<?php echo esc_url( $post->get( 'image_src' ) ); ?>"
 			/>
 	</div>
+	<?php endif; ?>
 </li>
